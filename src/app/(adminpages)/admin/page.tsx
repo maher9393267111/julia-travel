@@ -6,6 +6,7 @@ import OrdersList from "./_components/OrdersList";
 import ProductsList from "./_components/ProductsList";
 import UsersList from "./_components/users/UsersList";
 import BlogList from "./_components/blogs/BlogList";
+import HotelList from "./_components/hotels/HotelList";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 
@@ -37,6 +38,12 @@ function AdminProfile() {
           <BlogList />
         </Tabs.TabPane>
 
+        <Tabs.TabPane tab="hotels" key="5">
+          <HotelList />
+        </Tabs.TabPane>
+
+
+{/* 
         <Tabs.TabPane tab="blogs" key="4">
           <BlogList />
         </Tabs.TabPane>
@@ -64,13 +71,7 @@ function AdminProfile() {
         <Tabs.TabPane tab="blogs" key="4">
           <BlogList />
         </Tabs.TabPane>
-
-
-
-        <Tabs.TabPane tab="blogs" key="4">
-          <BlogList />
-        </Tabs.TabPane>
-
+ */}
 
 
 

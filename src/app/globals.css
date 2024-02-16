@@ -19,7 +19,7 @@ button {
   box-shadow: none !important;
 }
 
-input,
+/* input,
 textarea,
 select {
   min-height: 42px;
@@ -32,7 +32,22 @@ select {
   width: 100%;
   box-sizing: border-box;
   transition: all 0.3s ease-in-out;
+} */
+
+/* focus:ring-purple-600 focus:border-purple-600  block w-full pl-10 sm:text-sm border-gray-300 rounded-md  */
+
+
+@layer components {
+
+.input_style{
+  @apply  focus:ring-green-400   outline-none  focus:border-none focus:outline-none   border-green-500 
 }
+
+  
+
+}
+
+
 
 textarea {
   min-height: 100px;
