@@ -16,7 +16,7 @@ function AdminProfile() {
   const router = useRouter();
 
   return (
-    <div>
+    <div dir="ltr">
       <Tabs
         onTabClick={(key) => {
           router.push(`/admin?tab=${key}`);

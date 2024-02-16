@@ -5,8 +5,8 @@ import axios from "axios";
 import React from "react";
 import { useDispatch } from "react-redux";
 import CategoryForm from "./CategoryForm";
-import DeleteButton from "@/components/DeleteButton";
-import EditButton from "@/components/EditButton";
+import DeleteButton from "@/components/myComponents/DeleteButton";
+import EditButton from "@/components/myComponents/EditButton";
 import { CatchBlockErrorType, CategoryType } from "@/interfaces";
 import moment from "moment";
 function CategoriesList() {

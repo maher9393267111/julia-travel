@@ -5,7 +5,7 @@ import { SetLoading } from "@/redux/LoadersSlice";
 import { uploadImages ,deleteImages } from "@/helpers/imageUploadAndDelete";
 import axios from "axios";
 import { getCatchErrorMessage } from "@/helpers/ErrorMessgaes";
-import ModelTitle from "@/components/ModelTitle";
+import ModelTitle from "@/components/myComponents/ModelTitle";
 import { ProductType } from "@/interfaces";
 import Image from "next/image";
 

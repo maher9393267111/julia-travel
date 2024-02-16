@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { SetLoading } from "@/redux/LoadersSlice";
 import axios from "axios";
 import { Button, message } from "antd";
-import PageTitle from "@/components/PageTitle";
+import PageTitle from "@/components/myComponents/PageTitle";
 import { useRouter } from "next/navigation";
 import ProductForm from "../../_components/ProductForm";
 import { deleteImages, uploadImages } from "@/helpers/imageUploadAndDelete";
@@ -53,7 +53,7 @@ function EditProduct({ params }: { params: any }) {
   }, []);
 
   return (
-    <div>
+    <div dir="ltr">
       <div className="flex justify-between items-center">
         <PageTitle title="Edit  Vehicle" />
 
