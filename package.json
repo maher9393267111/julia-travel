@@ -38,6 +38,7 @@
     "@types/bcryptjs": "^2.4.3",
     "@types/jsonwebtoken": "^9.0.2",
     "@types/react": "18.2.55",
+    "@types/uuid": "^9.0.8",
     "autoprefixer": "^10.4.17",
     "eslint": "^8",
     "eslint-config-next": "14.0.4",
