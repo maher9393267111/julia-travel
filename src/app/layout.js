@@ -15,6 +15,10 @@ import "yet-another-react-lightbox/styles.css";
 import "../../public/assets/css/style.css";
 import "../../public/assets/css/dashboard.css";
 import "../../public/assets/css/style-rtl.css";
+import LayoutProvider from "@/components/myComponents/LayoutProvider";
+import "./globals.css";
+
+
 import { useEffect } from "react";
 
 export default function RootLayout({ children }) {
@@ -23,7 +27,14 @@ export default function RootLayout({ children }) {
   }, []);
   return (
     <html lang="en" dir="rtl">
-      <body>{children}</body>
+
+
+
+      <body>
+        <LayoutProvider>{children}</LayoutProvider>
+      </body>
+
+
     </html>
   );
 }
