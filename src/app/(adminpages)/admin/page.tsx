@@ -36,6 +36,48 @@ function AdminProfile() {
         <Tabs.TabPane tab="blogs" key="4">
           <BlogList />
         </Tabs.TabPane>
+
+        <Tabs.TabPane tab="blogs" key="4">
+          <BlogList />
+        </Tabs.TabPane>
+
+
+
+        <Tabs.TabPane tab="blogs" key="4">
+          <BlogList />
+        </Tabs.TabPane>
+
+
+
+        <Tabs.TabPane tab="blogs" key="4">
+          <BlogList />
+        </Tabs.TabPane>
+
+
+
+        <Tabs.TabPane tab="blogs" key="4">
+          <BlogList />
+        </Tabs.TabPane>
+
+
+
+        <Tabs.TabPane tab="blogs" key="4">
+          <BlogList />
+        </Tabs.TabPane>
+
+
+
+        <Tabs.TabPane tab="blogs" key="4">
+          <BlogList />
+        </Tabs.TabPane>
+
+
+
+
+
+
+
+
       </Tabs>
     </div>
   );

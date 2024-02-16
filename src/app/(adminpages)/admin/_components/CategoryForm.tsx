@@ -101,7 +101,17 @@ function CategoryForm({
             },
           ]}
         >
-          <input type="text" />
+          {/* <input type="text" /> */}
+
+
+          <div className="form-inner mb-30  !outline-green-500  ">
+                        
+                        <input type="text" placeholder="category name" />
+                      </div>
+
+
+
+
         </Form.Item>
         <Form.Item
           label="Description"

@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const visaSchema = new mongoose.Schema(
+const packageSchema = new mongoose.Schema(
   {
     title: {
       type: String,
@@ -10,10 +10,7 @@ const visaSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    author: {
-        type:String,
-        required :true
-    },
+  
     images: {
         type: Array,
         required: true,
@@ -23,9 +20,9 @@ const visaSchema = new mongoose.Schema(
       default: true,
     },
     price: {
-      type: Number,
-      required: true,
-    }
+        type: Number,
+        required: true,
+      }
   },
   {
     timestamps: true,
@@ -34,11 +31,11 @@ const visaSchema = new mongoose.Schema(
 
 
 // check if user model is already created
-if (mongoose.models.visas) {
-  const visaModel = mongoose.model("visas");
-  mongoose.deleteModel(visaModel.modelName);
+if (mongoose.models.packages) {
+  const packageModel = mongoose.model("packages");
+  mongoose.deleteModel(packageModel.modelName);
 }
 
-const Visa= mongoose.model("visas",visaSchema);
+const Package= mongoose.model("packages",packageSchema);
 
-export default Visa
+export default Package
