@@ -10,6 +10,11 @@ module.exports = {
       colors: {
         primary: "#1F2937",
       },
+
+      fontFamily: {
+        kufi: ["Noto Kufi Arabic", "sans-serif"],
+        ibm: ['IBM Plex Sans Arabic', 'sans-serif']
+      },
     },
   },
   plugins: [],

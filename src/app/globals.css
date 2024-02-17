@@ -1,4 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Poppins:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100;400;700&display=swap");
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,7 +12,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif !important;
+  /* font-family: "Poppins", sans-serif !important; */
   font-weight: 500;
 }
 
@@ -18,6 +23,80 @@ button {
   border-radius: 0 !important;
   box-shadow: none !important;
 }
+
+
+
+@font-face {
+  font-family: 'Bahij';
+  font-style: normal;
+  font-weight: 100;
+  src: url('../../public/assets/fontsme/Bahij_TheSansArabic-ExtraLight.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Bahij';
+  font-style: normal;
+  font-weight: 200;
+  src: url('../../public/assets/fontsme/Bahij_TheSansArabic-SemiLight.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Bahij';
+  font-style: normal;
+  font-weight: 300;
+  src: url('../../public/assets/fontsme/Bahij_TheSansArabic-Light.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Bahij';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../public/assets/fontsme/Bahij_TheSansArabic-Plain.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Bahij';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../../public/assets/fontsme/Bahij\ Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Bahij';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../../public/assets/fontsme/Bahij Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Bahij';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../../public/assets/fontsme/Bahij_TheSansArabic-ExtraBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Bahij';
+  font-style: normal;
+  font-weight: 800;
+  /* '../public/fonts/Bahij_TheSansArabic-Black 10.ttf'  */
+  src: url("../../public/assets/fontsme/Bahij_TheSansArabic-ExtraBold.ttf" ) format('truetype');
+}
+
+
+
+body{
+  font-family: 'Bahij' !important;
+  /* color: red !important; */
+}
+
+.arabicfont{
+
+  font-family: 'Bahij' !important;
+/* color: red !important; */
+
+
+}
+
+
+
+
+
+
+
 
 /* input,
 textarea,

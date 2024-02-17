@@ -26,11 +26,11 @@ export default function RootLayout({ children }) {
     require("bootstrap/dist/js/bootstrap.bundle.min.js");
   }, []);
   return (
-    <html lang="en" dir="rtl">
+    <html lang="en" dir="rtl" className="arabicfont">
 
 
 
-      <body>
+      <body className="arabicfont">
         <LayoutProvider>{children}</LayoutProvider>
       </body>
 

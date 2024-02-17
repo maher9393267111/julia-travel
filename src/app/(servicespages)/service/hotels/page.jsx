@@ -41,8 +41,8 @@ export default function HotelsServices() {
     <div>
 <Header/>
 
-<div className='   px-12 min-h-[70vh]'>
-Location {location}  {hotels?.length}
+<div className='    !font-kufi  px-12 min-h-[70vh]'>
+الموقع {location}  {hotels?.length}
 </div>
 
 
