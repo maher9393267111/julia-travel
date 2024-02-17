@@ -9,8 +9,25 @@ import Newslatter from "@/components/common/Newslatter";
 import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
 import Topbar from "@/components/topbar/Topbar";
+import { useRouter } from "next/navigation";
+import { RouterContext } from "next/dist/shared/lib/router-context.shared-runtime";
 
 const page = () => {
+
+const router = useRouter()
+
+
+const clicked =()=>{
+
+console.log("clicked" )
+router.push('/package/package-top-search?location=me')
+
+
+
+}
+
+
+
   return (
     <>
       <Topbar />
@@ -22,7 +39,7 @@ const page = () => {
       <div className="package-search-filter-wrapper">
         <div className="container">
           <div className="filter-group">
-            <form>
+            <form onSubmit={clicked()}>
               <div className="filter-area">
                 <div className="row g-xl-4 gy-4">
                   <div className="col-xl-3 col-sm-6 d-flex justify-content-center">
@@ -38,7 +55,7 @@ const page = () => {
                           <path d="M13.5 4.79883C11.3192 4.79883 9.54492 6.57308 9.54492 8.75391C9.54492 10.9347 11.3192 12.709 13.5 12.709C15.6808 12.709 17.4551 10.9347 17.4551 8.75391C17.4551 6.57308 15.6808 4.79883 13.5 4.79883ZM13.5 11.127C12.1915 11.127 11.127 10.0624 11.127 8.75391C11.127 7.44541 12.1915 6.38086 13.5 6.38086C14.8085 6.38086 15.873 7.44541 15.873 8.75391C15.873 10.0624 14.8085 11.127 13.5 11.127Z" />
                         </svg>
                       </div>
-                      <DestinationSearch />
+                      <DestinationSearch    />
                     </div>
                   </div>
                   <div className="col-xl-3 col-sm-6 d-flex justify-content-center">
@@ -106,7 +123,7 @@ const page = () => {
                           </g>
                         </svg>
                       </div>
-                      <GuestDropdown noScroll="two no-scroll" />
+                      {/* <GuestDropdown noScroll="tw no-scroll" /> */}
                     </div>
                   </div>
                 </div>

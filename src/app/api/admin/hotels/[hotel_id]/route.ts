@@ -15,7 +15,7 @@ export async function GET(
   }
 ) {
   try {
-    await validateApiRequest(req);
+    // await validateApiRequest(req);
     const hotel = await Hotel.findById(params.hotel_id);
     return NextResponse.json({ data:hotel });
   } catch (error : any) {

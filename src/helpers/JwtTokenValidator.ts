@@ -11,6 +11,7 @@ export async function validateApiRequest(request: NextRequest) {
     // Verify token
     const decodedToken: any = jwt.verify(token, process.env.jwt_secret || "");
     const userId = decodedToken._id;
+console.log("USERDECODEEE" ,userId)
 
     return userId;
   } catch (error : any) {

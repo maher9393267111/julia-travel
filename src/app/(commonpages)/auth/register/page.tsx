@@ -28,11 +28,11 @@ function Register() {
   };
 
   return (
-    <div dir="" className="grid   grid-cols-1 md:grid-cols-2 h-screen">
+    <div dir="ltr" className="grid   grid-cols-1 md:grid-cols-2 h-screen">
       <div className="bg-primary flex items-center justify-center">
-        <h1 className="text-7xl text-red-500">Cars</h1>
+        <h1 className="text-7xl text-red-500">Julia</h1>
         <h1 className="text-7xl text-blue-500">-</h1>
-        <h1 className="text-7xl text-yellow-500">App</h1>
+        <h1 className="text-7xl text-yellow-500">Tours</h1>
       </div>
       <div className="items-center justify-center flex">
         <div className="w-96 xl:w-[500px]">
