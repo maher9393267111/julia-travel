@@ -17,14 +17,14 @@ const page = () => {
 const router = useRouter()
 
 
-const clicked =()=>{
+// const clicked =()=>{
 
-console.log("clicked" )
-router.push('/package/package-top-search?location=me')
+// console.log("clicked" )
+// router.push('/package/package-top-search?location=me')
 
 
 
-}
+// }
 
 
 
@@ -39,7 +39,10 @@ router.push('/package/package-top-search?location=me')
       <div className="package-search-filter-wrapper">
         <div className="container">
           <div className="filter-group">
-            <form onSubmit={clicked()}>
+            <form
+            //  onSubmit={clicked()}
+            
+            >
               <div className="filter-area">
                 <div className="row g-xl-4 gy-4">
                   <div className="col-xl-3 col-sm-6 d-flex justify-content-center">
@@ -128,7 +131,11 @@ router.push('/package/package-top-search?location=me')
                   </div>
                 </div>
               </div>
-              <button type="submit">Search</button>
+              <button 
+              
+               type="submit"
+              // onClick={clicked}
+              >Search</button>
             </form>
           </div>
         </div>
