@@ -1,6 +1,6 @@
 import { connectDB } from "@/config/DbConfig";
 import { validateApiRequest } from "@/helpers/JwtTokenValidator";
-import Category from "@/models/CategoryModel";
+import Package from "@/models/packageModel";
 import { NextResponse, NextRequest } from "next/server";
 connectDB();
 
@@ -10,13 +10,13 @@ export async function GET(
     params,
   }: {
     params: {
-      category_id: string;
+      package_id: string;
     };
   }
 ) {
   try {
     await validateApiRequest(req);
-    const category = await Category.findById(params.category_id);
+    const category = await Package.findById(params.package_id);
     return NextResponse.json({ data: category });
   } catch (error : any) {
     return NextResponse.json({ message: error.message });
@@ -25,13 +25,13 @@ export async function GET(
 
 export async function PUT(
   req: NextRequest,
-  { params }: { params: { category_id: string } }
+  { params }: { params: { package_id: string } }
 ) {
   try {
     await validateApiRequest(req);
     const reqBody = await req.json();
-    await Category.updateOne({ _id: params.category_id }, reqBody);
-    return NextResponse.json({ message: "category updated successfully" });
+    await Package.updateOne({ _id: params.package_id }, reqBody);
+    return NextResponse.json({ message: "package updated successfully" });
   } catch (error : any) {
     return NextResponse.json({ message: error.message });
   }
@@ -39,12 +39,12 @@ export async function PUT(
 
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: { category_id: string } }
+  { params }: { params: { package_id: string } }
 ) {
   try {
     await validateApiRequest(req);
-    await Category.deleteOne({ _id: params.category_id });
-    return NextResponse.json({ message: "category deleted successfully" });
+    await Package.deleteOne({ _id: params.package_id });
+    return NextResponse.json({ message: "package deleted successfully" });
   } catch (error : any) {
     return NextResponse.json({ message: error.message });
   }

@@ -36,6 +36,6 @@ if (mongoose.models.cars) {
   mongoose.deleteModel(carModel.modelName);
 }
 
-const Car= mongoose.model("car",carSchema);
+const Car= mongoose.model("cars",carSchema);
 
 export default Car

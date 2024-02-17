@@ -96,6 +96,9 @@ console.log('selected' ,selectedCategory?.images,"values" ,values.images)
       dispatch(SetLoading(false));
     }
   };
+
+
+  
   const modelTitle = selectedCategory ? "Edit Blog" : "Add Blog";
   return (
     <Modal

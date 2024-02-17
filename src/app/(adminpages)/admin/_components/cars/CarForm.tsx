@@ -36,13 +36,13 @@ const locations = [
 
 
 
-function HotelForm({
+function CarForm({
   showCategoryForm,
   setShowCategoryForm,
   selectedCategory,
   setSelectedCategory,
   reloadCategories,
-}: HotelFormProps) {
+}: CarFormProps) {
   const dispatch = useDispatch();
 
   const [files, setFiles] = React.useState<any>([]);
@@ -62,30 +62,29 @@ function HotelForm({
       dispatch(SetLoading(true));
       let response;
       if (selectedCategory) {
-        console.log(
-          "selected",
-          selectedCategory?.images,
-          "values",
-          values.images
-        );
-        // delete images
-        const imagesToDelete = selectedCategory.images.filter(
-          (image: string) => !values.images.includes(image)
-        );
-        await deleteImages(imagesToDelete);
-        const newImagesUploaded = await uploadImages(files);
-        values.images = [...values.images, ...newImagesUploaded];
+console.log('selected' ,selectedCategory?.images,"values" ,values.images)
+          // delete images
+      const imagesToDelete = selectedCategory.images.filter(
+        (image: string) => !values.images.includes(image)
+      );
+      await deleteImages(imagesToDelete);
+      const newImagesUploaded = await uploadImages(files);
+      values.images = [...values.images, ...newImagesUploaded];
+
+
 
         response = await axios.put(
-          `/api/admin/hotels/${selectedCategory._id}`,
+          `/api/admin/cars/${selectedCategory._id}`,
           values
         );
       } else {
+
         values.images = await uploadImages(files);
 
-        response = await axios.post("/api/admin/hotels", values);
+
+        response = await axios.post("/api/admin/cars", values);
       }
-      message.success("Hotel Added Successfully");
+      message.success("Car Added Successfully");
       setShowCategoryForm(false);
       reloadCategories();
       setSelectedCategory(null);
@@ -99,7 +98,7 @@ function HotelForm({
 
 console.log("S?????"  , selectedCategory)
 
-  const modelTitle = selectedCategory ? "Edit Hotel" : "Add Hotel";
+  const modelTitle = selectedCategory ? "Edit Car" : "Add Car";
   return (
     <Modal
       title={<ModelTitle title={modelTitle} />}
@@ -153,7 +152,7 @@ console.log("S?????"  , selectedCategory)
         </Form.Item>
 
 
-        <Form.Item label="Location" name="location"     rules={[
+        {/* <Form.Item label="Location" name="location"     rules={[
             {
               required: true,
               message: "Please input location",
@@ -172,7 +171,7 @@ console.log("S?????"  , selectedCategory)
           </select>
 
 
-        </Form.Item>
+        </Form.Item> */}
 
 
 
@@ -277,9 +276,9 @@ console.log("S?????"  , selectedCategory)
   );
 }
 
-export default HotelForm;
+export default CarForm;
 
-export interface HotelFormProps {
+export interface CarFormProps {
   showCategoryForm: boolean;
   setShowCategoryForm: any;
   selectedCategory: any;

@@ -10,6 +10,11 @@ const packageSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    location: {
+      type: String,
+      required: true,
+    },
+
   
     images: {
         type: Array,

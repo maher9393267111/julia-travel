@@ -4,14 +4,14 @@ import { Button, Table, message } from "antd";
 import axios from "axios";
 import React from "react";
 import { useDispatch } from "react-redux";
-import HotelForm from "./HotelForm";
+import PackageForm from "./PackageForm";
 import DeleteButton from "@/components/myComponents/DeleteButton";
 import EditButton from "@/components/myComponents/EditButton";
 import { CatchBlockErrorType, CategoryType } from "@/interfaces";
 import parse from "html-react-parser";
 import moment from "moment";
 
-function HotelList() {
+function PackageList() {
   const [showCategoryForm, setShowCategoryForm] = React.useState(false);
   const [selectedCategory, setSelectedCategory] =
     React.useState<CategoryType>();
@@ -21,7 +21,7 @@ function HotelList() {
   const getCategories = async () => {
     try {
       dispatch(SetLoading(true));
-      const response = await axios.get("/api/admin/hotels");
+      const response = await axios.get("/api/admin/packages");
       setCategories(response.data.data);
     } catch (error: any) {
       message.error(getCatchErrorMessage(error));
@@ -36,8 +36,8 @@ function HotelList() {
   const onDelete = async (id: string) => {
     try {
       dispatch(SetLoading(true));
-      await axios.delete(`/api/admin/hotels/${id}`);
-      message.success("Hotel Deleted Successfully");
+      await axios.delete(`/api/admin/packages/${id}`);
+      message.success("Package Deleted Successfully");
       getCategories();
     } catch (error: any) {
       message.error(getCatchErrorMessage(error));
@@ -109,7 +109,7 @@ function HotelList() {
             setSelectedCategory(undefined);
           }}
         >
-          Add Hotel
+          Add Package
         </Button>
       </div>
 
@@ -118,7 +118,7 @@ function HotelList() {
       </div>
 
       {showCategoryForm && (
-        <HotelForm
+        <PackageForm
           showCategoryForm={showCategoryForm}
           setShowCategoryForm={setShowCategoryForm}
           selectedCategory={selectedCategory}
@@ -130,4 +130,4 @@ function HotelList() {
   );
 }
 
-export default HotelList;
+export default PackageList;

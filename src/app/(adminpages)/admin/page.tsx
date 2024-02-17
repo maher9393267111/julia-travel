@@ -7,8 +7,12 @@ import ProductsList from "./_components/ProductsList";
 import UsersList from "./_components/users/UsersList";
 import BlogList from "./_components/blogs/BlogList";
 import HotelList from "./_components/hotels/HotelList";
+import TourList from "./_components/tours/TourList";
+import CarList from "./_components/cars/CarList";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
+import FlightList from "./_components/flights/FlightList";
+import PackageList from "./_components/packages/PackageList";
 
 function AdminProfile() {
   const searchParams = useSearchParams();
@@ -41,6 +45,26 @@ function AdminProfile() {
         <Tabs.TabPane tab="hotels" key="5">
           <HotelList />
         </Tabs.TabPane>
+
+        <Tabs.TabPane tab="tours" key="6">
+          <TourList />
+        </Tabs.TabPane>
+
+        <Tabs.TabPane tab="flights" key="7">
+          <FlightList />
+        </Tabs.TabPane>
+
+
+        <Tabs.TabPane tab="cars" key="8">
+          <CarList />
+        </Tabs.TabPane>
+
+
+        <Tabs.TabPane tab="package" key="9">
+          <PackageList />
+        </Tabs.TabPane>
+
+
 
 
 {/* 

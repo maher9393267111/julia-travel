@@ -28,21 +28,22 @@ const modules = {
   ],
 };
 
+
 const locations = [
-"istanbul", "bursa" ,"trabzon" , "izmir" , "izmit" 
+    "istanbul", "bursa" ,"trabzon" , "izmir" , "izmit" 
+    
+    
+    ]
+    
+    
 
-
-]
-
-
-
-function HotelForm({
+function TourForm({
   showCategoryForm,
   setShowCategoryForm,
   selectedCategory,
   setSelectedCategory,
   reloadCategories,
-}: HotelFormProps) {
+}: TourFormProps) {
   const dispatch = useDispatch();
 
   const [files, setFiles] = React.useState<any>([]);
@@ -77,15 +78,15 @@ function HotelForm({
         values.images = [...values.images, ...newImagesUploaded];
 
         response = await axios.put(
-          `/api/admin/hotels/${selectedCategory._id}`,
+          `/api/admin/tours/${selectedCategory._id}`,
           values
         );
       } else {
         values.images = await uploadImages(files);
 
-        response = await axios.post("/api/admin/hotels", values);
+        response = await axios.post("/api/admin/tours", values);
       }
-      message.success("Hotel Added Successfully");
+      message.success("Tour Added Successfully");
       setShowCategoryForm(false);
       reloadCategories();
       setSelectedCategory(null);
@@ -99,7 +100,7 @@ function HotelForm({
 
 console.log("S?????"  , selectedCategory)
 
-  const modelTitle = selectedCategory ? "Edit Hotel" : "Add Hotel";
+  const modelTitle = selectedCategory ? "Edit Tour" : "Add Tour";
   return (
     <Modal
       title={<ModelTitle title={modelTitle} />}
@@ -136,6 +137,31 @@ console.log("S?????"  , selectedCategory)
         </Form.Item>
 
 
+        <Form.Item label="Location" name="location"     rules={[
+            {
+              required: true,
+              message: "Please input location",
+            },
+          ]} >
+          <select
+          className="input_style w-full py-2"
+          value={""}
+          >
+            <option value="">Select Location</option>
+            {locations.map((location: any ,index :any) => (
+              <option key={index} value={location}>
+                {location}
+              </option>
+            ))}
+          </select>
+
+
+        </Form.Item>
+
+
+
+
+
 
         <Form.Item
         className="input_style"
@@ -151,31 +177,6 @@ console.log("S?????"  , selectedCategory)
           <Input className="    input_style  " type="text" />
      
         </Form.Item>
-
-
-        <Form.Item label="Location" name="location"     rules={[
-            {
-              required: true,
-              message: "Please input location",
-            },
-          ]} >
-          <select
-          className="input_style w-full py-2"
-          value={""}
-          >
-            <option value="">Select Category</option>
-            {locations.map((location: any ,index :any) => (
-              <option key={index} value={location}>
-                {location}
-              </option>
-            ))}
-          </select>
-
-
-        </Form.Item>
-
-
-
 
 
 
@@ -277,9 +278,9 @@ console.log("S?????"  , selectedCategory)
   );
 }
 
-export default HotelForm;
+export default TourForm;
 
-export interface HotelFormProps {
+export interface TourFormProps {
   showCategoryForm: boolean;
   setShowCategoryForm: any;
   selectedCategory: any;

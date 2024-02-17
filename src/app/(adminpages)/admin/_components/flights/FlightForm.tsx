@@ -1,5 +1,5 @@
 "use client";
-import { Button, Form, Modal, message, Upload ,Input } from "antd";
+import { Button, Form, Modal, message, Upload, Input } from "antd";
 import React, { useMemo } from "react";
 import { useDispatch } from "react-redux";
 import { SetLoading } from "@/redux/LoadersSlice";
@@ -28,21 +28,15 @@ const modules = {
   ],
 };
 
-const locations = [
-"istanbul", "bursa" ,"trabzon" , "izmir" , "izmit" 
+const locations = ["istanbul", "bursa", "trabzon", "izmir", "izmit"];
 
-
-]
-
-
-
-function HotelForm({
+function FlightForm({
   showCategoryForm,
   setShowCategoryForm,
   selectedCategory,
   setSelectedCategory,
   reloadCategories,
-}: HotelFormProps) {
+}: FlightFormProps) {
   const dispatch = useDispatch();
 
   const [files, setFiles] = React.useState<any>([]);
@@ -62,30 +56,29 @@ function HotelForm({
       dispatch(SetLoading(true));
       let response;
       if (selectedCategory) {
-        console.log(
-          "selected",
-          selectedCategory?.images,
-          "values",
-          values.images
-        );
-        // delete images
-        const imagesToDelete = selectedCategory.images.filter(
-          (image: string) => !values.images.includes(image)
-        );
-        await deleteImages(imagesToDelete);
-        const newImagesUploaded = await uploadImages(files);
-        values.images = [...values.images, ...newImagesUploaded];
+console.log('selected' ,selectedCategory?.images,"values" ,values.images)
+          // delete images
+      const imagesToDelete = selectedCategory.images.filter(
+        (image: string) => !values.images.includes(image)
+      );
+      await deleteImages(imagesToDelete);
+      const newImagesUploaded = await uploadImages(files);
+      values.images = [...values.images, ...newImagesUploaded];
+
+
 
         response = await axios.put(
-          `/api/admin/hotels/${selectedCategory._id}`,
+          `/api/admin/flights/${selectedCategory._id}`,
           values
         );
       } else {
+
         values.images = await uploadImages(files);
 
-        response = await axios.post("/api/admin/hotels", values);
+
+        response = await axios.post("/api/admin/flights", values);
       }
-      message.success("Hotel Added Successfully");
+      message.success("Flight Added Successfully");
       setShowCategoryForm(false);
       reloadCategories();
       setSelectedCategory(null);
@@ -96,10 +89,9 @@ function HotelForm({
     }
   };
 
+  console.log("S?????", selectedCategory);
 
-console.log("S?????"  , selectedCategory)
-
-  const modelTitle = selectedCategory ? "Edit Hotel" : "Add Hotel";
+  const modelTitle = selectedCategory ? "Edit Flight" : "Add Flight";
   return (
     <Modal
       title={<ModelTitle title={modelTitle} />}
@@ -135,10 +127,8 @@ console.log("S?????"  , selectedCategory)
           <Input className="    input_style  " type="text" />
         </Form.Item>
 
-
-
         <Form.Item
-        className="input_style"
+          className="input_style"
           label="Price"
           name="price"
           rules={[
@@ -149,37 +139,27 @@ console.log("S?????"  , selectedCategory)
           ]}
         >
           <Input className="    input_style  " type="text" />
-     
         </Form.Item>
 
-
-        <Form.Item label="Location" name="location"     rules={[
+        <Form.Item
+          label="Location"
+          name="location"
+          rules={[
             {
               required: true,
               message: "Please input location",
             },
-          ]} >
-          <select
-          className="input_style w-full py-2"
-          value={""}
-          >
-            <option value="">Select Category</option>
-            {locations.map((location: any ,index :any) => (
+          ]}
+        >
+          <select className="input_style w-full py-2" value={""}>
+            <option value="">Select Location</option>
+            {locations.map((location: any, index: any) => (
               <option key={index} value={location}>
                 {location}
               </option>
             ))}
           </select>
-
-
         </Form.Item>
-
-
-
-
-
-
-
 
         {/* <Form.Item
           label="Title"
@@ -197,11 +177,6 @@ console.log("S?????"  , selectedCategory)
             <input type="text" placeholder="hotel name" />
           </div>
         </Form.Item> */}
-
-   
-
-
-
 
         <Form.Item
           label="Description"
@@ -277,9 +252,9 @@ console.log("S?????"  , selectedCategory)
   );
 }
 
-export default HotelForm;
+export default FlightForm;
 
-export interface HotelFormProps {
+export interface FlightFormProps {
   showCategoryForm: boolean;
   setShowCategoryForm: any;
   selectedCategory: any;

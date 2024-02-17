@@ -36,13 +36,13 @@ const locations = [
 
 
 
-function HotelForm({
+function PackageForm({
   showCategoryForm,
   setShowCategoryForm,
   selectedCategory,
   setSelectedCategory,
   reloadCategories,
-}: HotelFormProps) {
+}: PackageFormProps) {
   const dispatch = useDispatch();
 
   const [files, setFiles] = React.useState<any>([]);
@@ -62,30 +62,29 @@ function HotelForm({
       dispatch(SetLoading(true));
       let response;
       if (selectedCategory) {
-        console.log(
-          "selected",
-          selectedCategory?.images,
-          "values",
-          values.images
-        );
-        // delete images
-        const imagesToDelete = selectedCategory.images.filter(
-          (image: string) => !values.images.includes(image)
-        );
-        await deleteImages(imagesToDelete);
-        const newImagesUploaded = await uploadImages(files);
-        values.images = [...values.images, ...newImagesUploaded];
+console.log('selected' ,selectedCategory?.images,"values" ,values.images)
+          // delete images
+      const imagesToDelete = selectedCategory.images.filter(
+        (image: string) => !values.images.includes(image)
+      );
+      await deleteImages(imagesToDelete);
+      const newImagesUploaded = await uploadImages(files);
+      values.images = [...values.images, ...newImagesUploaded];
+
+
 
         response = await axios.put(
-          `/api/admin/hotels/${selectedCategory._id}`,
+          `/api/admin/packages/${selectedCategory._id}`,
           values
         );
       } else {
+
         values.images = await uploadImages(files);
 
-        response = await axios.post("/api/admin/hotels", values);
+
+        response = await axios.post("/api/admin/packages", values);
       }
-      message.success("Hotel Added Successfully");
+      message.success("Package Added Successfully");
       setShowCategoryForm(false);
       reloadCategories();
       setSelectedCategory(null);
@@ -99,7 +98,7 @@ function HotelForm({
 
 console.log("S?????"  , selectedCategory)
 
-  const modelTitle = selectedCategory ? "Edit Hotel" : "Add Hotel";
+  const modelTitle = selectedCategory ? "Edit Package" : "Add Package";
   return (
     <Modal
       title={<ModelTitle title={modelTitle} />}
@@ -136,6 +135,33 @@ console.log("S?????"  , selectedCategory)
         </Form.Item>
 
 
+        <Form.Item label="Location" name="location"     rules={[
+            {
+              required: true,
+              message: "Please input location",
+            },
+          ]} >
+          <select
+          className="input_style w-full py-2"
+          value={""}
+          >
+            <option value="">Select Location</option>
+            {locations.map((location: any ,index :any) => (
+              <option key={index} value={location}>
+                {location}
+              </option>
+            ))}
+          </select>
+
+
+        </Form.Item>
+
+
+
+
+
+
+
 
         <Form.Item
         className="input_style"
@@ -153,7 +179,7 @@ console.log("S?????"  , selectedCategory)
         </Form.Item>
 
 
-        <Form.Item label="Location" name="location"     rules={[
+        {/* <Form.Item label="Location" name="location"     rules={[
             {
               required: true,
               message: "Please input location",
@@ -172,7 +198,7 @@ console.log("S?????"  , selectedCategory)
           </select>
 
 
-        </Form.Item>
+        </Form.Item> */}
 
 
 
@@ -277,9 +303,9 @@ console.log("S?????"  , selectedCategory)
   );
 }
 
-export default HotelForm;
+export default PackageForm;
 
-export interface HotelFormProps {
+export interface PackageFormProps {
   showCategoryForm: boolean;
   setShowCategoryForm: any;
   selectedCategory: any;

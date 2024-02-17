@@ -19,6 +19,13 @@ const flightSchema = new mongoose.Schema(
       type: Boolean,
       default: true,
     },
+
+
+    location: {
+      type: String,
+      required: true,
+    },
+
     price: {
         type: Number,
         required: true,
