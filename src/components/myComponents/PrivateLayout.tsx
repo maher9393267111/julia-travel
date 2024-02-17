@@ -91,7 +91,7 @@ function PrivateLayout({ children }: { children: React.ReactNode }) {
             className="text-2xl font-black cursor-pointer text-red-400"
             onClick={() => router.push("/")}
           >
-            Cars <span className="text-yellow-500 font-semibold">App</span>
+            Julia <span className="text-yellow-500 font-semibold">Tours</span>
           </h1>
 
           <div className="flex gap-5 items-center">

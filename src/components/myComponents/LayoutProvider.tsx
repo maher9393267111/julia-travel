@@ -11,6 +11,8 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   // || pathname === '/' 
 const isPublic = pathname === "/auth/login" || pathname === "/auth/register" || pathname === '/'   ;
+
+const isPrivate = pathname === "/admin" ;
   
   return (
     <Provider store={store}>
@@ -25,7 +27,7 @@ const isPublic = pathname === "/auth/login" || pathname === "/auth/register" || 
         {/* {isPublic ? "public" :"private" } */}
 
 
-        {isPublic ? (
+        {!isPrivate ? (
           <PublicLayout>{children}</PublicLayout>
         ) : (
           <PrivateLayout>{children}</PrivateLayout>

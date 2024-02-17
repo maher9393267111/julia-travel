@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const tourSchema = new mongoose.Schema(
+const transSchema = new mongoose.Schema(
   {
     title: {
       type: String,
@@ -10,19 +10,6 @@ const tourSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-
-    location: {
-      type: String,
-      required: true,
-    },
-
-
-    type: {
-      type: String,
-      required: true,
-    },
-
-
   
     images: {
         type: Array,
@@ -32,6 +19,13 @@ const tourSchema = new mongoose.Schema(
       type: Boolean,
       default: true,
     },
+
+
+    location: {
+      type: String,
+      required: true,
+    },
+
     price: {
         type: Number,
         required: true,
@@ -44,11 +38,11 @@ const tourSchema = new mongoose.Schema(
 
 
 // check if user model is already created
-if (mongoose.models.tours) {
-  const tourModel = mongoose.model("tours");
-  mongoose.deleteModel(tourModel.modelName);
+if (mongoose.models.transes) {
+  const transModel = mongoose.model("transes");
+  mongoose.deleteModel(transModel.modelName);
 }
 
-const Tour= mongoose.model("tours",tourSchema);
+const Trans= mongoose.model("transes",transSchema);
 
-export default Tour
+export default Trans

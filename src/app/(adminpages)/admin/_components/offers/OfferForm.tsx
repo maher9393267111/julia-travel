@@ -34,13 +34,13 @@ const types=['Family Tour','Honeymoon Tou','Group Tour','Adventure Tour','Solo T
     
     
 
-function TourForm({
+function OfferForm({
   showCategoryForm,
   setShowCategoryForm,
   selectedCategory,
   setSelectedCategory,
   reloadCategories,
-}: TourFormProps) {
+}: OfferFormProps) {
   const dispatch = useDispatch();
 
   const [files, setFiles] = React.useState<any>([]);
@@ -75,15 +75,15 @@ function TourForm({
         values.images = [...values.images, ...newImagesUploaded];
 
         response = await axios.put(
-          `/api/admin/tours/${selectedCategory._id}`,
+          `/api/admin/offers/${selectedCategory._id}`,
           values
         );
       } else {
         values.images = await uploadImages(files);
 
-        response = await axios.post("/api/admin/tours", values);
+        response = await axios.post("/api/admin/offers", values);
       }
-      message.success("Tour Added Successfully");
+      message.success("Offer Added Successfully");
       setShowCategoryForm(false);
       reloadCategories();
       setSelectedCategory(null);
@@ -97,9 +97,10 @@ function TourForm({
 
 console.log("S?????"  , selectedCategory)
 
-  const modelTitle = selectedCategory ? "Edit Tour" : "Add Tour";
+  const modelTitle = selectedCategory ? "Edit Offer" : "Add Offer";
   return (
     <Modal
+
       title={<ModelTitle title={modelTitle} />}
       open={showCategoryForm}
       onCancel={() => {
@@ -299,9 +300,9 @@ console.log("S?????"  , selectedCategory)
   );
 }
 
-export default TourForm;
+export default OfferForm;
 
-export interface TourFormProps {
+export interface OfferFormProps {
   showCategoryForm: boolean;
   setShowCategoryForm: any;
   selectedCategory: any;

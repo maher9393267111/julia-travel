@@ -30,17 +30,17 @@ const modules = {
 
 
 const locations = ["istanbul", "bursa" ,"trabzon" , "izmir" , "izmit"   ]
-const types=['Family Tour','Honeymoon Tou','Group Tour','Adventure Tour','Solo Tour']
+
     
     
 
-function TourForm({
+function TransForm({
   showCategoryForm,
   setShowCategoryForm,
   selectedCategory,
   setSelectedCategory,
   reloadCategories,
-}: TourFormProps) {
+}: TransFormProps) {
   const dispatch = useDispatch();
 
   const [files, setFiles] = React.useState<any>([]);
@@ -81,9 +81,9 @@ function TourForm({
       } else {
         values.images = await uploadImages(files);
 
-        response = await axios.post("/api/admin/tours", values);
+        response = await axios.post("/api/admin/trans", values);
       }
-      message.success("Tour Added Successfully");
+      message.success("Transiction Added Successfully");
       setShowCategoryForm(false);
       reloadCategories();
       setSelectedCategory(null);
@@ -97,7 +97,7 @@ function TourForm({
 
 console.log("S?????"  , selectedCategory)
 
-  const modelTitle = selectedCategory ? "Edit Tour" : "Add Tour";
+  const modelTitle = selectedCategory ? "Edit Transiction" : "Add Transiction";
   return (
     <Modal
       title={<ModelTitle title={modelTitle} />}
@@ -134,6 +134,28 @@ console.log("S?????"  , selectedCategory)
         </Form.Item>
 
 
+   
+
+
+
+
+
+        <Form.Item
+        className="input_style"
+          label="Price"
+          name="price"
+          rules={[
+            {
+              required: true,
+              message: "Please input price",
+            },
+          ]}
+        >
+          <Input className="    input_style  " type="text" />
+     
+        </Form.Item>
+
+
         <Form.Item label="Location" name="location"     rules={[
             {
               required: true,
@@ -155,49 +177,6 @@ console.log("S?????"  , selectedCategory)
 
         </Form.Item>
 
-
-
-        <Form.Item label="Type" name="type"     rules={[
-            {
-              required: true,
-              message: "Please input type",
-            },
-          ]} >
-          <select
-          className="input_style w-full py-2"
-          value={""}
-          >
-            <option value="">Select Type</option>
-            {types.map((type: any ,index :any) => (
-              <option key={index} value={type}>
-                {type}
-              </option>
-            ))}
-          </select>
-
-
-        </Form.Item>
-
-
-
-
-
-
-
-        <Form.Item
-        className="input_style"
-          label="Price"
-          name="price"
-          rules={[
-            {
-              required: true,
-              message: "Please input price",
-            },
-          ]}
-        >
-          <Input className="    input_style  " type="text" />
-     
-        </Form.Item>
 
 
 
@@ -299,9 +278,9 @@ console.log("S?????"  , selectedCategory)
   );
 }
 
-export default TourForm;
+export default TransForm;
 
-export interface TourFormProps {
+export interface TransFormProps {
   showCategoryForm: boolean;
   setShowCategoryForm: any;
   selectedCategory: any;
