@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Form, Button, message } from "antd";
+import { Form, Button, message ,Input } from "antd";
 import {
   antdFieldValidation,
   getCatchErrorMessage,
@@ -44,7 +44,7 @@ function Register() {
             <Form layout="vertical" onFinish={onFinish} className="mt-5">
               <div className="flex flex-col gap-5">
                 <Form.Item label="Name" name="name" rules={antdFieldValidation}>
-                  <input type="text" />
+                  <Input type="text" />
                 </Form.Item>
 
                 <Form.Item
@@ -52,7 +52,7 @@ function Register() {
                   name="email"
                   rules={antdFieldValidation}
                 >
-                  <input type="email" />
+                  <Input type="email" />
                 </Form.Item>
 
                 <Form.Item
@@ -60,7 +60,7 @@ function Register() {
                   name="password"
                   rules={antdFieldValidation}
                 >
-                  <input type="password" />
+                  <Input type="password" />
                 </Form.Item>
 
                 <Button

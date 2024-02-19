@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import React from "react";
-import { Form, Button, message } from "antd";
+import { Form, Button, message ,Input } from "antd";
 import {
   antdFieldValidation,
   getCatchErrorMessage,
@@ -47,7 +47,7 @@ function Login() {
                   name="email"
                   rules={antdFieldValidation}
                 >
-                  <input type="email" />
+                  <Input type="email" />
                 </Form.Item>
 
                 <Form.Item
@@ -55,7 +55,7 @@ function Login() {
                   name="password"
                   rules={antdFieldValidation}
                 >
-                  <input type="password" />
+                  <Input type="password" />
                 </Form.Item>
 
                 <Button

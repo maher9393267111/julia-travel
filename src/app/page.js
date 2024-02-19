@@ -16,6 +16,13 @@ import Topbar2 from "@/components/topbar/Topbar2";
 import Home1TourPackage from "@/components/tourPackage/Home1TourPackage";
 import Home1Vise from "@/components/visaComponents/Home1Vise";
 import Home1WhyChoose from "@/components/whyChoose/Home1WhyChoose";
+
+// -------------------
+
+
+import HeaderSite  from '@/components/myComponents/layout/Header'
+import FilterComponent from '@/components/myComponents/HomeComponents/Filter'
+
 export const metadata = {
   title: "TripRex - Tour & Travel Agency  NextJs Template",
   description:
@@ -28,9 +35,15 @@ export default function Home() {
   return (
     <>
       <Topbar2 />
-      <Header />
+      {/* <Header /> */}
+<HeaderSite/>
+
       <Banner1 />
-      <Banner1Bottom />
+      {/* <Banner1Bottom /> */}
+
+<FilterComponent/>
+
+
       <About1 />
       <Destination1 />
       <Home1Fecilities2 />

@@ -2290,7 +2290,7 @@ header.style-1 .main-menu ul > li a {
   letter-spacing: 0.4px;
   padding: 25px 15px;
   position: relative;
-  font-family: var(--font-rubik);
+  /* font-family: var(--font-rubik); */
   font-weight: 400;
   font-size: 15px;
   transition: all 0.5s ease-out 0s;
