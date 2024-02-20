@@ -57,7 +57,7 @@ import Header from "@/components/header/Header";
 
 import { useParams } from "next/navigation";
 import ModalVideo from "react-modal-video";
-import Breadcrumb from "@/components/common/Breadcrumb";
+import Breadcrumb from "@/components/myComponents/layout/BreadCrumb";
 import ReactDatePicker from "react-datepicker";
 import QuantityCounter from "@/uitils/QuantityCounter";
 import Lightbox from "yet-another-react-lightbox";

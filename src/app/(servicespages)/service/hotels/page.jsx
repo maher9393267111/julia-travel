@@ -7,7 +7,7 @@ import { Button, Table, message } from "antd";
 import axios from "axios";
 import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
-import Breadcrumb from "@/components/myComponents/layout/Breadcrumb";
+import Breadcrumb from "@/components/myComponents/layout/BreadCrumb";
 
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
