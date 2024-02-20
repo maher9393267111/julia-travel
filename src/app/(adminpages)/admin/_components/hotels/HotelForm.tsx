@@ -1,5 +1,5 @@
 "use client";
-import { Button, Form, Modal, message, Upload ,Input } from "antd";
+import { Button, Form, Modal, message, Upload, Input, Checkbox } from "antd";
 import React, { useMemo } from "react";
 import { useDispatch } from "react-redux";
 import { SetLoading } from "@/redux/LoadersSlice";
@@ -28,13 +28,8 @@ const modules = {
   ],
 };
 
-const locations = [
-"istanbul", "bursa" ,"trabzon" , "izmir" , "izmit" 
-
-
-]
-
-
+const locations = ["istanbul", "bursa", "trabzon", "izmir", "izmit"];
+const roomTypes = ["single" ,"double"];
 
 function HotelForm({
   showCategoryForm,
@@ -96,8 +91,7 @@ function HotelForm({
     }
   };
 
-
-console.log("S?????"  , selectedCategory)
+  console.log("S?????", selectedCategory);
 
   const modelTitle = selectedCategory ? "Edit Hotel" : "Add Hotel";
   return (
@@ -135,10 +129,8 @@ console.log("S?????"  , selectedCategory)
           <Input className="    input_style  " type="text" />
         </Form.Item>
 
-
-
         <Form.Item
-        className="input_style"
+          className="input_style"
           label="Price"
           name="price"
           rules={[
@@ -149,34 +141,104 @@ console.log("S?????"  , selectedCategory)
           ]}
         >
           <Input className="    input_style  " type="text" />
-     
         </Form.Item>
 
 
-        <Form.Item label="Location" name="location"     rules={[
+
+        <Form.Item
+          className="input_style"
+          label="Adults number"
+          name="adults"
+          rules={[
+            {
+              required: true,
+              message: "Please input adults number",
+            },
+          ]}
+        >
+          <Input className="    input_style  " type="text" />
+        </Form.Item>
+
+
+
+
+        <Form.Item
+          className="input_style"
+          label="childrens number"
+          name="childrens"
+          rules={[
+            {
+              required: true,
+              message: "Please input childrens number",
+            },
+          ]}
+        >
+          <Input className="    input_style  " type="text" />
+        </Form.Item>
+
+
+
+
+
+
+
+        <Form.Item
+          className="input_style"
+          label="Stars"
+          name="stars"
+          rules={[
+            {
+              required: true,
+              message: "Please input price",
+            },
+          ]}
+        >
+          <Input className="    input_style  " type="text" />
+        </Form.Item>
+
+        
+
+
+        <Form.Item
+          label="Location"
+          name="location"
+          rules={[
             {
               required: true,
               message: "Please input location",
             },
-          ]} >
-          <select
-          className="input_style w-full py-2"
-          value={""}
-          >
+          ]}
+        >
+          <select className="input_style w-full py-2" value={""}>
             <option value="">Select Category</option>
-            {locations.map((location: any ,index :any) => (
+            {locations.map((location: any, index: any) => (
               <option key={index} value={location}>
                 {location}
               </option>
             ))}
           </select>
-
-
         </Form.Item>
 
 
-
-
+        <Form.Item
+          label="RoomType"
+          name="roomtype"
+          rules={[
+            {
+              required: true,
+              message: "Please input location",
+            },
+          ]}
+        >
+          <select className="input_style w-full py-2" value={""}>
+            <option value="">Select Room type</option>
+            {roomTypes.map((location: any, index: any) => (
+              <option key={index} value={location}>
+                {location}
+              </option>
+            ))}
+          </select>
+        </Form.Item>
 
 
 
@@ -198,11 +260,6 @@ console.log("S?????"  , selectedCategory)
           </div>
         </Form.Item> */}
 
-   
-
-
-
-
         <Form.Item
           label="Description"
           name="description"
@@ -221,6 +278,210 @@ console.log("S?????"  , selectedCategory)
             className=" pb-[10px] border-[2.5px] text-black font-medium rounded-md border-teal-400 hover:border-blue-600"
           />
         </Form.Item>
+
+        {/* ------Checkbox---- */}
+
+ 
+<div className=" grid grid-cols-3">
+
+<Form.Item
+          className=" "
+          name="isActive"
+          valuePropName="checked"
+        
+        >
+          <Checkbox>Publish </Checkbox>
+        </Form.Item>
+
+
+        <Form.Item
+          className=" "
+          name="resturant"
+          valuePropName="checked"
+        
+        >
+          <Checkbox> resturant </Checkbox>
+        </Form.Item>
+
+        
+
+        <Form.Item
+          className=" "
+          name="locker"
+          valuePropName="checked"
+        
+        >
+          <Checkbox> locker </Checkbox>
+        </Form.Item>
+
+        
+
+
+        <Form.Item
+          className=" "
+          name="wifi"
+          valuePropName="checked"
+        
+        >
+          <Checkbox> wifi </Checkbox>
+        </Form.Item>
+
+
+
+        {/* <Form.Item
+          className=" "
+          name="airCondition"
+          valuePropName="airCondition"
+        
+        >
+          <Checkbox>airCondition </Checkbox>
+        </Form.Item>
+ */}
+
+
+        <Form.Item
+          className=" "
+          name="safe"
+          valuePropName="checked"
+        
+        >
+          <Checkbox>safety</Checkbox>
+        </Form.Item>
+
+
+
+
+      
+
+
+
+        
+        <Form.Item
+          className=" "
+          name="laundary"
+          valuePropName="checked"
+        
+        >
+          <Checkbox> laundary </Checkbox>
+        </Form.Item>
+
+
+        <Form.Item
+          className=" "
+          name="heater"
+          valuePropName="checked"
+        
+        >
+          <Checkbox> heater </Checkbox>
+        </Form.Item>
+
+
+
+
+
+        <Form.Item
+          className=" "
+          name="tv"
+          valuePropName="checked"
+        
+        >
+          <Checkbox> tv </Checkbox>
+        </Form.Item>
+
+
+
+
+
+        <Form.Item
+          className=" "
+          name="towels"
+          valuePropName="checked"
+        
+        >
+          <Checkbox> towels </Checkbox>
+        </Form.Item>
+
+
+
+        <Form.Item
+          className=" "
+          name="phone"
+          valuePropName="checked"
+        
+        >
+          <Checkbox> phone </Checkbox>
+        </Form.Item>
+
+
+
+
+        <Form.Item
+          className=" "
+          name="park"
+          valuePropName="checked"
+        
+        >
+          <Checkbox> park </Checkbox>
+        </Form.Item>
+
+
+
+
+        <Form.Item
+          className=" "
+          name="sauna"
+          valuePropName="checked"
+        
+        >
+          <Checkbox> sauna </Checkbox>
+        </Form.Item>
+
+
+
+
+        <Form.Item
+          className=" "
+          name="breakfast"
+          valuePropName="checked"
+        
+        >
+          <Checkbox>breakfast </Checkbox>
+        </Form.Item>
+
+
+
+        <Form.Item
+          className=" "
+          name="pets"
+          valuePropName="checked"
+        
+        >
+          <Checkbox> pets </Checkbox>
+        </Form.Item>
+
+
+
+
+        {/* airportTransfer */}
+
+        <Form.Item
+          className=" "
+          name="airportTransfer"
+          valuePropName="checked"
+        
+        >
+          <Checkbox> airportTransfer </Checkbox>
+        </Form.Item>
+
+
+
+
+</div> 
+ 
+
+
+      
+
 
         <div className="col-span-3">
           <Upload

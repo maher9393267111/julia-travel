@@ -3,13 +3,13 @@ import React from "react";
 const page = () => {
   return (
     <>
-      <div className="contact-page pt-120 mb-120">
+      <div className="contact-page pt-120 mb-120    !font-kufi">
         <div className="container">
           <div className="row g-lg-4 gy-5">
-            <div className="col-lg-5">
+            <div className="col-lg-5 !font-kufi">
               <div className="single-contact mb-40">
                 <div className="title">
-                  <h6>Phone</h6>
+                  <h6 className=" !font-kufi">رقم الهاتف</h6>
                 </div>
                 <div className="icon">
                   <svg
@@ -34,7 +34,7 @@ const page = () => {
               </div>
               <div className="single-contact mb-40">
                 <div className="title">
-                  <h6>Email Now</h6>
+                  <h6  className=" !font-kufi">البريد الالكتروني</h6>
                 </div>
                 <div className="icon">
                   <svg
@@ -57,7 +57,7 @@ const page = () => {
               </div>
               <div className="single-contact mb-40">
                 <div className="title">
-                  <h6>Location</h6>
+                  <h6  className=" !font-kufi">الموقع</h6>
                 </div>
                 <div className="icon">
                   <svg
@@ -81,7 +81,7 @@ const page = () => {
               </div>
               <div className="single-contact">
                 <div className="title">
-                  <h6>Opening Time</h6>
+                  <h6  className=" !font-kufi">اوقات العمل</h6>
                 </div>
                 <div className="icon">
                   <svg
@@ -123,34 +123,34 @@ const page = () => {
                 </div>
               </div>
             </div>
-            <div className="col-lg-7">
-              <div className="contact-form-area">
-                <h3>Reach Us Anytime</h3>
+            <div className="col-lg-7     !font-kufi">
+              <div className="contact-form-area !font-kufi">
+                <h3 className=" !font-kufi">تواصل معنا في أي وقت</h3>
                 <form>
                   <div className="row">
                     <div className="col-lg-12 mb-20">
                       <div className="form-inner">
-                        <label>Name*</label>
-                        <input type="text" placeholder="Daniel Scoot" />
+                        <label  className=" !font-kufi" >الاسم</label>
+                        <input  className=" !font-kufi" type="text" placeholder="" />
                       </div>
                     </div>
                     <div className="col-lg-6 mb-20">
                       <div className="form-inner">
-                        <label>Phone</label>
-                        <input type="text" placeholder="Phone Number..." />
+                        <label  className=" !font-kufi">رقم الاتصال</label>
+                        <input type="text" placeholder="..." />
                       </div>
                     </div>
                     <div className="col-lg-6 mb-20">
                       <div className="form-inner">
-                        <label>Email</label>
-                        <input type="email" placeholder="Email Us...." />
+                        <label  className=" !font-kufi">البريد</label>
+                        <input type="email" placeholder="...." />
                       </div>
                     </div>
                     <div className="col-lg-12 mb-30">
                       <div className="form-inner">
-                        <label>Write Your Massage*</label>
+                        <label  className=" !font-kufi">اكتب رسالتك</label>
                         <textarea
-                          placeholder="What’s on your mind"
+                          placeholder="...."
                           defaultValue={""}
                         />
                       </div>
@@ -158,10 +158,10 @@ const page = () => {
                     <div className="col-lg-12">
                       <div className="form-inner">
                         <button
-                          className="primary-btn1 btn-hover"
+                          className="primary-btn1 btn-hover    !font-kufi"
                           type="submit"
                         >
-                          Submit Now
+                          ارسال
                         </button>
                       </div>
                     </div>

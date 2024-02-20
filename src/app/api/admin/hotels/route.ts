@@ -12,6 +12,7 @@ export async function GET(req: NextRequest) {
     const url = new URL(req.url);
     const location = url.searchParams.get("location");
     const title = url.searchParams.get("title");
+    const roomType = url.searchParams.get("roomType");
     // const = url.searchParams.get("location");
 
     // workaround typescript, da await Post.find(username && { username }) mit einer Warnung daherkommt
@@ -23,8 +24,14 @@ export async function GET(req: NextRequest) {
     }
 
     if (title) {
-      filter.title = title;
+      filter.title =   { $regex: title, $options: 'i' } 
     }
+
+    if (roomType) {
+      filter.roomtype = roomType;
+    }
+
+
 
     const hotels = await Hotel.find(filter);
     return NextResponse.json({ data: hotels });

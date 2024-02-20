@@ -449,3 +449,45 @@ Hotels
 
 
           </div>
+
+
+
+          ------------------
+
+
+        search input filter
+
+           <div className="w-full mb-10 md:mb-0">
+                      <div className="relative inline-block w-full text-gray-700">
+                        <label
+                          className={`absolute -top-7 ${"text-black"} !font-kufi text-sm font-semibold mb-2`}
+                          htmlFor="type"
+                        >
+                       نوع الغرفة
+                        </label>
+                        {/* <div className="absolute inset-y-0 left-0 flex items-center px-2 pointer-events-none">
+                       icon
+                   </div> */}
+
+                       <input
+                          className="w-full px-8 h-10 text-base placeholder-gray-600 placeholder-opacity-75 border rounded-lg appearance-none focus:outline-none"
+                          name="type"
+                          type="text"
+                          id="type"
+                          onChange={inputChange}
+                          value={state.type}
+                        /> 
+ 
+
+
+                        <div
+                          className="absolute inset-y-0 left-1 flex items-center px-2 cursor-pointer duration-300 hover:opacity-80"
+                          onClick={() => setstate({ ...state, type: "" })}
+                        >
+                          مسح
+                        </div>
+                      </div>
+                    </div>
+
+
+-----------------------------

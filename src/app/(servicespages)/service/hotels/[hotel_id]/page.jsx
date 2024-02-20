@@ -44,7 +44,7 @@ export default function HotelsServices() {
 <Header/>
 
 <div className='   px-12 min-h-[70vh]'>
-Hotels
+Hotel {hotel?.title}
 </div>
 
 
