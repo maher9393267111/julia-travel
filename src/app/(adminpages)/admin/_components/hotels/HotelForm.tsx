@@ -296,6 +296,17 @@ function HotelForm({
 
         <Form.Item
           className=" "
+          name="gym"
+          valuePropName="checked"
+        
+        >
+          <Checkbox> gym </Checkbox>
+        </Form.Item>
+
+
+
+        <Form.Item
+          className=" "
           name="resturant"
           valuePropName="checked"
         

@@ -42,6 +42,13 @@ const hotelSchema = new mongoose.Schema(
 
     },
 
+
+    gym: {
+      type: Boolean,
+      required: true,
+      default: true,
+    },
+
     wifi: {
       type: Boolean,
       required: true,
