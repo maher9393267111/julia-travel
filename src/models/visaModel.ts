@@ -11,29 +11,25 @@ const visaSchema = new mongoose.Schema(
       required: true,
     },
 
+    type: {
+      type: String,
+      required: true,
+    },
+    
     nationality: {
       type: String,
       required: true,
     },
-
 
     country: {
       type: String,
       required: true,
     },
 
-
-
-
-
- 
     images: {
-        type: Array,
-        required: true,
-      },
-
-
-      
+      type: Array,
+      required: true,
+    },
 
     isActive: {
       type: Boolean,
@@ -42,13 +38,12 @@ const visaSchema = new mongoose.Schema(
     price: {
       type: Number,
       required: true,
-    }
+    },
   },
   {
     timestamps: true,
   }
 );
-
 
 // check if user model is already created
 if (mongoose.models.visas) {
@@ -56,6 +51,6 @@ if (mongoose.models.visas) {
   mongoose.deleteModel(visaModel.modelName);
 }
 
-const Visa= mongoose.model("visas",visaSchema);
+const Visa = mongoose.model("visas", visaSchema);
 
-export default Visa
+export default Visa;

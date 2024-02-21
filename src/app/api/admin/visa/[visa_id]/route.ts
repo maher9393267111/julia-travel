@@ -30,6 +30,7 @@ export async function PUT(
   try {
     await validateApiRequest(req);
     const reqBody = await req.json();
+    console.log("visa put data---<>" ,  reqBody)
     await Visa.updateOne({ _id: params.visa_id }, reqBody);
     return NextResponse.json({ message: "visa updated successfully" });
   } catch (error : any) {
@@ -44,7 +45,7 @@ export async function DELETE(
   try {
     await validateApiRequest(req);
     await Visa.deleteOne({ _id: params.visa_id });
-    return NextResponse.json({ message: "category deleted successfully" });
+    return NextResponse.json({ message: "visa deleted successfully" });
   } catch (error : any) {
     return NextResponse.json({ message: error.message });
   }

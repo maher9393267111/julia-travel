@@ -152,6 +152,31 @@ ChildrensNum,
 </h2>`;
     }
 
+
+    if (service === "visa") {
+      htmTemplate = `<h2>Email sent from a  ${name}
+
+</br>
+
+
+
+<h1>Service Type : ${service}</h1>
+<h1>Name : ${details?.title}</h1>
+<h1>Visa type : ${details?.type}</h1>
+<h1>Visa nationality : ${details?.nationality}</h1>
+<h1>Visa country : ${details?.country}</h1>
+<h1> Phone: ${phone}</h1>
+
+<h1> Message: ${message}</h1>
+>
+
+
+</h2>`;
+    }
+
+
+
+
     const mailOptions = {
       from: email,
       to: "basma94ghanem@gmail.com",

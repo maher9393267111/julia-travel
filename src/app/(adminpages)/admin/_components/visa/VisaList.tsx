@@ -58,6 +58,11 @@ function VisaList() {
     },
 
     {
+        title: "Type",
+        dataIndex: "type",
+      },
+
+    {
         title: "Country",
         dataIndex: "country",
       },

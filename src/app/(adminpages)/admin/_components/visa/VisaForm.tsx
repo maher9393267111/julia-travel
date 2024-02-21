@@ -1,5 +1,5 @@
 "use client";
-import { Button, Form, Modal, message, Upload ,Input } from "antd";
+import { Button, Form, Modal, message, Upload, Input } from "antd";
 import React, { useMemo } from "react";
 import { useDispatch } from "react-redux";
 import { SetLoading } from "@/redux/LoadersSlice";
@@ -11,6 +11,7 @@ import { ProductType } from "@/interfaces";
 import Image from "next/image";
 import "react-quill/dist/quill.snow.css";
 import dynamic from "next/dynamic";
+import Countries from "@/uitils/countries.json";
 
 const modules = {
   toolbar: [
@@ -28,15 +29,16 @@ const modules = {
   ],
 };
 
-
-const locations = ["istanbul", "bursa" ,"trabzon" , "izmir" , "izmit" ,"sapanca"    ]
-const types=[
-  "private" , "group"
+const locations = ["istanbul", "bursa", "trabzon", "izmir", "izmit", "sapanca"];
+const types = [
+  "private",
+  "group",
   // 'Family Tour','Honeymoon Tou','Group Tour','Adventure Tour','Solo Tour'
+];
 
-]
-    
-    
+const visaTypes = ["tourism" , "medical" , "work"]
+
+
 
 function VisaForm({
   showCategoryForm,
@@ -62,6 +64,10 @@ function VisaForm({
   const onFinish = async (values: ProductType) => {
     try {
       dispatch(SetLoading(true));
+
+      console.log("values---<>" ,  values)
+
+
       let response;
       if (selectedCategory) {
         console.log(
@@ -79,7 +85,7 @@ function VisaForm({
         values.images = [...values.images, ...newImagesUploaded];
 
         response = await axios.put(
-          `/api/admin/tours/${selectedCategory._id}`,
+          `/api/admin/visa/${selectedCategory._id}`,
           values
         );
       } else {
@@ -98,8 +104,7 @@ function VisaForm({
     }
   };
 
-
-console.log("S?????"  , selectedCategory)
+  console.log("S?????", selectedCategory);
 
   const modelTitle = selectedCategory ? "Edit Visa" : "Add Visa";
   return (
@@ -140,50 +145,72 @@ console.log("S?????"  , selectedCategory)
 
 
 
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-        <Form.Item label="Country" name="country"     rules={[
+        <Form.Item
+          label="type"
+          name="type"
+          rules={[
             {
               required: true,
               message: "Please input country",
             },
-          ]} >
-          <select
-          className="input_style w-full py-2"
-          value={""}
-          >
-            <option value="">Select Country</option>
-            {locations.map((location: any ,index :any) => (
-              <option key={index} value={location}>
-                {location}
+          ]}
+        >
+          <select className="input_style w-full py-2" value={""}>
+            <option value="">Select Visa type</option>
+            {visaTypes.map((visa: any, index: any) => (
+              <option key={index} value={visa}>
+                {visa}
               </option>
             ))}
           </select>
-
-
         </Form.Item>
 
 
 
 
+        <Form.Item
+          label="Country"
+          name="country"
+          rules={[
+            {
+              required: true,
+              message: "Please input country",
+            },
+          ]}
+        >
+          <select className="input_style w-full py-2" value={""}>
+            <option value="">Select Country </option>
+            {Countries.map((country: any, index: any) => (
+              <option key={index} value={country.country}>
+                {country.country}
+              </option>
+            ))}
+          </select>
+        </Form.Item>
 
-
-
+        {/* --nationality */}
+        <Form.Item
+          label="Nationality"
+          name="nationality"
+          rules={[
+            {
+              required: true,
+              message: "Please input nationality",
+            },
+          ]}
+        >
+          <select className="input_style w-full py-2" value={""}>
+            <option value="">Select Nationality</option>
+            {Countries.map((country: any, index: any) => (
+              <option key={index} value={country.country}>
+                {country.country}
+              </option>
+            ))}
+          </select>
+        </Form.Item>
 
         <Form.Item
-        className="input_style"
+          className="input_style"
           label="Price"
           name="price"
           rules={[
@@ -194,28 +221,7 @@ console.log("S?????"  , selectedCategory)
           ]}
         >
           <Input className="    input_style  " type="text" />
-     
         </Form.Item>
-
-
-
-        <Form.Item
-          className="input_style"
-          label="days"
-          name="days"
-          rules={[
-            {
-              required: true,
-              message: "Please input days number",
-            },
-          ]}
-        >
-          <Input className="    input_style  " type="text" />
-        </Form.Item>
-
-
-
-
 
         <Form.Item
           label="Description"

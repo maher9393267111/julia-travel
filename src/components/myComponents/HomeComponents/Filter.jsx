@@ -15,7 +15,8 @@ import { FaLocationDot } from "react-icons/fa6";
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import dayjs from 'dayjs'
+import dayjs from "dayjs";
+import Countries from "@/uitils/countries.json";
 
 const cities = [
   {
@@ -45,7 +46,6 @@ const cities = [
   },
 ];
 
-
 const tourTypes = [
   {
     id: 1,
@@ -55,19 +55,15 @@ const tourTypes = [
   {
     id: 2,
     link: "group",
-  name: "رحلة جماعية",
-  }
-  
+    name: "رحلة جماعية",
+  },
 ];
 
+const visaTypes = ["medical", "work", "tourism"];
 
+const roomTypes = ["single", "double"];
 
-
-
-const roomTypes = ["single" ,"double"];
-
-
-const FilterHome= () => {
+const FilterHome = () => {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState("hotel");
 
@@ -76,12 +72,13 @@ const FilterHome= () => {
     startingDate: "",
     title: "",
     type: "",
-    roomType:"",
-    fromT:"",
-    toT :"",
-    tourType:""
-    
-    
+    roomType: "",
+    fromT: "",
+    toT: "",
+    tourType: "",
+    visaType: "",
+    nationality: "",
+    country: "",
   });
 
   const [startDate, setStartDate] = useState(new Date());
@@ -91,37 +88,31 @@ const FilterHome= () => {
     const [start, end] = dates;
     setStartDate(start);
     setEndDate(end);
-    console.log("dates" ,new Date(startDate))
+    console.log("dates", new Date(startDate));
   };
 
   const formSubmit = (page, e) => {
     e.preventDefault();
 
-if (page  === 'hotels')
+    if (page === "hotels") {
+      router.push(
+        `/service/hotels?location=${state.location}&&title=${state.title}&&roomType=${state.roomType}`
+      );
+    }
 
-{
-    router.push(
-      `/service/hotels?location=${state.location}&&title=${state.title}&&roomType=${state.roomType}`
-    );
+    // tours
 
-}
+    if (page === "tours") {
+      router.push(
+        `/service/tours?location=${state.location}&&from=${state.fromT}&&to=${state.toT}&&type=${state.tourType}`
+      );
+    }
 
-
-// tours
-
-
-if (page  === 'tours')
-
-{
-    router.push(
-      `/service/tours?location=${state.location}&&from=${state.fromT}&&to=${state.toT}&&type=${state.tourType}`
-    );
-
-}
-
-
-
-
+    if (page === "visa") {
+      router.push(
+        `/service/visa?nationality=${state.nationality}&&country=${state.country}&&type=${state.visaType}`
+      );
+    }
   };
 
   const inputChange = (e) => {
@@ -134,8 +125,7 @@ if (page  === 'tours')
         <div className="filter-wrapper">
           <div className="nav-buttons">
             <ul className="nav nav-pills" id="pills-tab2" role="tablist">
-
-            <li className="nav-item" role="presentation">
+              <li className="nav-item" role="presentation">
                 <button
                   className="nav-link"
                   id="hotel-tab"
@@ -159,9 +149,6 @@ if (page  === 'tours')
                   Hotel
                 </button>
               </li>
-
-
-
 
               <li className="nav-item" role="presentation">
                 <button
@@ -187,11 +174,9 @@ if (page  === 'tours')
                     </g>
                   </svg>
                   Tours
-                 
-                  
                 </button>
               </li>
-             
+
               <li className="nav-item" role="presentation">
                 <button
                   className="nav-link"
@@ -335,14 +320,11 @@ if (page  === 'tours')
             </ul>
           </div>
 
-        
-
           <div className="filter-group">
             <div className="tab-content" id="pills-tab2Content">
+              {/* -------HOTELS TAB ------- */}
 
-    {/* -------HOTELS TAB ------- */}
-
-    <div className="tab-pane fade py-4" id="hotel" role="tabpanel">
+              <div className="tab-pane fade py-4" id="hotel" role="tabpanel">
                 <form className=" !font-kufi py-4">
                   <div className="flex flex-col md:flex-row gap-12 md:gap-4 mt-4 px-4 w-[90%] ">
                     <div className="w-full mb-10 md:mb-0">
@@ -378,15 +360,14 @@ if (page  === 'tours')
                       </div>
                     </div>
 
-
-{/* room types hotel select */}
-<div className="w-full mb-10 md:mb-0">
+                    {/* room types hotel select */}
+                    <div className="w-full mb-10 md:mb-0">
                       <div className="relative inline-block w-full text-gray-700">
                         <label
                           className={`absolute -top-7 ${"text-black"} !font-kufi text-sm font-semibold mb-2`}
                           htmlFor="roomType"
                         >
-                        نوع الغرفة
+                          نوع الغرفة
                         </label>
                         <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
                           {/* icon */}
@@ -418,15 +399,6 @@ if (page  === 'tours')
                         </div>
                       </div>
                     </div>
-
-
-
-
-
-
-
-                  
-
 
                     <div className="w-full mb-10 md:mb-0">
                       <div className="relative inline-block w-full text-gray-700">
@@ -543,10 +515,6 @@ if (page  === 'tours')
                 </form>
               </div>
 
-
-
-
-
               {/* ---------TOURS TAB ------ */}
               <div
                 className="tab-pane fade show active py-4"
@@ -555,7 +523,6 @@ if (page  === 'tours')
               >
                 <form className=" !font-kufi py-4">
                   <div className="flex flex-col md:flex-row gap-12 md:gap-4 mt-4 px-4 w-[90%] ">
-
                     {/* from tour */}
                     <div className="w-full mb-10 md:mb-0">
                       <div className="relative  inline-block w-full text-gray-700">
@@ -563,7 +530,7 @@ if (page  === 'tours')
                           className={`absolute -top-7   ar     ${"text-black"} text-sm font-semibold mb-2`}
                           htmlFor="title"
                         >
-                        من
+                          من
                         </label>
 
                         <div
@@ -590,15 +557,14 @@ if (page  === 'tours')
                       </div>
                     </div>
 
-
-{/* to tour */}
-<div className="w-full mb-10 md:mb-0">
+                    {/* to tour */}
+                    <div className="w-full mb-10 md:mb-0">
                       <div className="relative  inline-block w-full text-gray-700">
                         <label
                           className={`absolute -top-7   ar     ${"text-black"} text-sm font-semibold mb-2`}
                           htmlFor="title"
                         >
-                      الى
+                          الى
                         </label>
 
                         <div
@@ -625,14 +591,7 @@ if (page  === 'tours')
                       </div>
                     </div>
 
-
-
-
-
-                
-
-
- {/* tour location */}
+                    {/* tour location */}
 
                     <div className="w-full mb-10 md:mb-0">
                       <div className="relative inline-block w-full text-gray-700">
@@ -673,11 +632,9 @@ if (page  === 'tours')
                       </div>
                     </div>
 
+                    {/* tour type <select name="" id=""></select> */}
 
-
-{/* tour type <select name="" id=""></select> */}
-
-<div className="w-full mb-10 md:mb-0">
+                    <div className="w-full mb-10 md:mb-0">
                       <div className="relative inline-block w-full text-gray-700">
                         <label
                           className={`absolute -top-7 ${"text-black"} !font-kufi text-sm font-semibold mb-2`}
@@ -700,7 +657,7 @@ if (page  === 'tours')
                           value={state.tourType}
                         >
                           <option default value={""}></option>
-                          {tourTypes .map((c) => (
+                          {tourTypes.map((c) => (
                             <option value={c.link} key={c}>
                               {c?.name}
                             </option>
@@ -715,8 +672,6 @@ if (page  === 'tours')
                         </div>
                       </div>
                     </div>
-
-
 
                     {/* -------DATES- */}
 
@@ -793,7 +748,141 @@ if (page  === 'tours')
                 </form>
               </div>
 
-          
+              {/* -----------visa TaB----- */}
+              <div className="tab-pane fade py-4" id="visa" role="tabpanel">
+                <form className=" !font-kufi py-4">
+                  <div className="flex flex-col md:flex-row gap-12 md:gap-4 mt-4 px-4 w-[90%] ">
+                    {/* visa type */}
+                    <div className="w-full mb-10 md:mb-0">
+                      <div className="relative inline-block w-full text-gray-700">
+                        <label
+                          className={`absolute -top-7 ${"text-black"} !font-kufi text-sm font-semibold mb-2`}
+                          htmlFor="visatype"
+                        >
+                          نوع الفيزا
+                        </label>
+                        <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                          {/* icon */}
+
+                          <FaLocationDot />
+                        </div>
+
+                        <select
+                          id="visatype"
+                          name="visaType"
+                          className="w-full h-10 px-8 text-base placeholder-gray-600 border rounded-lg appearance-none focus:outline-none"
+                          placeholder="visa type"
+                          onChange={inputChange}
+                          value={state.location}
+                        >
+                          <option default value={""}></option>
+                          {visaTypes.map((c) => (
+                            <option value={c} key={c}>
+                              {c}
+                            </option>
+                          ))}
+                        </select>
+
+                        <div
+                          className="absolute inset-y-0 left-1 flex items-center px-2 cursor-pointer duration-300 hover:opacity-80"
+                          //  onClick={() => setstate({ ...state, type: "" })}
+                        >
+                          <i className="bi bi-chevron-down" />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="w-full mb-10 md:mb-0">
+                      <div className="relative inline-block w-full text-gray-700">
+                        <label
+                          className={`absolute -top-7 ${"text-black"} !font-kufi text-sm font-semibold mb-2`}
+                          htmlFor="country"
+                        >
+                          البلد
+                        </label>
+                        <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                          {/* icon */}
+
+                          <FaLocationDot />
+                        </div>
+
+                        <select
+                          id="country"
+                          name="country"
+                          className="w-full h-10 px-8 text-base placeholder-gray-600 border rounded-lg appearance-none focus:outline-none"
+                          placeholder="country"
+                          onChange={inputChange}
+                          value={state.country}
+                        >
+                          <option default value={""}></option>
+                          {Countries.map((c) => (
+                            <option value={c.country} key={c.country}>
+                              {c.country}
+                            </option>
+                          ))}
+                        </select>
+
+                        <div
+                          className="absolute inset-y-0 left-1 flex items-center px-2 cursor-pointer duration-300 hover:opacity-80"
+                          //  onClick={() => setstate({ ...state, type: "" })}
+                        >
+                          <i className="bi bi-chevron-down" />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="w-full mb-10 md:mb-0">
+                      <div className="relative inline-block w-full text-gray-700">
+                        <label
+                          className={`absolute -top-7 ${"text-black"} !font-kufi text-sm font-semibold mb-2`}
+                          htmlFor="nationality"
+                        >
+                          الجنسية
+                        </label>
+                        <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                          {/* icon */}
+
+                          <FaLocationDot />
+                        </div>
+
+                        <select
+                          id="nationality"
+                          name="nationality"
+                          className="w-full h-10 px-8 text-base placeholder-gray-600 border rounded-lg appearance-none focus:outline-none"
+                          placeholder="nationality"
+                          onChange={inputChange}
+                          value={state.nationality}
+                        >
+                          <option default value={""}></option>
+                          {Countries.map((c) => (
+                            <option value={c.country} key={c.country}>
+                              {c.country}
+                            </option>
+                          ))}
+                        </select>
+
+                        <div
+                          className="absolute inset-y-0 left-1 flex items-center px-2 cursor-pointer duration-300 hover:opacity-80"
+                          //  onClick={() => setstate({ ...state, type: "" })}
+                        >
+                          <i className="bi bi-chevron-down" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <button
+                      className="py-2 px-4 block  w-full !rounded-[15px]  md:top-1 relative bg-[#63AB45]  text-white font-semibold "
+                      onClick={(e) => formSubmit("visa", e)}
+                      type="button"
+                    >
+                      بحث
+                    </button>
+                  </div>
+                </form>
+              </div>
+
               {/* -----------CARS TAB ------- */}
 
               <div className="tab-pane fade py-4" id="visa" role="tabpanel">

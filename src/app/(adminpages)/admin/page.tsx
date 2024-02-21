@@ -19,8 +19,8 @@ import VisaList from "./_components/visa/VisaList";
 
 function AdminProfile() {
   const searchParams = useSearchParams();
-  const tab = searchParams.get("tab") ;
-  const [activeTab, setActiveTab] = React.useState(tab || "1");
+  const tab = searchParams.get("tab")  ;
+  const [activeTab, setActiveTab] = React.useState(tab || "4");
   const router = useRouter();
 
   return (
