@@ -1,5 +1,5 @@
 "use client";
-import { Button, Form, Modal, message, Upload ,Input } from "antd";
+import { Button, Form, Modal, message, Upload, Input, Checkbox } from "antd";
 import React, { useMemo } from "react";
 import { useDispatch } from "react-redux";
 import { SetLoading } from "@/redux/LoadersSlice";
@@ -28,11 +28,7 @@ const modules = {
   ],
 };
 
-
-const locations = ["istanbul", "bursa" ,"trabzon" , "izmir" , "izmit"   ]
-
-    
-    
+const locations = ["istanbul", "bursa", "trabzon", "izmir", "izmit"];
 
 function TransForm({
   showCategoryForm,
@@ -75,7 +71,7 @@ function TransForm({
         values.images = [...values.images, ...newImagesUploaded];
 
         response = await axios.put(
-          `/api/admin/tours/${selectedCategory._id}`,
+          `/api/admin/trans/${selectedCategory._id}`,
           values
         );
       } else {
@@ -94,10 +90,9 @@ function TransForm({
     }
   };
 
+  console.log("S?????", selectedCategory);
 
-console.log("S?????"  , selectedCategory)
-
-  const modelTitle = selectedCategory ? "Edit Transiction" : "Add Transiction";
+  const modelTitle = selectedCategory ? "Edit Tranform" : "Add Transform";
   return (
     <Modal
       title={<ModelTitle title={modelTitle} />}
@@ -133,15 +128,8 @@ console.log("S?????"  , selectedCategory)
           <Input className="    input_style  " type="text" />
         </Form.Item>
 
-
-   
-
-
-
-
-
         <Form.Item
-        className="input_style"
+          className="input_style"
           label="Price"
           name="price"
           rules={[
@@ -152,57 +140,79 @@ console.log("S?????"  , selectedCategory)
           ]}
         >
           <Input className="    input_style  " type="text" />
-     
         </Form.Item>
 
-
-        <Form.Item label="Location" name="location"     rules={[
-            {
-              required: true,
-              message: "Please input location",
-            },
-          ]} >
-          <select
-          className="input_style w-full py-2"
-          value={""}
-          >
-            <option value="">Select Location</option>
-            {locations.map((location: any ,index :any) => (
-              <option key={index} value={location}>
-                {location}
-              </option>
-            ))}
-          </select>
+   
 
 
-        </Form.Item>
-
-
-
-
-
-
-        {/* <Form.Item
-          label="Title"
-          name="title"
+        <Form.Item
+          className="input_style"
+          label="Persons"
+          name="person"
           rules={[
             {
               required: true,
-              message: "Please input hotel title",
+              message: "Please input person",
             },
           ]}
         >
-         
-
-          <div className="form-inner mb-2  !outline-green-500  ">
-            <input type="text" placeholder="hotel name" />
-          </div>
-        </Form.Item> */}
+          <Input className="    input_style  " type="text" />
+        </Form.Item>
 
    
 
 
 
+
+
+        <Form.Item
+          label="from"
+          name="from"
+          rules={[
+            {
+              required: true,
+              message: "Please input from",
+            },
+          ]}
+        >
+          {/* <input type="text" /> */}
+          <Input className="    input_style  " type="text" />
+        </Form.Item>
+
+
+
+
+        <Form.Item
+          label="to"
+          name="to"
+          rules={[
+            {
+              required: true,
+              message: "Please input to ",
+            },
+          ]}
+        >
+          {/* <input type="text" /> */}
+          <Input className="    input_style  " type="text" />
+        </Form.Item>
+
+
+
+
+
+        <div className=" grid grid-cols-3">
+          <Form.Item className=" " name="cartype" valuePropName="checked">
+            <Checkbox>Car </Checkbox>
+          </Form.Item>
+
+          <Form.Item className=" " name="bustype" valuePropName="checked">
+            <Checkbox>Bus</Checkbox>
+          </Form.Item>
+
+          <Form.Item className=" " name="boattype" valuePropName="checked">
+            <Checkbox>Boat </Checkbox>
+          </Form.Item>
+        </div>
 
         <Form.Item
           label="Description"

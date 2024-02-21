@@ -56,6 +56,11 @@ function TourList() {
       title: "Price",
       dataIndex: "price",
     },
+    {
+      title: "Type",
+      dataIndex: "type",
+    },
+
 
     {
         title: "Location",

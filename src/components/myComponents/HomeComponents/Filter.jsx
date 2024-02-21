@@ -63,6 +63,10 @@ const visaTypes = ["medical", "work", "tourism"];
 
 const roomTypes = ["single", "double"];
 
+const personsNumberOptions= [1,2,3,4,5,6,7,8,9,10,11,12,13];
+
+
+
 const FilterHome = () => {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState("hotel");
@@ -79,6 +83,9 @@ const FilterHome = () => {
     visaType: "",
     nationality: "",
     country: "",
+    fromTransport :"",
+    toTransport:"",
+    personsTrans:1,
   });
 
   const [startDate, setStartDate] = useState(new Date());
@@ -113,7 +120,22 @@ const FilterHome = () => {
         `/service/visa?nationality=${state.nationality}&&country=${state.country}&&type=${state.visaType}`
       );
     }
+
+
+
+    if (page === "transport") {
+      router.push(
+        `/service/transport?person=${state.personsTrans}&&from=${state.fromTransport}&&to=${state.toTransport}`
+      );
+    }
+
+
+
+
   };
+
+
+
 
   const inputChange = (e) => {
     setstate({ ...state, [e.target.name]: e.target.value });
@@ -324,7 +346,7 @@ const FilterHome = () => {
             <div className="tab-content" id="pills-tab2Content">
               {/* -------HOTELS TAB ------- */}
 
-              <div className="tab-pane fade py-4" id="hotel" role="tabpanel">
+              <div className="tab-pane fade activ py-4" id="hotel" role="tabpanel">
                 <form className=" !font-kufi py-4">
                   <div className="flex flex-col md:flex-row gap-12 md:gap-4 mt-4 px-4 w-[90%] ">
                     <div className="w-full mb-10 md:mb-0">
@@ -517,7 +539,7 @@ const FilterHome = () => {
 
               {/* ---------TOURS TAB ------ */}
               <div
-                className="tab-pane fade show active py-4"
+                className="tab-pane active fade show  py-4"
                 id="tour"
                 role="tabpanel"
               >
@@ -748,6 +770,212 @@ const FilterHome = () => {
                 </form>
               </div>
 
+
+
+{/* -------Transport  TAB ----- */}
+<div
+                className="tab-pane fade show  py-4"
+              
+                
+                id="transport" role="tabpanel"
+              >
+                <form className=" !font-kufi py-4">
+                  <div className="flex flex-col md:flex-row gap-12 md:gap-4 mt-4 px-4 w-[90%] ">
+                    {/* from transport */}
+
+
+                    <div className="w-full mb-10 md:mb-0">
+                      <div className="relative  inline-block w-full text-gray-700">
+                        <label
+                          className={`absolute -top-7   ar     ${"text-black"} text-sm font-semibold mb-2`}
+                          htmlFor="fromtransport"
+                        >
+                          من
+                        </label>
+
+                        <div
+                          className="absolute inset-y-0 left-1    flex items-center px-2 cursor-pointer duration-300 hover:opacity-80"
+                          // onClick={() => setstate({ ...state, title: "" })}
+                        >
+                          {/* مسح */}
+                          <RiFindReplaceFill className=" w-5 h-5" />
+                        </div>
+
+                        <input
+                          className="w-full px-8 h-10  !font-kufi text-base placeholder-gray-600 placeholder-opacity-75 border rounded-lg appearance-none focus:outline-none"
+                          name="fromTransport"
+                          type="text"
+                          id="fromTransport"
+                          onChange={inputChange}
+                          value={state.fromTransport}
+                        />
+
+                        {/* <div className="absolute  !font-ibm inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                      
+                      
+                   </div> */}
+                      </div>
+                    </div>
+
+                    {/* to transport */}
+                    <div className="w-full mb-10 md:mb-0">
+                      <div className="relative  inline-block w-full text-gray-700">
+                        <label
+                          className={`absolute -top-7   ar     ${"text-black"} text-sm font-semibold mb-2`}
+                          htmlFor="totransport"
+                        >
+                          الى
+                        </label>
+
+                        <div
+                          className="absolute inset-y-0 left-1    flex items-center px-2 cursor-pointer duration-300 hover:opacity-80"
+                          // onClick={() => setstate({ ...state, title: "" })}
+                        >
+                          {/* مسح */}
+                          <RiFindReplaceFill className=" w-5 h-5" />
+                        </div>
+
+                        <input
+                          className="w-full px-8 h-10  !font-kufi text-base placeholder-gray-600 placeholder-opacity-75 border rounded-lg appearance-none focus:outline-none"
+                          name="toTransport"
+                          type="text"
+                          id="toTransport"
+                          onChange={inputChange}
+                          value={state.toTransport}
+                        />
+
+                        {/* <div className="absolute  !font-ibm inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                      
+                      
+                   </div> */}
+                      </div>
+                    </div>
+
+                 
+{/* --- person number transport  */}
+
+<div className="w-full mb-10 md:mb-0">
+                      <div className="relative inline-block w-full text-gray-700">
+                        <label
+                          className={`absolute -top-7 ${"text-black"} !font-kufi text-sm font-semibold mb-2`}
+                          htmlFor="personsTranspor"
+                        >
+                         عدد الاشخاص
+                        </label>
+                        <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                          {/* icon */}
+
+                          <FaLocationDot />
+                        </div>
+
+                        <select
+                          id="personsTrans"
+                          name="personsTrans"
+                          className="w-full h-10 px-8 text-base placeholder-gray-600 border rounded-lg appearance-none focus:outline-none"
+                          placeholder="Regular input"
+                          onChange={inputChange}
+                          value={state.personsTrans}
+                        >
+                          <option default value={""}></option>
+                          {personsNumberOptions.map((c) => (
+                            <option value={c} key={c}>
+                              {c}
+                            </option>
+                          ))}
+                        </select>
+                        {state.personsTr}
+
+                        <div
+                          className="absolute inset-y-0 left-1 flex items-center px-2 cursor-pointer duration-300 hover:opacity-80"
+                          //  onClick={() => setstate({ ...state, type: "" })}
+                        >
+                          <i className="bi bi-chevron-down" />
+                        </div>
+                      </div>
+                    </div>
+
+
+
+
+                    {/* -------DATES- */}
+
+                    <div className="w-full mb-10 md:mb-0">
+                      <div className="relative inline-block w-full text-gray-700">
+                        <label
+                          className={`absolute -top-7 ${"text-black"} !font-kufi text-sm font-semibold mb-2`}
+                          htmlFor="location"
+                        >
+                          التاريخ
+                        </label>
+                        <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                          {/* icon */}
+
+                          <FaLocationDot />
+                        </div>
+                        <DatePicker
+                          className="w-full h-10 px-8 text-base placeholder-gray-600 border rounded-lg appearance-none focus:outline-none"
+                          placeholder="Regular input"
+                          selectsRange
+                          startDate={startDate}
+                          endDate={endDate}
+                          onChange={handleDateChange}
+                          dateFormat="MMM d"
+                        />
+
+                        <div
+                          className="absolute inset-y-0 left-1 flex items-center px-2 cursor-pointer duration-300 hover:opacity-80"
+                          //  onClick={() => setstate({ ...state, type: "" })}
+                        >
+                          {/* <i className="bi bi-chevron-down" /> */}
+                          <MdDateRange />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* 
+           < div className="w-full mb-10 md:mb-0">
+               <div className="relative inline-block w-full text-gray-700">
+                   <label className={`absolute -top-7 ${ "text-black"} !font-kufi text-sm font-semibold mb-2`} htmlFor="location">
+                       الموقع
+                   </label>
+             
+
+                   <input
+                       className="w-full px-8 h-10 text-sm placeholder-gray-600 placeholder-opacity-75 border rounded-lg appearance-none focus:outline-none"
+                       name="location"
+                       type="text"
+                       id="location"
+                        onChange={inputChange}
+                        value={state.location}
+                   />
+                  
+                       <div
+                           className="absolute inset-y-0 left-1  !font-kufi flex items-center px-2 cursor-pointer duration-300 hover:opacity-80"
+                            onClick={() => setstate({ ...state, location: "" })}
+                       >
+                           مسح
+                       </div>
+                   
+               </div>
+           </div> */}
+                  </div>
+
+                  <div>
+                    <button
+                      className="py-2 px-4 block  w-full !rounded-[15px]  md:top-1 relative bg-[#63AB45]  text-white font-semibold "
+                      onClick={(e) => formSubmit("transport", e)}
+                      type="button"
+                    >
+                      بحث
+                    </button>
+                  </div>
+                </form>
+              </div>
+
+
+
+
+
               {/* -----------visa TaB----- */}
               <div className="tab-pane fade py-4" id="visa" role="tabpanel">
                 <form className=" !font-kufi py-4">
@@ -881,6 +1109,8 @@ const FilterHome = () => {
                     </button>
                   </div>
                 </form>
+
+
               </div>
 
               {/* -----------CARS TAB ------- */}
@@ -1188,6 +1418,11 @@ const FilterHome = () => {
                   </div>
                 </form>
               </div>
+
+
+
+
+
             </div>
           </div>
         </div>

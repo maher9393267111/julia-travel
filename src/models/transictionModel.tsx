@@ -10,32 +10,54 @@ const transSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-  
+
     images: {
-        type: Array,
-        required: true,
-      },
+      type: Array,
+      required: true,
+    },
     isActive: {
       type: Boolean,
       default: true,
     },
 
-
-    location: {
+    from: {
       type: String,
       required: true,
     },
 
+    to: {
+      type: String,
+      required: true,
+    },
+
+    person: {
+      type: Number,
+      required: true,
+    },
+    cartype: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
+    bustype: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
+    boattype: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
     price: {
-        type: Number,
-        required: true,
-      }
+      type: Number,
+      required: true,
+    },
   },
   {
     timestamps: true,
   }
 );
-
 
 // check if user model is already created
 if (mongoose.models.transes) {
@@ -43,6 +65,6 @@ if (mongoose.models.transes) {
   mongoose.deleteModel(transModel.modelName);
 }
 
-const Trans= mongoose.model("transes",transSchema);
+const Trans = mongoose.model("transes", transSchema);
 
-export default Trans
+export default Trans;

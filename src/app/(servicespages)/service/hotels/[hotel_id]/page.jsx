@@ -150,7 +150,7 @@ setstate({...state  ,error:true})
 
 
 
-      console.log("response", res);
+      
 
       //   setPhone("")
     } catch (error) {
@@ -860,8 +860,14 @@ setstate({...state  ,error:true})
                         {/* total price-- */}
                         <div className="total-price">
                           <span>Total Price:</span> $
-                          {hotel?.price * state.daysNum +
-                            state.ChildrensNum * 15}
+                          {
+                          (hotel?.price * state.daysNum ) * state.adultsNum  +  state.ChildrensNum * 15
+                            
+                            
+                            
+                            }
+
+
                         </div>
 
                         <div className="form-inner">
@@ -947,6 +953,11 @@ const Amount = ({ value = 1, min = 0, onChange }) => {
     </div>
   );
 };
+
+
+
+
+
 
 // "use client";
 // import React, { useState, useEffect } from "react";

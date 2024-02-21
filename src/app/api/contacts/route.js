@@ -175,6 +175,36 @@ ChildrensNum,
     }
 
 
+    
+    if (service === "transport") {
+      htmTemplate = `<h2>Email sent from a  ${name}
+
+</br>
+
+
+
+<h1>Service Type : ${service}</h1>
+<h1>Transport Type : ${reqBody?.transportType}</h1>
+<h1>Transport Name : ${details?.title}</h1>
+<h1>Transport price : ${details?.price}</h1>
+<h1>Transport From : ${details?.from}</h1>
+<h1>Transport To : ${details?.to}</h1>
+<h1>Transport person number : ${adultsNum}</h1>
+<h1>Transport Start Date :${startDate}  -   End Date : ${endDate}</h1>
+<h1> Phone: ${phone}</h1>
+
+
+
+
+<h1> Message: ${message}</h1>
+>
+
+
+</h2>`;
+    }
+
+
+
 
 
     const mailOptions = {
