@@ -136,12 +136,21 @@ const hotelSchema = new mongoose.Schema(
       default: false,
     },
 
-    beds: {
+
+    childbeds: {
       type: Number,
       required: false,
       default:1
 
     },
+
+    adultbeds: {
+      type: Number,
+      required: false,
+      default:1
+
+    },
+
 
     adults: {
       type: Number,

@@ -123,6 +123,15 @@ select {
 }
 
   
+.ar{
+  @apply !font-kufi 
+}
+
+.ar > *{
+  @apply !font-kufi 
+}
+
+
 
 }
 

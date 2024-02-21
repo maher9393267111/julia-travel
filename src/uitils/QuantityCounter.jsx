@@ -29,6 +29,7 @@ function QuantityCounter({dcrIcon="bi bi-chevron-down", incIcon="bi bi-chevron-u
       >
         <i className={incIcon} />
       </a>
+     
     </div>
   );
 }

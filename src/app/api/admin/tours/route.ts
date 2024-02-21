@@ -2,12 +2,48 @@ import { connectDB } from "@/config/DbConfig";
 import { validateApiRequest } from "@/helpers/JwtTokenValidator";
 import Tour from "@/models/tourModel";
 import { NextResponse, NextRequest } from "next/server";
+import { FilterQuery } from "mongoose";
 connectDB();
 
 export async function GET(req: NextRequest) {
   try {
     await validateApiRequest(req);
-    const tours = await Tour.find({});
+
+
+    const url = new URL(req.url);
+    const location = url.searchParams.get("location");
+    const type= url.searchParams.get("type");
+    const from = url.searchParams.get("from");
+    const to = url.searchParams.get("to");
+    // const = url.searchParams.get("location");
+
+    // workaround typescript, da await Post.find(username && { username }) mit einer Warnung daherkommt
+    let filter: FilterQuery<any> = {};
+    // ||
+
+    if (location) {
+      filter.location = location;
+    }
+
+    if (type) {
+      filter.type = type;
+      // filter.title =   { $regex: title, $options: 'i' } 
+    }
+
+    if (from) {
+      filter.from = from;
+    }
+
+    if (to) {
+      filter.to = to;
+    }
+
+
+    console.log("FILTER OBJECT" , filter)
+
+
+    const tours = await Tour.find(filter);
+    console.log("TOURS RESULT--<>>>" , tours)
     return NextResponse.json({ data: tours });
   } catch (error : any) {
     return NextResponse.json({ message: error.message } , { status: 500 });

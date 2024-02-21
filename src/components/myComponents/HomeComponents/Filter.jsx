@@ -40,10 +40,28 @@ const cities = [
   },
   {
     id: 5,
-    name: "اسطنبول",
+    name: "بورصة",
     link: "bursa",
   },
 ];
+
+
+const tourTypes = [
+  {
+    id: 1,
+    link: "private",
+    name: "رحلة خاصة",
+  },
+  {
+    id: 2,
+    link: "group",
+  name: "رحلة جماعية",
+  }
+  
+];
+
+
+
 
 
 const roomTypes = ["single" ,"double"];
@@ -58,7 +76,12 @@ const FilterHome= () => {
     startingDate: "",
     title: "",
     type: "",
-    roomType:""
+    roomType:"",
+    fromT:"",
+    toT :"",
+    tourType:""
+    
+    
   });
 
   const [startDate, setStartDate] = useState(new Date());
@@ -78,10 +101,25 @@ if (page  === 'hotels')
 
 {
     router.push(
-      `/service/${page}?location=${state.location}&&title=${state.title}&&roomType=${state.roomType}`
+      `/service/hotels?location=${state.location}&&title=${state.title}&&roomType=${state.roomType}`
     );
 
 }
+
+
+// tours
+
+
+if (page  === 'tours')
+
+{
+    router.push(
+      `/service/tours?location=${state.location}&&from=${state.fromT}&&to=${state.toT}&&type=${state.tourType}`
+    );
+
+}
+
+
 
 
   };
@@ -297,7 +335,7 @@ if (page  === 'hotels')
             </ul>
           </div>
 
-          {/* ------TOURS TAB --------- */}
+        
 
           <div className="filter-group">
             <div className="tab-content" id="pills-tab2Content">
@@ -517,13 +555,15 @@ if (page  === 'hotels')
               >
                 <form className=" !font-kufi py-4">
                   <div className="flex flex-col md:flex-row gap-12 md:gap-4 mt-4 px-4 w-[90%] ">
+
+                    {/* from tour */}
                     <div className="w-full mb-10 md:mb-0">
                       <div className="relative  inline-block w-full text-gray-700">
                         <label
-                          className={`absolute -top-7   !font-kuf     ${"text-black"} text-sm font-semibold mb-2`}
+                          className={`absolute -top-7   ar     ${"text-black"} text-sm font-semibold mb-2`}
                           htmlFor="title"
                         >
-                          الاسم
+                        من
                         </label>
 
                         <div
@@ -536,11 +576,11 @@ if (page  === 'hotels')
 
                         <input
                           className="w-full px-8 h-10  !font-kufi text-base placeholder-gray-600 placeholder-opacity-75 border rounded-lg appearance-none focus:outline-none"
-                          name="title"
+                          name="fromT"
                           type="text"
-                          id="title"
+                          id="fromT"
                           onChange={inputChange}
-                          value={state.title}
+                          value={state.fromT}
                         />
 
                         {/* <div className="absolute  !font-ibm inset-y-0 right-0 flex items-center px-2 pointer-events-none">
@@ -550,35 +590,49 @@ if (page  === 'hotels')
                       </div>
                     </div>
 
-                    <div className="w-full mb-10 md:mb-0">
-                      <div className="relative inline-block w-full text-gray-700">
-                        <label
-                          className={`absolute -top-7 ${"text-black"} !font-kufi text-sm font-semibold mb-2`}
-                          htmlFor="type"
-                        >
-                      النوع
-                        </label>
-                        {/* <div className="absolute inset-y-0 left-0 flex items-center px-2 pointer-events-none">
-                       icon
-                   </div> */}
 
-                        <input
-                          className="w-full px-8 h-10 text-base placeholder-gray-600 placeholder-opacity-75 border rounded-lg appearance-none focus:outline-none"
-                          name="type"
-                          type="text"
-                          id="type"
-                          onChange={inputChange}
-                          value={state.type}
-                        />
+{/* to tour */}
+<div className="w-full mb-10 md:mb-0">
+                      <div className="relative  inline-block w-full text-gray-700">
+                        <label
+                          className={`absolute -top-7   ar     ${"text-black"} text-sm font-semibold mb-2`}
+                          htmlFor="title"
+                        >
+                      الى
+                        </label>
 
                         <div
-                          className="absolute inset-y-0 left-1 flex items-center px-2 cursor-pointer duration-300 hover:opacity-80"
-                          onClick={() => setstate({ ...state, type: "" })}
+                          className="absolute inset-y-0 left-1    flex items-center px-2 cursor-pointer duration-300 hover:opacity-80"
+                          // onClick={() => setstate({ ...state, title: "" })}
                         >
-                          مسح
+                          {/* مسح */}
+                          <RiFindReplaceFill className=" w-5 h-5" />
                         </div>
+
+                        <input
+                          className="w-full px-8 h-10  !font-kufi text-base placeholder-gray-600 placeholder-opacity-75 border rounded-lg appearance-none focus:outline-none"
+                          name="toT"
+                          type="text"
+                          id="toT"
+                          onChange={inputChange}
+                          value={state.toT}
+                        />
+
+                        {/* <div className="absolute  !font-ibm inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                      
+                      
+                   </div> */}
                       </div>
                     </div>
+
+
+
+
+
+                
+
+
+ {/* tour location */}
 
                     <div className="w-full mb-10 md:mb-0">
                       <div className="relative inline-block w-full text-gray-700">
@@ -618,6 +672,51 @@ if (page  === 'hotels')
                         </div>
                       </div>
                     </div>
+
+
+
+{/* tour type <select name="" id=""></select> */}
+
+<div className="w-full mb-10 md:mb-0">
+                      <div className="relative inline-block w-full text-gray-700">
+                        <label
+                          className={`absolute -top-7 ${"text-black"} !font-kufi text-sm font-semibold mb-2`}
+                          htmlFor="location"
+                        >
+                          نوع الرحلة
+                        </label>
+                        <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                          {/* icon */}
+
+                          <FaLocationDot />
+                        </div>
+
+                        <select
+                          id="tourtype"
+                          name="tourType"
+                          className="w-full h-10 px-8 text-base placeholder-gray-600 border rounded-lg appearance-none focus:outline-none"
+                          placeholder="Regular input"
+                          onChange={inputChange}
+                          value={state.tourType}
+                        >
+                          <option default value={""}></option>
+                          {tourTypes .map((c) => (
+                            <option value={c.link} key={c}>
+                              {c?.name}
+                            </option>
+                          ))}
+                        </select>
+
+                        <div
+                          className="absolute inset-y-0 left-1 flex items-center px-2 cursor-pointer duration-300 hover:opacity-80"
+                          //  onClick={() => setstate({ ...state, type: "" })}
+                        >
+                          <i className="bi bi-chevron-down" />
+                        </div>
+                      </div>
+                    </div>
+
+
 
                     {/* -------DATES- */}
 
@@ -685,7 +784,7 @@ if (page  === 'hotels')
                   <div>
                     <button
                       className="py-2 px-4 block  w-full !rounded-[15px]  md:top-1 relative bg-[#63AB45]  text-white font-semibold "
-                      onClick={(e) => formSubmit("hotels", e)}
+                      onClick={(e) => formSubmit("tours", e)}
                       type="button"
                     >
                       بحث

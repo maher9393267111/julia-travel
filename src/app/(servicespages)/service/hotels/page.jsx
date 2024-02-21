@@ -5,8 +5,7 @@ import { useDispatch } from "react-redux";
 import { getCatchErrorMessage } from "@/helpers/ErrorMessgaes";
 import { Button, Table, message } from "antd";
 import axios from "axios";
-import Footer from "@/components/footer/Footer";
-import Header from "@/components/header/Header";
+
 import Breadcrumb from "@/components/myComponents/layout/BreadCrumb";
 
 import { useSearchParams } from "next/navigation";
@@ -55,6 +54,12 @@ export default function HotelsServices() {
   useEffect(() => {
     getHotels();
   }, []);
+
+
+
+
+  
+
 
   const settings = useMemo(() => {
     return {
@@ -126,7 +131,12 @@ export default function HotelsServices() {
                         </Swiper> */}
 
 <div className="room-img">
-                      <span className="batch">Breakfast included</span>
+
+  {hotel?.breakfast &&
+                      <span className="batch">Breakfast included
+                      </span>
+
+  }
                       <Link href="hotel-suits/hotel-details">
                         <img
                         src={hotel?.images[0] ?? "/assets/img/innerpage/room-img-02.jpg" }
@@ -171,16 +181,23 @@ export default function HotelsServices() {
                             <ul className="loaction-area">
                               <li>
                                 <i className="bi bi-geo-alt" />
-                                Dhaka, Bangladesh
+                                {/* Dhaka, Bangladesh */}
+{hotel?.location}
+
+
                               </li>
                               <li>
                                 <a href="#">Show on map</a>
                               </li>
-                              <li>
+                              {/* <li>
                                 <span>2 km to city center</span>
-                              </li>
+                              </li> */}
                             </ul>
                             <ul className="facilisis">
+
+
+{hotel?.locker &&
+
                               <li>
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg"
@@ -201,8 +218,14 @@ export default function HotelsServices() {
                                     <path d="M1.86161 11.8546C1.71396 12.0164 1.81591 12.2449 2.05849 12.2906C2.24482 12.3257 2.56122 12.2836 2.63856 12.2132C2.72645 12.1324 2.72997 11.9144 2.64208 11.8371C2.59286 11.7914 2.50497 11.7773 2.25536 11.7773C1.9706 11.7773 1.92489 11.7843 1.86161 11.8546Z" />
                                   </g>
                                 </svg>{" "}
-                                Locker
+                              قفل
                               </li>
+              }
+
+
+
+{hotel?.gym &&
+
                               <li>
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg"
@@ -216,6 +239,12 @@ export default function HotelsServices() {
                                 </svg>{" "}
                                 Gym
                               </li>
+              }
+
+
+
+{hotel?.sauna &&
+
                               <li>
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg"
@@ -232,6 +261,11 @@ export default function HotelsServices() {
                                 </svg>{" "}
                                 Spa
                               </li>
+              }
+
+
+
+{hotel?.park &&
                               <li>
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg"
@@ -251,6 +285,12 @@ export default function HotelsServices() {
                                 </svg>{" "}
                                 Parking
                               </li>
+
+              }
+
+
+{hotel?.resturant &&
+
                               <li>
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg"
@@ -271,12 +311,16 @@ export default function HotelsServices() {
                                 </svg>{" "}
                                 Restaurant
                               </li>
+              }
+
+
                             </ul>
                           </div>
                           <div className="content-bottom">
                             <div className="room-type">
-                              <h6>Deluxe King Room</h6>
-                              <span>1 king bed</span>
+                              <h6 className=" !font-kufi">تفاصيل الغرفة</h6>
+                              <span className=" my-2 ar"> سرير رئيسي {hotel?.adultbeds}</span>
+                              <span className=" block  my-2  ar"> اسرة الاطفال {hotel?.childbeds} </span>
                               <div className="deals">
                                 <span>
                                   <strong>Free cancellation</strong> <br />{" "}
@@ -286,17 +330,20 @@ export default function HotelsServices() {
                             </div>
                             <div className="price-and-book">
                               <div className="price-area">
-                                <p>1 night, 2 adults</p>
+                                {/* <p>1 night, 2 adults</p> */}
                                 <span>
-                                  $2,898 <del>$3000</del>
+                                  {/* $2,898  */}
+
+                                  {hotel?.price}$
+                                  {/* <del>$3000</del> */}
                                 </span>
                               </div>
                               <div className="book-btn">
                                 <Link
                                   href="hotel-suits/hotel-details"
-                                  className="primary-btn2"
+                                  className="primary-btn2  ar"
                                 >
-                                  Check Availability{" "}
+                                 تفاصيل الغرفة
                                   <i className="bi bi-arrow-right" />
                                 </Link>
                               </div>

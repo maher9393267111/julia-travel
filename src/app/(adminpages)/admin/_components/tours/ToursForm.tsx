@@ -29,8 +29,12 @@ const modules = {
 };
 
 
-const locations = ["istanbul", "bursa" ,"trabzon" , "izmir" , "izmit"   ]
-const types=['Family Tour','Honeymoon Tou','Group Tour','Adventure Tour','Solo Tour']
+const locations = ["istanbul", "bursa" ,"trabzon" , "izmir" , "izmit" ,"sapanca"    ]
+const types=[
+  "private" , "group"
+  // 'Family Tour','Honeymoon Tou','Group Tour','Adventure Tour','Solo Tour'
+
+]
     
     
 
@@ -134,6 +138,47 @@ console.log("S?????"  , selectedCategory)
         </Form.Item>
 
 
+
+
+        <Form.Item
+          label="from"
+          name="from"
+          rules={[
+            {
+              required: true,
+              message: "Please input from",
+            },
+          ]}
+        >
+          {/* <input type="text" /> */}
+          <Input className="    input_style  " type="text" />
+        </Form.Item>
+
+
+
+
+        <Form.Item
+          label="to"
+          name="to"
+          rules={[
+            {
+              required: true,
+              message: "Please input to ",
+            },
+          ]}
+        >
+          {/* <input type="text" /> */}
+          <Input className="    input_style  " type="text" />
+        </Form.Item>
+
+
+
+
+
+
+
+
+
         <Form.Item label="Location" name="location"     rules={[
             {
               required: true,
@@ -198,6 +243,24 @@ console.log("S?????"  , selectedCategory)
           <Input className="    input_style  " type="text" />
      
         </Form.Item>
+
+
+
+        <Form.Item
+          className="input_style"
+          label="days"
+          name="days"
+          rules={[
+            {
+              required: true,
+              message: "Please input days number",
+            },
+          ]}
+        >
+          <Input className="    input_style  " type="text" />
+        </Form.Item>
+
+
 
 
 

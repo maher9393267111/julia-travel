@@ -161,6 +161,41 @@ function HotelForm({
 
 
 
+        <Form.Item
+          className="input_style"
+          label="Main beds number"
+          name="adultbeds"
+          rules={[
+            {
+              required: true,
+              message: "Please input adults number",
+            },
+          ]}
+        >
+          <Input className="    input_style  " type="text" />
+        </Form.Item>
+
+
+
+        <Form.Item
+          className="input_style"
+          label="Child beds number"
+          name="childbeds"
+          rules={[
+            {
+              required: true,
+              message: "Please input childs beds number",
+            },
+          ]}
+        >
+          <Input className="    input_style  " type="text" />
+        </Form.Item>
+
+
+
+
+
+
 
         <Form.Item
           className="input_style"

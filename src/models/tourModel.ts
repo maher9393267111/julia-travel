@@ -23,6 +23,25 @@ const tourSchema = new mongoose.Schema(
     },
 
 
+    from: {
+      type: String,
+      required: true,
+    },
+
+
+    to: {
+      type: String,
+      required: true,
+    },
+
+
+    days: {
+      type: Number,
+      required: true,
+    }
+
+    ,
+
   
     images: {
         type: Array,
