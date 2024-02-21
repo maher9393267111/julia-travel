@@ -15,10 +15,11 @@ import FlightList from "./_components/flights/FlightList";
 import PackageList from "./_components/packages/PackageList";
 import OfferList from "./_components/offers/OfferList";
 import TransList from "./_components/transes/TransList";
+import VisaList from "./_components/visa/VisaList";
 
 function AdminProfile() {
   const searchParams = useSearchParams();
-  const tab = searchParams.get("tab");
+  const tab = searchParams.get("tab") ;
   const [activeTab, setActiveTab] = React.useState(tab || "1");
   const router = useRouter();
 
@@ -41,6 +42,11 @@ function AdminProfile() {
         <Tabs.TabPane tab="blogs" key="4">
           <BlogList />
         </Tabs.TabPane> */}
+
+
+<Tabs.TabPane tab="visa" key="4">
+          <VisaList />
+        </Tabs.TabPane>
 
         <Tabs.TabPane tab="hotels" key="5">
           <HotelList />

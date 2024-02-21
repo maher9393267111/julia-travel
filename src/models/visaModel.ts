@@ -10,10 +10,23 @@ const visaSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    author: {
-        type:String,
-        required :true
+
+    nationality: {
+      type: String,
+      required: true,
     },
+
+
+    country: {
+      type: String,
+      required: true,
+    },
+
+
+
+
+
+ 
     images: {
         type: Array,
         required: true,
