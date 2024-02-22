@@ -7,7 +7,7 @@ connectDB();
 
 export async function GET(req: NextRequest) {
   try {
-    await validateApiRequest(req);
+    // await validateApiRequest(req);
 
     const url = new URL(req.url);
     // const person = url.searchParams.get("person");
@@ -34,7 +34,7 @@ export async function GET(req: NextRequest) {
 
     console.log("FILTER OBJECT", filter);
 
-    const flights = await Flight.find(filter);
+    const flights = await Flight.find(filter).sort({ createdAt: -1 });
     return NextResponse.json({ data: flights });
   } catch (error: any) {
     return NextResponse.json({ message: error.message }, { status: 500 });

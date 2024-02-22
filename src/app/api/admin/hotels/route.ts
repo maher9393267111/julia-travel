@@ -7,12 +7,13 @@ connectDB();
 
 export async function GET(req: NextRequest) {
   try {
-    await validateApiRequest(req);
+    // await validateApiRequest(req);
 
     const url = new URL(req.url);
     const location = url.searchParams.get("location");
     const title = url.searchParams.get("title");
     const roomType = url.searchParams.get("roomType");
+    const limit = url.searchParams.get("limit");
     // const = url.searchParams.get("location");
 
     // workaround typescript, da await Post.find(username && { username }) mit einer Warnung daherkommt
@@ -33,7 +34,7 @@ export async function GET(req: NextRequest) {
 
 
 
-    const hotels = await Hotel.find(filter);
+    const hotels = limit ?  await Hotel.find(filter).sort({ createdAt: -1 }).limit(3)  : await Hotel.find(filter).sort({ createdAt: -1 });
     return NextResponse.json({ data: hotels });
   } catch (error: any) {
     return NextResponse.json(

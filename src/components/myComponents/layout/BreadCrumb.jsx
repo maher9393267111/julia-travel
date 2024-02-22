@@ -1,13 +1,13 @@
 import Link from "next/link";
 import React from "react";
 
-const Breadcrumb = ({ pagename, pagetitle }) => {
+const Breadcrumb = ({ pagename, pagetitle ,img }) => {
   return (
     <div
       className="breadcrumb-section"
       style={{
         backgroundImage:
-          "linear-gradient(270deg, rgba(0, 0, 0, .3), rgba(0, 0, 0, 0.3) 101.02%), url(/assets/img/innerpage/inner-banner-bg.png)",
+          `linear-gradient(270deg, rgba(0, 0, 0, .3), rgba(0, 0, 0, 0.3) 101.02%), url(${img ? img : '/assets/img/innerpage/inner-banner-bg.png'})`,
       }}
     >
 

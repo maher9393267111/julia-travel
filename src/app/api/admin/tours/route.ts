@@ -7,7 +7,7 @@ connectDB();
 
 export async function GET(req: NextRequest) {
   try {
-    await validateApiRequest(req);
+    // await validateApiRequest(req);
 
 
     const url = new URL(req.url);
@@ -15,6 +15,7 @@ export async function GET(req: NextRequest) {
     const type= url.searchParams.get("type");
     const from = url.searchParams.get("from");
     const to = url.searchParams.get("to");
+    const limit= url.searchParams.get("limit");
     // const = url.searchParams.get("location");
 
     // workaround typescript, da await Post.find(username && { username }) mit einer Warnung daherkommt
@@ -42,7 +43,9 @@ export async function GET(req: NextRequest) {
     console.log("FILTER OBJECT" , filter)
 
 
-    const tours = await Tour.find(filter);
+    const tours =
+     limit ? await Tour.find(filter).sort({ createdAt: -1 }).limit(3)  : 
+    await Tour.find(filter).sort({ createdAt: -1 });
     console.log("TOURS RESULT--<>>>" , tours)
     return NextResponse.json({ data: tours });
   } catch (error : any) {

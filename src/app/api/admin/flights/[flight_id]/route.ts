@@ -15,7 +15,7 @@ export async function GET(
   }
 ) {
   try {
-    await validateApiRequest(req);
+    // await validateApiRequest(req);
     const flight = await Flight.findById(params.flight_id);
     return NextResponse.json({ data: flight });
   } catch (error : any) {

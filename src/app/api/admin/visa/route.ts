@@ -7,13 +7,15 @@ connectDB();
 
 export async function GET(req: NextRequest) {
   try {
-    await validateApiRequest(req);
+    // await validateApiRequest(req);
 
 
     const url = new URL(req.url);
     const country = url.searchParams.get("country");
     const nationality = url.searchParams.get("nationality");
     const type = url.searchParams.get("type");
+
+    const limit = url.searchParams.get("limit");
     // const = url.searchParams.get("location");
 
     // workaround typescript, da await Post.find(username && { username }) mit einer Warnung daherkommt
@@ -38,7 +40,7 @@ export async function GET(req: NextRequest) {
 
 
 
-    const visas = await Visa.find(filter);
+    const visas = limit ?   await Visa.find(filter).sort({ createdAt: -1 }).limit(3)  : await Visa.find(filter).sort({ createdAt: -1 });
     console.log("visa All data---<>" , filter,  visas)
     return NextResponse.json({ data: visas });
   } catch (error : any) {

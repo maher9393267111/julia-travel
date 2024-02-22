@@ -15,6 +15,9 @@ const Home1TourPackage = () => {
           alt=""
           className="section-vector3"
         />
+
+
+
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
@@ -50,6 +53,10 @@ const Home1TourPackage = () => {
               </div>
             </div>
           </div>
+
+
+
+          
           <div className="row g-lg-4 gy-5 mb-70">
             <div className="col-lg-4 col-md-6">
               <div className="package-card">
@@ -571,6 +578,7 @@ const Home1TourPackage = () => {
               </Link>
             </div>
           </div>
+
         </div>
       </div>
     </>

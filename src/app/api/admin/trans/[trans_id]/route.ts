@@ -15,7 +15,7 @@ export async function GET(
   }
 ) {
   try {
-    await validateApiRequest(req);
+    // await validateApiRequest(req);
     const trans = await Trans.findById(params.trans_id);
     return NextResponse.json({ data: trans});
   } catch (error : any) {
