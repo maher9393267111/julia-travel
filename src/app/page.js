@@ -52,7 +52,7 @@ const getVisa = async () => {
   try {
     // const domain = "http://localhost:3000/api/admin/visa";
 
-    const endPoint = `${domain}/api/admin/tours?visa=true`;
+    const endPoint = `${domain}/api/admin/visa?limit=true`;
     const response = await axios.get(endPoint);
     //console.log("RESPONSE", response.data.data);
     return response.data.data || [];

@@ -42,7 +42,7 @@ export default function ToursHome({transports}) {
                 <h2 className=" ar">
                   {/* Visa Processing */}
         
-الجولات و الرحلات
+النقليات 
                 </h2>
               </div>
 

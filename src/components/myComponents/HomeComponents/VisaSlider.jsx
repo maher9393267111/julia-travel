@@ -10,7 +10,11 @@ import SwiperCore, {
 import Link from "next/link";
 SwiperCore.use([Autoplay, EffectFade, Navigation, Pagination]);
 
-const  HomeVisa = ({visaData}) => {
+const HomeVisa = ({ visaData }) => {
+
+
+console.log("VisaData" ,visaData)
+
   const settings = useMemo(() => {
     return {
       slidesPerView: "auto",
@@ -52,7 +56,6 @@ const  HomeVisa = ({visaData}) => {
   }, []);
   return (
     <>
-    
       <div className="visa-section mb-120">
         <img
           src="/assets/img/home1/section-vector2.png"
@@ -92,7 +95,7 @@ const  HomeVisa = ({visaData}) => {
                 </span>
                 <h2 className=" ar">
                   {/* Visa Processing */}
-          خدمات الفيزا
+                  خدمات الفيزا
                 </h2>
               </div>
               <div className="slider-btn-grp2">
@@ -122,66 +125,51 @@ const  HomeVisa = ({visaData}) => {
           </div>
           <div className="row">
             <div className="col-lg-12">
-
-              {visaData && visaData?.length > 0 &&
-              <Swiper {...settings} className="swiper package-card2-slider">
-                <div className="swiper-wrapper">
-
-
-{visaData?.map((visa,index)=>{
-
-
-return (
-  <SwiperSlide className="swiper-slide">
-  <div className="package-card2">
-    <Link href={`/service/visa/${visa?._id}`}>
-      <img
-        src={ visa?.images[0] ?  visa?.images[0] : "/assets/img/home1/package-card2-img1.png"}
-        alt=""
-      />
-    </Link>
-    <div className="eg-tag">
-      <h4>
-        <Link href={`/service/visa/${visa?._id}`}>{visa?.country}</Link>
-      </h4>
-    </div>
-    <div className="package-card2-content">
-      <div className="title">
-        <h6 className=" ar">خدمات الفيزا
-        </h6>
-      </div>
-      <div className=" ar price-area">
-        <span>${visa?.price}</span>
-        <p className=" ar">
-          شاملة كافة الضرائب
-          {/* TAXES INCL/PERS */}
-
-
-        </p>
-      </div>
-    </div>
-  </div>
-</SwiperSlide>
-
-)
-
-
-})}
-              
-              
-
-
-
-                </div>
-              </Swiper>
-}
-
-
+              {visaData && visaData?.length > 0 && (
+                <Swiper {...settings} className="swiper package-card2-slider">
+                  <div className="swiper-wrapper">
+                    {visaData?.map((visa, index) => {
+                      return (
+                        <SwiperSlide className="swiper-slide">
+                          <div className="package-card2">
+                            <Link href={`/service/visa/${visa?._id}`}>
+                              <img
+                                src={
+                                  visa?.images[0]
+                                    ? visa?.images[0]
+                                    : "/assets/img/home1/package-card2-img1.png"
+                                }
+                                alt=""
+                              />
+                            </Link>
+                            <div className="eg-tag">
+                              <h4>
+                                <Link href={`/service/visa/${visa?._id}`}>
+                                  {visa?.country}
+                                </Link>
+                              </h4>
+                            </div>
+                            <div className="package-card2-content">
+                              <div className="title">
+                                <h6 className=" ar">خدمات الفيزا</h6>
+                              </div>
+                              <div className=" ar price-area">
+                                <span>${visa?.price}</span>
+                                <p className=" ar">
+                                  شاملة كافة الضرائب
+                                  {/* TAXES INCL/PERS */}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </SwiperSlide>
+                      );
+                    })}
+                  </div>
+                </Swiper>
+              )}
             </div>
           </div>
-
-
-
         </div>
       </div>
     </>
