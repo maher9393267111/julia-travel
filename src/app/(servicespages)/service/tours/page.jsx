@@ -42,7 +42,7 @@ const page = () => {
     getTours();
   }, []);
 
-  
+
 
   return (
     <>
@@ -64,7 +64,7 @@ const page = () => {
                           <div className="package-card">
                             <div className="package-card-img-wrap">
                               <Link
-                                href="/package/package-details"
+                                href={`/service/tours/${tour?._id}`}
                                 className="card-img"
                               >
                                 <img
@@ -100,7 +100,7 @@ const page = () => {
                             <div className="package-card-content">
                               <div className="card-content-top ar">
                                 <h5>
-                                  <Link href={`/tour/${tour?._id}`}>
+                                  <Link href={`/service/tours/${tour?._id}`}>
                                     {/* the Allure Italy's Rich Culture, History, and
             Cuisine. */}
 

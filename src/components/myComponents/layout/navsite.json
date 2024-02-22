@@ -43,7 +43,25 @@
 
 
     {
+        "id": "7",
+        "label": "رحلات الطيران",
+        "link": "/service/flights",
+        "icon": false
+      
+    },
+
+    {
         "id": "8",
+        "label": "النقليات",
+        "link": "/service/transport",
+        "icon": false
+      
+    },
+ 
+
+
+    {
+        "id": "9",
         "label": "التواصل",
         "link": "/contact",
         "icon": false

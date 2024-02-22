@@ -16,18 +16,14 @@ import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import parse from "html-react-parser";
 import dayjs from "dayjs";
 
-import {
-  Button,
-
-  message,
-} from "antd";
+import { Button, message } from "antd";
 import {
   LeftOutlined,
   LoadingOutlined,
   MinusSquareOutlined,
   PlusSquareOutlined,
 } from "@ant-design/icons";
-import {hanldeScore } from '@/uitils/StarsHandle'
+import { hanldeScore } from "@/uitils/StarsHandle";
 
 const Page = () => {
   const [dateRange, setDateRange] = useState([null, null]);
@@ -68,14 +64,12 @@ const Page = () => {
     hotelname: "",
     roomType: "",
     adultsNum: 1,
-     ChildrensNum: 0,
+    ChildrensNum: 0,
     daysNum: 1,
     email: "",
     message: "",
-    error:false
+    error: false,
   });
-
-
 
   const formSubmit = (e) => {
     e.preventDefault();
@@ -108,34 +102,29 @@ const Page = () => {
         startDate: start,
         endDate: end,
         service: "tours",
-        details:tour
+        details: tour,
       };
 
+      if (
+        // !state.phone && !state.email && !state.name
+        !state.phone &&
+        !state.email &&
+        !state.name &&
+        !startDate &&
+        !endDate
+      ) {
+        setstate({ ...state, error: true });
+      } else {
+        const res = await fetch("/api/contacts", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
 
-      if(!state.phone && !state.email && !state.name && !startDate && !endDate )
-
-      {
-
-setstate({...state  ,error:true})
-
+        setstate({ ...state, error: false });
       }
-
-
-
-      else {
-      const res = await fetch("/api/contacts", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-
-      setstate({...state  ,error:false})
-    }
-
-
-
 
       console.log("response", res);
 
@@ -147,11 +136,9 @@ setstate({...state  ,error:true})
     }
   };
 
-  
-
   return (
     <>
-      <Breadcrumb pagename="تفاصيل الرحلة" pagetitle= "تفاصيل الرحلة" />
+      <Breadcrumb pagename="تفاصيل الرحلة" pagetitle="تفاصيل الرحلة" />
 
       {tour && (
         <div className="package-details-area pt-120 mb-120 position-relativ !font-kufi">
@@ -305,23 +292,22 @@ setstate({...state  ,error:true})
                   </div>
 
                   <div className="tour-price  ar">
-                
-                <span className=" ar">للشخص الواحد</span>
-                <h3 className=" mx-2  ar">{tour?.price}$</h3>
-              </div>
-              <ul className="tour-info-metalist ar">
-                <li className=" ar" >
-                  <svg
-                    width={14}
-                    height={14}
-                    viewBox="0 0 14 14"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M14 7C14 8.85652 13.2625 10.637 11.9497 11.9497C10.637 13.2625 8.85652 14 7 14C5.14348 14 3.36301 13.2625 2.05025 11.9497C0.737498 10.637 0 8.85652 0 7C0 5.14348 0.737498 3.36301 2.05025 2.05025C3.36301 0.737498 5.14348 0 7 0C8.85652 0 10.637 0.737498 11.9497 2.05025C13.2625 3.36301 14 5.14348 14 7ZM7 3.0625C7 2.94647 6.95391 2.83519 6.87186 2.75314C6.78981 2.67109 6.67853 2.625 6.5625 2.625C6.44647 2.625 6.33519 2.67109 6.25314 2.75314C6.17109 2.83519 6.125 2.94647 6.125 3.0625V7.875C6.12502 7.95212 6.14543 8.02785 6.18415 8.09454C6.22288 8.16123 6.27854 8.2165 6.3455 8.25475L9.408 10.0048C9.5085 10.0591 9.62626 10.0719 9.73611 10.0406C9.84596 10.0092 9.93919 9.93611 9.99587 9.83692C10.0525 9.73774 10.0682 9.62031 10.0394 9.50975C10.0107 9.39919 9.93982 9.30426 9.842 9.24525L7 7.62125V3.0625Z"></path>
-                  </svg>
-                  {tour?.days} ايام /    {tour?.days + 1} ليالي
-                </li>
-                {/* <li>
+                    <span className=" ar">للشخص الواحد</span>
+                    <h3 className=" mx-2  ar">{tour?.price}$</h3>
+                  </div>
+                  <ul className="tour-info-metalist ar">
+                    <li className=" ar">
+                      <svg
+                        width={14}
+                        height={14}
+                        viewBox="0 0 14 14"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M14 7C14 8.85652 13.2625 10.637 11.9497 11.9497C10.637 13.2625 8.85652 14 7 14C5.14348 14 3.36301 13.2625 2.05025 11.9497C0.737498 10.637 0 8.85652 0 7C0 5.14348 0.737498 3.36301 2.05025 2.05025C3.36301 0.737498 5.14348 0 7 0C8.85652 0 10.637 0.737498 11.9497 2.05025C13.2625 3.36301 14 5.14348 14 7ZM7 3.0625C7 2.94647 6.95391 2.83519 6.87186 2.75314C6.78981 2.67109 6.67853 2.625 6.5625 2.625C6.44647 2.625 6.33519 2.67109 6.25314 2.75314C6.17109 2.83519 6.125 2.94647 6.125 3.0625V7.875C6.12502 7.95212 6.14543 8.02785 6.18415 8.09454C6.22288 8.16123 6.27854 8.2165 6.3455 8.25475L9.408 10.0048C9.5085 10.0591 9.62626 10.0719 9.73611 10.0406C9.84596 10.0092 9.93919 9.93611 9.99587 9.83692C10.0525 9.73774 10.0682 9.62031 10.0394 9.50975C10.0107 9.39919 9.93982 9.30426 9.842 9.24525L7 7.62125V3.0625Z"></path>
+                      </svg>
+                      {tour?.days} ايام / {tour?.days + 1} ليالي
+                    </li>
+                    {/* <li>
                   <svg
                     width={14}
                     height={14}
@@ -332,46 +318,31 @@ setstate({...state  ,error:true})
                   </svg>
                   Max People : 40
                 </li> */}
-                <li className=" ar">
-                  <svg
-                    width={14}
-                    height={14}
-                    viewBox="0 0 14 14"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      clipRule="evenodd"
-                      d="M14 0.43748C14 0.372778 13.9856 0.308889 13.9579 0.250418C13.9302 0.191947 13.8898 0.140348 13.8398 0.0993396C13.7897 0.0583312 13.7312 0.0289339 13.6684 0.0132656C13.6057 -0.00240264 13.5402 -0.00395173 13.4768 0.00872996L9.1875 0.86623L4.89825 0.00872996C4.84164 -0.00258444 4.78336 -0.00258444 4.72675 0.00872996L0.35175 0.88373C0.252608 0.903546 0.163389 0.957088 0.099263 1.03525C0.0351366 1.11342 6.10593e-05 1.21138 0 1.31248L0 13.5625C3.90711e-05 13.6272 0.0144289 13.6911 0.0421328 13.7495C0.0698367 13.808 0.110165 13.8596 0.160212 13.9006C0.210259 13.9416 0.268779 13.971 0.331556 13.9867C0.394332 14.0024 0.459803 14.0039 0.52325 13.9912L4.8125 13.1337L9.10175 13.9912C9.15836 14.0025 9.21664 14.0025 9.27325 13.9912L13.6482 13.1162C13.7474 13.0964 13.8366 13.0429 13.9007 12.9647C13.9649 12.8865 13.9999 12.7886 14 12.6875V0.43748ZM4.375 12.3287V0.97123L4.8125 0.88373L5.25 0.97123V12.3287L4.89825 12.2587C4.84165 12.2474 4.78335 12.2474 4.72675 12.2587L4.375 12.3287ZM8.75 13.0287V1.67123L9.10175 1.74123C9.15836 1.75254 9.21664 1.75254 9.27325 1.74123L9.625 1.67123V13.0287L9.1875 13.1162L8.75 13.0287Z"
-                    ></path>
-                  </svg>
-                  {tour?.from} &amp; {tour?.to}
-                </li>
-              </ul>
-
-
-
-
-                  
+                    <li className=" ar">
+                      <svg
+                        width={14}
+                        height={14}
+                        viewBox="0 0 14 14"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M14 0.43748C14 0.372778 13.9856 0.308889 13.9579 0.250418C13.9302 0.191947 13.8898 0.140348 13.8398 0.0993396C13.7897 0.0583312 13.7312 0.0289339 13.6684 0.0132656C13.6057 -0.00240264 13.5402 -0.00395173 13.4768 0.00872996L9.1875 0.86623L4.89825 0.00872996C4.84164 -0.00258444 4.78336 -0.00258444 4.72675 0.00872996L0.35175 0.88373C0.252608 0.903546 0.163389 0.957088 0.099263 1.03525C0.0351366 1.11342 6.10593e-05 1.21138 0 1.31248L0 13.5625C3.90711e-05 13.6272 0.0144289 13.6911 0.0421328 13.7495C0.0698367 13.808 0.110165 13.8596 0.160212 13.9006C0.210259 13.9416 0.268779 13.971 0.331556 13.9867C0.394332 14.0024 0.459803 14.0039 0.52325 13.9912L4.8125 13.1337L9.10175 13.9912C9.15836 14.0025 9.21664 14.0025 9.27325 13.9912L13.6482 13.1162C13.7474 13.0964 13.8366 13.0429 13.9007 12.9647C13.9649 12.8865 13.9999 12.7886 14 12.6875V0.43748ZM4.375 12.3287V0.97123L4.8125 0.88373L5.25 0.97123V12.3287L4.89825 12.2587C4.84165 12.2474 4.78335 12.2474 4.72675 12.2587L4.375 12.3287ZM8.75 13.0287V1.67123L9.10175 1.74123C9.15836 1.75254 9.21664 1.75254 9.27325 1.74123L9.625 1.67123V13.0287L9.1875 13.1162L8.75 13.0287Z"
+                        ></path>
+                      </svg>
+                      {tour?.from} &amp; {tour?.to}
+                    </li>
+                  </ul>
                 </div>
                 <h2 className=" ar">
                   {/* Golden Tulip The Grandmark Dhaka */}
                   {tour?.title}
                 </h2>
-              
+
                 {tour?.description && (
-                  <p className=" ar">
-              
-
-                    {parse(tour?.description)}
-                  </p>
+                  <p className=" ar">{parse(tour?.description)}</p>
                 )}
-               
-
-               
-
-
-            
               </div>
               <div className="col-xl-4 ">
                 <div className="booking-form-wrap mb-30">
@@ -455,8 +426,7 @@ setstate({...state  ,error:true})
 
                           <div className="number-input-item adults">
                             <label className="number-input-lable !text-sm  ar">
-                            عدد الاشخاص :
-                              <span></span>
+                              عدد الاشخاص :<span></span>
                               {/* <span>
                               
                                 $60
@@ -526,27 +496,24 @@ setstate({...state  ,error:true})
                         {/* total price-- */}
                         <div className="total-price">
                           <span>Total Price:</span> $
-                          { (tour?.price * state.daysNum) * state.adultsNum 
-                            }
+                          {tour?.price * state.daysNum * state.adultsNum}
                         </div>
 
                         <div className="form-inner">
                           <button
-                        
                             onClick={(e) => formSubmit(e)}
                             type="submit"
                             className="primary-btn1 !font-kufi two"
                           >
                             احجز الان
-          
                           </button>
 
-                          {state.error &&
-
-<div className=" text-red-500 font-semibold text-sm  ar  my-2 "> ادخل كافة البيانات المطلوبة</div>
-
-                          }
-
+                          {state.error && (
+                            <div className=" text-red-500 font-semibold text-sm  ar  my-2 ">
+                              {" "}
+                              ادخل كافة البيانات المطلوبة
+                            </div>
+                          )}
                         </div>
                       </form>
                     </div>
@@ -557,10 +524,6 @@ setstate({...state  ,error:true})
           </div>
         </div>
       )}
-
-
-
-
 
       <React.Fragment>
         <ModalVideo
@@ -587,18 +550,6 @@ setstate({...state  ,error:true})
           })}
         />
       )}
-
-
-
-
-
-
-
-
-
-
-
-
     </>
   );
 };

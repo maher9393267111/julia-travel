@@ -141,7 +141,7 @@ console.log('selected' ,selectedCategory?.images,"values" ,values.images)
           <Input className="    input_style  " type="text" />
         </Form.Item>
 
-        <Form.Item
+        {/* <Form.Item
           label="Location"
           name="location"
           rules={[
@@ -159,24 +159,46 @@ console.log('selected' ,selectedCategory?.images,"values" ,values.images)
               </option>
             ))}
           </select>
-        </Form.Item>
+        </Form.Item> */}
 
-        {/* <Form.Item
-          label="Title"
-          name="title"
+    
+{/* from to */}
+
+<Form.Item
+          label="from"
+          name="from"
           rules={[
             {
               required: true,
-              message: "Please input hotel title",
+              message: "Please input from",
             },
           ]}
         >
-         
+          {/* <input type="text" /> */}
+          <Input className="    input_style  " type="text" />
+        </Form.Item>
 
-          <div className="form-inner mb-2  !outline-green-500  ">
-            <input type="text" placeholder="hotel name" />
-          </div>
-        </Form.Item> */}
+
+
+
+        <Form.Item
+          label="to"
+          name="to"
+          rules={[
+            {
+              required: true,
+              message: "Please input to ",
+            },
+          ]}
+        >
+          {/* <input type="text" /> */}
+          <Input className="    input_style  " type="text" />
+        </Form.Item>
+
+
+     
+
+
 
         <Form.Item
           label="Description"

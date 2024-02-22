@@ -10,7 +10,7 @@ export async function GET(req: NextRequest) {
     await validateApiRequest(req);
     const url = new URL(req.url);
     const person = url.searchParams.get("person");
-    
+
     const from = url.searchParams.get("from");
     const to = url.searchParams.get("to");
     // const = url.searchParams.get("location");
@@ -20,10 +20,8 @@ export async function GET(req: NextRequest) {
     // ||
 
     if (person) {
-      filter.person =  Number(person);
+      filter.person = Number(person);
     }
-
-
 
     if (from) {
       filter.from = from;
@@ -33,19 +31,12 @@ export async function GET(req: NextRequest) {
       filter.to = to;
     }
 
-
-    console.log("FILTER OBJECT" , filter)
-
-
-
-
-
-
+    console.log("FILTER OBJECT", filter);
 
     const trans = await Trans.find(filter);
     return NextResponse.json({ data: trans });
-  } catch (error : any) {
-    return NextResponse.json({ message: error.message } , { status: 500 });
+  } catch (error: any) {
+    return NextResponse.json({ message: error.message }, { status: 500 });
   }
 }
 
@@ -56,7 +47,7 @@ export async function POST(req: NextRequest) {
     const trans = new Trans(reqBody);
     await trans.save();
     return NextResponse.json({ data: trans });
-  } catch (error : any) {
-    return NextResponse.json({ message: error.message } , { status: 500 });
+  } catch (error: any) {
+    return NextResponse.json({ message: error.message }, { status: 500 });
   }
 }

@@ -32,7 +32,7 @@ import {
   MinusSquareOutlined,
   PlusSquareOutlined,
 } from "@ant-design/icons";
-import {hanldeScore } from '@/uitils/StarsHandle'
+import { hanldeScore } from "@/uitils/StarsHandle";
 
 const Page = () => {
   const [dateRange, setDateRange] = useState([null, null]);
@@ -77,7 +77,7 @@ const Page = () => {
     daysNum: 1,
     email: "",
     message: "",
-    error:false
+    error: false,
   });
 
   // const [startDate, setStartDate] = useState(new Date());
@@ -121,36 +121,31 @@ const Page = () => {
         startDate: start,
         endDate: end,
         service: "hotels",
-        details:hotel
+        details: hotel,
       };
 
+      if (
+        // !state.phone &&
+        // !state.email &&
+        // !state.name &&
+        !state.phone &&
+        !state.email &&
+        !state.name &&
+        !startDate &&
+        !endDate
+      ) {
+        setstate({ ...state, error: true });
+      } else {
+        const res = await fetch("/api/contacts", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
 
-      if(!state.phone && !state.email && !state.name && !startDate && !endDate )
-
-      {
-
-setstate({...state  ,error:true})
-
+        setstate({ ...state, error: false });
       }
-
-
-
-      else {
-      const res = await fetch("/api/contacts", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-
-      setstate({...state  ,error:false})
-    }
-
-
-
-
-      
 
       //   setPhone("")
     } catch (error) {
@@ -327,10 +322,7 @@ setstate({...state  ,error:true})
                   </div>
                   <div className="review-area">
                     <ul dir="ltr">
-
-                    {hanldeScore(hotel?.stars)}
-
-
+                      {hanldeScore(hotel?.stars)}
 
                       {/* <li>
                         <i className="bi bi-star-fill" />
@@ -348,9 +340,6 @@ setstate({...state  ,error:true})
                         <i className="bi bi-star-fill" />
                         
                       </li> */}
-
-
-
                     </ul>
                     <span>
                       <strong>8.1 Excellent</strong> 94 reviews
@@ -860,33 +849,25 @@ setstate({...state  ,error:true})
                         {/* total price-- */}
                         <div className="total-price">
                           <span>Total Price:</span> $
-                          {
-                          (hotel?.price * state.daysNum ) * state.adultsNum  +  state.ChildrensNum * 15
-                            
-                            
-                            
-                            }
-
-
+                          {hotel?.price * state.daysNum * state.adultsNum +
+                            state.ChildrensNum * 15}
                         </div>
 
                         <div className="form-inner">
                           <button
-                        
                             onClick={(e) => formSubmit(e)}
                             type="submit"
                             className="primary-btn1 !font-kufi two"
                           >
                             احجز الان
-          
                           </button>
 
-                          {state.error &&
-
-<div className=" text-red-500 font-semibold text-sm  ar  my-2 "> ادخل كافة البيانات المطلوبة</div>
-
-                          }
-
+                          {state.error && (
+                            <div className=" text-red-500 font-semibold text-sm  ar  my-2 ">
+                              {" "}
+                              ادخل كافة البيانات المطلوبة
+                            </div>
+                          )}
                         </div>
                       </form>
                     </div>
@@ -953,11 +934,6 @@ const Amount = ({ value = 1, min = 0, onChange }) => {
     </div>
   );
 };
-
-
-
-
-
 
 // "use client";
 // import React, { useState, useEffect } from "react";

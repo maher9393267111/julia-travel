@@ -86,6 +86,8 @@ const FilterHome = () => {
     fromTransport :"",
     toTransport:"",
     personsTrans:1,
+    fromFlight :"",
+    toFlight:"",
   });
 
   const [startDate, setStartDate] = useState(new Date());
@@ -129,6 +131,11 @@ const FilterHome = () => {
       );
     }
 
+    if (page === "flight") {
+      router.push(
+        `/service/flights?from=${state.fromFlight}&&to=${state.toFlight}`
+      );
+    }
 
 
 
@@ -240,7 +247,7 @@ const FilterHome = () => {
                   >
                     <path d="M16.7611 10.0896L15.946 9.90118L15.7703 9.02653C15.7562 8.95659 15.7249 8.89201 15.6795 8.83957C15.6341 8.78713 15.5764 8.74879 15.5125 8.72857C15.4485 8.70835 15.3806 8.707 15.316 8.72467C15.2514 8.74233 15.1924 8.77836 15.1453 8.82896L13.6465 10.4371C13.6026 10.4842 13.5705 10.5423 13.553 10.6061C13.5354 10.6699 13.5331 10.7374 13.5462 10.8025L13.7297 11.7162L13.1228 12.3674C12.6046 11.9319 11.953 11.6713 11.2453 11.6713C9.56304 11.6713 8.1944 13.1398 8.1944 14.9449C8.1944 16.7499 9.56304 18.2184 11.2453 18.2184C12.9276 18.2184 14.2962 16.7499 14.2962 14.9449C14.2962 14.1855 14.0533 13.4864 13.6475 12.9304L14.2544 12.2792L15.1059 12.4761C15.1666 12.4902 15.2295 12.4877 15.289 12.4689C15.3485 12.4501 15.4026 12.4156 15.4464 12.3685L16.9453 10.7603C16.9924 10.7097 17.0259 10.6464 17.0424 10.5771C17.0588 10.5078 17.0575 10.435 17.0387 10.3663C17.0198 10.2977 16.9841 10.2358 16.9353 10.1871C16.8864 10.1384 16.8262 10.1048 16.7611 10.0896ZM13.5543 14.9448C13.5543 16.3109 12.5185 17.4223 11.2453 17.4223C9.97217 17.4223 8.93633 16.3109 8.93633 14.9448C8.93633 13.5788 9.97217 12.4673 11.2453 12.4673C11.7483 12.4673 12.2138 12.6413 12.5935 12.9354L11.8476 13.7356C11.8255 13.6807 11.792 13.6318 11.7498 13.5927C11.7075 13.5536 11.6576 13.5252 11.6037 13.5097C11.5087 13.4825 11.4074 13.4968 11.3222 13.5496C11.237 13.6024 11.1749 13.6893 11.1493 13.7912L10.887 14.8418C10.8702 14.9093 10.8702 14.9803 10.887 15.0478C10.9039 15.1153 10.937 15.1768 10.9831 15.2262C11.0291 15.2756 11.0864 15.3111 11.1493 15.3292C11.2122 15.3473 11.2784 15.3474 11.3413 15.3293L12.3204 15.0479C12.3675 15.0343 12.4116 15.011 12.4502 14.9792C12.4889 14.9474 12.5213 14.9077 12.5457 14.8624C12.57 14.8171 12.5858 14.7672 12.5922 14.7154C12.5985 14.6635 12.5953 14.6109 12.5827 14.5604C12.5683 14.5025 12.5419 14.449 12.5054 14.4036C12.469 14.3583 12.4234 14.3224 12.3722 14.2986L13.1181 13.4984C13.3922 13.9057 13.5543 14.4052 13.5543 14.9448ZM15.0647 11.6522L14.4472 11.5094L14.314 10.8468L15.1884 9.90854L15.2711 10.3201C15.2862 10.3949 15.321 10.4635 15.3714 10.5177C15.4219 10.5718 15.4858 10.6092 15.5556 10.6253L15.9391 10.714L15.0647 11.6522ZM16.468 13.979C16.5188 14.298 16.5444 14.6211 16.5445 14.9448C16.5445 18.0801 14.1673 20.6307 11.2453 20.6307C8.32331 20.6307 5.94615 18.08 5.94615 14.9448C5.94615 11.8096 8.32336 9.25894 11.2453 9.25894C11.546 9.25894 11.8488 9.28655 12.1454 9.34098C12.2424 9.35882 12.3288 9.41724 12.3856 9.5034C12.4425 9.58956 12.4651 9.69642 12.4485 9.80047C12.4319 9.90452 12.3775 9.99722 12.2971 10.0582C12.2168 10.1192 12.1173 10.1435 12.0203 10.1257C11.7643 10.0787 11.505 10.055 11.2453 10.055C8.73244 10.055 6.68808 12.2486 6.68808 14.9448C6.68808 17.641 8.73244 19.8346 11.2453 19.8346C13.7582 19.8346 15.8026 17.641 15.8026 14.9448C15.8025 14.6661 15.7804 14.388 15.7367 14.1133C15.7201 14.0093 15.7427 13.9024 15.7995 13.8163C15.8563 13.7301 15.9427 13.6717 16.0397 13.6538C16.0877 13.645 16.1369 13.6464 16.1844 13.658C16.2319 13.6695 16.2768 13.691 16.3166 13.7212C16.3564 13.7514 16.3902 13.7897 16.4162 13.8339C16.4421 13.8782 16.4597 13.9275 16.468 13.979ZM20.834 2.12563H20.249V0.879517C20.249 0.394556 19.8813 0 19.4293 0H18.5395C18.0875 0 17.7197 0.394556 17.7197 0.879517V2.12563H16.5068V0.879517C16.5068 0.394556 16.139 0 15.6871 0H14.7973C14.3453 0 13.9776 0.394556 13.9776 0.879517V2.12563H12.7646V0.879517C12.7646 0.394556 12.3969 0 11.9449 0H11.0551C10.6031 0 10.2354 0.394556 10.2354 0.879517V2.12563H9.0224V0.879517C9.0224 0.394556 8.65463 0 8.20265 0H7.31284C6.86086 0 6.49314 0.394556 6.49314 0.879517V2.12563H5.28017V0.879517C5.28017 0.394556 4.91245 0 4.46047 0H3.5707C3.11873 0 2.75096 0.394556 2.75096 0.879517V2.12563H2.16599C0.971657 2.12563 0 3.16814 0 4.44963V20.676C0 21.9575 0.971657 23 2.16599 23H18.116C18.7113 23 19.2266 22.771 19.6476 22.3194L22.3656 19.403C22.7866 18.9513 23 18.3984 23 17.7597V4.44963C23 3.16814 22.0283 2.12563 20.834 2.12563ZM18.4617 0.879517C18.462 0.857472 18.4702 0.836413 18.4848 0.820827C18.4993 0.805242 18.5189 0.796362 18.5395 0.796078H19.4293C19.4498 0.796375 19.4695 0.805261 19.484 0.820845C19.4985 0.836429 19.5068 0.85748 19.5071 0.879517V3.80018C19.5068 3.82223 19.4985 3.84329 19.484 3.85888C19.4695 3.87448 19.4498 3.88337 19.4293 3.88367H18.5395C18.5189 3.88337 18.4993 3.87448 18.4848 3.85889C18.4702 3.84329 18.4619 3.82223 18.4617 3.80018V0.879517ZM14.7195 0.879517C14.7198 0.857472 14.7281 0.836413 14.7426 0.820827C14.7571 0.805242 14.7768 0.796362 14.7973 0.796078H15.6871C15.7076 0.796362 15.7272 0.805242 15.7418 0.820827C15.7563 0.836413 15.7646 0.857472 15.7649 0.879517V3.80018C15.7649 3.84541 15.7292 3.88367 15.6871 3.88367H14.7973C14.7767 3.88337 14.7571 3.87448 14.7426 3.85889C14.7281 3.84329 14.7198 3.82223 14.7195 3.80018V0.879517ZM10.9773 0.879517C10.9776 0.857472 10.9859 0.836413 11.0004 0.820827C11.0149 0.805242 11.0346 0.796362 11.0551 0.796078H11.9449C11.9654 0.796362 11.9851 0.805242 11.9996 0.820827C12.0141 0.836413 12.0224 0.857472 12.0227 0.879517V3.80018C12.0227 3.84541 11.987 3.88367 11.9449 3.88367H11.0551C11.0346 3.88337 11.0149 3.87448 11.0004 3.85889C10.9859 3.84329 10.9776 3.82223 10.9773 3.80018V0.879517ZM7.23508 0.879517C7.23535 0.85748 7.24363 0.836429 7.25816 0.820845C7.27268 0.805261 7.2923 0.796375 7.31284 0.796078H8.20265C8.2232 0.796362 8.24283 0.805242 8.25737 0.820827C8.2719 0.836413 8.28019 0.857472 8.28046 0.879517V3.80018C8.28046 3.84541 8.2448 3.88367 8.20265 3.88367H7.31284C7.29229 3.88337 7.27267 3.87448 7.25814 3.85888C7.24362 3.84329 7.23534 3.82223 7.23508 3.80018V0.879517ZM3.49289 0.879517C3.49317 0.857472 3.50146 0.836413 3.51599 0.820827C3.53053 0.805242 3.55016 0.796362 3.5707 0.796078H4.46047C4.48101 0.796375 4.50063 0.805261 4.51515 0.820845C4.52968 0.836429 4.53796 0.85748 4.53823 0.879517V3.80018C4.53797 3.82223 4.52969 3.84329 4.51517 3.85888C4.50064 3.87448 4.48102 3.88337 4.46047 3.88367H3.5707C3.55015 3.88337 3.53052 3.87448 3.51599 3.85889C3.50146 3.84329 3.49317 3.82223 3.49289 3.80018V0.879517ZM2.16599 2.92171H2.75096V3.80018C2.75096 4.28514 3.11873 4.67975 3.5707 4.67975H4.46047C4.91245 4.67975 5.28017 4.28514 5.28017 3.80018V2.92171H6.49314V3.80018C6.49314 4.28514 6.86086 4.67975 7.31284 4.67975H8.20265C8.65463 4.67975 9.0224 4.28514 9.0224 3.80018V2.92171H10.2353V3.80018C10.2353 4.28514 10.6031 4.67975 11.0551 4.67975H11.9448C12.3968 4.67975 12.7646 4.28514 12.7646 3.80018V2.92171H13.9775V3.80018C13.9775 4.28514 14.3453 4.67975 14.7973 4.67975H15.687C16.139 4.67975 16.5068 4.28514 16.5068 3.80018V2.92171H17.7197V3.80018C17.7197 4.28514 18.0875 4.67975 18.5394 4.67975H19.4293C19.8812 4.67975 20.2489 4.28514 20.2489 3.80018V2.92171H20.834C21.6192 2.92171 22.258 3.60713 22.258 4.44963V6.32887H0.741935V4.44963C0.741935 3.60713 1.38074 2.92171 2.16599 2.92171ZM2.16599 22.2039C1.38074 22.2039 0.741935 21.5185 0.741935 20.676V7.1249H22.2581V17.7597C22.2581 17.9007 22.2428 18.0336 22.2126 18.1594H19.3083C18.8563 18.1594 18.4886 18.554 18.4886 19.039V22.1551C18.3713 22.1875 18.2474 22.2039 18.116 22.2039H2.16599ZM19.2305 21.6409V19.0389C19.2308 19.0169 19.239 18.9958 19.2536 18.9802C19.2681 18.9646 19.2877 18.9557 19.3083 18.9554H21.7334L19.2305 21.6409Z" />
                   </svg>
-                  Activities
+                  Flights
                 </button>
               </li>
               <li className="nav-item" role="presentation">
@@ -1113,6 +1120,175 @@ const FilterHome = () => {
 
               </div>
 
+
+
+    {/* ------Flights TAB ---- */}
+    <div
+                className="tab-pane fade py-4"
+                id="activities"
+                role="tabpanel"
+              >
+                <form className=" !font-kufi py-4">
+                  <div className="flex flex-col md:flex-row gap-12 md:gap-4 mt-4 px-4 w-[90%] ">
+                    {/* from transport */}
+
+
+                    <div className="w-full mb-10 md:mb-0">
+                      <div className="relative  inline-block w-full text-gray-700">
+                        <label
+                          className={`absolute -top-7   ar     ${"text-black"} text-sm font-semibold mb-2`}
+                          htmlFor="fromflight"
+                        >
+                          من
+                        </label>
+
+                        <div
+                          className="absolute inset-y-0 left-1    flex items-center px-2 cursor-pointer duration-300 hover:opacity-80"
+                          // onClick={() => setstate({ ...state, title: "" })}
+                        >
+                          {/* مسح */}
+                          <RiFindReplaceFill className=" w-5 h-5" />
+                        </div>
+
+                        <input
+                          className="w-full px-8 h-10  !font-kufi text-base placeholder-gray-600 placeholder-opacity-75 border rounded-lg appearance-none focus:outline-none"
+                          name="fromFlight"
+                          type="text"
+                          id="fromFlight"
+                          onChange={inputChange}
+                          value={state.fromFlight}
+                        />
+
+                        {/* <div className="absolute  !font-ibm inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                      
+                      
+                   </div> */}
+                      </div>
+                    </div>
+
+                    {/* to transport */}
+                    <div className="w-full mb-10 md:mb-0">
+                      <div className="relative  inline-block w-full text-gray-700">
+                        <label
+                          className={`absolute -top-7   ar     ${"text-black"} text-sm font-semibold mb-2`}
+                          htmlFor="totransport"
+                        >
+                          الى
+                        </label>
+
+                        <div
+                          className="absolute inset-y-0 left-1    flex items-center px-2 cursor-pointer duration-300 hover:opacity-80"
+                          // onClick={() => setstate({ ...state, title: "" })}
+                        >
+                          {/* مسح */}
+                          <RiFindReplaceFill className=" w-5 h-5" />
+                        </div>
+
+                        <input
+                          className="w-full px-8 h-10  !font-kufi text-base placeholder-gray-600 placeholder-opacity-75 border rounded-lg appearance-none focus:outline-none"
+                          name="toFlight"
+                          type="text"
+                          id="toFlight"
+                          onChange={inputChange}
+                          value={state.toFlight}
+                        />
+
+                        {/* <div className="absolute  !font-ibm inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                      
+                      
+                   </div> */}
+                      </div>
+                    </div>
+
+
+
+
+
+
+                    {/* -------DATES- */}
+
+                    <div className="w-full mb-10 md:mb-0">
+                      <div className="relative inline-block w-full text-gray-700">
+                        <label
+                          className={`absolute -top-7 ${"text-black"} !font-kufi text-sm font-semibold mb-2`}
+                          htmlFor="location"
+                        >
+                          التاريخ
+                        </label>
+                        <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                          {/* icon */}
+
+                          <FaLocationDot />
+                        </div>
+                        <DatePicker
+                          className="w-full h-10 px-8 text-base placeholder-gray-600 border rounded-lg appearance-none focus:outline-none"
+                          placeholder="Regular input"
+                          selectsRange
+                          startDate={startDate}
+                          endDate={endDate}
+                          onChange={handleDateChange}
+                          dateFormat="MMM d"
+                        />
+
+                        <div
+                          className="absolute inset-y-0 left-1 flex items-center px-2 cursor-pointer duration-300 hover:opacity-80"
+                          //  onClick={() => setstate({ ...state, type: "" })}
+                        >
+                          {/* <i className="bi bi-chevron-down" /> */}
+                          <MdDateRange />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* 
+           < div className="w-full mb-10 md:mb-0">
+               <div className="relative inline-block w-full text-gray-700">
+                   <label className={`absolute -top-7 ${ "text-black"} !font-kufi text-sm font-semibold mb-2`} htmlFor="location">
+                       الموقع
+                   </label>
+             
+
+                   <input
+                       className="w-full px-8 h-10 text-sm placeholder-gray-600 placeholder-opacity-75 border rounded-lg appearance-none focus:outline-none"
+                       name="location"
+                       type="text"
+                       id="location"
+                        onChange={inputChange}
+                        value={state.location}
+                   />
+                  
+                       <div
+                           className="absolute inset-y-0 left-1  !font-kufi flex items-center px-2 cursor-pointer duration-300 hover:opacity-80"
+                            onClick={() => setstate({ ...state, location: "" })}
+                       >
+                           مسح
+                       </div>
+                   
+               </div>
+           </div> */}
+                  </div>
+
+                  <div>
+                    <button
+                      className="py-2 px-4 block  w-full !rounded-[15px]  md:top-1 relative bg-[#63AB45]  text-white font-semibold "
+                      onClick={(e) => formSubmit("flight", e)}
+                      type="button"
+                    >
+                      بحث
+                    </button>
+                  </div>
+                </form>
+              </div>
+
+
+
+
+
+
+
+
+
+
               {/* -----------CARS TAB ------- */}
 
               <div className="tab-pane fade py-4" id="visa" role="tabpanel">
@@ -1260,164 +1436,7 @@ const FilterHome = () => {
                 </form>
               </div>
 
-              {/* ------PACKAGES TAB ---- */}
-              <div
-                className="tab-pane fade py-4"
-                id="activities"
-                role="tabpanel"
-              >
-                <form className=" !font-kufi py-4">
-                  <div className="flex flex-col md:flex-row gap-12 md:gap-4 mt-4 px-4 w-[90%] ">
-                    <div className="w-full mb-10 md:mb-0">
-                      <div className="relative  inline-block w-full text-gray-700">
-                        <label
-                          className={`absolute -top-7   !font-kuf     ${"text-black"} text-sm font-semibold mb-2`}
-                          htmlFor="title"
-                        >
-                          الاسم
-                        </label>
-
-                        <div
-                          className="absolute inset-y-0 left-1    flex items-center px-2 cursor-pointer duration-300 hover:opacity-80"
-                          // onClick={() => setstate({ ...state, title: "" })}
-                        >
-                          {/* مسح */}
-                          <RiFindReplaceFill className=" w-5 h-5" />
-                        </div>
-
-                        <input
-                          className="w-full px-8 h-10  !font-kufi text-base placeholder-gray-600 placeholder-opacity-75 border rounded-lg appearance-none focus:outline-none"
-                          name="title"
-                          type="text"
-                          id="title"
-                          onChange={inputChange}
-                          value={state.title}
-                        />
-
-                        {/* <div className="absolute  !font-ibm inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                      
-                      
-                   </div> */}
-                      </div>
-                    </div>
-
-                    <div className="w-full mb-10 md:mb-0">
-                      <div className="relative inline-block w-full text-gray-700">
-                        <label
-                          className={`absolute -top-7 ${"text-black"} !font-kufi text-sm font-semibold mb-2`}
-                          htmlFor="type"
-                        >
-                          النوع
-                        </label>
-                        {/* <div className="absolute inset-y-0 left-0 flex items-center px-2 pointer-events-none">
-                       icon
-                   </div> */}
-
-                        <input
-                          className="w-full px-8 h-10 text-base placeholder-gray-600 placeholder-opacity-75 border rounded-lg appearance-none focus:outline-none"
-                          name="type"
-                          type="text"
-                          id="type"
-                          onChange={inputChange}
-                          value={state.type}
-                        />
-
-                        <div
-                          className="absolute inset-y-0 left-1 flex items-center px-2 cursor-pointer duration-300 hover:opacity-80"
-                          onClick={() => setstate({ ...state, type: "" })}
-                        >
-                          مسح
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="w-full mb-10 md:mb-0">
-                      <div className="relative inline-block w-full text-gray-700">
-                        <label
-                          className={`absolute -top-7 ${"text-black"} !font-kufi text-sm font-semibold mb-2`}
-                          htmlFor="location"
-                        >
-                          الموقع
-                        </label>
-                        <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                          {/* icon */}
-
-                          <FaLocationDot />
-                        </div>
-
-                        <select
-                          id="location"
-                          name="location"
-                          className="w-full h-10 px-8 text-base placeholder-gray-600 border rounded-lg appearance-none focus:outline-none"
-                          placeholder="Regular input"
-                          onChange={inputChange}
-                          value={state.location}
-                        >
-                          <option default value={""}></option>
-                          {cities.map((c) => (
-                            <option value={c.link} key={c}>
-                              {c?.name}
-                            </option>
-                          ))}
-                        </select>
-
-                        <div
-                          className="absolute inset-y-0 left-1 flex items-center px-2 cursor-pointer duration-300 hover:opacity-80"
-                          //  onClick={() => setstate({ ...state, type: "" })}
-                        >
-                          <i className="bi bi-chevron-down" />
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* -------DATES- */}
-
-                    <div className="w-full mb-10 md:mb-0">
-                      <div className="relative inline-block w-full text-gray-700">
-                        <label
-                          className={`absolute -top-7 ${"text-black"} !font-kufi text-sm font-semibold mb-2`}
-                          htmlFor="location"
-                        >
-                          التاريخ
-                        </label>
-                        <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                          {/* icon */}
-
-                          <FaLocationDot />
-                        </div>
-                        <DatePicker
-                          className="w-full h-10 px-8 text-base placeholder-gray-600 border rounded-lg appearance-none focus:outline-none"
-                          placeholder="Regular input"
-                          selectsRange
-                          startDate={startDate}
-                          endDate={endDate}
-                          onChange={handleDateChange}
-                          dateFormat="MMM d"
-                        />
-
-                        <div
-                          className="absolute inset-y-0 left-1 flex items-center px-2 cursor-pointer duration-300 hover:opacity-80"
-                          //  onClick={() => setstate({ ...state, type: "" })}
-                        >
-                          {/* <i className="bi bi-chevron-down" /> */}
-
-                          <MdDateRange />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <button
-                      className="py-2 px-4 block  w-full !rounded-[15px]  md:top-1 relative bg-[#63AB45]  text-white font-semibold "
-                      onClick={(e) => formSubmit("hotels", e)}
-                      type="button"
-                    >
-                      بحث
-                    </button>
-                  </div>
-                </form>
-              </div>
+          
 
 
 

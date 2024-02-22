@@ -54,8 +54,8 @@ const page = () => {
       <Breadcrumb pagename="الفيزا" pagetitle="الفيزا" />
       <div className="package-search-filter-wrapper">
         <div className="container">
-            {visas?.length}
-          <div className="filter-group">
+           
+           {/* <div className="filter-group">
             <form>
               <div className="filter-area">
                 <div className="row g-xl-4 gy-4">
@@ -286,7 +286,7 @@ const page = () => {
                       </div>
                       <div className="searchbox-input">
                         <label>Traveler</label>
-                        {/* <QuantityCounter /> */}
+                     
                       </div>
                     </div>
                   </div>
@@ -294,11 +294,17 @@ const page = () => {
               </div>
               <button type="submit">Search</button>
             </form>
-          </div>
+          </div>   */}
+ 
+
+
         </div>
       </div>
       <div className="visa-with-sidebar-section pt-120 mb-120">
         <div className="container">
+
+
+
           <div className="row g-lg-4 gy-5">
             <div className="col-lg-10 mx-auto">
               <div className="list-grid-product-wrap mb-70">

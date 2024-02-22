@@ -130,6 +130,9 @@ const Page = () => {
       };
 
       if (
+        // !state.phone &&
+        // !state.email &&
+        // !state.name &&
         !state.phone &&
         !state.email &&
         !state.name &&
@@ -1019,11 +1022,10 @@ return (
 
                           <div className="number-input-item adults">
                             <label className="number-input-lable !text-sm  ar">
-                              شخص بالغ:<span></span>
-                              {/* <span>
+                            عدد الاشخاص :<span></span>
                               
-                                $60
-                              </span> */}
+                                {/* $60
+                              </span>  */}
                             </label>
 
                             <Amount

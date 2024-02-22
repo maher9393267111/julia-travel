@@ -140,7 +140,11 @@ ChildrensNum,
 
 
 <h1>Service Type : ${service}</h1>
-<h1>Name : ${details?.title}</h1>
+<h1>Tour Name : ${details?.title}</h1>
+<h1>customer name : ${name}</h1>
+<h1>customer email : ${email}</h1>
+<h1> customer Phone: ${phone}</h1>
+<h1>customer Message: ${message}</h1>
 <h1>Days : ${daysNum}</h1>
 <h1>${phone}</h1>
 
@@ -161,7 +165,11 @@ ChildrensNum,
 
 
 <h1>Service Type : ${service}</h1>
-<h1>Name : ${details?.title}</h1>
+<h1>customer name : ${name}</h1>
+<h1>customer email : ${email}</h1>
+<h1> customer Phone: ${phone}</h1>
+<h1>customer Message: ${message}</h1>
+<h1>Visa Name : ${details?.title}</h1>
 <h1>Visa type : ${details?.type}</h1>
 <h1>Visa nationality : ${details?.nationality}</h1>
 <h1>Visa country : ${details?.country}</h1>
@@ -184,6 +192,11 @@ ChildrensNum,
 
 
 <h1>Service Type : ${service}</h1>
+<h1>Transport Name : ${details?.title}</h1>
+<h1>customer name : ${name}</h1>
+<h1>customer email : ${email}</h1>
+<h1> customer Phone: ${phone}</h1>
+<h1>customer Message: ${message}</h1>
 <h1>Transport Type : ${reqBody?.transportType}</h1>
 <h1>Transport Name : ${details?.title}</h1>
 <h1>Transport price : ${details?.price}</h1>
@@ -203,6 +216,34 @@ ChildrensNum,
 </h2>`;
     }
 
+
+
+    if (service === "flight") {
+      htmTemplate = `<h2>Email sent from a  ${name}
+
+</br>
+
+
+
+<h1>Service Type : ${service}</h1>
+<h1>Flight Name : ${details?.title}</h1>
+<h1>customer name : ${name}</h1>
+<h1>customer email : ${email}</h1>
+<h1> customer Phone: ${phone}</h1>
+<h1>customer Message: ${message}</h1>
+<h1>Service Type : ${service}</h1>
+<h1>Flight Name : ${details?.title}</h1>
+<h1>Flight price : ${details?.price}</h1>
+<h1>Flight From : ${details?.from}</h1>
+<h1>Flight To : ${details?.to}</h1>
+<h1>Flight person number : ${adultsNum}</h1>
+<h1>Flight Start Date :${startDate}  -   End Date : ${endDate}</h1>
+
+>
+
+
+</h2>`;
+    }
 
 
 

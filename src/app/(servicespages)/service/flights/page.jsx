@@ -28,23 +28,23 @@ const page = () => {
 
 
     const dispatch = useDispatch();
-    const [transports, setTransports] = useState([]);
+    const [flights, setFlights] = useState([]);
   
     const searchParams = useSearchParams();
   
-    const person = searchParams.get("person");
+     const person = searchParams.get("person");
     const from = searchParams.get("from");
     const to = searchParams.get("to");
     
-    const getTransports = async () => {
+    const getFlights = async () => {
       try {
         dispatch(SetLoading(true));
         // location=${location && location}&&title=${title && title}
         const response = await axios.get(
-          `/api/admin/trans?${person && "person"}=${person}
+          `/api/admin/flights?${person && "person"}=${person}
            &&${from && "from"}=${from}&&${to && "to"}=${to}`
         );
-        setTransports(response.data.data);
+        setFlights(response.data.data);
         console.log("REsponse-->", response.data.data);
       } catch (error) {
         message.error(getCatchErrorMessage(error));
@@ -53,7 +53,7 @@ const page = () => {
       }
     };
     useEffect(() => {
-      getTransports();
+      getFlights();
     }, []);
   
     
@@ -62,9 +62,9 @@ const page = () => {
 
   return (
     <>
-      <Breadcrumb pagename="النقليات" pagetitle="النقليات" />
+      <Breadcrumb pagename="رحلات الطيران" pagetitle="رحلات الطيران"/>
 
-{transports?.length}
+{flights?.length}
 
 
       <div className="transport-page pt-120 mb-120">
@@ -75,15 +75,15 @@ const page = () => {
               <div className="row g-4 mb-70">
                 
 
-              {transports?.length > 0 &&
-                    transports?.map((trans, index) => {
+              {flights?.length > 0 &&
+                    flights?.map((trans, index) => {
                       return (
 
 
                 <div className="col-md-6">
                   <div className="transport-card">
                     <Link
-                      href={`/service/transport/${trans?._id}`}
+                      href={`/service/flights/${trans?._id}`}
                       className="transport-img"
                     >
                       <img 
@@ -97,12 +97,12 @@ const page = () => {
                     //   src="/assets/img/innerpage/sajhek.jpg"
                       
                       alt="" />
-                     <span>{trans?.price}$</span>
+                      <span>{trans?.price}$</span>
                     </Link>
                     <div className="transport-content">
                       <h4>
                         <Link 
-                        href={`/service/transport/${trans?._id}`}
+                        href={`/service/flights/${trans?._id}`}
                          className=" ar"
                         >
                           {/* Travel to Sajek from Dhaka. */}
@@ -173,10 +173,10 @@ const page = () => {
                       <div className="card-bottom">
                         <div className="details-btn">
                           <Link
-                              href={`/service/transport/${trans?._id}`}
-                            className="primary-btn1"
+                            href={`/service/flights/${trans?._id}`}
+                            className="primary-btn1  ar"
                           >
-                            تفاصيل 
+                            تفاصيل الرحلة
                           </Link>
                         </div>
                         <div className="review-area">
