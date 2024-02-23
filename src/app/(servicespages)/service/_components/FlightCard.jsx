@@ -4,7 +4,7 @@ import Link from "next/link";
 
 
 
-export default function FlightCard({flight ,index}) {
+export default function FlightCard({trans ,index}) {
   return (
     <div className="col-md-6">
     <div className="transport-card">

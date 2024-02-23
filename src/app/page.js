@@ -27,7 +27,7 @@ import HomeHotels from "@/components/myComponents/HomeComponents/HotelsHome";
 import Banner1 from "@/components/banner/Banner1";
  import ToursHome from '@/components/myComponents/HomeComponents/ToursHome'
  import TransportHome from '@/components/myComponents/HomeComponents/TransportHome'
-
+ import FlightHome from '@/components/myComponents/HomeComponents/TransportHome'
 export const metadata = {
   title: "TripRex - Tour & Travel Agency  NextJs Template",
   description:
@@ -96,6 +96,24 @@ const getTours = async () => {
 };
 
 
+const getFlights = async () => {
+  try {
+    // const domain = "http://localhost:3000/api/admin/visa";
+
+    const endPoint = `${domain}/api/admin/flights?limit=true`;
+    const response = await axios.get(endPoint);
+    //console.log("RESPONSE", response.data.data);
+    return response.data.data || [];
+  } catch (error) {
+    console.log(error);
+    return [];
+  } finally {
+  }
+};
+
+
+
+
 const getTransport = async () => {
   try {
     // const domain = "http://localhost:3000/api/admin/trans?limit=true";
@@ -116,8 +134,8 @@ const getTransport = async () => {
 
 
 export default async function Home() {
-  const [visaData, hotelsData, toursData , transportData] = await Promise.all([ getVisa(),getHotels(),getTours(), getTransport()
-  
+  const [visaData, hotelsData, toursData , transportData ,flightData] = await Promise.all([ getVisa(),getHotels(),getTours(), getTransport()
+  , getFlights()
   ]);
   // const toursData = await getTours() 
  
@@ -140,6 +158,7 @@ export default async function Home() {
 
       <ToursHome tours={toursData}/>
       <TransportHome transports={transportData}/>
+      <FlightHome flights={flightData}/>
 
       <HomeVisa visaData={visaData} />
 

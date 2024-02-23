@@ -10,7 +10,7 @@ import Breadcrumb from "@/components/myComponents/layout/BreadCrumb";
 
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import HotelCard from "../_components/HotelCard"
+import HotelCard from "../_components/HotelCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import SwiperCore, {
@@ -20,11 +20,6 @@ import SwiperCore, {
   Pagination,
 } from "swiper";
 SwiperCore.use([Autoplay, EffectFade, Navigation, Pagination]);
-
-
-
-
-
 
 export default function HotelsServices() {
   const dispatch = useDispatch();
@@ -56,12 +51,6 @@ export default function HotelsServices() {
     getHotels();
   }, []);
 
-
-
-
-  
-
-
   const settings = useMemo(() => {
     return {
       slidesPerView: "auto",
@@ -85,9 +74,11 @@ export default function HotelsServices() {
 
   return (
     <div>
-      <Breadcrumb 
-      img="https://triprex-nextjs-rtl.vercel.app/assets/img/innerpage/inner-banner-bg.png"
-      pagename="Hotels" pagetitle="Hotels" />
+      <Breadcrumb
+        img="https://triprex-nextjs-rtl.vercel.app/assets/img/innerpage/inner-banner-bg.png"
+        pagename="Hotels"
+        pagetitle="Hotels"
+      />
 
       <div className="room-suits-page pt-120 mb-120">
         <div className="container">
@@ -96,11 +87,7 @@ export default function HotelsServices() {
               {/* map */}
 
               {hotels?.map((hotel, index) => {
-                return (
-
-<HotelCard index ={index} hotel ={hotel}/>
-
-                );
+                return <HotelCard index={index} hotel={hotel} />;
               })}
             </div>
           </div>

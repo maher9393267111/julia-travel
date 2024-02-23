@@ -1,10 +1,10 @@
 "use client"
 import React from 'react'
 import Link from "next/link";
-
+import { hanldeScore } from "@/uitils/StarsHandle";
 export default function HotelCard({hotel ,index}) {
 
-  console.log("HOTELS in HOMEEE" , hotel)
+  
 
 
   return (
@@ -73,22 +73,13 @@ export default function HotelCard({hotel ,index}) {
       <div className="room-content">
         <div className="content-top">
           <div className="reviews">
-            <ul>
-              <li>
+            <ul dir='ltr'>
+              {/* <li>
                 <i className="bi bi-star-fill" />
               </li>
-              <li>
-                <i className="bi bi-star-fill" />
-              </li>
-              <li>
-                <i className="bi bi-star-fill" />
-              </li>
-              <li>
-                <i className="bi bi-star-fill" />
-              </li>
-              <li>
-                <i className="bi bi-star-half" />
-              </li>
+              
+                 */}
+               {hanldeScore(hotel?.stars)}
             </ul>
             <span>{hotel?.stars} reviews</span>
           </div>
