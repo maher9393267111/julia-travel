@@ -61,7 +61,7 @@ export default function FlightsHome({flights}) {
                 flights?.map((flight, index) => {
                   return (
                    
-                    <TourCard index={index} trans={flight}/>
+                    <FlightCard index={index} trans={flight}/>
                   );
                 })}
             </div>

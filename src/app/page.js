@@ -27,7 +27,7 @@ import HomeHotels from "@/components/myComponents/HomeComponents/HotelsHome";
 import Banner1 from "@/components/banner/Banner1";
  import ToursHome from '@/components/myComponents/HomeComponents/ToursHome'
  import TransportHome from '@/components/myComponents/HomeComponents/TransportHome'
- import FlightHome from '@/components/myComponents/HomeComponents/TransportHome'
+ import FlightHome from '@/components/myComponents/HomeComponents/FlightsHome'
 export const metadata = {
   title: "TripRex - Tour & Travel Agency  NextJs Template",
   description:
