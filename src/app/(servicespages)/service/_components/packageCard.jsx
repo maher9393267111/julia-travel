@@ -27,8 +27,8 @@ export default function TransportCard({ index, trans }) {
             </Link>
           </h4>
           <div className="transport-type  ar">
-            <h6 className=" ar">الوسائل المتاحة:</h6>
-            <div className="row g-2">
+            {/* <h6 className=" ar">الوسائل المتاحة:</h6> */}
+            {/* <div className="row g-2">
               <div className="col-3">
                 <div className="single-transport">
                   <svg
@@ -85,7 +85,7 @@ export default function TransportCard({ index, trans }) {
                   <span>الباص</span>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
           <div className="card-bottom">
             <div className="details-btn">

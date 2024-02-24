@@ -27973,7 +27973,7 @@ header.style-3.four .nav-right .icon-list li:first-child svg {
   }
 }
 .package-category-nav-section .nav-pills .slider-btn-grp4 .slider-btn.tour-tab-slider-next {
-  right: -26px;
+  left: -26px;
   left: unset;
 }
 @media (max-width: 576px) {

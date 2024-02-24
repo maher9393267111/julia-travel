@@ -30,12 +30,13 @@ import Banner1 from "@/components/banner/Banner1";
  import FlightHome from '@/components/myComponents/HomeComponents/FlightsHome'
  import GoogleReviews from   '@/components/myComponents/HomeComponents/reviews'
 import { RemoveItemFromCart } from "@/redux/CartSlice";
+
 export const metadata = {
-  title: "TripRex - Tour & Travel Agency  NextJs Template",
+  title: " juliaTours - Tour & Travel Agency",
   description:
-    "TripRex is a NextJs Template for Tour and Travel Agency purpose",
+    "juliaTours - Tour & Travel Agency ",
   icons: {
-    icon: "/assets/img/sm-logo.svg",
+    icon:"/assets/img/julia-png.png",
   },
 };
 
