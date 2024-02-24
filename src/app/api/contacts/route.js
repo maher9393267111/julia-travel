@@ -104,10 +104,10 @@ export async function POST(req) {
       startDate,
       endDate,
       adultsNum,
-ChildrensNum,
+      ChildrensNum,
       daysNum,
       service,
-      details
+      details,
     } = reqBody;
 
     let htmTemplate = "";
@@ -156,7 +156,6 @@ ChildrensNum,
 </h2>`;
     }
 
-
     if (service === "visa") {
       htmTemplate = `<h2>Email sent from a  ${name}
 
@@ -182,8 +181,6 @@ ChildrensNum,
 </h2>`;
     }
 
-
-    
     if (service === "transport") {
       htmTemplate = `<h2>Email sent from a  ${name}
 
@@ -216,8 +213,6 @@ ChildrensNum,
 </h2>`;
     }
 
-
-
     if (service === "flight") {
       htmTemplate = `<h2>Email sent from a  ${name}
 
@@ -245,8 +240,36 @@ ChildrensNum,
 </h2>`;
     }
 
+    if (service === "package") {
+      htmTemplate = `<h2>Email sent from a  ${name}
+
+</br>
 
 
+
+<h1>Service Type : ${service}</h1>
+<h1>Package Name : ${details?.title}</h1>
+<h1>Package Price : ${details?.price}</h1>
+<h1>customer name : ${name}</h1>
+<h1>customer email : ${email}</h1>
+<h1> customer Phone: ${phone}</h1>
+<h1>customer Message: ${message}</h1>
+
+
+
+<h1> person number : ${adultsNum}</h1>
+<h1> Start Date :${startDate}  -   End Date : ${endDate}</h1>
+<h1>  Phone: ${phone}</h1>
+
+
+
+
+<h1> Message: ${message}</h1>
+>
+
+
+</h2>`;
+    }
 
     const mailOptions = {
       from: email,

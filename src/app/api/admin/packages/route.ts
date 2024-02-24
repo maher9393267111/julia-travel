@@ -12,6 +12,8 @@ export async function GET(req: NextRequest) {
    //  const response = await axios.get("/api/admin/packages?location=bursa");
     const url = new URL(req.url);
     const location = url.searchParams.get("location");
+
+    const limit = url.searchParams.get("limit");
   
     // workaround typescript, da await Post.find(username && { username }) mit einer Warnung daherkommt
     let filter: FilterQuery<any> = {};
@@ -22,7 +24,7 @@ export async function GET(req: NextRequest) {
 
 
 
-    const packages = await Package.find(filter);
+    const packages = limit ?   await Package.find(filter).sort({ createdAt: -1 }).limit(3) :  await Package.find(filter).sort({ createdAt: -1 });
     return NextResponse.json({ data: packages });
   } catch (error : any) {
     return NextResponse.json({ message: error.message } , { status: 500 });

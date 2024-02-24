@@ -157,7 +157,8 @@ const Page = () => {
 
   return (
     <>
-      <Breadcrumb pagename="Room Details" pagetitle="Room Details" />
+      <Breadcrumb pagename="تفاصيل الغرفة"
+       pagetitle="تفاصيل الغرفة" />
 
       {hotel && (
         <div className="room-details-area pt-120 mb-120 !font-kufi">
@@ -317,7 +318,7 @@ const Page = () => {
                     Avenue 01, Mirpur DOHS, Dhaka, Bangladesh  */}
                       {hotel?.location}
 
-                      <a href="#">See Map</a>
+                      <a  className=" mx-4" href="#">See Map</a>
                     </p>
                   </div>
                   <div className="review-area">

@@ -1,5 +1,5 @@
 "use client";
-import { Button, Form, Modal, message, Upload ,Input } from "antd";
+import { Button, Form, Modal, message, Upload, Input } from "antd";
 import React, { useMemo } from "react";
 import { useDispatch } from "react-redux";
 import { SetLoading } from "@/redux/LoadersSlice";
@@ -11,6 +11,7 @@ import { ProductType } from "@/interfaces";
 import Image from "next/image";
 import "react-quill/dist/quill.snow.css";
 import dynamic from "next/dynamic";
+import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 
 const modules = {
   toolbar: [
@@ -28,13 +29,7 @@ const modules = {
   ],
 };
 
-const locations = [
-"istanbul", "bursa" ,"trabzon" , "izmir" , "izmit" 
-
-
-]
-
-
+const locations = ["istanbul", "bursa", "trabzon", "izmir", "izmit"];
 
 function PackageForm({
   showCategoryForm,
@@ -62,25 +57,26 @@ function PackageForm({
       dispatch(SetLoading(true));
       let response;
       if (selectedCategory) {
-console.log('selected' ,selectedCategory?.images,"values" ,values.images)
-          // delete images
-      const imagesToDelete = selectedCategory.images.filter(
-        (image: string) => !values.images.includes(image)
-      );
-      await deleteImages(imagesToDelete);
-      const newImagesUploaded = await uploadImages(files);
-      values.images = [...values.images, ...newImagesUploaded];
-
-
+        console.log(
+          "selected",
+          selectedCategory?.images,
+          "values",
+          values.images
+        );
+        // delete images
+        const imagesToDelete = selectedCategory.images.filter(
+          (image: string) => !values.images.includes(image)
+        );
+        await deleteImages(imagesToDelete);
+        const newImagesUploaded = await uploadImages(files);
+        values.images = [...values.images, ...newImagesUploaded];
 
         response = await axios.put(
           `/api/admin/packages/${selectedCategory._id}`,
           values
         );
       } else {
-
         values.images = await uploadImages(files);
-
 
         response = await axios.post("/api/admin/packages", values);
       }
@@ -95,8 +91,38 @@ console.log('selected' ,selectedCategory?.images,"values" ,values.images)
     }
   };
 
+  console.log("S?????", selectedCategory);
 
-console.log("S?????"  , selectedCategory)
+  const formItemLayout = {
+    labelCol: {
+      xs: {
+        span: 24,
+      },
+      sm: {
+        span: 4,
+      },
+    },
+    wrapperCol: {
+      xs: {
+        span: 24,
+      },
+      sm: {
+        span: 20,
+      },
+    },
+  };
+  const formItemLayoutWithOutLabel = {
+    wrapperCol: {
+      xs: {
+        span: 24,
+        offset: 0,
+      },
+      sm: {
+        span: 20,
+        offset: 4,
+      },
+    },
+  };
 
   const modelTitle = selectedCategory ? "Edit Package" : "Add Package";
   return (
@@ -134,37 +160,28 @@ console.log("S?????"  , selectedCategory)
           <Input className="    input_style  " type="text" />
         </Form.Item>
 
-
-        <Form.Item label="Location" name="location"     rules={[
+        <Form.Item
+          label="Location"
+          name="location"
+          rules={[
             {
               required: true,
               message: "Please input location",
             },
-          ]} >
-          <select
-          className="input_style w-full py-2"
-          value={""}
-          >
+          ]}
+        >
+          <select className="input_style w-full py-2" value={""}>
             <option value="">Select Location</option>
-            {locations.map((location: any ,index :any) => (
+            {locations.map((location: any, index: any) => (
               <option key={index} value={location}>
                 {location}
               </option>
             ))}
           </select>
-
-
         </Form.Item>
 
-
-
-
-
-
-
-
         <Form.Item
-        className="input_style"
+          className="input_style"
           label="Price"
           name="price"
           rules={[
@@ -175,59 +192,7 @@ console.log("S?????"  , selectedCategory)
           ]}
         >
           <Input className="    input_style  " type="text" />
-     
         </Form.Item>
-
-
-        {/* <Form.Item label="Location" name="location"     rules={[
-            {
-              required: true,
-              message: "Please input location",
-            },
-          ]} >
-          <select
-          className="input_style w-full py-2"
-          value={""}
-          >
-            <option value="">Select Category</option>
-            {locations.map((location: any ,index :any) => (
-              <option key={index} value={location}>
-                {location}
-              </option>
-            ))}
-          </select>
-
-
-        </Form.Item> */}
-
-
-
-
-
-
-
-
-        {/* <Form.Item
-          label="Title"
-          name="title"
-          rules={[
-            {
-              required: true,
-              message: "Please input hotel title",
-            },
-          ]}
-        >
-         
-
-          <div className="form-inner mb-2  !outline-green-500  ">
-            <input type="text" placeholder="hotel name" />
-          </div>
-        </Form.Item> */}
-
-   
-
-
-
 
         <Form.Item
           label="Description"
@@ -247,6 +212,75 @@ console.log("S?????"  , selectedCategory)
             className=" pb-[10px] border-[2.5px] text-black font-medium rounded-md border-teal-400 hover:border-blue-600"
           />
         </Form.Item>
+
+        {/* ----array of inputs---- */}
+
+        <Form.List
+          name="features"
+          rules={[
+            {
+              validator: async (_, names) => {
+                if (!names || names.length < 1) {
+                  return Promise.reject(new Error("At least 1 features"));
+                }
+              },
+            },
+          ]}
+        >
+          {(fields, { add, remove }, { errors }) => (
+            <>
+              {fields.map((field, index) => (
+                <Form.Item
+                  // {...(index === 0 ? formItemLayout : formItemLayoutWithOutLabel)}
+                  label={index === 0 ? "Features" : ""}
+                  required={false}
+                  key={field.key}
+                >
+                  <Form.Item
+                    {...field}
+                    validateTrigger={["onChange", "onBlur"]}
+                    rules={[
+                      {
+                        required: true,
+                        whitespace: true,
+                        message:
+                          "Please input feature's name or delete this field.",
+                      },
+                    ]}
+                    noStyle
+                  >
+                    <Input
+                      placeholder="feature name"
+                      style={{
+                        width: "60%",
+                      }}
+                    />
+                  </Form.Item>
+                  {fields.length > 1 ? (
+                    <MinusCircleOutlined
+                      className="dynamic-delete-button"
+                      onClick={() => remove(field.name)}
+                    />
+                  ) : null}
+                </Form.Item>
+              ))}
+              <Form.Item>
+                <Button
+                  type="dashed"
+                  onClick={() => add()}
+                  style={{
+                    width: "60%",
+                  }}
+                  icon={<PlusOutlined />}
+                >
+                  Add new feature
+                </Button>
+
+                <Form.ErrorList errors={errors} />
+              </Form.Item>
+            </>
+          )}
+        </Form.List>
 
         <div className="col-span-3">
           <Upload

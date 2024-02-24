@@ -7,7 +7,7 @@ export default function TransportCard({ index, trans }) {
     <div className="col-md-6">
       <div className="transport-card">
         <Link
-          href={`/service/transport/${trans?._id}`}
+          href={`/service/packages/${trans?._id}`}
           className="transport-img"
         >
           <img
@@ -21,7 +21,7 @@ export default function TransportCard({ index, trans }) {
         </Link>
         <div className="transport-content">
           <h4>
-            <Link href={`/service/transport/${trans?._id}`} className=" ar">
+            <Link href={`/service/packages/${trans?._id}`} className=" ar">
               {/* Travel to Sajek from Dhaka. */}
               {trans?.title}
             </Link>
@@ -90,7 +90,7 @@ export default function TransportCard({ index, trans }) {
           <div className="card-bottom">
             <div className="details-btn">
               <Link
-                href={`/service/transport/${trans?._id}`}
+                href={`/service/packages/${trans?._id}`}
                 className="primary-btn1"
               >
                 تفاصيل
