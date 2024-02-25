@@ -1,6 +1,62 @@
+"use client"
 import React from "react";
+import { Button, message } from "antd";
+import { useState } from "react";
 
 const page = () => {
+  const [state, setstate] = useState({
+    name: "",
+    phone: "",
+
+    email: "",
+    message: "",
+
+    error: false,
+  });
+
+  const formSubmit = (e) => {
+    e.preventDefault();
+    console.log("clicked btn");
+    sendMessage();
+  };
+
+  const sendMessage = async () => {
+    try {
+      let data = {
+        ...state,
+      };
+
+      if (!state.phone && !state.email && !state.name) {
+        console.log("ERROR CONDITION @@@@@@");
+        setstate({ ...state, error: true });
+        message.info("يرجا تعبئة كافة الحقول");
+      } else {
+        const res = await fetch("/api/contact", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+
+        setstate({ ...state, error: false });
+
+        message.success("تم ارسال معلوماتك بنجاح");
+      }
+
+      //console.log("response", res);
+
+      //   setPhone("")
+    } catch (error) {
+      message.error("حدث خطأ ما");
+      console.log(error);
+    }
+  };
+
+  const inputChange = (e) => {
+    setstate({ ...state, [e.target.name]: e.target.value });
+  };
+
   return (
     <>
       <div className="contact-page pt-120 mb-120    !font-kufi">
@@ -34,7 +90,7 @@ const page = () => {
               </div>
               <div className="single-contact mb-40">
                 <div className="title">
-                  <h6  className=" !font-kufi">البريد الالكتروني</h6>
+                  <h6 className=" !font-kufi">البريد الالكتروني</h6>
                 </div>
                 <div className="icon">
                   <svg
@@ -57,7 +113,7 @@ const page = () => {
               </div>
               <div className="single-contact mb-40">
                 <div className="title">
-                  <h6  className=" !font-kufi">الموقع</h6>
+                  <h6 className=" !font-kufi">الموقع</h6>
                 </div>
                 <div className="icon">
                   <svg
@@ -81,7 +137,7 @@ const page = () => {
               </div>
               <div className="single-contact">
                 <div className="title">
-                  <h6  className=" !font-kufi">اوقات العمل</h6>
+                  <h6 className=" !font-kufi">اوقات العمل</h6>
                 </div>
                 <div className="icon">
                   <svg
@@ -130,36 +186,54 @@ const page = () => {
                   <div className="row">
                     <div className="col-lg-12 mb-20">
                       <div className="form-inner">
-                        <label  className=" !font-kufi" >الاسم</label>
-                        <input  className=" !font-kufi" type="text" placeholder="" />
+                        <label className=" !font-kufi">الاسم</label>
+                        <input
+                             name="name"
+                             onChange={inputChange}
+                             value={state.name}
+                          className=" !font-kufi"
+                          type="text"
+                          placeholder=""
+                        />
                       </div>
                     </div>
                     <div className="col-lg-6 mb-20">
                       <div className="form-inner">
-                        <label  className=" !font-kufi">رقم الاتصال</label>
-                        <input type="text" placeholder="..." />
+                        <label className=" !font-kufi">رقم الاتصال</label>
+                        <input
+                             name="phone"
+                             onChange={inputChange}
+                             value={state.phone}
+                        type="text" placeholder="..." />
                       </div>
                     </div>
                     <div className="col-lg-6 mb-20">
                       <div className="form-inner">
-                        <label  className=" !font-kufi">البريد</label>
-                        <input type="email" placeholder="...." />
+                        <label className=" !font-kufi">البريد</label>
+                        <input
+                             name="email"
+                             onChange={inputChange}
+                             value={state.email}
+                        type="email" placeholder="...." />
                       </div>
                     </div>
                     <div className="col-lg-12 mb-30">
                       <div className="form-inner">
-                        <label  className=" !font-kufi">اكتب رسالتك</label>
+                        <label className=" !font-kufi">اكتب رسالتك</label>
                         <textarea
-                          placeholder="...."
-                          defaultValue={""}
-                        />
+                             name="message"
+                             onChange={inputChange}
+                             value={state.message}
+                        placeholder="...." defaultValue={""} />
                       </div>
                     </div>
                     <div className="col-lg-12">
                       <div className="form-inner">
                         <button
                           className="primary-btn1 btn-hover    !font-kufi"
-                          type="submit"
+                          onClick={(e) => formSubmit(e)}
+                              type="submit"
+
                         >
                           ارسال
                         </button>
@@ -190,7 +264,7 @@ const page = () => {
                   <form>
                     <div className="from-inner">
                       <input type="email" placeholder="Enter Your Gmail..." />
-                      <button type="submit" className="from-arrow">
+                      <button type="" className="from-arrow">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width={18}

@@ -94,10 +94,7 @@ const Page = () => {
     e.preventDefault();
     console.log("clicked btn")
     sendMessage();
-    // if (state.name && state.email && state.message && state.phone   ) {
-    //   sendMessage();
-
-    // }
+  
   };
 
   const inputChange = (e) => {
@@ -163,6 +160,10 @@ const Page = () => {
       console.log(error);
     }
   };
+
+
+
+
 
   const settings = useMemo(() => {
     return {
