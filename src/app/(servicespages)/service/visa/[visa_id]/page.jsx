@@ -121,6 +121,8 @@ const page = () => {
 
       if (state.phone === "" && state.email === "" &&   state.name === "") {
         setstate({ ...state, error: true });
+        message.info("يرجا تعبئة كافة الحقول");
+       
         console.log("all fields is required")
       } else {
         console.log("form sended" , state.email)
@@ -133,14 +135,17 @@ const page = () => {
         });
 
         setstate({ ...state, error: false });
+       
+        message.success("تم ارسال معلوماتك بنجاح");
+       
       }
 
       console.log("response", res);
 
       //   setPhone("")
     } catch (error) {
-      //  setIsLoading(false);
-      //errorHandler(error?.message)
+  ;
+      message.error("حدث خطأ ما");
       console.log(error);
     }
   };

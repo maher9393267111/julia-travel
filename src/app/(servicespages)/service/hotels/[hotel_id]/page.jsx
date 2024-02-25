@@ -135,6 +135,7 @@ const Page = () => {
         !endDate
       ) {
         setstate({ ...state, error: true });
+        message.info("يرجا تعبئة كافة الحقول");
       } else {
         const res = await fetch("/api/contacts", {
           method: "POST",
@@ -145,12 +146,22 @@ const Page = () => {
         });
 
         setstate({ ...state, error: false });
+        
+        message.success("تم ارسال معلوماتك بنجاح");
+       
+
       }
 
       //   setPhone("")
+
+
+     
+
+
+
+
     } catch (error) {
-      //  setIsLoading(false);
-      //errorHandler(error?.message)
+      message.error("حدث خطأ ما");
       console.log(error);
     }
   };

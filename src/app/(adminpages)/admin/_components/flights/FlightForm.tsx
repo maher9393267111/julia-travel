@@ -56,25 +56,26 @@ function FlightForm({
       dispatch(SetLoading(true));
       let response;
       if (selectedCategory) {
-console.log('selected' ,selectedCategory?.images,"values" ,values.images)
-          // delete images
-      const imagesToDelete = selectedCategory.images.filter(
-        (image: string) => !values.images.includes(image)
-      );
-      await deleteImages(imagesToDelete);
-      const newImagesUploaded = await uploadImages(files);
-      values.images = [...values.images, ...newImagesUploaded];
-
-
+        console.log(
+          "selected",
+          selectedCategory?.images,
+          "values",
+          values.images
+        );
+        // delete images
+        const imagesToDelete = selectedCategory.images.filter(
+          (image: string) => !values.images.includes(image)
+        );
+        await deleteImages(imagesToDelete);
+        const newImagesUploaded = await uploadImages(files);
+        values.images = [...values.images, ...newImagesUploaded];
 
         response = await axios.put(
           `/api/admin/flights/${selectedCategory._id}`,
           values
         );
       } else {
-
         values.images = await uploadImages(files);
-
 
         response = await axios.post("/api/admin/flights", values);
       }
@@ -161,10 +162,9 @@ console.log('selected' ,selectedCategory?.images,"values" ,values.images)
           </select>
         </Form.Item> */}
 
-    
-{/* from to */}
+        {/* from to */}
 
-<Form.Item
+        <Form.Item
           label="from"
           name="from"
           rules={[
@@ -177,9 +177,6 @@ console.log('selected' ,selectedCategory?.images,"values" ,values.images)
           {/* <input type="text" /> */}
           <Input className="    input_style  " type="text" />
         </Form.Item>
-
-
-
 
         <Form.Item
           label="to"
@@ -194,11 +191,6 @@ console.log('selected' ,selectedCategory?.images,"values" ,values.images)
           {/* <input type="text" /> */}
           <Input className="    input_style  " type="text" />
         </Form.Item>
-
-
-     
-
-
 
         <Form.Item
           label="Description"
