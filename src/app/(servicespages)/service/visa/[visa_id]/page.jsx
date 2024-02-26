@@ -140,7 +140,6 @@ const page = () => {
        
       }
 
-      console.log("response", res);
 
       //   setPhone("")
     } catch (error) {

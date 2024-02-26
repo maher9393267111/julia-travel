@@ -1,5 +1,3 @@
-
-
 import * as nodemailer from "nodemailer";
 import { NextResponse, NextRequest } from "next/server";
 
@@ -40,165 +38,203 @@ export async function POST(req) {
       details,
     } = reqBody;
 
-    let htmTemplate = "";
+    let htmTemplate = null;
+    const defaultYear = new Date().getFullYear();
 
     if (service === "hotels") {
-      htmTemplate = `<h2>Email sent from a  ${name}
+      htmTemplate = `
 
-</br>
+<body style="background: #f3f4f6; padding:0 5px;">
+<div style="max-width: 600px; margin: 0 auto; padding: 20px 0; font-family:Trebuchet MS;">
+<div style="text-align: center; margin-bottom: 20px;">
+ <h1 style="color: #000; text-transform: uppercase; font-size: 30px;">You have new message from your website</h1>
+</div>
+<div style="padding: 10px; border-radius:5px; background:#fff; -webkit-box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.3); -moz-box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.3); box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.3);">
+    <h2 style="text-align: center; text-transform: uppercase; color: teal;">New message</h2>
+    <p style="font-size:1rem;"><strong>Service Type: </strong> ${service}</p>
+    <p style="font-size:1rem;"><strong>Service title: </strong> ${details.title}</p>
+    <p style="font-size:1rem;"><strong>Service price: </strong> ${details.price}</p>
+    <p style="font-size:1rem;"><strong>Days: </strong> ${daysNum}</p>
+    <p style="font-size:1rem;"><strong>Adults Number: </strong> ${adultsNum}</p>
+    <p style="font-size:1rem;"><strong>Childrens Number: </strong> ${ChildrensNum}</p>
+    <p style="font-size:1rem;"><strong>Start Date: </strong> ${startDate}   -  ${endDate}</p>
+    <p style="font-size:1rem;"><strong>Name: </strong> ${name}</p>
+    <p style="font-size:1rem;"><strong>Email: </strong> ${email}</p>
+    <p style="font-size:1rem;"><strong>Phone: </strong> ${phone}</p>
+   
+    <p style="font-size:1rem;"><strong>Message: </strong> ${message}</p>
+</div>
+</div>
 
-
-
-<h1>Service Type : ${service}</h1>
-<h1>Name : ${details?.title}</h1>
-<h1>Days : ${daysNum}</h1>
-<h1>${phone}</h1>
-
-<h1>${message}</h1>
-<h1>Adults :${adultsNum}</h1>
-<h1>Childrens : ${ChildrensNum}</h1>
-<h1> Start Date :${startDate}  -   End Date : ${endDate}</h1>
-
-</h2>`;
+<footer style="text-align: center; padding: 5px 0; color: #000; font-size: 1rem;">
+<h2>Julia Tours</h2>
+<p>© ${defaultYear} All rights reserved</p>
+</footer>
+</body>
+`;
     }
 
     if (service === "tours") {
-      htmTemplate = `<h2>Email sent from a  ${name}
+      htmTemplate = `
 
-</br>
+<body style="background: #f3f4f6; padding:0 5px;">
+<div style="max-width: 600px; margin: 0 auto; padding: 20px 0; font-family:Trebuchet MS;">
+<div style="text-align: center; margin-bottom: 20px;">
+ <h1 style="color: #000; text-transform: uppercase; font-size: 30px;">You have new message from your website</h1>
+</div>
+<div style="padding: 10px; border-radius:5px; background:#fff; -webkit-box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.3); -moz-box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.3); box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.3);">
+    <h2 style="text-align: center; text-transform: uppercase; color: teal;">New message</h2>
+    <p style="font-size:1rem;"><strong>Service Type: </strong> ${service}</p>
+    <p style="font-size:1rem;"><strong>Service title: </strong> ${details.title}</p>
+    <p style="font-size:1rem;"><strong>Service price: </strong> ${details.price}</p>
+    <p style="font-size:1rem;"><strong>Days: </strong> ${daysNum}</p>
+    <p style="font-size:1rem;"><strong>Adults Number: </strong> ${adultsNum}</p>
+    
+    <p style="font-size:1rem;"><strong>Start Date: </strong> ${startDate}   -  ${endDate}</p>
+    <p style="font-size:1rem;"><strong>Name: </strong> ${name}</p>
+    <p style="font-size:1rem;"><strong>Email: </strong> ${email}</p>
+    <p style="font-size:1rem;"><strong>Phone: </strong> ${phone}</p>
+   
+    <p style="font-size:1rem;"><strong>Message: </strong> ${message}</p>
+</div>
+</div>
 
-
-
-<h1>Service Type : ${service}</h1>
-<h1>Tour Name : ${details?.title}</h1>
-<h1>customer name : ${name}</h1>
-<h1>customer email : ${email}</h1>
-<h1> customer Phone: ${phone}</h1>
-<h1>customer Message: ${message}</h1>
-<h1>Days : ${daysNum}</h1>
-<h1>${phone}</h1>
-
-<h1>${message}</h1>
-<h1>Adults :${adultsNum}</h1>
-
-<h1> Start Date :${startDate}  -   End Date : ${endDate}</h1>
-
-</h2>`;
+<footer style="text-align: center; padding: 5px 0; color: #000; font-size: 1rem;">
+<h2>Julia Tours</h2>
+<p>© ${defaultYear} All rights reserved</p>
+</footer>
+</body>
+`;
     }
 
     if (service === "visa") {
-      htmTemplate = `<h2>Email sent from a  ${name}
+      htmTemplate = `
 
-</br>
+<body style="background: #f3f4f6; padding:0 5px;">
+<div style="max-width: 600px; margin: 0 auto; padding: 20px 0; font-family:Trebuchet MS;">
+<div style="text-align: center; margin-bottom: 20px;">
+ <h1 style="color: #000; text-transform: uppercase; font-size: 30px;">You have new message from your website</h1>
+</div>
+<div style="padding: 10px; border-radius:5px; background:#fff; -webkit-box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.3); -moz-box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.3); box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.3);">
+    <h2 style="text-align: center; text-transform: uppercase; color: teal;">New message</h2>
+    <p style="font-size:1rem;"><strong>Service Type: </strong> ${service}</p>
+    <p style="font-size:1rem;"><strong>Service title: </strong> ${details.title}</p>
+    <p style="font-size:1rem;"><strong>Service price: </strong> ${details.price}</p>
+  
+    <p style="font-size:1rem;"><strong>Visa country: </strong> ${details.country}</p>
+    <p style="font-size:1rem;"><strong>Visa nationality: </strong> ${details.nationality}</p>
+    <p style="font-size:1rem;"><strong>Visa type: </strong> ${details.type}</p>
+    <p style="font-size:1rem;"><strong>Name: </strong> ${name}</p>
+    <p style="font-size:1rem;"><strong>Email: </strong> ${email}</p>
+    <p style="font-size:1rem;"><strong>Phone: </strong> ${phone}</p>
+   
+    <p style="font-size:1rem;"><strong>Message: </strong> ${message}</p>
+</div>
+</div>
 
-
-
-<h1>Service Type : ${service}</h1>
-<h1>customer name : ${name}</h1>
-<h1>customer email : ${email}</h1>
-<h1> customer Phone: ${phone}</h1>
-<h1>customer Message: ${message}</h1>
-<h1>Visa Name : ${details?.title}</h1>
-<h1>Visa type : ${details?.type}</h1>
-<h1>Visa nationality : ${details?.nationality}</h1>
-<h1>Visa country : ${details?.country}</h1>
-<h1> Phone: ${phone}</h1>
-
-<h1> Message: ${message}</h1>
->
-
-
-</h2>`;
+<footer style="text-align: center; padding: 5px 0; color: #000; font-size: 1rem;">
+<h2>Julia Tours</h2>
+<p>© ${defaultYear} All rights reserved</p>
+</footer>
+</body>
+`;
     }
 
     if (service === "transport") {
-      htmTemplate = `<h2>Email sent from a  ${name}
+      htmTemplate = `
 
-</br>
+<body style="background: #f3f4f6; padding:0 5px;">
+<div style="max-width: 600px; margin: 0 auto; padding: 20px 0; font-family:Trebuchet MS;">
+<div style="text-align: center; margin-bottom: 20px;">
+ <h1 style="color: #000; text-transform: uppercase; font-size: 30px;">You have new message from your website</h1>
+</div>
+<div style="padding: 10px; border-radius:5px; background:#fff; -webkit-box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.3); -moz-box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.3); box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.3);">
+    <h2 style="text-align: center; text-transform: uppercase; color: teal;">New message</h2>
+    <p style="font-size:1rem;"><strong>Service Type: </strong> ${service}</p>
+    <p style="font-size:1rem;"><strong>Service title: </strong> ${details.title}</p>
+    <p style="font-size:1rem;"><strong>Service price: </strong> ${details.price}</p>
+    <p style="font-size:1rem;"><strong>Transport type : </strong> ${reqBody?.transportType}</p>
+    <p style="font-size:1rem;"><strong>Transport from : </strong> ${details.from}</p>
+    <p style="font-size:1rem;"><strong>Transport to: </strong> ${details.to}</p>
+    <p style="font-size:1rem;"><strong>person number : </strong> ${adultsNum}</p>
+    <p style="font-size:1rem;"><strong>Name: </strong> ${name}</p>
+    <p style="font-size:1rem;"><strong>Email: </strong> ${email}</p>
+    <p style="font-size:1rem;"><strong>Phone: </strong> ${phone}</p>
+   
+    <p style="font-size:1rem;"><strong>Message: </strong> ${message}</p>
+</div>
+</div>
 
-
-
-<h1>Service Type : ${service}</h1>
-<h1>Transport Name : ${details?.title}</h1>
-<h1>customer name : ${name}</h1>
-<h1>customer email : ${email}</h1>
-<h1> customer Phone: ${phone}</h1>
-<h1>customer Message: ${message}</h1>
-<h1>Transport Type : ${reqBody?.transportType}</h1>
-<h1>Transport Name : ${details?.title}</h1>
-<h1>Transport price : ${details?.price}</h1>
-<h1>Transport From : ${details?.from}</h1>
-<h1>Transport To : ${details?.to}</h1>
-<h1>Transport person number : ${adultsNum}</h1>
-<h1>Transport Start Date :${startDate}  -   End Date : ${endDate}</h1>
-<h1> Phone: ${phone}</h1>
-
-
-
-
-<h1> Message: ${message}</h1>
->
-
-
-</h2>`;
+<footer style="text-align: center; padding: 5px 0; color: #000; font-size: 1rem;">
+<h2>Julia Tours</h2>
+<p>© ${defaultYear} All rights reserved</p>
+</footer>
+</body>
+`;
     }
 
     if (service === "flight") {
-      htmTemplate = `<h2>Email sent from a  ${name}
+      htmTemplate = `
 
-</br>
+<body style="background: #f3f4f6; padding:0 5px;">
+<div style="max-width: 600px; margin: 0 auto; padding: 20px 0; font-family:Trebuchet MS;">
+<div style="text-align: center; margin-bottom: 20px;">
+ <h1 style="color: #000; text-transform: uppercase; font-size: 30px;">You have new message from your website</h1>
+</div>
+<div style="padding: 10px; border-radius:5px; background:#fff; -webkit-box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.3); -moz-box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.3); box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.3);">
+    <h2 style="text-align: center; text-transform: uppercase; color: teal;">New message</h2>
+    <p style="font-size:1rem;"><strong>Service Type: </strong> ${service}</p>
+    <p style="font-size:1rem;"><strong>Service title: </strong> ${details.title}</p>
+    <p style="font-size:1rem;"><strong>Service price: </strong> ${details.price}</p>
+    
+    <p style="font-size:1rem;"><strong>Flight from : </strong> ${details.from}</p>
+    <p style="font-size:1rem;"><strong>Flight to: </strong> ${details.to}</p>
+    <p style="font-size:1rem;"><strong>person number : </strong> ${adultsNum}</p>
+    <p style="font-size:1rem;"><strong>Name: </strong> ${name}</p>
+    <p style="font-size:1rem;"><strong>Email: </strong> ${email}</p>
+    <p style="font-size:1rem;"><strong>Phone: </strong> ${phone}</p>
+   
+    <p style="font-size:1rem;"><strong>Message: </strong> ${message}</p>
+</div>
+</div>
 
-
-
-<h1>Service Type : ${service}</h1>
-<h1>Flight Name : ${details?.title}</h1>
-<h1>customer name : ${name}</h1>
-<h1>customer email : ${email}</h1>
-<h1> customer Phone: ${phone}</h1>
-<h1>customer Message: ${message}</h1>
-<h1>Service Type : ${service}</h1>
-<h1>Flight Name : ${details?.title}</h1>
-<h1>Flight price : ${details?.price}</h1>
-<h1>Flight From : ${details?.from}</h1>
-<h1>Flight To : ${details?.to}</h1>
-<h1>Flight person number : ${adultsNum}</h1>
-<h1>Flight Start Date :${startDate}  -   End Date : ${endDate}</h1>
-
->
-
-
-</h2>`;
+<footer style="text-align: center; padding: 5px 0; color: #000; font-size: 1rem;">
+<h2>Julia Tours</h2>
+<p>© ${defaultYear} All rights reserved</p>
+</footer>
+</body>
+`;
     }
 
     if (service === "package") {
-      htmTemplate = `<h2>Email sent from a  ${name}
+      htmTemplate = `
 
-</br>
+<body style="background: #f3f4f6; padding:0 5px;">
+<div style="max-width: 600px; margin: 0 auto; padding: 20px 0; font-family:Trebuchet MS;">
+<div style="text-align: center; margin-bottom: 20px;">
+ <h1 style="color: #000; text-transform: uppercase; font-size: 30px;">You have new message from your website</h1>
+</div>
+<div style="padding: 10px; border-radius:5px; background:#fff; -webkit-box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.3); -moz-box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.3); box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.3);">
+    <h2 style="text-align: center; text-transform: uppercase; color: teal;">New message</h2>
+    <p style="font-size:1rem;"><strong>Service Type: </strong> ${service}</p>
+    <p style="font-size:1rem;"><strong>Service title: </strong> ${details.title}</p>
+    <p style="font-size:1rem;"><strong>Service price: </strong> ${details.price}</p>
 
+    <p style="font-size:1rem;"><strong>person number : </strong> ${adultsNum}</p>
+    <p style="font-size:1rem;"><strong>Name: </strong> ${name}</p>
+    <p style="font-size:1rem;"><strong>Email: </strong> ${email}</p>
+    <p style="font-size:1rem;"><strong>Phone: </strong> ${phone}</p>
+   
+    <p style="font-size:1rem;"><strong>Message: </strong> ${message}</p>
+</div>
+</div>
 
-
-<h1>Service Type : ${service}</h1>
-<h1>Package Name : ${details?.title}</h1>
-<h1>Package Price : ${details?.price}</h1>
-<h1>customer name : ${name}</h1>
-<h1>customer email : ${email}</h1>
-<h1> customer Phone: ${phone}</h1>
-<h1>customer Message: ${message}</h1>
-
-
-
-<h1> person number : ${adultsNum}</h1>
-<h1> Start Date :${startDate}  -   End Date : ${endDate}</h1>
-<h1>  Phone: ${phone}</h1>
-
-
-
-
-<h1> Message: ${message}</h1>
->
-
-
-</h2>`;
+<footer style="text-align: center; padding: 5px 0; color: #000; font-size: 1rem;">
+<h2>Julia Tours</h2>
+<p>© ${defaultYear} All rights reserved</p>
+</footer>
+</body>
+`;
     }
 
     const mailOptions = {

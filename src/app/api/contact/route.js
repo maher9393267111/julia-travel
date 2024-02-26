@@ -1,5 +1,6 @@
 import * as nodemailer from "nodemailer";
 import { NextResponse, NextRequest } from "next/server";
+import { email_template } from "./emailTemplate";
 
 const passw = "bbvh hors bgbq pxjm";
 const emails = "noreply.springworthbooks@gmail.com";
@@ -63,7 +64,7 @@ export async function POST(req) {
       to: "basma94ghanem@gmail.com",
       subject: `Message from ${name}`,
       subject: `Contact Message from ${email}`,
-      html: htmTemplate,
+      html: email_template(reqBody),
     };
 
     await transporter.sendMail(mailOptions);

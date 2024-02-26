@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import { Button, message } from "antd";
 import { useState } from "react";
@@ -188,9 +188,9 @@ const page = () => {
                       <div className="form-inner">
                         <label className=" !font-kufi">الاسم</label>
                         <input
-                             name="name"
-                             onChange={inputChange}
-                             value={state.name}
+                          name="name"
+                          onChange={inputChange}
+                          value={state.name}
                           className=" !font-kufi"
                           type="text"
                           placeholder=""
@@ -201,30 +201,36 @@ const page = () => {
                       <div className="form-inner">
                         <label className=" !font-kufi">رقم الاتصال</label>
                         <input
-                             name="phone"
-                             onChange={inputChange}
-                             value={state.phone}
-                        type="text" placeholder="..." />
+                          name="phone"
+                          onChange={inputChange}
+                          value={state.phone}
+                          type="text"
+                          placeholder="..."
+                        />
                       </div>
                     </div>
                     <div className="col-lg-6 mb-20">
                       <div className="form-inner">
                         <label className=" !font-kufi">البريد</label>
                         <input
-                             name="email"
-                             onChange={inputChange}
-                             value={state.email}
-                        type="email" placeholder="...." />
+                          name="email"
+                          onChange={inputChange}
+                          value={state.email}
+                          type="email"
+                          placeholder="...."
+                        />
                       </div>
                     </div>
                     <div className="col-lg-12 mb-30">
                       <div className="form-inner">
                         <label className=" !font-kufi">اكتب رسالتك</label>
                         <textarea
-                             name="message"
-                             onChange={inputChange}
-                             value={state.message}
-                        placeholder="...." defaultValue={""} />
+                          name="message"
+                          onChange={inputChange}
+                          value={state.message}
+                          placeholder="...."
+                          defaultValue={""}
+                        />
                       </div>
                     </div>
                     <div className="col-lg-12">
@@ -232,8 +238,7 @@ const page = () => {
                         <button
                           className="primary-btn1 btn-hover    !font-kufi"
                           onClick={(e) => formSubmit(e)}
-                              type="submit"
-
+                          type="submit"
                         >
                           ارسال
                         </button>

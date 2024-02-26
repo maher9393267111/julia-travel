@@ -131,7 +131,7 @@ const Page = () => {
      
       }
 
-      console.log("response", res);
+     
 
       //   setPhone("")
     } catch (error) {
