@@ -11,6 +11,7 @@ import { ProductType } from "@/interfaces";
 import Image from "next/image";
 import "react-quill/dist/quill.snow.css";
 import dynamic from "next/dynamic";
+import { CountriesAr ,CitiesAr } from "@/uitils/locations";
 
 const modules = {
   toolbar: [
@@ -144,8 +145,19 @@ console.log("S?????"  , selectedCategory)
             },
           ]}
         >
-          {/* <input type="text" /> */}
-          <Input className=" input_style" type="text" />
+      
+      <select className="input_style w-full py-2" value={""}>
+            <option value="">Select Country</option>
+            {CountriesAr.map((location: any, index: any) => (
+              <option key={index} value={location}>
+                {location}
+              </option>
+            ))}
+          </select>
+
+
+
+
         </Form.Item>
 
         <Form.Item
@@ -158,8 +170,17 @@ console.log("S?????"  , selectedCategory)
             },
           ]}
         >
-          {/* <input type="text" /> */}
-          <Input className="    input_style  " type="text" />
+     
+     <select className="input_style w-full py-2" value={""}>
+            <option value="">Select City</option>
+            {CitiesAr.map((city: any, index: any) => (
+              <option key={index} value={city}>
+                {city}
+              </option>
+            ))}
+          </select>
+
+
         </Form.Item>
 
         {/* <Form.Item label="Location" name="location"     rules={[

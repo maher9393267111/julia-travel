@@ -34,23 +34,63 @@ const transSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    cartype: {
-      type: Boolean,
-      required: true,
-      default: false,
-    },
-    bustype: {
-      type: Boolean,
-      required: true,
-      default: false,
-    },
-    boattype: {
-      type: Boolean,
-      required: true,
-      default: false,
-    },
+    // cartype: {
+    //   type: Boolean,
+    //   required: true,
+    //   default: false,
+    // },
+    // bustype: {
+    //   type: Boolean,
+    //   required: true,
+    //   default: false,
+    // },
+    // boattype: {
+    //   type: Boolean,
+    //   required: true,
+    //   default: false,
+    // },
+
     price: {
       type: Number,
+      required: true,
+    },
+
+    isvito: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
+    vitoprice: {
+      type: Number,
+      required: true,
+      default: false,
+    },
+
+    isminibus: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
+    minibusprice: {
+      type: Number,
+      required: true,
+      default: false,
+    },
+
+    isbus: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
+
+    busprice: {
+      type: Number,
+      required: true,
+      default: false,
+    },
+
+    fueltype: {
+      type: String,
       required: true,
     },
   },

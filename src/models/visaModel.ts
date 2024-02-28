@@ -15,11 +15,39 @@ const visaSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+
+    extratype: {
+      type: String,
+      required: true,
+    },
+
+
+    maketime: {
+      type: String,
+      required: true,
+    },
+
+    requirements: {
+      type: [String],
+      default: [],
+    },
+
+
+    discount: {
+      type: Number,
+      required: false,
+      default:0
+    },
+
+
     
     nationality: {
       type: String,
       required: true,
     },
+
+    
+
 
     country: {
       type: String,

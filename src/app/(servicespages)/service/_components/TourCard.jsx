@@ -5,13 +5,13 @@ import Link from "next/link";
 export default function TourCard({tour , index}) {
   return (
 
-    <div className="col-xl-3 col-lg-4 col-sm-6">
+    <div className="col-xl-4 col-lg-4 col-sm-6">
     <div className="activity-card">
       <img className='!h-[375px] !w-[305] ' src={tour?.images[0]}
       // "/assets/img/home5/zip-lining-01.jpg"
       
       alt="" />
-      <Link href="/activities" className="country-name">
+      <Link href="/activities" className="country-name ar">
         {/* 305 * 375 */}
         {/* <img src= 
         

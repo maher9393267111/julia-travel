@@ -11,13 +11,14 @@ export async function GET(req: NextRequest) {
 
 
     const url = new URL(req.url);
+    const discount = url.searchParams.get("discount");
      const country = url.searchParams.get("country");
     const city = url.searchParams.get("city");
 
    
     const type= url.searchParams.get("type");
-    const from = url.searchParams.get("from");
-    const to = url.searchParams.get("to");
+    // const from = url.searchParams.get("from");
+    // const to = url.searchParams.get("to");
     const limit= url.searchParams.get("limit");
     // const = url.searchParams.get("location");
 
@@ -38,13 +39,22 @@ export async function GET(req: NextRequest) {
       // filter.title =   { $regex: title, $options: 'i' } 
     }
 
-    if (from) {
-      filter.from = from;
+    // if (from) {
+    //   filter.from = from;
+    // }
+
+    // if (to) {
+    //   filter.to = to;
+    // }
+
+
+    if (discount) {
+      filter.discount = { $gte: 0 };
+      
     }
 
-    if (to) {
-      filter.to = to;
-    }
+
+
 
 
     console.log("FILTER OBJECT" , filter)

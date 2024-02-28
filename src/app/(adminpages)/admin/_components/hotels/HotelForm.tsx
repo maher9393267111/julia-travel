@@ -241,7 +241,7 @@ function HotelForm({
           ]}
         >
           <select className="input_style w-full py-2" value={""}>
-            <option value="">Select Category</option>
+            <option value="">Select Location</option>
             {CountriesAr.map((location: any, index: any) => (
               <option key={index} value={location}>
                 {location}
@@ -249,6 +249,9 @@ function HotelForm({
             ))}
           </select>
         </Form.Item>
+
+
+        
 
         <Form.Item
           label="RoomType"

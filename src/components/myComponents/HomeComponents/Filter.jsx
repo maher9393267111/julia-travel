@@ -618,14 +618,30 @@ const FilterHome = () => {
                           <RiFindReplaceFill className=" w-5 h-5" />
                         </div>
 
-                        <input
-                          className="w-full px-8 h-10  !font-kufi text-base placeholder-gray-600 placeholder-opacity-75 border rounded-lg appearance-none focus:outline-none"
-                          name="countryT"
-                          type="text"
-                          id="countrT"
-                          onChange={inputChange}
-                          value={state.countryT}
-                        />
+              
+
+
+
+
+<select
+                              name="countryT"
+                              type="text"
+                              id="countrT"
+                              onChange={inputChange}
+                              value={state.countryT}
+                          className="w-full h-10 px-8 text-base placeholder-gray-600 border rounded-lg appearance-none focus:outline-none"
+                          placeholder="Regular input"
+                      
+                        >
+                          <option default value={""}></option>
+                          {CountriesAr.map((c) => (
+                            <option value={c} key={c}>
+                              {c}
+                            </option>
+                          ))}
+                        </select>
+
+
 
                         {/* <div className="absolute  !font-ibm inset-y-0 right-0 flex items-center px-2 pointer-events-none">
                       
@@ -652,14 +668,28 @@ const FilterHome = () => {
                           <RiFindReplaceFill className=" w-5 h-5" />
                         </div>
 
-                        <input
-                          className="w-full px-8 h-10  !font-kufi text-base placeholder-gray-600 placeholder-opacity-75 border rounded-lg appearance-none focus:outline-none"
-                          name="cityT"
-                          type="text"
-                          id="toT"
-                          onChange={inputChange}
-                          value={state.cityT}
-                        />
+                    
+
+
+<select
+                               name="cityT"
+                               type="text"
+                               id="toT"
+                               onChange={inputChange}
+                               value={state.cityT}
+                          className="w-full h-10 px-8 text-base placeholder-gray-600 border rounded-lg appearance-none focus:outline-none"
+                          placeholder="Regular input"
+                      
+                        >
+                          <option default value={""}></option>
+                          {CitiesAr.map((c) => (
+                            <option value={c} key={c}>
+                              {c}
+                            </option>
+                          ))}
+                        </select>
+
+
 
                         {/* <div className="absolute  !font-ibm inset-y-0 right-0 flex items-center px-2 pointer-events-none">
                       

@@ -200,18 +200,44 @@ function TransForm({
 
 
 
-        <div className=" grid grid-cols-3">
-          <Form.Item className=" " name="cartype" valuePropName="checked">
-            <Checkbox>Car </Checkbox>
+        <div className=" grid grid-cols-3 gap-2">
+          <Form.Item className=" " name="isbus" valuePropName="checked">
+            <Checkbox>Bus </Checkbox>
           </Form.Item>
 
-          <Form.Item className=" " name="bustype" valuePropName="checked">
-            <Checkbox>Bus</Checkbox>
+          <Form.Item className=" " name="isminibus" valuePropName="checked">
+            <Checkbox>MiniBus</Checkbox>
           </Form.Item>
 
-          <Form.Item className=" " name="boattype" valuePropName="checked">
-            <Checkbox>Boat </Checkbox>
+          <Form.Item className=" " name="isvito" valuePropName="checked">
+            <Checkbox>Vito </Checkbox>
           </Form.Item>
+
+
+
+
+          <Form.Item className=" " name="busprice"      label="Bus price" >
+            
+
+
+            <Input className="    input_style  " type="text" />
+
+          </Form.Item>
+
+          <Form.Item className=" " name="minibusprice"   label="MiniBus price" >
+          <Input className="    input_style  " type="text" />
+          </Form.Item>
+
+          <Form.Item className=" " name="vitoprice"   label="Vito price">
+
+          <Input className="    input_style  " type="text" />
+
+            
+          </Form.Item>
+
+
+
+
         </div>
 
         <Form.Item
