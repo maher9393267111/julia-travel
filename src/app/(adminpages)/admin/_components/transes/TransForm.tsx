@@ -198,6 +198,15 @@ function TransForm({
 
 
 
+        <Form.Item className=" " name="discount"      label="Discount" >
+            
+
+
+            <Input className="    input_style  " type="text" />
+
+          </Form.Item>
+
+
 
 
         <div className=" grid grid-cols-3 gap-2">

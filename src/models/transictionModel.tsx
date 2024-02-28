@@ -34,6 +34,16 @@ const transSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+
+
+    discount: {
+      type: Number,
+      required: false,
+      default:0
+
+    },
+
+
     // cartype: {
     //   type: Boolean,
     //   required: true,

@@ -74,6 +74,20 @@ const packageSchema = new mongoose.Schema(
     },
 
 
+    statuses: {
+      name: {
+        type: String,
+        default: ""
+      },
+     
+    link: {
+        type: String,
+        default: ""
+      }
+    },
+
+
+
 
   },
   {
