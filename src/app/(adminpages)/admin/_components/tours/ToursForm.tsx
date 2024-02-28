@@ -30,11 +30,8 @@ const modules = {
 
 
 const locations = ["istanbul", "bursa" ,"trabzon" , "izmir" , "izmit" ,"sapanca"    ]
-const types=[
-  "private" , "group"
-  // 'Family Tour','Honeymoon Tou','Group Tour','Adventure Tour','Solo Tour'
 
-]
+const types = ["honeyMoon", "family", "vip", "groups", "adventure" ,"seaBoats" ,"campagin" ,"seaSport"];
     
     
 
@@ -137,16 +134,27 @@ console.log("S?????"  , selectedCategory)
           <Input className="    input_style  " type="text" />
         </Form.Item>
 
-
-
-
         <Form.Item
-          label="from"
-          name="from"
+          label="Country"
+          name="country"
           rules={[
             {
               required: true,
-              message: "Please input from",
+              message: "Please input country name",
+            },
+          ]}
+        >
+          {/* <input type="text" /> */}
+          <Input className=" input_style" type="text" />
+        </Form.Item>
+
+        <Form.Item
+          label="City"
+          name="city"
+          rules={[
+            {
+              required: true,
+              message: "Please input city name",
             },
           ]}
         >
@@ -154,32 +162,7 @@ console.log("S?????"  , selectedCategory)
           <Input className="    input_style  " type="text" />
         </Form.Item>
 
-
-
-
-        <Form.Item
-          label="to"
-          name="to"
-          rules={[
-            {
-              required: true,
-              message: "Please input to ",
-            },
-          ]}
-        >
-          {/* <input type="text" /> */}
-          <Input className="    input_style  " type="text" />
-        </Form.Item>
-
-
-
-
-
-
-
-
-
-        <Form.Item label="Location" name="location"     rules={[
+        {/* <Form.Item label="Location" name="location"     rules={[
             {
               required: true,
               message: "Please input location",
@@ -198,39 +181,30 @@ console.log("S?????"  , selectedCategory)
           </select>
 
 
-        </Form.Item>
+        </Form.Item> */}
 
-
-
-        <Form.Item label="Type" name="type"     rules={[
+        <Form.Item
+          label="Type"
+          name="type"
+          rules={[
             {
               required: true,
               message: "Please input type",
             },
-          ]} >
-          <select
-          className="input_style w-full py-2"
-          value={""}
-          >
+          ]}
+        >
+          <select className="input_style w-full py-2" value={""}>
             <option value="">Select Type</option>
-            {types.map((type: any ,index :any) => (
+            {types.map((type: any, index: any) => (
               <option key={index} value={type}>
                 {type}
               </option>
             ))}
           </select>
-
-
         </Form.Item>
 
-
-
-
-
-
-
         <Form.Item
-        className="input_style"
+          className="input_style"
           label="Price"
           name="price"
           rules={[
@@ -241,10 +215,16 @@ console.log("S?????"  , selectedCategory)
           ]}
         >
           <Input className="    input_style  " type="text" />
-     
         </Form.Item>
 
-
+        <Form.Item
+          className="input_style"
+          label="Discount"
+          name="discount"
+    
+        >
+          <Input className="    input_style  " type="text" />
+        </Form.Item>
 
         <Form.Item
           className="input_style"
@@ -259,12 +239,6 @@ console.log("S?????"  , selectedCategory)
         >
           <Input className="    input_style  " type="text" />
         </Form.Item>
-
-
-
-
-
-
 
         {/* <Form.Item
           label="Title"
@@ -282,11 +256,6 @@ console.log("S?????"  , selectedCategory)
             <input type="text" placeholder="hotel name" />
           </div>
         </Form.Item> */}
-
-   
-
-
-
 
         <Form.Item
           label="Description"

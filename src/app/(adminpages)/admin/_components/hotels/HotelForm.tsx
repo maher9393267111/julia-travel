@@ -11,6 +11,7 @@ import { ProductType } from "@/interfaces";
 import Image from "next/image";
 import "react-quill/dist/quill.snow.css";
 import dynamic from "next/dynamic";
+import { CitiesAr  ,CountriesAr} from '@/uitils/locations'
 
 const modules = {
   toolbar: [
@@ -29,7 +30,7 @@ const modules = {
 };
 
 const locations = ["istanbul", "bursa", "trabzon", "izmir", "izmit"];
-const roomTypes = ["single" ,"double"];
+const roomTypes = ["single", "double"];
 
 function HotelForm({
   showCategoryForm,
@@ -143,7 +144,21 @@ function HotelForm({
           <Input className="    input_style  " type="text" />
         </Form.Item>
 
+        <Form.Item className="input_style" label="Discount" name="discount">
+          <Input className="    input_style  " type="text" />
+        </Form.Item>
 
+        <Form.Item className="input_style" label="Offer" name="offer">
+          <Input className="    input_style  " type="text" />
+        </Form.Item>
+
+        <Form.Item
+          className="input_style"
+          label="Offer extra days"
+          name="offerplus"
+        >
+          <Input className="    input_style  " type="text" />
+        </Form.Item>
 
         <Form.Item
           className="input_style"
@@ -159,8 +174,6 @@ function HotelForm({
           <Input className="    input_style  " type="text" />
         </Form.Item>
 
-
-
         <Form.Item
           className="input_style"
           label="Main beds number"
@@ -174,8 +187,6 @@ function HotelForm({
         >
           <Input className="    input_style  " type="text" />
         </Form.Item>
-
-
 
         <Form.Item
           className="input_style"
@@ -191,12 +202,6 @@ function HotelForm({
           <Input className="    input_style  " type="text" />
         </Form.Item>
 
-
-
-
-
-
-
         <Form.Item
           className="input_style"
           label="childrens number"
@@ -210,12 +215,6 @@ function HotelForm({
         >
           <Input className="    input_style  " type="text" />
         </Form.Item>
-
-
-
-
-
-
 
         <Form.Item
           className="input_style"
@@ -231,9 +230,6 @@ function HotelForm({
           <Input className="    input_style  " type="text" />
         </Form.Item>
 
-        
-
-
         <Form.Item
           label="Location"
           name="location"
@@ -246,14 +242,13 @@ function HotelForm({
         >
           <select className="input_style w-full py-2" value={""}>
             <option value="">Select Category</option>
-            {locations.map((location: any, index: any) => (
+            {CountriesAr.map((location: any, index: any) => (
               <option key={index} value={location}>
                 {location}
               </option>
             ))}
           </select>
         </Form.Item>
-
 
         <Form.Item
           label="RoomType"
@@ -274,9 +269,6 @@ function HotelForm({
             ))}
           </select>
         </Form.Item>
-
-
-
 
         {/* <Form.Item
           label="Title"
@@ -316,65 +308,28 @@ function HotelForm({
 
         {/* ------Checkbox---- */}
 
- 
-<div className=" grid grid-cols-3">
+        <div className=" grid grid-cols-3">
+          <Form.Item className=" " name="isActive" valuePropName="checked">
+            <Checkbox>Publish </Checkbox>
+          </Form.Item>
 
-<Form.Item
-          className=" "
-          name="isActive"
-          valuePropName="checked"
-        
-        >
-          <Checkbox>Publish </Checkbox>
-        </Form.Item>
+          <Form.Item className=" " name="gym" valuePropName="checked">
+            <Checkbox> gym </Checkbox>
+          </Form.Item>
 
+          <Form.Item className=" " name="resturant" valuePropName="checked">
+            <Checkbox> resturant </Checkbox>
+          </Form.Item>
 
-        <Form.Item
-          className=" "
-          name="gym"
-          valuePropName="checked"
-        
-        >
-          <Checkbox> gym </Checkbox>
-        </Form.Item>
+          <Form.Item className=" " name="locker" valuePropName="checked">
+            <Checkbox> locker </Checkbox>
+          </Form.Item>
 
+          <Form.Item className=" " name="wifi" valuePropName="checked">
+            <Checkbox> wifi </Checkbox>
+          </Form.Item>
 
-
-        <Form.Item
-          className=" "
-          name="resturant"
-          valuePropName="checked"
-        
-        >
-          <Checkbox> resturant </Checkbox>
-        </Form.Item>
-
-        
-
-        <Form.Item
-          className=" "
-          name="locker"
-          valuePropName="checked"
-        
-        >
-          <Checkbox> locker </Checkbox>
-        </Form.Item>
-
-        
-
-
-        <Form.Item
-          className=" "
-          name="wifi"
-          valuePropName="checked"
-        
-        >
-          <Checkbox> wifi </Checkbox>
-        </Form.Item>
-
-
-
-        {/* <Form.Item
+          {/* <Form.Item
           className=" "
           name="airCondition"
           valuePropName="airCondition"
@@ -384,150 +339,56 @@ function HotelForm({
         </Form.Item>
  */}
 
+          <Form.Item className=" " name="safe" valuePropName="checked">
+            <Checkbox>safety</Checkbox>
+          </Form.Item>
 
-        <Form.Item
-          className=" "
-          name="safe"
-          valuePropName="checked"
-        
-        >
-          <Checkbox>safety</Checkbox>
-        </Form.Item>
+          <Form.Item className=" " name="laundary" valuePropName="checked">
+            <Checkbox> laundary </Checkbox>
+          </Form.Item>
 
+          <Form.Item className=" " name="heater" valuePropName="checked">
+            <Checkbox> heater </Checkbox>
+          </Form.Item>
 
+          <Form.Item className=" " name="tv" valuePropName="checked">
+            <Checkbox> tv </Checkbox>
+          </Form.Item>
 
+          <Form.Item className=" " name="towels" valuePropName="checked">
+            <Checkbox> towels </Checkbox>
+          </Form.Item>
 
-      
+          <Form.Item className=" " name="phone" valuePropName="checked">
+            <Checkbox> phone </Checkbox>
+          </Form.Item>
 
+          <Form.Item className=" " name="park" valuePropName="checked">
+            <Checkbox> park </Checkbox>
+          </Form.Item>
 
+          <Form.Item className=" " name="sauna" valuePropName="checked">
+            <Checkbox> sauna </Checkbox>
+          </Form.Item>
 
-        
-        <Form.Item
-          className=" "
-          name="laundary"
-          valuePropName="checked"
-        
-        >
-          <Checkbox> laundary </Checkbox>
-        </Form.Item>
+          <Form.Item className=" " name="breakfast" valuePropName="checked">
+            <Checkbox>breakfast </Checkbox>
+          </Form.Item>
 
+          <Form.Item className=" " name="pets" valuePropName="checked">
+            <Checkbox> pets </Checkbox>
+          </Form.Item>
 
-        <Form.Item
-          className=" "
-          name="heater"
-          valuePropName="checked"
-        
-        >
-          <Checkbox> heater </Checkbox>
-        </Form.Item>
+          {/* airportTransfer */}
 
-
-
-
-
-        <Form.Item
-          className=" "
-          name="tv"
-          valuePropName="checked"
-        
-        >
-          <Checkbox> tv </Checkbox>
-        </Form.Item>
-
-
-
-
-
-        <Form.Item
-          className=" "
-          name="towels"
-          valuePropName="checked"
-        
-        >
-          <Checkbox> towels </Checkbox>
-        </Form.Item>
-
-
-
-        <Form.Item
-          className=" "
-          name="phone"
-          valuePropName="checked"
-        
-        >
-          <Checkbox> phone </Checkbox>
-        </Form.Item>
-
-
-
-
-        <Form.Item
-          className=" "
-          name="park"
-          valuePropName="checked"
-        
-        >
-          <Checkbox> park </Checkbox>
-        </Form.Item>
-
-
-
-
-        <Form.Item
-          className=" "
-          name="sauna"
-          valuePropName="checked"
-        
-        >
-          <Checkbox> sauna </Checkbox>
-        </Form.Item>
-
-
-
-
-        <Form.Item
-          className=" "
-          name="breakfast"
-          valuePropName="checked"
-        
-        >
-          <Checkbox>breakfast </Checkbox>
-        </Form.Item>
-
-
-
-        <Form.Item
-          className=" "
-          name="pets"
-          valuePropName="checked"
-        
-        >
-          <Checkbox> pets </Checkbox>
-        </Form.Item>
-
-
-
-
-        {/* airportTransfer */}
-
-        <Form.Item
-          className=" "
-          name="airportTransfer"
-          valuePropName="checked"
-        
-        >
-          <Checkbox> airportTransfer </Checkbox>
-        </Form.Item>
-
-
-
-
-</div> 
- 
-
-
-      
-
+          <Form.Item
+            className=" "
+            name="airportTransfer"
+            valuePropName="checked"
+          >
+            <Checkbox> airportTransfer </Checkbox>
+          </Form.Item>
+        </div>
 
         <div className="col-span-3">
           <Upload

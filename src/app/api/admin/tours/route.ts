@@ -11,7 +11,10 @@ export async function GET(req: NextRequest) {
 
 
     const url = new URL(req.url);
-    const location = url.searchParams.get("location");
+     const country = url.searchParams.get("country");
+    const city = url.searchParams.get("city");
+
+   
     const type= url.searchParams.get("type");
     const from = url.searchParams.get("from");
     const to = url.searchParams.get("to");
@@ -22,8 +25,12 @@ export async function GET(req: NextRequest) {
     let filter: FilterQuery<any> = {};
     // ||
 
-    if (location) {
-      filter.location = location;
+    if (country) {
+      filter.country = country;
+    }
+
+    if (city) {
+      filter.city= city;
     }
 
     if (type) {

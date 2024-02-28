@@ -188,8 +188,28 @@ const hotelSchema = new mongoose.Schema(
 
 
 
+    discount: {
+      type: Number,
+      required: false,
+      default:0
+
+    },
 
 
+
+    offer: {
+      type: Number,
+      required: false,
+      default:0
+
+    },
+    
+    offerplus: {
+      type: Number,
+      required: false,
+      default:0
+
+    },
 
 
 

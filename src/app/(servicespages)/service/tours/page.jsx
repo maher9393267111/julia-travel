@@ -18,7 +18,8 @@ const page = () => {
 
   const searchParams = useSearchParams();
 
-  const location = searchParams.get("location");
+  const city = searchParams.get("city");
+  const country = searchParams.get("country");
   const from = searchParams.get("from");
   const to = searchParams.get("to");
   const type = searchParams.get("type");
@@ -26,10 +27,12 @@ const page = () => {
     try {
       dispatch(SetLoading(true));
       // location=${location && location}&&title=${title && title}
+      // &&${from && "from"}=${from}&&${to && "to"}=${to}
       const response = await axios.get(
-        `/api/admin/tours?${location && "location"}=${location}&&${
+        `/api/admin/tours?${country && "country"}=${country}&&${city && "city"}=${city}&&${
           type && "type"
-        }=${type}&&${from && "from"}=${from}&&${to && "to"}=${to}`
+        }=${type}
+       `
       );
       setTours(response.data.data);
       console.log("REsponse-->", response.data.data);

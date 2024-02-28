@@ -61,8 +61,12 @@ export async function POST(req) {
     <p style="font-size:1rem;"><strong>Name: </strong> ${name}</p>
     <p style="font-size:1rem;"><strong>Email: </strong> ${email}</p>
     <p style="font-size:1rem;"><strong>Phone: </strong> ${phone}</p>
+
+    <p style="font-size:1rem;"><strong>Total Price: </strong> ${reqBody.totalprice}</p
+    <p style="font-size:1rem;"><strong>Offer Type: </strong> ${reqBody.offertype}</p
    
     <p style="font-size:1rem;"><strong>Message: </strong> ${message}</p>
+
 </div>
 </div>
 

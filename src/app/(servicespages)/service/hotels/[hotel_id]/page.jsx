@@ -15,6 +15,7 @@ import Lightbox from "yet-another-react-lightbox";
 import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import parse from "html-react-parser";
 import dayjs from "dayjs";
+import { calculteDiscount } from "@/uitils/CalculateDiscount";
 
 import {
   Button,
@@ -90,6 +91,9 @@ const Page = () => {
     // console.log("dates" ,new Date(startDate))
   };
 
+  const offerType =
+    hotel?.discount > 0 ? "discount" : hotel?.offer > 0 ? "offer" : "normal";
+
   const formSubmit = (e) => {
     e.preventDefault();
     sendMessage();
@@ -109,6 +113,18 @@ const Page = () => {
     setstate($booking);
   };
 
+  const calculateOffer = (hotel) => {
+    if (hotel.offer > 0 && state.daysNum >= hotel.offer) {
+      console.log("offer work");
+      return hotel?.price * state.daysNum - hotel.price;
+    } else if (hotel?.offer > 0 && state.daysNum < hotel.offer) {
+      console.log("not offer");
+      return hotel?.price * state.daysNum;
+    } else {
+      return false;
+    }
+  };
+
   const sendMessage = async () => {
     try {
       //  setIsLoading(true);
@@ -122,6 +138,14 @@ const Page = () => {
         endDate: end,
         service: "hotels",
         details: hotel,
+
+        totalprice:
+          offerType === "normal"
+            ? hotel?.price * state.daysNum
+            : offerType === "discount"
+            ? calculteDiscount(hotel?.price, hotel?.discount)
+            : calculateOffer(hotel, state.daysNum),
+        offertype: offerType,
       };
 
       if (
@@ -146,20 +170,11 @@ const Page = () => {
         });
 
         setstate({ ...state, error: false });
-        
-        message.success("تم ارسال معلوماتك بنجاح");
-       
 
+        message.success("تم ارسال معلوماتك بنجاح");
       }
 
       //   setPhone("")
-
-
-     
-
-
-
-
     } catch (error) {
       message.error("حدث خطأ ما");
       console.log(error);
@@ -168,8 +183,7 @@ const Page = () => {
 
   return (
     <>
-      <Breadcrumb pagename="تفاصيل الغرفة"
-       pagetitle="تفاصيل الغرفة" />
+      <Breadcrumb pagename="تفاصيل الغرفة" pagetitle="تفاصيل الغرفة" />
 
       {hotel && (
         <div className="room-details-area pt-120 mb-120 !font-kufi">
@@ -322,14 +336,16 @@ const Page = () => {
             <div className="row g-xl-4 gy-5">
               <div className="col-xl-8">
                 <div className="location-and-review">
-                  <div className="location  !mx-2">
+                  <div className="location ar !mx-2">
                     <p>
-                      <i className="bi bi-geo-alt" />
+                      <i className="bi bi-geo-alt ar" />
                       {/* House 168/170, Road 02,
                     Avenue 01, Mirpur DOHS, Dhaka, Bangladesh  */}
                       {hotel?.location}
 
-                      <a  className=" mx-4" href="#">See Map</a>
+                      <a className=" mx-4" href="#">
+                        See Map
+                      </a>
                     </p>
                   </div>
                   <div className="review-area">
@@ -366,6 +382,14 @@ const Page = () => {
                   <h6 className=" ar">
                     {hotel?.price}$/<span>الليلة</span>
                   </h6>
+
+                  {hotel?.discount > 0 ? (
+                    <h4 className="ar my-2">خصم يصل الى {hotel?.discount}%</h4>
+                  ) : (
+                    <h4 className="ar my-2">
+                      هذا السعر يشمل عرض {hotel?.offer} + {hotel?.offerplus}
+                    </h4>
+                  )}
                 </div>
                 {hotel?.description && (
                   <p className=" ar">
@@ -386,6 +410,16 @@ const Page = () => {
                   المزايا
                 </h4>
                 <ul className="room-features">
+                  <li className=" !font-kufi">
+                    <span> {hotel?.adultbeds} </span>
+                    سرير للكبار
+                  </li>
+
+                  <li className=" !font-kufi">
+                    <span> {hotel?.childbeds} </span>
+                    سرير للاطفال
+                  </li>
+
                   {hotel?.tv && (
                     <li className=" !font-kufi">
                       <svg
@@ -788,14 +822,11 @@ const Page = () => {
                               onChange={handleUpdateBooking("daysNum")}
                             />
                           </div>
-
+                          {/* 
                           <div className="number-input-item adults">
                             <label className="number-input-lable !text-sm  ar">
                               شخص بالغ:<span></span>
-                              {/* <span>
-                              
-                                $60
-                              </span> */}
+                            
                             </label>
 
                             <Amount
@@ -803,8 +834,9 @@ const Page = () => {
                               min={1}
                               onChange={handleUpdateBooking("adultsNum")}
                             />
-                          </div>
-                          <div className="number-input-item children">
+                          </div> */}
+
+                          {/* <div className="number-input-item children">
                             <label className="number-input-lable ar !text-sm">
                               لكل طفل فوق ال 6 سنوات:<span> </span>
                               <span>$15</span>
@@ -815,7 +847,7 @@ const Page = () => {
                               min={0}
                               onChange={handleUpdateBooking("ChildrensNum")}
                             />
-                          </div>
+                          </div> */}
                         </div>
 
                         {/* -------dates--- */}
@@ -859,11 +891,44 @@ const Page = () => {
                         </div>
 
                         {/* total price-- */}
-                        <div className="total-price">
-                          <span>Total Price:</span> $
-                          {hotel?.price * state.daysNum * state.adultsNum +
-                            state.ChildrensNum * 15}
+                        <div className="total-pric flex justify-center items-center gap-1">
+                          {/* <span>Total Price:</span>  */}
+
+                          {/* <span className="text-sm ar  "> $</span> */}
+
+                          {/* {hotel?.price * state.daysNum} */}
+                          {hotel?.discount > 0 && (
+                            <h6 className="">
+                              $
+                              {calculteDiscount(hotel.price, hotel.discount) *
+                                state.daysNum}
+                            </h6>
+                          )}
+
+                          <h6>
+                            {calculateOffer(hotel)}
+                            {calculateOffer(hotel) !== false && "$"}
+                          </h6>
+
+                          {/* {hotel?.price * state.daysNum * state.adultsNum +
+                            state.ChildrensNum * 15} */}
                         </div>
+
+                        {hotel?.discount > 0 && (
+                          <div className="ar my-4 text-sm font-semibold text-[#63AB45]">
+                            ملاحظة: هذا السعر يشمل نسبة خصم تصل الى{" "}
+                            {hotel?.discount}%
+                          </div>
+                        )}
+
+                        {hotel?.offer > 0 && state.daysNum >= hotel.offer && (
+                          <div className="ar my-4 text-lg font-semibold text-[#63AB45]">
+                            هذا السعر يشمل العرض
+                            <span className="mx-2">
+                              ({hotel?.offerplus}+ {hotel?.offer} )
+                            </span>
+                          </div>
+                        )}
 
                         <div className="form-inner">
                           <button

@@ -11,10 +11,10 @@ const tourSchema = new mongoose.Schema(
       required: true,
     },
 
-    location: {
-      type: String,
-      required: true,
-    },
+    // location: {
+    //   type: String,
+    //   required: true,
+    // },
 
 
     type: {
@@ -23,17 +23,20 @@ const tourSchema = new mongoose.Schema(
     },
 
 
-    from: {
-      type: String,
-      required: true,
-    },
+  city : {
+    type: String,
+    required: true,
 
+  }
 
-    to: {
-      type: String,
-      required: true,
-    },
+,
+  country : {
+    type: String,
+    required: true,
 
+  }
+
+  ,
 
     days: {
       type: Number,
@@ -41,6 +44,11 @@ const tourSchema = new mongoose.Schema(
     }
 
     ,
+    discount: {
+      type: Number,
+      required: true,
+      default:0
+    },
 
   
     images: {

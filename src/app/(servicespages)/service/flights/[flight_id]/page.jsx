@@ -92,9 +92,8 @@ const Page = () => {
 
   const formSubmit = (e) => {
     e.preventDefault();
-    console.log("clicked btn")
+    console.log("clicked btn");
     sendMessage();
-  
   };
 
   const inputChange = (e) => {
@@ -135,7 +134,6 @@ const Page = () => {
         console.log("ERROR CONDITION @@@@@@");
         setstate({ ...state, error: true });
         message.info("يرجا تعبئة كافة الحقول");
-       
       } else {
         const res = await fetch("/api/contacts", {
           method: "POST",
@@ -146,24 +144,18 @@ const Page = () => {
         });
 
         setstate({ ...state, error: false });
-        
+
         message.success("تم ارسال معلوماتك بنجاح");
-      
       }
 
       //console.log("response", res);
 
       //   setPhone("")
     } catch (error) {
-
       message.error("حدث خطأ ما");
       console.log(error);
     }
   };
-
-
-
-
 
   const settings = useMemo(() => {
     return {

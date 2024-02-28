@@ -31,6 +31,18 @@ const modules = {
 
 const locations = ["istanbul", "bursa", "trabzon", "izmir", "izmit"];
 
+const types = [
+  "honeyMoon",
+  "family",
+  "vip",
+  "groups",
+  "adventure",
+  "seaBoats",
+  "campagin",
+  "seaSport",
+];
+const levels = ["normal", "medium", "height"];
+
 function PackageForm({
   showCategoryForm,
   setShowCategoryForm,
@@ -161,23 +173,61 @@ function PackageForm({
         </Form.Item>
 
         <Form.Item
-          label="Location"
-          name="location"
+          label="Type"
+          name="type"
           rules={[
             {
               required: true,
-              message: "Please input location",
+              message: "Please input type",
             },
           ]}
         >
           <select className="input_style w-full py-2" value={""}>
-            <option value="">Select Location</option>
-            {locations.map((location: any, index: any) => (
-              <option key={index} value={location}>
-                {location}
+            <option value="">Select Package type</option>
+            {types.map((type: any, index: any) => (
+              <option key={index} value={type}>
+                {type}
               </option>
             ))}
           </select>
+        </Form.Item>
+
+        <Form.Item
+          label="Level"
+          name="level"
+          rules={[
+            {
+              required: true,
+              message: "Please input level",
+            },
+          ]}
+        >
+          <select className="input_style w-full py-2" value={""}>
+            <option value="">Select Package level</option>
+            {levels.map((level: any, index: any) => (
+              <option key={index} value={level}>
+                {level}
+              </option>
+            ))}
+          </select>
+        </Form.Item>
+
+        <Form.Item
+          className="input_style"
+          label="days"
+          name="days"
+          rules={[
+            {
+              required: true,
+              message: "Please input days number",
+            },
+          ]}
+        >
+          <Input className="    input_style  " type="text" />
+        </Form.Item>
+
+        <Form.Item className="input_style" label="Discount" name="discount">
+          <Input className="    input_style  " type="text" />
         </Form.Item>
 
         <Form.Item
@@ -191,6 +241,62 @@ function PackageForm({
             },
           ]}
         >
+          <Input className="    input_style  " type="text" />
+        </Form.Item>
+
+        <Form.Item
+          className="input_style"
+          label="Adult number"
+          name="adult"
+          rules={[
+            {
+              required: true,
+              message: "Please input adult number",
+            },
+          ]}
+        >
+          <Input className="    input_style  " type="text" />
+        </Form.Item>
+
+        <Form.Item
+          className="input_style"
+          label="Child number"
+          name="child"
+          rules={[
+            {
+              required: true,
+              message: "Please input child number",
+            },
+          ]}
+        >
+          <Input className="    input_style  " type="text" />
+        </Form.Item>
+
+        <Form.Item
+          label="From"
+          name="from"
+          rules={[
+            {
+              required: true,
+              message: "Please input from name",
+            },
+          ]}
+        >
+          {/* <input type="text" /> */}
+          <Input className=" input_style" type="text" />
+        </Form.Item>
+
+        <Form.Item
+          label="To"
+          name="to"
+          rules={[
+            {
+              required: true,
+              message: "Please input to",
+            },
+          ]}
+        >
+          {/* <input type="text" /> */}
           <Input className="    input_style  " type="text" />
         </Form.Item>
 

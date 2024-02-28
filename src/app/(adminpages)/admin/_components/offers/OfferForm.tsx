@@ -30,7 +30,7 @@ const modules = {
 
 
 const locations = ["istanbul", "bursa" ,"trabzon" , "izmir" , "izmit"   ]
-const types=['Family Tour','Honeymoon Tou','Group Tour','Adventure Tour','Solo Tour']
+const types = ["honeyMoon", "family", "vip", "groups", "adventure" ,"seaBoats" ,"campagin" ,"seaSport"];
     
     
 

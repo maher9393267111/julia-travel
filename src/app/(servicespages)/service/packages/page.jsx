@@ -28,17 +28,19 @@ const page = () => {
 
   const searchParams = useSearchParams();
 
-  const person = searchParams.get("person");
+  const person = searchParams.get("adults");
+  const child = searchParams.get("childs");
   const from = searchParams.get("from");
   const to = searchParams.get("to");
+  const type = searchParams.get("type");
 
   const getPackages = async () => {
     try {
       dispatch(SetLoading(true));
       // location=${location && location}&&title=${title && title}
       const response = await axios.get(
-        `/api/admin/packages?${person && "person"}=${person}
-           &&${from && "from"}=${from}&&${to && "to"}=${to}`
+        `/api/admin/packages?${person && "adult"}=${person}
+           &&${from && "from"}=${from}&&${to && "to"}=${to}&&${child && "child"}=${child}&&${type && "type"}=${type}`
       );
       setPackages(response.data.data);
       console.log("REsponse-->", response.data.data);

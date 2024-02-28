@@ -10,7 +10,10 @@ export async function GET(req: NextRequest) {
     // await validateApiRequest(req);
 
     const url = new URL(req.url);
+    const discount = url.searchParams.get("discount");
+    
     const location = url.searchParams.get("location");
+
     const title = url.searchParams.get("title");
     const roomType = url.searchParams.get("roomType");
     const limit = url.searchParams.get("limit");
@@ -25,16 +28,23 @@ export async function GET(req: NextRequest) {
     }
 
     if (title) {
-      filter.title =   { $regex: title, $options: 'i' } 
+      filter.title = { $regex: title, $options: "i" };
     }
 
     if (roomType) {
       filter.roomtype = roomType;
     }
 
+    if (discount) {
+      filter.discount = { $gte: 0 };
+      filter.offer = { $gte: 0 };
+    }
 
+    console.log("FILTER hotels", filter, discount);
 
-    const hotels = limit ?  await Hotel.find(filter).sort({ createdAt: -1 }).limit(3)  : await Hotel.find(filter).sort({ createdAt: -1 });
+    const hotels = limit
+      ? await Hotel.find(filter).sort({ createdAt: -1 }).limit(3)
+      : await Hotel.find(filter).sort({ createdAt: -1 });
     return NextResponse.json({ data: hotels });
   } catch (error: any) {
     return NextResponse.json(
