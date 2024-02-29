@@ -12,7 +12,7 @@ interface FileDetails extends Blob {
   webkitRelativePath: string
 }
 
-export default function UploadButton({setPdf}:any) {
+export default function UploadButton({file ,setFile}:any) {
   const [selectedFile, setSelectedFile] = useState<FileDetails>()
   const [loading, setLoading] = useState(false)
   const router = useRouter()
@@ -41,6 +41,7 @@ export default function UploadButton({setPdf}:any) {
       }).then((response) => {
         response.json().then((data) => {
           console.log(data)
+          setFile(data)
           message.success("Pdf folder uploaded Successfully")
          // router.push(`/view/${data.id}`)
         })

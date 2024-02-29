@@ -33,9 +33,17 @@ function PackageList() {
     getCategories();
   }, []);
 
-  const onDelete = async (id: string) => {
+  const onDelete = async (id: string ,record:any) => {
     try {
       dispatch(SetLoading(true));
+      console.log("IDDDD" ,record?.pdf?.id)
+
+
+      if(record?.pdf?.id){
+      await axios.delete(`/api/admin/upload?id=${record?.pdf?.id}`);
+      }
+
+
       await axios.delete(`/api/admin/packages/${id}`);
       message.success("Package Deleted Successfully");
       getCategories();
@@ -86,7 +94,7 @@ function PackageList() {
       render: (text: string, record: CategoryType) => {
         return (
           <div className="flex gap-2 text-white">
-            <DeleteButton title="Delete" onClick={() => onDelete(record._id)} />
+            <DeleteButton title="Delete" onClick={() => onDelete(record._id , record)} />
             <EditButton
               title="Edit"
               onClick={() => {

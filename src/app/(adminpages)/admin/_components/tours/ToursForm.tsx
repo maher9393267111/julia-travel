@@ -12,7 +12,7 @@ import Image from "next/image";
 import "react-quill/dist/quill.snow.css";
 import dynamic from "next/dynamic";
 import { CountriesAr ,CitiesAr } from "@/uitils/locations";
-import UploadButton from "./UploadPdf";
+
 
 const modules = {
   toolbar: [
@@ -343,9 +343,6 @@ console.log("S?????"  , selectedCategory)
         </div>
 
 
-<div>
-  <UploadButton/>
-</div>
 
 
         <div className="flex justify-end gap-5">

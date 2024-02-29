@@ -137,7 +137,6 @@ const Page = () => {
         console.log("ERROR CONDITION @@@@@@");
         setstate({ ...state, error: true });
         message.info("يرجا تعبئة كافة الحقول");
-     
       } else {
         const res = await fetch("/api/contacts", {
           method: "POST",
@@ -148,23 +147,18 @@ const Page = () => {
         });
 
         setstate({ ...state, error: false });
-      
+
         message.success("تم ارسال معلوماتك بنجاح");
-       
       }
 
       //console.log("response", res);
 
       //   setPhone("")
     } catch (error) {
-   
       message.error("حدث خطأ ما");
       console.log(error);
     }
   };
-
-
-  
 
   const settings = useMemo(() => {
     return {
@@ -581,6 +575,19 @@ const Page = () => {
                   {/* Travel to Sajek from Dhaka (4 ways to travel) */}
                   {trans?.title}
                 </h3>
+
+                {trans?.pdf && (
+                  <h4 className="ar primary-btn1 !font-kufi two">
+                    <a className=" text-white" href={trans?.pdf?.url} target="_blank">
+                      {" "}
+                      ملف الرحلة اضغط لمشاهدة كافة التفاصيل
+                   
+                    </a>
+                  </h4>
+                )}
+
+
+
                 <ul className="fetures ar mt-4">
                   <li>
                     <svg
@@ -658,6 +665,8 @@ const Page = () => {
                   Shuttle to Car
                 </li> */}
                 </ul>
+
+           
 
                 {trans?.description && (
                   <p className=" ar">{parse(trans?.description)}</p>

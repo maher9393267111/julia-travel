@@ -74,13 +74,13 @@ const packageSchema = new mongoose.Schema(
     },
 
 
-    statuses: {
-      name: {
+    pdf: {
+      id: {
         type: String,
         default: ""
       },
      
-    link: {
+    url: {
         type: String,
         default: ""
       }

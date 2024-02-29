@@ -12,6 +12,7 @@ import Image from "next/image";
 import "react-quill/dist/quill.snow.css";
 import dynamic from "next/dynamic";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
+import UploadButton from "./UploadPdf";
 
 const modules = {
   toolbar: [
@@ -58,6 +59,7 @@ function PackageForm({
   );
 
   const [value, setValue] = React.useState<any>("");
+  const [file, setFile] = React.useState<any>( selectedCategory?.pdf ||  {id:"" ,url:""});
 
   const ReactQuill = useMemo(
     () => dynamic(() => import("react-quill"), { ssr: false }),
@@ -82,7 +84,7 @@ function PackageForm({
         await deleteImages(imagesToDelete);
         const newImagesUploaded = await uploadImages(files);
         values.images = [...values.images, ...newImagesUploaded];
-
+        values.pdf = file
         response = await axios.put(
           `/api/admin/packages/${selectedCategory._id}`,
           values
@@ -90,6 +92,8 @@ function PackageForm({
       } else {
         values.images = await uploadImages(files);
 
+        values.pdf = file
+        console.log("VALUE" ,value ,file)
         response = await axios.post("/api/admin/packages", values);
       }
       message.success("Package Added Successfully");
@@ -431,6 +435,19 @@ function PackageForm({
             </div>
           ))}
         </div>
+
+        {/* -upload pdf */}
+
+        {file?.id ? (
+          <div>pdf link 
+          
+          <a href={file?.url}  target="_blank">link</a>
+          </div>
+        ) : (
+          <div>
+            <UploadButton file={file} setFile={setFile} />
+          </div>
+        )}
 
         <div className="flex justify-end gap-5">
           <Button onClick={() => setShowCategoryForm(false)}>Cancel</Button>

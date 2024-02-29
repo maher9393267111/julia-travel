@@ -7,6 +7,10 @@ export interface ProductType {
   category: string;
   createdAt: string;
   updatedAt: string;
+  pdf: {
+  id: string;
+  url:String
+  };
 
   // for cart
   quantity: number;
