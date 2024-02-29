@@ -3,6 +3,7 @@ import { validateApiRequest } from "@/helpers/JwtTokenValidator";
 import Package from "@/models/packageModel";
 import { NextResponse, NextRequest } from "next/server";
 import { FilterQuery } from "mongoose";
+import { locale } from "moment";
 connectDB();
 
 export async function GET(req: NextRequest) {
@@ -11,8 +12,8 @@ export async function GET(req: NextRequest) {
 
    //  const response = await axios.get("/api/admin/packages?location=bursa");
     const url = new URL(req.url);
-    // const location = url.searchParams.get("location");
-
+     const location = url.searchParams.get("location");
+    const discount = url.searchParams.get("discount");
     const adult = url.searchParams.get("adult");
     const child = url.searchParams.get("child");
     const from = url.searchParams.get("from");
@@ -22,6 +23,13 @@ export async function GET(req: NextRequest) {
   
     // workaround typescript, da await Post.find(username && { username }) mit einer Warnung daherkommt
     let filter: FilterQuery<any> = {};
+
+    if (location) {
+      const loc = location.replace(/\s/g, '');
+      filter.location = loc;
+    }
+
+
     if (from) {
       filter.from = from;
     }
@@ -41,6 +49,14 @@ export async function GET(req: NextRequest) {
     if (type) {
       filter.type = type;
     }
+
+    if (discount) {
+      filter.discount = { $gte: 0 };
+    
+    }
+
+
+    console.log("FIlter" , filter)
 
 
     const packages = limit ?   await Package.find(filter).sort({ createdAt: -1 }).limit(3) :  await Package.find(filter).sort({ createdAt: -1 });

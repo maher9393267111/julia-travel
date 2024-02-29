@@ -152,7 +152,7 @@ const FilterHome = () => {
     
     if (page === "package") {
       router.push(
-        `/service/packages?from=${state.fromFlight}&&to=${state.toFlight}&&adults=${state.packAdult}&&childs=${state.packChild}&&type=${state.packageType}`
+        `/service/packages?from=${state.packF}&&to=${state.packTo}&&adults=${state.packAdult}&&childs=${state.packChild}&&type=${state.packageType}`
       );
     }
 

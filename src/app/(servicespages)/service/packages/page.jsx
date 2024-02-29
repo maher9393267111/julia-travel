@@ -12,6 +12,8 @@ import axios from "axios";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import PackageCard from "../_components/packageCard";
+import DiscountSlider from "../_components/DiscountSliderPackage";
+import LocationFilterCards from "../_components/LocationFilterCards";
 
 // export const metadata = {
 //   title: "TripRex - Tour & Travel Agency  NextJs Template",
@@ -27,23 +29,41 @@ const page = () => {
   const [packagess, setPackages] = useState([]);
 
   const searchParams = useSearchParams();
-
+  const all = searchParams.get("all");
   const person = searchParams.get("adults");
   const child = searchParams.get("childs");
   const from = searchParams.get("from");
   const to = searchParams.get("to");
   const type = searchParams.get("type");
+  const location = searchParams.get("location");
 
   const getPackages = async () => {
     try {
       dispatch(SetLoading(true));
+
+
+
+      if (!all && !person && !child && !from && !type && !to && !location) {
+        const response = await axios.get(`/api/admin/packages?discount=true`);
+
+        setPackages(response.data.data);
+      console.log("REsponse-->", response.data.data);
+      }
+
+
+      else {
       // location=${location && location}&&title=${title && title}
       const response = await axios.get(
-        `/api/admin/packages?${person && "adult"}=${person}
+        `/api/admin/packages?${person && "adult"}=${person}&&${location && "location"}=${location}
            &&${from && "from"}=${from}&&${to && "to"}=${to}&&${child && "child"}=${child}&&${type && "type"}=${type}`
       );
       setPackages(response.data.data);
       console.log("REsponse-->", response.data.data);
+
+      }
+
+
+
     } catch (error) {
       message.error(getCatchErrorMessage(error));
     } finally {
@@ -52,14 +72,17 @@ const page = () => {
   };
   useEffect(() => {
     getPackages();
-  }, []);
+  }, [all ,from , type ,person ,child ,location]);
 
   return (
     <>
       <Breadcrumb pagename="العروض" pagetitle="العروض" />
 
    
+      <LocationFilterCards link = {'packages'} searckey={'location'} />
 
+
+      {(to || from || type || person  || child   || location ) ?  
       <div className="transport-page pt-120 mb-120">
         <div className="container">
           <div className="row g-lg-4 gy-5">
@@ -74,6 +97,19 @@ const page = () => {
           </div>
         </div>
       </div>
+
+
+:
+
+<div>
+
+<DiscountSlider title="العروض المميزة"  data={packagess} link={'packages'}/>
+</div>
+
+                }
+
+
+
     </>
   );
 };

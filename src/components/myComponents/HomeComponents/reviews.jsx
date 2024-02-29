@@ -88,7 +88,11 @@ const Home1Testimonail = () => {
               const response = await axios.get(
                 `https://file-uploader-red.vercel.app/google/ratings`
               );
-              setReviews(response.data.data);
+
+              const result =  response.data.data?.filter((item)=>item?.rating === 5)
+
+
+              setReviews(result);
               console.log("REsponse-->", response.data.data);
             } catch (error) {
               message.error(getCatchErrorMessage(error));

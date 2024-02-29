@@ -24,7 +24,9 @@ export async function GET(req: NextRequest) {
     // ||
 
     if (location) {
-      filter.location = location;
+      const loc = location.replace(/\s/g, '');
+      filter.location = loc;
+      // filter.location = location;
     }
 
     if (title) {

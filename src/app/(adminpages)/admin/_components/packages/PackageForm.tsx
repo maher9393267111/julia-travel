@@ -13,6 +13,7 @@ import "react-quill/dist/quill.snow.css";
 import dynamic from "next/dynamic";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 import UploadButton from "./UploadPdf";
+import { CountriesAr ,CitiesAr } from "@/uitils/locations";
 
 const modules = {
   toolbar: [
@@ -233,6 +234,35 @@ function PackageForm({
         <Form.Item className="input_style" label="Discount" name="discount">
           <Input className="    input_style  " type="text" />
         </Form.Item>
+
+
+        <Form.Item
+          label="Country"
+          name="location"
+          rules={[
+            {
+              required: true,
+              message: "Please input country name",
+            },
+          ]}
+        >
+      
+      <select className="input_style w-full py-2" value={""}>
+            <option value="">Select Country</option>
+            {CountriesAr.map((location: any, index: any) => (
+              <option key={index} value={location}>
+                {location}
+              </option>
+            ))}
+          </select>
+
+
+
+
+        </Form.Item>
+
+
+
 
         <Form.Item
           className="input_style"

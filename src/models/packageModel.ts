@@ -15,6 +15,12 @@ const packageSchema = new mongoose.Schema(
     //   required: true,
     // },
 
+
+    location: {
+      type: String,
+      required: true,
+    },
+
     from: {
       type: String,
       required: true,
@@ -72,6 +78,8 @@ const packageSchema = new mongoose.Schema(
       default:0
 
     },
+
+
 
 
     pdf: {
