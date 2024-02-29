@@ -77,7 +77,7 @@ function AdminProfile() {
         </Tabs.TabPane>
 
         
-        <Tabs.TabPane tab="transictions" key="11">
+        <Tabs.TabPane tab="transport" key="11">
           <TransList />
         </Tabs.TabPane>
 

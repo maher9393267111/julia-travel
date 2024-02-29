@@ -1,5 +1,5 @@
 "use client";
-import { Button, Form, Modal, message, Upload ,Input } from "antd";
+import { Button, Form, Modal, message, Upload, Input, Checkbox } from "antd";
 import React, { useMemo } from "react";
 import { useDispatch } from "react-redux";
 import { SetLoading } from "@/redux/LoadersSlice";
@@ -28,12 +28,11 @@ const modules = {
   ],
 };
 
-const locations = [
-"istanbul", "bursa" ,"trabzon" , "izmir" , "izmit" 
+const locations = ["istanbul", "bursa", "trabzon", "izmir", "izmit"];
+const vitesTypes = ["automatic", "manual"];
+const Fueltypes = ["gaz", "dizil"]
 
-
-]
-
+const carType= ["small" ,"medium" ,"large" ,"luxury"]
 
 
 function CarForm({
@@ -62,25 +61,26 @@ function CarForm({
       dispatch(SetLoading(true));
       let response;
       if (selectedCategory) {
-console.log('selected' ,selectedCategory?.images,"values" ,values.images)
-          // delete images
-      const imagesToDelete = selectedCategory.images.filter(
-        (image: string) => !values.images.includes(image)
-      );
-      await deleteImages(imagesToDelete);
-      const newImagesUploaded = await uploadImages(files);
-      values.images = [...values.images, ...newImagesUploaded];
-
-
+        console.log(
+          "selected",
+          selectedCategory?.images,
+          "values",
+          values.images
+        );
+        // delete images
+        const imagesToDelete = selectedCategory.images.filter(
+          (image: string) => !values.images.includes(image)
+        );
+        await deleteImages(imagesToDelete);
+        const newImagesUploaded = await uploadImages(files);
+        values.images = [...values.images, ...newImagesUploaded];
 
         response = await axios.put(
           `/api/admin/cars/${selectedCategory._id}`,
           values
         );
       } else {
-
         values.images = await uploadImages(files);
-
 
         response = await axios.post("/api/admin/cars", values);
       }
@@ -95,8 +95,7 @@ console.log('selected' ,selectedCategory?.images,"values" ,values.images)
     }
   };
 
-
-console.log("S?????"  , selectedCategory)
+  console.log("S?????", selectedCategory);
 
   const modelTitle = selectedCategory ? "Edit Car" : "Add Car";
   return (
@@ -134,22 +133,173 @@ console.log("S?????"  , selectedCategory)
           <Input className="    input_style  " type="text" />
         </Form.Item>
 
+        <div className=" grid grid-cols-3">
+          <Form.Item className=" " name="isAvaliable" valuePropName="checked">
+            <Checkbox>Avaliable</Checkbox>
+          </Form.Item>
+        </div>
+
+        <div className=" grid grid-cols-3 gap-3">
+          <Form.Item
+            className="input_style"
+            label="Price"
+            name="price"
+            rules={[
+              {
+                required: true,
+                message: "Please input price",
+              },
+            ]}
+          >
+            <Input className="    input_style  " type="text" />
+          </Form.Item>
+
+          <Form.Item
+            className="input_style"
+            label="Weekly price"
+            name="weekprice"
+            rules={[
+              {
+                required: true,
+                message: "Please input weekly price",
+              },
+            ]}
+          >
+            <Input className="    input_style  " type="text" />
+          </Form.Item>
+
+          <Form.Item
+            className="input_style"
+            label="Monthly price"
+            name="monthprice"
+            rules={[
+              {
+                required: true,
+                message: "Please input monthly price",
+              },
+            ]}
+          >
+            <Input className="    input_style  " type="text" />
+          </Form.Item>
+
+          <Form.Item
+            className="input_style"
+            label="Depozite price"
+            name="depoprice"
+            // rules={[
+            //   {
+            //     required: true,
+            //     message: "Please input dep price",
+            //   },
+            // ]}
+          >
+            <Input className="    input_style  " type="text" />
+          </Form.Item>
 
 
-        <Form.Item
-        className="input_style"
-          label="Price"
-          name="price"
-          rules={[
+
+          <Form.Item
+            className="input_style"
+            label="kilometrage"
+            name="kilometrage"
+            rules={[
+              {
+                required: true,
+                message: "Please input kilometrage",
+              },
+            ]}
+          >
+            <Input className=" input_style" type="text" />
+          </Form.Item>
+
+          <Form.Item
+            className="input_style"
+            label="Discount"
+            name="discount"
+         
+          >
+            <Input className=" input_style" type="text" />
+          </Form.Item>
+
+
+
+
+        </div>
+
+
+        <Form.Item label="Cartype" name="type"     rules={[
             {
               required: true,
-              message: "Please input price",
+              message: "Please input car type",
             },
-          ]}
-        >
-          <Input className="    input_style  " type="text" />
-     
+          ]} >
+          <select
+          className="input_style w-full py-2"
+          value={""}
+          >
+            <option value="">Select Car type</option>
+            {carType.map((type: any ,index :any) => (
+              <option key={index} value={type}>
+                {type}
+              </option>
+            ))}
+          </select>
+
+
         </Form.Item>
+
+
+
+       <Form.Item label="Vites" name="vites"     rules={[
+            {
+              required: true,
+              message: "Please input vites type",
+            },
+          ]} >
+          <select
+          className="input_style w-full py-2"
+          value={""}
+          >
+            <option value="">Select vites type </option>
+            {vitesTypes.map((vites: any ,index :any) => (
+              <option key={index} value={vites}>
+                {vites}
+              </option>
+            ))}
+          </select>
+
+
+        </Form.Item>
+
+
+
+
+        <Form.Item label="Fueltype" name="Fueltype"     rules={[
+            {
+              required: true,
+              message: "Please input fuel type",
+            },
+          ]} >
+          <select
+          className="input_style w-full py-2"
+          value={""}
+          >
+            <option value="">Select Fuel type</option>
+            {Fueltypes.map((fuel: any ,index :any) => (
+              <option key={index} value={fuel}>
+                {fuel}
+              </option>
+            ))}
+          </select>
+
+
+        </Form.Item>
+
+
+
+
+
+
 
 
         {/* <Form.Item label="Location" name="location"     rules={[
@@ -175,11 +325,6 @@ console.log("S?????"  , selectedCategory)
 
 
 
-
-
-
-
-
         {/* <Form.Item
           label="Title"
           name="title"
@@ -196,11 +341,6 @@ console.log("S?????"  , selectedCategory)
             <input type="text" placeholder="hotel name" />
           </div>
         </Form.Item> */}
-
-   
-
-
-
 
         <Form.Item
           label="Description"
