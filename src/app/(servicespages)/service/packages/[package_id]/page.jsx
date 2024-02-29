@@ -761,11 +761,13 @@ const Page = () => {
                                 عدد الايام:<span></span>
                               </label>
 
-                              <Amount
+                              {trans?.days}
+
+                              {/* <Amount
                                 value={state.daysNum}
                                 min={1}
                                 onChange={handleUpdateBooking("daysNum")}
-                              />
+                              /> */}
                             </div>
 
                             <div className="number-input-item adults">
