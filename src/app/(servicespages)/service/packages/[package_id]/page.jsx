@@ -579,7 +579,7 @@ const Page = () => {
                   {trans?.title}
                 </h3>
 
-                {trans?.pdf && (
+                {trans?.pdf?.url && (
                   <h4 className="ar primary-btn1 !font-kufi two">
                     <a className=" text-white" href={trans?.pdf?.url} target="_blank">
                       {" "}
