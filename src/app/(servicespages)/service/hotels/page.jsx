@@ -12,17 +12,15 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import HotelCard from "../_components/HotelCard";
 import { Swiper, SwiperSlide } from "swiper/react";
-import DiscountSlider from '../_components/DiscountSlider'
-import {CountriesAr} from '@/uitils/locations'
-import LocationFilterCards from '../_components/LocationFilterCards'
-
+import DiscountSlider from "../_components/DiscountSlider";
+import { CountriesAr } from "@/uitils/locations";
+import LocationFilterCards from "../_components/LocationFilterCards";
 
 export default function HotelsServices() {
   const dispatch = useDispatch();
   const [hotels, setHotels] = useState([]);
 
   const searchParams = useSearchParams();
-
 
   const all = searchParams.get("all");
   const location = searchParams.get("location");
@@ -34,13 +32,13 @@ export default function HotelsServices() {
       dispatch(SetLoading(true));
 
       if (!location && !title && !roomType && !all) {
-        const response = await axios.get(`/api/admin/hotels?discount=true&&offers=true`);
+        const response = await axios.get(
+          `/api/admin/hotels?discount=true&&offers=true`
+        );
 
         setHotels(response.data.data);
         console.log("REsponse-->", response.data.data);
-      }
-      
-      else {
+      } else {
         // location=${location && location}&&title=${title && title}
         const response = await axios.get(
           `/api/admin/hotels?${location && "location"}=${location}&&${
@@ -59,9 +57,7 @@ export default function HotelsServices() {
   };
   useEffect(() => {
     getHotels();
-  }, [location ,all ,roomType ,title]);
-
-
+  }, [location, all, roomType, title]);
 
   const locations = ["istanbul", "bursa", "trabzon", "izmir", "izmit"];
 
@@ -75,39 +71,32 @@ export default function HotelsServices() {
 
       <div className="room-suits-page pt-120 mb-120">
         <div className="container">
+          <LocationFilterCards link={"hotels"} searckey={"location"} />
 
+          {location || roomType || title || all ? (
+            <div className="row g-lg-4 gy-5">
+              <div className="col-xl-10 mx-auto order-lg-2 order-1">
+                {/* map */}
 
-       
-<LocationFilterCards link = {'hotels'} searckey={'location'} />
+                {hotels?.length > 0 &&
+                  hotels?.map((hotel, index) => {
+                    return <HotelCard index={index} hotel={hotel} />;
+                  })}
 
-
-{(location || roomType || title || all) ?  
-
-
-          <div className="row g-lg-4 gy-5">
-            <div className="col-xl-10 mx-auto order-lg-2 order-1">
-              {/* map */}
-
-              {hotels?.length > 0 &&
-                hotels?.map((hotel, index) => {
-                  return <HotelCard index={index} hotel={hotel} />;
-                })}
-
-              {hotels?.length === 0 && (
-                <div className=" ar text-3xl my-5 ">لا يوجد اي عناصر</div>
-              )}
+                {hotels?.length === 0 && (
+                  <div className=" ar text-3xl my-5 ">لا يوجد اي عناصر</div>
+                )}
+              </div>
             </div>
-          </div>
-
-          :
-
-          <div>
-            <DiscountSlider title="عروض الفنادق"  data={hotels} link={'hotels'}/>
-          </div>
-
-              }
-
-
+          ) : (
+            <div>
+              <DiscountSlider
+                title="عروض الفنادق"
+                data={hotels}
+                link={"hotels"}
+              />
+            </div>
+          )}
         </div>
       </div>
     </div>

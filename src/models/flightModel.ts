@@ -8,30 +8,27 @@ const flightSchema = new mongoose.Schema(
     },
     description: {
       type: String,
+      required: false,
+    },
+
+    images: {
+      type: Array,
       required: true,
     },
-  
-    images: {
-        type: Array,
-        required: true,
-      },
     isActive: {
       type: Boolean,
       default: true,
     },
 
-
     from: {
       type: String,
-      required: true,
+      required: false,
     },
 
     to: {
       type: String,
-      required: true,
+      required: false,
     },
-
-
 
     // location: {
     //   type: String,
@@ -39,15 +36,14 @@ const flightSchema = new mongoose.Schema(
     // },
 
     price: {
-        type: Number,
-        required: true,
-      }
+      type: Number,
+      required: false,
+    },
   },
   {
     timestamps: true,
   }
 );
-
 
 // check if user model is already created
 if (mongoose.models.flights) {
@@ -55,6 +51,6 @@ if (mongoose.models.flights) {
   mongoose.deleteModel(flightModel.modelName);
 }
 
-const Flight= mongoose.model("flights",flightSchema);
+const Flight = mongoose.model("flights", flightSchema);
 
-export default Flight
+export default Flight;

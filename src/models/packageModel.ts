@@ -21,6 +21,11 @@ const packageSchema = new mongoose.Schema(
       required: true,
     },
 
+    date: {
+      type: String,
+      required: true,
+    },
+
     from: {
       type: String,
       required: true,
@@ -43,12 +48,14 @@ const packageSchema = new mongoose.Schema(
 
     adult: {
       type: Number,
-      required: true,
+      required: false,
     },
     child: {
       type: Number,
-      required: true,
+      required: false,
     },
+
+
 
     features: {
       type: [String],

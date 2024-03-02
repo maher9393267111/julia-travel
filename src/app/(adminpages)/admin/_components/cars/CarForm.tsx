@@ -212,6 +212,24 @@ function CarForm({
             <Input className=" input_style" type="text" />
           </Form.Item>
 
+
+
+          <Form.Item
+            className="input_style"
+            label="Capacity"
+            name="capacity"
+            rules={[
+              {
+                required: true,
+                message: "Please input capacity",
+              },
+            ]}
+          >
+            <Input className=" input_style" type="text" />
+          </Form.Item>
+
+
+
           <Form.Item
             className="input_style"
             label="Discount"

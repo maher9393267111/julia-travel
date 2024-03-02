@@ -36,19 +36,13 @@
     {
         "id": "6",
         "label": "السيارات",
-        "link": "/service/cars",
+        "link": "/service/rental",
         "icon": false
       
     },
 
 
-    {
-        "id": "7",
-        "label": "رحلات الطيران",
-        "link": "/service/flights",
-        "icon": false
-      
-    },
+  
 
     {
         "id": "8",

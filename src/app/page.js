@@ -44,7 +44,7 @@ export const metadata = {
 const REACT_APP_BASE_URL1 = "https://julia-travel97.vercel.app";
 const REACT_APP_BASE_URL = "http://localhost:3000";
 
-const domain =   REACT_APP_BASE_URL1
+const domain =   REACT_APP_BASE_URL
 
 // process.env.NODE_ENV === "development"
 //   ? REACT_APP_BASE_URL1
@@ -149,7 +149,7 @@ export default async function Home() {
     <>
       <HeaderSite />
 
-      <Banner1 />
+      <Banner1 data={flightData} />
 
       <FilterComponent />
 
@@ -161,7 +161,7 @@ export default async function Home() {
 
       <ToursHome tours={toursData}/>
       <TransportHome transports={transportData}/>
-      <FlightHome flights={flightData}/>
+      {/* <FlightHome flights={flightData}/> */}
 
       <HomeVisa visaData={visaData} />
 

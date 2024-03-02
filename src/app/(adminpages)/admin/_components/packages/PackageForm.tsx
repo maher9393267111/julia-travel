@@ -277,7 +277,7 @@ function PackageForm({
         >
           <Input className="    input_style  " type="text" />
         </Form.Item>
-
+{/* 
         <Form.Item
           className="input_style"
           label="Adult number"
@@ -304,7 +304,29 @@ function PackageForm({
           ]}
         >
           <Input className="    input_style  " type="text" />
+        </Form.Item> */}
+
+
+
+<Form.Item
+          className="input_style"
+          label="Date"
+          name="date"
+          rules={[
+            {
+              required: true,
+              message: "Please input date",
+            },
+          ]}
+        >
+          <Input className="    input_style  " type="text" />
         </Form.Item>
+
+
+
+    
+
+
 
         <Form.Item
           label="From"

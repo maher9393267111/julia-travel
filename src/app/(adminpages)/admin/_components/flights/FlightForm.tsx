@@ -128,93 +128,12 @@ function FlightForm({
           <Input className="    input_style  " type="text" />
         </Form.Item>
 
-        <Form.Item
-          className="input_style"
-          label="Price"
-          name="price"
-          rules={[
-            {
-              required: true,
-              message: "Please input price",
-            },
-          ]}
-        >
-          <Input className="    input_style  " type="text" />
-        </Form.Item>
-
-        {/* <Form.Item
-          label="Location"
-          name="location"
-          rules={[
-            {
-              required: true,
-              message: "Please input location",
-            },
-          ]}
-        >
-          <select className="input_style w-full py-2" value={""}>
-            <option value="">Select Location</option>
-            {locations.map((location: any, index: any) => (
-              <option key={index} value={location}>
-                {location}
-              </option>
-            ))}
-          </select>
-        </Form.Item> */}
-
-        {/* from to */}
-
-        <Form.Item
-          label="from"
-          name="from"
-          rules={[
-            {
-              required: true,
-              message: "Please input from",
-            },
-          ]}
-        >
-          {/* <input type="text" /> */}
-          <Input className="    input_style  " type="text" />
-        </Form.Item>
-
-        <Form.Item
-          label="to"
-          name="to"
-          rules={[
-            {
-              required: true,
-              message: "Please input to ",
-            },
-          ]}
-        >
-          {/* <input type="text" /> */}
-          <Input className="    input_style  " type="text" />
-        </Form.Item>
-
-        <Form.Item
-          label="Description"
-          name="description"
-          rules={[
-            {
-              required: true,
-              message: "Please input your description!",
-            },
-          ]}
-        >
-          {/* <textarea rows={5}></textarea> */}
-
-          <ReactQuill
-            modules={modules}
-            theme="snow"
-            className=" pb-[10px] border-[2.5px] text-black font-medium rounded-md border-teal-400 hover:border-blue-600"
-          />
-        </Form.Item>
+   
 
         <div className="col-span-3">
           <Upload
             accept="image/*"
-            multiple
+            // multiple
             beforeUpload={(file) => {
               setFiles((prev: any) => [...prev, file]);
               return false;
