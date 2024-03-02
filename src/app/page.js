@@ -44,11 +44,16 @@ export const metadata = {
 const REACT_APP_BASE_URL1 = "https://julia-travel97.vercel.app";
 const REACT_APP_BASE_URL = "http://localhost:3000";
 
-const domain =   //REACT_APP_BASE_URL
+const domain = process.env.NODE_ENV === "development"
+?  REACT_APP_BASE_URL
+: REACT_APP_BASE_URL1
 
- !process.env.NODE_ENV === "development"
-  ? REACT_APP_BASE_URL1
-    : REACT_APP_BASE_URL;
+
+//REACT_APP_BASE_URL
+
+//  !process.env.NODE_ENV === "development"
+//   ? REACT_APP_BASE_URL1
+//     : REACT_APP_BASE_URL;
 
 
 const getVisa = async () => {
