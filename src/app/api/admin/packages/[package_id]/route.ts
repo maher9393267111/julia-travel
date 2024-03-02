@@ -15,7 +15,7 @@ export async function GET(
   }
 ) {
   try {
-    await validateApiRequest(req);
+    // await validateApiRequest(req);
     const category = await Package.findById(params.package_id);
     return NextResponse.json({ data: category });
   } catch (error : any) {

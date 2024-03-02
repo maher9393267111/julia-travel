@@ -15,7 +15,7 @@ export async function GET(
   }
 ) {
   try {
-    await validateApiRequest(req);
+    // await validateApiRequest(req);
     const tour = await Tour.findById(params.tour_id);
     return NextResponse.json({ data:tour });
   } catch (error : any) {

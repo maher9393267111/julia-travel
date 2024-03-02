@@ -15,7 +15,7 @@ export async function GET(
   }
 ) {
   try {
-    await validateApiRequest(req);
+    // await validateApiRequest(req);
     const car= await Car.findById(params.car_id);
     return NextResponse.json({ data: car });
   } catch (error : any) {

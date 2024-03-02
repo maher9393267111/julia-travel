@@ -8,7 +8,7 @@ connectDB();
 
 export async function GET(req: NextRequest) {
   try {
-    await validateApiRequest(req);
+    // await validateApiRequest(req);
 
    //  const response = await axios.get("/api/admin/packages?location=bursa");
     const url = new URL(req.url);
