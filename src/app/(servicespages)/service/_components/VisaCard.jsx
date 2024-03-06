@@ -33,6 +33,15 @@ export default function VisaCard({index ,visa}) {
             <li>
               <span>نوع الفيزا :</span>{visa?.type}
             </li>
+
+
+            <li>
+              <span>{visa?.extratype}
+              </span>
+            </li>
+
+
+
         
         {visa?.maketime &&
             <li>

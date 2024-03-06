@@ -32,7 +32,7 @@ const transSchema = new mongoose.Schema(
 
     person: {
       type: Number,
-      required: true,
+      required: false,
     },
 
 
@@ -60,16 +60,32 @@ const transSchema = new mongoose.Schema(
     //   default: false,
     // },
 
-    price: {
+    // price: {
+    //   type: Number,
+    //   required: true,
+    // },
+
+
+    iscar: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
+
+    carprice: {
       type: Number,
       required: true,
+      default: false,
     },
+
+
 
     isvito: {
       type: Boolean,
       required: true,
       default: false,
     },
+
     vitoprice: {
       type: Number,
       required: true,
@@ -84,20 +100,55 @@ const transSchema = new mongoose.Schema(
     minibusprice: {
       type: Number,
       required: true,
-      default: false,
+      default: 0,
     },
 
     isbus: {
       type: Boolean,
       required: true,
-      default: false,
+      default: 0,
     },
 
     busprice: {
       type: Number,
       required: true,
-      default: false,
+      default: 0,
     },
+
+    carcapacity: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+
+    buscapacity: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+
+   minibuscapacity: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+
+
+    vitocapacity: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+
+
+    package: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+
+
+
 
     fueltype: {
       type: String,

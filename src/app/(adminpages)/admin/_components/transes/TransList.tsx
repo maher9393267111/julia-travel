@@ -111,7 +111,7 @@ function TransList() {
             setSelectedCategory(undefined);
           }}
         >
-          Add Transiction
+          Add Transport
         </Button>
       </div>
 

@@ -271,12 +271,12 @@ function VisaForm({
           className="input_style"
           label="Discount"
           name="discount"
-          rules={[
-            {
-              required: true,
-              message: "Please input discount",
-            },
-          ]}
+          // rules={[
+          //   {
+          //     required: true,
+          //     message: "Please input discount",
+          //   },
+          // ]}
         >
           <Input className="    input_style  " type="text" />
         </Form.Item>

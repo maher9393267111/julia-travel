@@ -128,7 +128,7 @@ function TransForm({
           <Input className="    input_style  " type="text" />
         </Form.Item>
 
-        <Form.Item
+        {/* <Form.Item
           className="input_style"
           label="Price"
           name="price"
@@ -140,11 +140,11 @@ function TransForm({
           ]}
         >
           <Input className="    input_style  " type="text" />
-        </Form.Item>
+        </Form.Item> */}
 
    
 
-
+{/* 
         <Form.Item
           className="input_style"
           label="Persons"
@@ -159,7 +159,7 @@ function TransForm({
           <Input className="    input_style  " type="text" />
         </Form.Item>
 
-   
+    */}
 
 
 
@@ -207,9 +207,23 @@ function TransForm({
           </Form.Item>
 
 
+          <Form.Item className=" " name="package"      label="Package number" >
+            
 
 
-        <div className=" grid grid-cols-3 gap-2">
+            <Input className="    input_style  " type="text" />
+
+          </Form.Item>
+
+
+
+
+        <div className=" grid grid-cols-4 gap-2">
+          
+        <Form.Item className=" " name="iscar" valuePropName="checked">
+            <Checkbox>Small Car </Checkbox>
+          </Form.Item>
+
           <Form.Item className=" " name="isbus" valuePropName="checked">
             <Checkbox>Bus </Checkbox>
           </Form.Item>
@@ -223,6 +237,14 @@ function TransForm({
           </Form.Item>
 
 
+
+          <Form.Item className=" " name="carprice"      label="Car price" >
+            
+
+
+            <Input className="    input_style  " type="text" />
+
+          </Form.Item>
 
 
           <Form.Item className=" " name="busprice"      label="Bus price" >
@@ -243,6 +265,39 @@ function TransForm({
 
             
           </Form.Item>
+
+
+
+
+{/* -------capacity---- */}
+
+<Form.Item className=" " name="carcapacity"      label="Car Capacity" >
+            
+
+
+            <Input className="    input_style  " type="text" />
+
+          </Form.Item>
+
+          <Form.Item className=" " name="vitocapacity"   label="Vito Capacity" >
+          <Input className="    input_style  " type="text" />
+          </Form.Item>
+
+          <Form.Item className=" " name="minibuscapacity"   label="Mini Capacity">
+
+          <Input className="    input_style  " type="text" />
+
+            
+          </Form.Item>
+
+
+
+          <Form.Item className=" " name="buscapacity"   label="Bus Capacity">
+
+<Input className="    input_style  " type="text" />
+
+  
+</Form.Item>
 
 
 
