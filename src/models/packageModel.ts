@@ -15,7 +15,6 @@ const packageSchema = new mongoose.Schema(
     //   required: true,
     // },
 
-
     location: {
       type: String,
       required: true,
@@ -55,8 +54,6 @@ const packageSchema = new mongoose.Schema(
       required: false,
     },
 
-
-
     features: {
       type: [String],
       default: [],
@@ -82,28 +79,20 @@ const packageSchema = new mongoose.Schema(
     discount: {
       type: Number,
       required: false,
-      default:0
-
+      default: 0,
     },
-
-
-
 
     pdf: {
       id: {
         type: String,
-        default: ""
+        default: "",
       },
-     
-    url: {
+
+      url: {
         type: String,
-        default: ""
-      }
+        default: "",
+      },
     },
-
-
-
-
   },
   {
     timestamps: true,

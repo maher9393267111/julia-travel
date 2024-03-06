@@ -34,9 +34,11 @@ export default function VisaCard({index ,visa}) {
               <span>نوع الفيزا :</span>{visa?.type}
             </li>
         
+        {visa?.maketime &&
             <li>
-              <span>مدة الاصدار :</span> 7-10 اسابيع
+              <span>مدة الاصدار :</span> {visa?.maketime}
             </li>
+}
 {/* 
                 <li>
               <span>Visa Mode :</span> Electronic

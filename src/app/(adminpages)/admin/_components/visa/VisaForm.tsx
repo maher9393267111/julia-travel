@@ -12,6 +12,7 @@ import Image from "next/image";
 import "react-quill/dist/quill.snow.css";
 import dynamic from "next/dynamic";
 import Countries from "@/uitils/countries.json";
+import countries from "world-countries";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 
 const modules = {
@@ -37,10 +38,10 @@ const types = [
   // 'Family Tour','Honeymoon Tou','Group Tour','Adventure Tour','Solo Tour'
 ];
 
-const visaTypes = ["tourism" , "medical" , "work"]
+const visaTypes = ["tourism" , "medical" , "work" ,"umrah"]
 
 
-const visaExtraTypes = [ "classic", "electronic"]
+const visaExtraTypes = [ "Physical", "Evisa"]
 
 
 
@@ -221,9 +222,9 @@ function VisaForm({
         >
           <select className="input_style w-full py-2" value={""}>
             <option value="">Select Country </option>
-            {Countries.map((country: any, index: any) => (
-              <option key={index} value={country.country}>
-                {country.country}
+            {countries.map((country: any, index: any) => (
+              <option key={index} value={ country.name.common}>
+                {country.name.common}
               </option>
             ))}
           </select>
@@ -242,9 +243,9 @@ function VisaForm({
         >
           <select className="input_style w-full py-2" value={""}>
             <option value="">Select Nationality</option>
-            {Countries.map((country: any, index: any) => (
-              <option key={index} value={country.country}>
-                {country.country}
+            {countries.map((country: any, index: any) => (
+              <option key={index} value={country.name.common}>
+                {country.name.common}
               </option>
             ))}
           </select>

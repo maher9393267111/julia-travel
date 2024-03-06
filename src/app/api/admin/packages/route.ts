@@ -10,9 +10,9 @@ export async function GET(req: NextRequest) {
   try {
     // await validateApiRequest(req);
 
-   //  const response = await axios.get("/api/admin/packages?location=bursa");
+    //  const response = await axios.get("/api/admin/packages?location=bursa");
     const url = new URL(req.url);
-     const location = url.searchParams.get("location");
+    const location = url.searchParams.get("location");
     const discount = url.searchParams.get("discount");
     const adult = url.searchParams.get("adult");
     const child = url.searchParams.get("child");
@@ -20,15 +20,14 @@ export async function GET(req: NextRequest) {
     const to = url.searchParams.get("to");
     const type = url.searchParams.get("type");
     const limit = url.searchParams.get("limit");
-  
+
     // workaround typescript, da await Post.find(username && { username }) mit einer Warnung daherkommt
     let filter: FilterQuery<any> = {};
 
     if (location) {
-      const loc = location.replace(/\s/g, '');
+      const loc = location.replace(/\s/g, "");
       filter.location = loc;
     }
-
 
     if (from) {
       filter.from = from;
@@ -36,7 +35,6 @@ export async function GET(req: NextRequest) {
     if (to) {
       filter.to = to;
     }
-
 
     if (adult) {
       filter.adult = adult;
@@ -52,17 +50,16 @@ export async function GET(req: NextRequest) {
 
     if (discount) {
       filter.discount = { $gte: 0 };
-    
     }
 
+    console.log("FIlter", filter);
 
-    console.log("FIlter" , filter)
-
-
-    const packages = limit ?   await Package.find(filter).sort({ createdAt: -1 }).limit(3) :  await Package.find(filter).sort({ createdAt: -1 });
+    const packages = limit
+      ? await Package.find(filter).sort({ createdAt: -1 }).limit(3)
+      : await Package.find(filter).sort({ createdAt: -1 });
     return NextResponse.json({ data: packages });
-  } catch (error : any) {
-    return NextResponse.json({ message: error.message } , { status: 500 });
+  } catch (error: any) {
+    return NextResponse.json({ message: error.message }, { status: 500 });
   }
 }
 
@@ -73,7 +70,7 @@ export async function POST(req: NextRequest) {
     const category = new Package(reqBody);
     await category.save();
     return NextResponse.json({ data: category });
-  } catch (error : any) {
-    return NextResponse.json({ message: error.message } , { status: 500 });
+  } catch (error: any) {
+    return NextResponse.json({ message: error.message }, { status: 500 });
   }
 }

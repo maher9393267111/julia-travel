@@ -20,6 +20,7 @@ import Lightbox from "yet-another-react-lightbox";
 import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import parse from "html-react-parser";
 import dayjs from "dayjs";
+import countries from "world-countries";
 
 import { Button, message } from "antd";
 import {
@@ -198,6 +199,14 @@ const page = () => {
                       <span className="ar">*</span>
                       المستندات المطلوبة للحصول على التأشيرة الإلكترونية
                     </h6>
+
+
+
+                    {visa?.description && (
+                  <p className=" ar">{parse(visa?.description)}</p>
+                )}
+
+
 
                     <ul className=" ar">
 
