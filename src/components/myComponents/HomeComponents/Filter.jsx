@@ -268,7 +268,8 @@ const FilterHome = () => {
                   Visa
                 </button>
               </li>
-              <li className="nav-item" role="presentation">
+
+              {/* <li className="nav-item" role="presentation">
                 <button
                   className="nav-link"
                   id="activities-tab"
@@ -289,7 +290,10 @@ const FilterHome = () => {
                   </svg>
                   Flights
                 </button>
-              </li>
+              </li> */}
+
+
+
               <li className="nav-item" role="presentation">
                 <button
                   className="nav-link"

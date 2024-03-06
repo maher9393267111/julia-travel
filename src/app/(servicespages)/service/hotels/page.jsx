@@ -74,11 +74,7 @@ export default function HotelsServices() {
     getHotels();
   }, [location, all, roomType, title, checkedBrands]);
 
-  // "تركيا",
-  // "جورجيا",
-  // "الامارات",
-  // "أذربيجان",
-  // "البوسنة والهرسك",
+
 
   const currentCities =
     location && location === "تركيا"

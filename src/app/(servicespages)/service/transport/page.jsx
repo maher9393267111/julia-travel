@@ -12,6 +12,7 @@ import axios from "axios";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import TransportCard from "../_components/TransportCard";
+import DiscountSlider from "../_components/DiscountSlider";
 
 // export const metadata = {
 //   title: "TripRex - Tour & Travel Agency  NextJs Template",
@@ -31,7 +32,7 @@ const page = () => {
   const person = searchParams.get("person");
   const from = searchParams.get("from");
   const to = searchParams.get("to");
-
+  const all= searchParams.get("all");
   const getTransports = async () => {
     try {
       dispatch(SetLoading(true));
@@ -56,11 +57,16 @@ const page = () => {
     <>
       <Breadcrumb pagename="النقليات" pagetitle="النقليات" />
 
-      {transports?.length}
+   
 
       <div className="transport-page pt-120 mb-120">
         <div className="container">
+
+        {person || to || from|| all ? (
           <div className="row g-lg-4 gy-5">
+
+
+
             <div className="col-xl-10  mx-auto  order-lg-2 order-1">
               <div className="row g-4 mb-70">
                 {transports?.length > 0 &&
@@ -69,7 +75,26 @@ const page = () => {
                   })}
               </div>
             </div>
+
+
+
+
           </div>
+
+           )
+           
+           : (
+            <div>
+              <DiscountSlider
+                title="عروض النقل"
+                data={transports}
+                link={"transport"}
+              />
+            </div>
+          )}
+
+
+
         </div>
       </div>
     </>
