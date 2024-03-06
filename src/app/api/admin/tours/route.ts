@@ -14,8 +14,9 @@ export async function GET(req: NextRequest) {
     const discount = url.searchParams.get("discount");
      const country = url.searchParams.get("country");
     const city = url.searchParams.get("city");
+    const cities = url.searchParams.get("cities");
 
-   
+    const title= url.searchParams.get("title");
     const type= url.searchParams.get("type");
     // const from = url.searchParams.get("from");
     // const to = url.searchParams.get("to");
@@ -30,9 +31,23 @@ export async function GET(req: NextRequest) {
       filter.country = country;
     }
 
-    if (city) {
-      filter.city= city;
-    }
+
+    if (cities) {
+      console.log("cities" ,cities)
+            const citiesformat =  cities.split(',')
+            filter.city =  {$in: citiesformat} }
+
+
+            if (title) {
+           
+              filter.title =   { $regex: title, $options: 'i' } 
+            }
+
+
+
+    // if (city) {
+    //   filter.city= city;
+    // }
 
     if (type) {
       filter.type = type;
@@ -63,7 +78,7 @@ export async function GET(req: NextRequest) {
     const tours =
      limit ? await Tour.find(filter).sort({ createdAt: -1 }).limit(3)  : 
     await Tour.find(filter).sort({ createdAt: -1 });
-    console.log("TOURS RESULT--<>>>" , tours)
+    // console.log("TOURS RESULT--<>>>" , tours)
     return NextResponse.json({ data: tours });
   } catch (error : any) {
     return NextResponse.json({ message: error.message } , { status: 500 });

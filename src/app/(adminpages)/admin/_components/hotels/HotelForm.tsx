@@ -250,6 +250,28 @@ function HotelForm({
           </select>
         </Form.Item>
 
+        <Form.Item
+          label="City"
+          name="city"
+          rules={[
+            {
+              required: true,
+              message: "Please input location",
+            },
+          ]}
+        >
+          <select className="input_style w-full py-2" value={""}>
+            <option value="">Select City</option>
+            {CitiesAr.map((city: any, index: any) => (
+              <option key={index} value={city}>
+                {city}
+              </option>
+            ))}
+          </select>
+        </Form.Item>
+
+
+
 
         
 
@@ -259,7 +281,7 @@ function HotelForm({
           rules={[
             {
               required: true,
-              message: "Please input location",
+              message: "Please input room type",
             },
           ]}
         >

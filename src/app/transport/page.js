@@ -29,6 +29,8 @@ const page = () => {
                     </div>
                   </form>
                 </div>
+
+                
                 <div className="single-widget mb-30">
                   <h5 className="widget-title">Popular Filters</h5>
                   <div className="checkbox-container">

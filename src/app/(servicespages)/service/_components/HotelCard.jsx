@@ -86,6 +86,11 @@ export default function HotelCard({ hotel, index }) {
                 </li>
 
                 <li>
+                  <i className="bi bi-geo-alt" />
+                  
+                  {hotel?.city}
+                </li>
+                <li>
                   {/* Dhaka, Bangladesh */}
                   {hotel?.roomtype}
                 </li>

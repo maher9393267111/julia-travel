@@ -17,7 +17,8 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import dayjs from "dayjs";
 import Countries from "@/uitils/countries.json";
-import { CountriesAr ,CitiesAr} from '@/uitils/locations'
+import { CountriesAr, CitiesAr } from "@/uitils/locations";
+import countries from "world-countries";
 
 const cities = [
   {
@@ -60,16 +61,22 @@ const tourTypes = [
   },
 ];
 
-const visaTypes = ["medical", "work", "tourism"];
+const visaTypes = ["medical", "work", "tourism", "umrah"];
 
 const roomTypes = ["single", "double"];
 
-const personsNumberOptions= [1,2,3,4,5,6,7,8,9,10,11,12,13];
+const personsNumberOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
 
-const tourpackagetypes= ["honeyMoon", "family", "vip", "groups", "adventure" ,"seaBoats" ,"campagin" ,"seaSport"];
-
-
-
+const tourpackagetypes = [
+  "honeyMoon",
+  "family",
+  "vip",
+  "groups",
+  "adventure",
+  "seaBoats",
+  "campagin",
+  "seaSport",
+];
 
 const FilterHome = () => {
   const router = useRouter();
@@ -87,18 +94,18 @@ const FilterHome = () => {
     visaType: "",
     nationality: "",
     country: "",
-    fromTransport :"",
-    toTransport:"",
-    personsTrans:1,
-    fromFlight :"",
-    toFlight:"",
-    countryT:"",
-    cityT:"",
-    packF:"",
-    packTo:"",
-    packAdult:"",
-    packChild:"",
-    packageType:""
+    fromTransport: "",
+    toTransport: "",
+    personsTrans: 1,
+    fromFlight: "",
+    toFlight: "",
+    countryT: "",
+    cityT: "",
+    packF: "",
+    packTo: "",
+    packAdult: "",
+    packChild: "",
+    packageType: "",
   });
 
   const [startDate, setStartDate] = useState(new Date());
@@ -134,8 +141,6 @@ const FilterHome = () => {
       );
     }
 
-
-
     if (page === "transport") {
       router.push(
         `/service/transport?person=${state.personsTrans}&&from=${state.fromTransport}&&to=${state.toTransport}`
@@ -148,23 +153,12 @@ const FilterHome = () => {
       );
     }
 
-
-    
     if (page === "package") {
       router.push(
         `/service/packages?from=${state.packF}&&to=${state.packTo}&&adults=${state.packAdult}&&childs=${state.packChild}&&type=${state.packageType}`
       );
     }
-
-
-
-
-
-
   };
-
-
-
 
   const inputChange = (e) => {
     setstate({ ...state, [e.target.name]: e.target.value });
@@ -228,8 +222,8 @@ const FilterHome = () => {
                 </button>
               </li>
 
-{/* -----packages---- */}
-<li className="nav-item" role="presentation">
+              {/* -----packages---- */}
+              <li className="nav-item" role="presentation">
                 <button
                   className="nav-link"
                   id="package-tab"
@@ -251,8 +245,6 @@ const FilterHome = () => {
                   Package
                 </button>
               </li>
-
-
 
               <li className="nav-item" role="presentation">
                 <button
@@ -401,7 +393,11 @@ const FilterHome = () => {
             <div className="tab-content" id="pills-tab2Content">
               {/* -------HOTELS TAB ------- */}
 
-              <div className="tab-pane fade activ py-4" id="hotel" role="tabpanel">
+              <div
+                className="tab-pane fade activ py-4"
+                id="hotel"
+                role="tabpanel"
+              >
                 <form className=" !font-kufi py-4">
                   <div className="flex flex-col md:flex-row gap-12 md:gap-4 mt-4 px-4 w-[90%] ">
                     <div className="w-full mb-10 md:mb-0">
@@ -607,7 +603,7 @@ const FilterHome = () => {
                           className={`absolute -top-7   ar     ${"text-black"} text-sm font-semibold mb-2`}
                           htmlFor="title"
                         >
-                        البلد
+                          البلد
                         </label>
 
                         <div
@@ -618,20 +614,14 @@ const FilterHome = () => {
                           <RiFindReplaceFill className=" w-5 h-5" />
                         </div>
 
-              
-
-
-
-
-<select
-                              name="countryT"
-                              type="text"
-                              id="countrT"
-                              onChange={inputChange}
-                              value={state.countryT}
+                        <select
+                          name="countryT"
+                          type="text"
+                          id="countrT"
+                          onChange={inputChange}
+                          value={state.countryT}
                           className="w-full h-10 px-8 text-base placeholder-gray-600 border rounded-lg appearance-none focus:outline-none"
                           placeholder="Regular input"
-                      
                         >
                           <option default value={""}></option>
                           {CountriesAr.map((c) => (
@@ -641,8 +631,6 @@ const FilterHome = () => {
                           ))}
                         </select>
 
-
-
                         {/* <div className="absolute  !font-ibm inset-y-0 right-0 flex items-center px-2 pointer-events-none">
                       
                       
@@ -651,7 +639,7 @@ const FilterHome = () => {
                     </div>
 
                     {/* to tour */}
-                    <div className="w-full mb-10 md:mb-0">
+                    {/* <div className="w-full mb-10 md:mb-0">
                       <div className="relative  inline-block w-full text-gray-700">
                         <label
                           className={`absolute -top-7   ar     ${"text-black"} text-sm font-semibold mb-2`}
@@ -662,24 +650,20 @@ const FilterHome = () => {
 
                         <div
                           className="absolute inset-y-0 left-1    flex items-center px-2 cursor-pointer duration-300 hover:opacity-80"
-                          // onClick={() => setstate({ ...state, title: "" })}
+                       
                         >
-                          {/* مسح */}
+                          
                           <RiFindReplaceFill className=" w-5 h-5" />
                         </div>
 
-                    
-
-
-<select
-                               name="cityT"
-                               type="text"
-                               id="toT"
-                               onChange={inputChange}
-                               value={state.cityT}
+                        <select
+                          name="cityT"
+                          type="text"
+                          id="toT"
+                          onChange={inputChange}
+                          value={state.cityT}
                           className="w-full h-10 px-8 text-base placeholder-gray-600 border rounded-lg appearance-none focus:outline-none"
                           placeholder="Regular input"
-                      
                         >
                           <option default value={""}></option>
                           {CitiesAr.map((c) => (
@@ -689,14 +673,8 @@ const FilterHome = () => {
                           ))}
                         </select>
 
-
-
-                        {/* <div className="absolute  !font-ibm inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                      
-                      
-                   </div> */}
                       </div>
-                    </div>
+                    </div> */}
 
                     {/* tour location */}
 
@@ -855,19 +833,15 @@ const FilterHome = () => {
                 </form>
               </div>
 
-
-
-{/* -------Transport  TAB ----- */}
-<div
+              {/* -------Transport  TAB ----- */}
+              <div
                 className="tab-pane fade show  py-4"
-              
-                
-                id="transport" role="tabpanel"
+                id="transport"
+                role="tabpanel"
               >
                 <form className=" !font-kufi py-4">
                   <div className="flex flex-col md:flex-row gap-12 md:gap-4 mt-4 px-4 w-[90%] ">
                     {/* from transport */}
-
 
                     <div className="w-full mb-10 md:mb-0">
                       <div className="relative  inline-block w-full text-gray-700">
@@ -936,16 +910,15 @@ const FilterHome = () => {
                       </div>
                     </div>
 
-                 
-{/* --- person number transport  */}
+                    {/* --- person number transport  */}
 
-<div className="w-full mb-10 md:mb-0">
+                    <div className="w-full mb-10 md:mb-0">
                       <div className="relative inline-block w-full text-gray-700">
                         <label
                           className={`absolute -top-7 ${"text-black"} !font-kufi text-sm font-semibold mb-2`}
                           htmlFor="personsTranspor"
                         >
-                         عدد الاشخاص
+                          عدد الاشخاص
                         </label>
                         <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
                           {/* icon */}
@@ -978,9 +951,6 @@ const FilterHome = () => {
                         </div>
                       </div>
                     </div>
-
-
-
 
                     {/* -------DATES- */}
 
@@ -1057,20 +1027,15 @@ const FilterHome = () => {
                 </form>
               </div>
 
-
-
-
-{/* Package Tab---- */}
-<div
+              {/* Package Tab---- */}
+              <div
                 className="tab-pane fade show  py-4"
-              
-                
-                id="package" role="tabpanel"
+                id="package"
+                role="tabpanel"
               >
                 <form className=" !font-kufi py-4">
                   <div className="flex flex-col md:flex-row gap-12 md:gap-4 mt-4 px-4 w-[90%] ">
                     {/* from transport */}
-
 
                     <div className="w-full mb-10 md:mb-0">
                       <div className="relative  inline-block w-full text-gray-700">
@@ -1139,16 +1104,15 @@ const FilterHome = () => {
                       </div>
                     </div>
 
-                 
-{/* --- person  adultnumber transport  */}
+                    {/* --- person  adultnumber transport  */}
 
-<div className="w-full mb-10 md:mb-0">
+                    <div className="w-full mb-10 md:mb-0">
                       <div className="relative inline-block w-full text-gray-700">
                         <label
                           className={`absolute -top-7 ${"text-black"} !font-kufi text-sm font-semibold mb-2`}
                           htmlFor="packAdult"
                         >
-                         عدد الاشخاص البالغين
+                          عدد الاشخاص البالغين
                         </label>
                         <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
                           {/* icon */}
@@ -1171,7 +1135,6 @@ const FilterHome = () => {
                             </option>
                           ))}
                         </select>
-                        
 
                         <div
                           className="absolute inset-y-0 left-1 flex items-center px-2 cursor-pointer duration-300 hover:opacity-80"
@@ -1182,16 +1145,13 @@ const FilterHome = () => {
                       </div>
                     </div>
 
-
-
-
                     <div className="w-full mb-10 md:mb-0">
                       <div className="relative inline-block w-full text-gray-700">
                         <label
                           className={`absolute -top-7 ${"text-black"} !font-kufi text-sm font-semibold mb-2`}
                           htmlFor="packChild"
                         >
-                        عدد الاطفال
+                          عدد الاطفال
                         </label>
                         <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
                           {/* icon */}
@@ -1205,7 +1165,8 @@ const FilterHome = () => {
                           className="w-full h-10 px-8 text-base placeholder-gray-600 border rounded-lg appearance-none focus:outline-none"
                           placeholder="Regular input"
                           onChange={inputChange}
-                          value={state.packChild}>
+                          value={state.packChild}
+                        >
                           <option default value={""}></option>
                           {personsNumberOptions.map((c) => (
                             <option value={c} key={c}>
@@ -1213,7 +1174,6 @@ const FilterHome = () => {
                             </option>
                           ))}
                         </select>
-                        
 
                         <div
                           className="absolute inset-y-0 left-1 flex items-center px-2 cursor-pointer duration-300 hover:opacity-80"
@@ -1223,8 +1183,6 @@ const FilterHome = () => {
                         </div>
                       </div>
                     </div>
-
-
 
                     <div className="w-full mb-10 md:mb-0">
                       <div className="relative inline-block w-full text-gray-700">
@@ -1264,9 +1222,6 @@ const FilterHome = () => {
                         </div>
                       </div>
                     </div>
-
-
-
 
                     {/* -------DATES- */}
 
@@ -1343,9 +1298,6 @@ const FilterHome = () => {
                 </form>
               </div>
 
-
-
-
               {/* -----------visa TaB----- */}
               <div className="tab-pane fade py-4" id="visa" role="tabpanel">
                 <form className=" !font-kufi py-4">
@@ -1413,9 +1365,12 @@ const FilterHome = () => {
                           value={state.country}
                         >
                           <option default value={""}></option>
-                          {Countries.map((c) => (
-                            <option value={c.country} key={c.country}>
-                              {c.country}
+                          {countries.map((country) => (
+                            <option
+                              value={country.name.common}
+                              key={country.name.common}
+                            >
+                              {country.name.common}
                             </option>
                           ))}
                         </select>
@@ -1452,9 +1407,12 @@ const FilterHome = () => {
                           value={state.nationality}
                         >
                           <option default value={""}></option>
-                          {Countries.map((c) => (
-                            <option value={c.country} key={c.country}>
-                              {c.country}
+                          {countries.map((country) => (
+                            <option
+                              value={country.name.common}
+                              key={country.name.common}
+                            >
+                              {country.name.common}
                             </option>
                           ))}
                         </select>
@@ -1479,14 +1437,10 @@ const FilterHome = () => {
                     </button>
                   </div>
                 </form>
-
-
               </div>
 
-
-
-    {/* ------Flights TAB ---- */}
-    <div
+              {/* ------Flights TAB ---- */}
+              <div
                 className="tab-pane fade py-4"
                 id="activities"
                 role="tabpanel"
@@ -1494,7 +1448,6 @@ const FilterHome = () => {
                 <form className=" !font-kufi py-4">
                   <div className="flex flex-col md:flex-row gap-12 md:gap-4 mt-4 px-4 w-[90%] ">
                     {/* from transport */}
-
 
                     <div className="w-full mb-10 md:mb-0">
                       <div className="relative  inline-block w-full text-gray-700">
@@ -1562,11 +1515,6 @@ const FilterHome = () => {
                    </div> */}
                       </div>
                     </div>
-
-
-
-
-
 
                     {/* -------DATES- */}
 
@@ -1642,15 +1590,6 @@ const FilterHome = () => {
                   </div>
                 </form>
               </div>
-
-
-
-
-
-
-
-
-
 
               {/* -----------CARS TAB ------- */}
 
@@ -1798,13 +1737,6 @@ const FilterHome = () => {
                   </div>
                 </form>
               </div>
-
-          
-
-
-
-
-
             </div>
           </div>
         </div>
