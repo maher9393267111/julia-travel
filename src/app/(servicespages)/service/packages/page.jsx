@@ -65,7 +65,7 @@ const page = () => {
       dispatch(SetLoading(false));
     }
   };
-  useEf fect(() => {
+  useEffect(() => {
     getPackages();
   }, [all, from, type, person, child, location]);
 
