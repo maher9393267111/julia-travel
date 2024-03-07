@@ -30,6 +30,7 @@ import {
   PlusSquareOutlined,
 } from "@ant-design/icons";
 import { hanldeScore } from "@/uitils/StarsHandle";
+import WhatsappForm from "../../_components/WhatsappForm";
 
 // export const metadata = {
 //   title: "TripRex - Tour & Travel Agency  NextJs Template",
@@ -318,6 +319,8 @@ const page = () => {
                             ادخل كافة البيانات المطلوبة
                           </div>
                         )}
+
+                        <WhatsappForm/>
                       </div>
                     </form>
                   </div>

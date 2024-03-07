@@ -34,6 +34,7 @@ import {
   PlusSquareOutlined,
 } from "@ant-design/icons";
 import { hanldeScore } from "@/uitils/StarsHandle";
+import WhatsappForm from "../../_components/WhatsappForm";
 
 const Page = () => {
   const [dateRange, setDateRange] = useState([null, null]);
@@ -945,6 +946,8 @@ const Page = () => {
                               ادخل كافة البيانات المطلوبة
                             </div>
                           )}
+
+                          <WhatsappForm/>
                         </div>
                       </form>
                     </div>

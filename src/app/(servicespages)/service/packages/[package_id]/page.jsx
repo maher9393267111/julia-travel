@@ -34,6 +34,7 @@ import QuantityCounter from "@/uitils/QuantityCounter";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FaChampagneGlasses } from "react-icons/fa6";
+import WhatsappForm from "../../_components/WhatsappForm";
 // import SwiperCore, {
 //   Autoplay,
 //   EffectFade,
@@ -123,8 +124,11 @@ const Page = () => {
         endDate: end,
         service: "package",
         details: trans,
-        totalprice: trans?.discount === 0 ?  trans?.price * (state.adultsNum + state.ChildrensNum ) : calculteDiscount(trans?.price, trans?.discount) *
-        (state.adultsNum + state.ChildrensNum)
+        totalprice:
+          trans?.discount === 0
+            ? trans?.price * (state.adultsNum + state.ChildrensNum)
+            : calculteDiscount(trans?.price, trans?.discount) *
+              (state.adultsNum + state.ChildrensNum),
       };
 
       if (
@@ -581,44 +585,21 @@ const Page = () => {
 
                 {trans?.pdf?.url && (
                   <h4 className="ar primary-btn1 !font-kufi two">
-                    <a className=" text-white" href={trans?.pdf?.url} target="_blank">
+                    <a
+                      className=" text-white"
+                      href={trans?.pdf?.url}
+                      target="_blank"
+                    >
                       {" "}
                       ملف الرحلة اضغط لمشاهدة كافة التفاصيل
-                   
                     </a>
                   </h4>
                 )}
 
-
-
-<ul className="tour-info-metalist ar  flex  flex-col gap-2 !mt-2">
-
-
-<li className=" ar">
-                    <svg
-                    className=" !text-green-500  "
-                      width={14}
-                      height={14}
-                      viewBox="0 0 14 14"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M14 0.43748C14 0.372778 13.9856 0.308889 13.9579 0.250418C13.9302 0.191947 13.8898 0.140348 13.8398 0.0993396C13.7897 0.0583312 13.7312 0.0289339 13.6684 0.0132656C13.6057 -0.00240264 13.5402 -0.00395173 13.4768 0.00872996L9.1875 0.86623L4.89825 0.00872996C4.84164 -0.00258444 4.78336 -0.00258444 4.72675 0.00872996L0.35175 0.88373C0.252608 0.903546 0.163389 0.957088 0.099263 1.03525C0.0351366 1.11342 6.10593e-05 1.21138 0 1.31248L0 13.5625C3.90711e-05 13.6272 0.0144289 13.6911 0.0421328 13.7495C0.0698367 13.808 0.110165 13.8596 0.160212 13.9006C0.210259 13.9416 0.268779 13.971 0.331556 13.9867C0.394332 14.0024 0.459803 14.0039 0.52325 13.9912L4.8125 13.1337L9.10175 13.9912C9.15836 14.0025 9.21664 14.0025 9.27325 13.9912L13.6482 13.1162C13.7474 13.0964 13.8366 13.0429 13.9007 12.9647C13.9649 12.8865 13.9999 12.7886 14 12.6875V0.43748ZM4.375 12.3287V0.97123L4.8125 0.88373L5.25 0.97123V12.3287L4.89825 12.2587C4.84165 12.2474 4.78335 12.2474 4.72675 12.2587L4.375 12.3287ZM8.75 13.0287V1.67123L9.10175 1.74123C9.15836 1.75254 9.21664 1.75254 9.27325 1.74123L9.625 1.67123V13.0287L9.1875 13.1162L8.75 13.0287Z"
-                      ></path>
-                    </svg>
-                 
-
-<span className="mx-2 ar">{trans?.days} عدد الايام</span>
-
-                  </li>
-
-
-
+                <ul className="tour-info-metalist ar  flex  flex-col gap-2 !mt-2">
                   <li className=" ar">
                     <svg
-                    className=" !text-green-500  "
+                      className=" !text-green-500  "
                       width={14}
                       height={14}
                       viewBox="0 0 14 14"
@@ -630,38 +611,13 @@ const Page = () => {
                         d="M14 0.43748C14 0.372778 13.9856 0.308889 13.9579 0.250418C13.9302 0.191947 13.8898 0.140348 13.8398 0.0993396C13.7897 0.0583312 13.7312 0.0289339 13.6684 0.0132656C13.6057 -0.00240264 13.5402 -0.00395173 13.4768 0.00872996L9.1875 0.86623L4.89825 0.00872996C4.84164 -0.00258444 4.78336 -0.00258444 4.72675 0.00872996L0.35175 0.88373C0.252608 0.903546 0.163389 0.957088 0.099263 1.03525C0.0351366 1.11342 6.10593e-05 1.21138 0 1.31248L0 13.5625C3.90711e-05 13.6272 0.0144289 13.6911 0.0421328 13.7495C0.0698367 13.808 0.110165 13.8596 0.160212 13.9006C0.210259 13.9416 0.268779 13.971 0.331556 13.9867C0.394332 14.0024 0.459803 14.0039 0.52325 13.9912L4.8125 13.1337L9.10175 13.9912C9.15836 14.0025 9.21664 14.0025 9.27325 13.9912L13.6482 13.1162C13.7474 13.0964 13.8366 13.0429 13.9007 12.9647C13.9649 12.8865 13.9999 12.7886 14 12.6875V0.43748ZM4.375 12.3287V0.97123L4.8125 0.88373L5.25 0.97123V12.3287L4.89825 12.2587C4.84165 12.2474 4.78335 12.2474 4.72675 12.2587L4.375 12.3287ZM8.75 13.0287V1.67123L9.10175 1.74123C9.15836 1.75254 9.21664 1.75254 9.27325 1.74123L9.625 1.67123V13.0287L9.1875 13.1162L8.75 13.0287Z"
                       ></path>
                     </svg>
-                 
 
-<span className="mx-2 ar"> التاريخ {trans?.date}: </span>
-
-                  </li>
-
-                
-
-
-                  <li className=" ar">
-                    <svg
-                    className=" !text-green-500  "
-                      width={14}
-                      height={14}
-                      viewBox="0 0 14 14"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M14 0.43748C14 0.372778 13.9856 0.308889 13.9579 0.250418C13.9302 0.191947 13.8898 0.140348 13.8398 0.0993396C13.7897 0.0583312 13.7312 0.0289339 13.6684 0.0132656C13.6057 -0.00240264 13.5402 -0.00395173 13.4768 0.00872996L9.1875 0.86623L4.89825 0.00872996C4.84164 -0.00258444 4.78336 -0.00258444 4.72675 0.00872996L0.35175 0.88373C0.252608 0.903546 0.163389 0.957088 0.099263 1.03525C0.0351366 1.11342 6.10593e-05 1.21138 0 1.31248L0 13.5625C3.90711e-05 13.6272 0.0144289 13.6911 0.0421328 13.7495C0.0698367 13.808 0.110165 13.8596 0.160212 13.9006C0.210259 13.9416 0.268779 13.971 0.331556 13.9867C0.394332 14.0024 0.459803 14.0039 0.52325 13.9912L4.8125 13.1337L9.10175 13.9912C9.15836 14.0025 9.21664 14.0025 9.27325 13.9912L13.6482 13.1162C13.7474 13.0964 13.8366 13.0429 13.9007 12.9647C13.9649 12.8865 13.9999 12.7886 14 12.6875V0.43748ZM4.375 12.3287V0.97123L4.8125 0.88373L5.25 0.97123V12.3287L4.89825 12.2587C4.84165 12.2474 4.78335 12.2474 4.72675 12.2587L4.375 12.3287ZM8.75 13.0287V1.67123L9.10175 1.74123C9.15836 1.75254 9.21664 1.75254 9.27325 1.74123L9.625 1.67123V13.0287L9.1875 13.1162L8.75 13.0287Z"
-                      ></path>
-                    </svg>
-                 
-
-<span className="mx-2 ar">{trans?.location}  البلد</span>
-
+                    <span className="mx-2 ar">{trans?.days} عدد الايام</span>
                   </li>
 
                   <li className=" ar">
                     <svg
-                    className=" !text-green-500  "
+                      className=" !text-green-500  "
                       width={14}
                       height={14}
                       viewBox="0 0 14 14"
@@ -673,20 +629,49 @@ const Page = () => {
                         d="M14 0.43748C14 0.372778 13.9856 0.308889 13.9579 0.250418C13.9302 0.191947 13.8898 0.140348 13.8398 0.0993396C13.7897 0.0583312 13.7312 0.0289339 13.6684 0.0132656C13.6057 -0.00240264 13.5402 -0.00395173 13.4768 0.00872996L9.1875 0.86623L4.89825 0.00872996C4.84164 -0.00258444 4.78336 -0.00258444 4.72675 0.00872996L0.35175 0.88373C0.252608 0.903546 0.163389 0.957088 0.099263 1.03525C0.0351366 1.11342 6.10593e-05 1.21138 0 1.31248L0 13.5625C3.90711e-05 13.6272 0.0144289 13.6911 0.0421328 13.7495C0.0698367 13.808 0.110165 13.8596 0.160212 13.9006C0.210259 13.9416 0.268779 13.971 0.331556 13.9867C0.394332 14.0024 0.459803 14.0039 0.52325 13.9912L4.8125 13.1337L9.10175 13.9912C9.15836 14.0025 9.21664 14.0025 9.27325 13.9912L13.6482 13.1162C13.7474 13.0964 13.8366 13.0429 13.9007 12.9647C13.9649 12.8865 13.9999 12.7886 14 12.6875V0.43748ZM4.375 12.3287V0.97123L4.8125 0.88373L5.25 0.97123V12.3287L4.89825 12.2587C4.84165 12.2474 4.78335 12.2474 4.72675 12.2587L4.375 12.3287ZM8.75 13.0287V1.67123L9.10175 1.74123C9.15836 1.75254 9.21664 1.75254 9.27325 1.74123L9.625 1.67123V13.0287L9.1875 13.1162L8.75 13.0287Z"
                       ></path>
                     </svg>
-                 
 
-<span className="mx-2 ar">  من  {trans?.from} -  الى {trans?.to}</span>
-
+                    <span className="mx-2 ar"> التاريخ {trans?.date}: </span>
                   </li>
 
+                  <li className=" ar">
+                    <svg
+                      className=" !text-green-500  "
+                      width={14}
+                      height={14}
+                      viewBox="0 0 14 14"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        clipRule="evenodd"
+                        d="M14 0.43748C14 0.372778 13.9856 0.308889 13.9579 0.250418C13.9302 0.191947 13.8898 0.140348 13.8398 0.0993396C13.7897 0.0583312 13.7312 0.0289339 13.6684 0.0132656C13.6057 -0.00240264 13.5402 -0.00395173 13.4768 0.00872996L9.1875 0.86623L4.89825 0.00872996C4.84164 -0.00258444 4.78336 -0.00258444 4.72675 0.00872996L0.35175 0.88373C0.252608 0.903546 0.163389 0.957088 0.099263 1.03525C0.0351366 1.11342 6.10593e-05 1.21138 0 1.31248L0 13.5625C3.90711e-05 13.6272 0.0144289 13.6911 0.0421328 13.7495C0.0698367 13.808 0.110165 13.8596 0.160212 13.9006C0.210259 13.9416 0.268779 13.971 0.331556 13.9867C0.394332 14.0024 0.459803 14.0039 0.52325 13.9912L4.8125 13.1337L9.10175 13.9912C9.15836 14.0025 9.21664 14.0025 9.27325 13.9912L13.6482 13.1162C13.7474 13.0964 13.8366 13.0429 13.9007 12.9647C13.9649 12.8865 13.9999 12.7886 14 12.6875V0.43748ZM4.375 12.3287V0.97123L4.8125 0.88373L5.25 0.97123V12.3287L4.89825 12.2587C4.84165 12.2474 4.78335 12.2474 4.72675 12.2587L4.375 12.3287ZM8.75 13.0287V1.67123L9.10175 1.74123C9.15836 1.75254 9.21664 1.75254 9.27325 1.74123L9.625 1.67123V13.0287L9.1875 13.1162L8.75 13.0287Z"
+                      ></path>
+                    </svg>
 
+                    <span className="mx-2 ar">{trans?.location} البلد</span>
+                  </li>
 
-</ul>
+                  <li className=" ar">
+                    <svg
+                      className=" !text-green-500  "
+                      width={14}
+                      height={14}
+                      viewBox="0 0 14 14"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        clipRule="evenodd"
+                        d="M14 0.43748C14 0.372778 13.9856 0.308889 13.9579 0.250418C13.9302 0.191947 13.8898 0.140348 13.8398 0.0993396C13.7897 0.0583312 13.7312 0.0289339 13.6684 0.0132656C13.6057 -0.00240264 13.5402 -0.00395173 13.4768 0.00872996L9.1875 0.86623L4.89825 0.00872996C4.84164 -0.00258444 4.78336 -0.00258444 4.72675 0.00872996L0.35175 0.88373C0.252608 0.903546 0.163389 0.957088 0.099263 1.03525C0.0351366 1.11342 6.10593e-05 1.21138 0 1.31248L0 13.5625C3.90711e-05 13.6272 0.0144289 13.6911 0.0421328 13.7495C0.0698367 13.808 0.110165 13.8596 0.160212 13.9006C0.210259 13.9416 0.268779 13.971 0.331556 13.9867C0.394332 14.0024 0.459803 14.0039 0.52325 13.9912L4.8125 13.1337L9.10175 13.9912C9.15836 14.0025 9.21664 14.0025 9.27325 13.9912L13.6482 13.1162C13.7474 13.0964 13.8366 13.0429 13.9007 12.9647C13.9649 12.8865 13.9999 12.7886 14 12.6875V0.43748ZM4.375 12.3287V0.97123L4.8125 0.88373L5.25 0.97123V12.3287L4.89825 12.2587C4.84165 12.2474 4.78335 12.2474 4.72675 12.2587L4.375 12.3287ZM8.75 13.0287V1.67123L9.10175 1.74123C9.15836 1.75254 9.21664 1.75254 9.27325 1.74123L9.625 1.67123V13.0287L9.1875 13.1162L8.75 13.0287Z"
+                      ></path>
+                    </svg>
 
-
-
-
-
+                    <span className="mx-2 ar">
+                      {" "}
+                      من {trans?.from} - الى {trans?.to}
+                    </span>
+                  </li>
+                </ul>
 
                 <ul className="fetures ar mt-4">
                   <li>
@@ -765,8 +750,6 @@ const Page = () => {
                   Shuttle to Car
                 </li> */}
                 </ul>
-
-           
 
                 {trans?.description && (
                   <p className=" ar">{parse(trans?.description)}</p>
@@ -855,7 +838,7 @@ const Page = () => {
 
                           <div className="booking-form-item-type mb-45">
                             {/* days */}
-{/* 
+                            {/* 
                             <div className="number-input-item adults">
                               <label className="number-input-lable !text-sm  ar">
                                 عدد الايام:<span></span>
@@ -870,14 +853,10 @@ const Page = () => {
                               />
                             </div> */}
 
-<h6 className="flex gap-2 ar !text-[#787878] py-2">
-                                <span>  عدد الايام:</span>
-                                <span>{trans?.days}</span>
-                              </h6>
-                        
-
-
-
+                            <h6 className="flex gap-2 ar !text-[#787878] py-2">
+                              <span> عدد الايام:</span>
+                              <span>{trans?.days}</span>
+                            </h6>
 
                             <div className="number-input-item adults">
                               <label className="number-input-lable !text-sm  ar">
@@ -893,20 +872,17 @@ const Page = () => {
                               />
                             </div>
 
-
                             <div className="number-input-item children">
-                            <label className="number-input-lable ar !text-sm">
-                            عدد الاطفال<span> </span>
-                            
-                            </label>
+                              <label className="number-input-lable ar !text-sm">
+                                عدد الاطفال<span> </span>
+                              </label>
 
-                            <Amount
-                              value={state.ChildrensNum}
-                              min={0}
-                              onChange={handleUpdateBooking("ChildrensNum")}
-                            />
-                          </div>
-
+                              <Amount
+                                value={state.ChildrensNum}
+                                min={0}
+                                onChange={handleUpdateBooking("ChildrensNum")}
+                              />
+                            </div>
 
                             {/* <div className="number-input-item children">
                             <label className="number-input-lable ar !text-sm">
@@ -920,8 +896,6 @@ const Page = () => {
                               onChange={handleUpdateBooking("ChildrensNum")}
                             />
                           </div> */}
-
-
                           </div>
 
                           {/* -------dates--- */}
@@ -964,31 +938,27 @@ const Page = () => {
                             </div>
                           </div>
 
-
                           {trans?.discount === 0 ? (
-                          <div className="total-price">
-                            {trans?.price * (state.adultsNum + state.ChildrensNum)}
+                            <div className="total-price">
+                              {trans?.price *
+                                (state.adultsNum + state.ChildrensNum)}
 
+                              {/* {tour?.price * state.daysNum * state.adultsNum} */}
+                            </div>
+                          ) : (
+                            <div className="total-price">
+                              {calculteDiscount(trans?.price, trans?.discount) *
+                                (state.adultsNum + state.ChildrensNum)}
+                              $
+                            </div>
+                          )}
 
-
-                            {/* {tour?.price * state.daysNum * state.adultsNum} */}
-                          </div>
-                        ) : (
-                          <div className="total-price">
-                            {calculteDiscount(trans?.price, trans?.discount) *
-                              (state.adultsNum + state.ChildrensNum)}
-                            $
-                          </div>
-                        )}
-
-
-{trans?.discount > 0 && (
-                          <div className="ar my-4 text-sm font-semibold text-[#63AB45]">
-                            ملاحظة: هذا السعر يشمل نسبة خصم تصل الى{" "}
-                            {trans?.discount}%
-                          </div>
-                        )}
-
+                          {trans?.discount > 0 && (
+                            <div className="ar my-4 text-sm font-semibold text-[#63AB45]">
+                              ملاحظة: هذا السعر يشمل نسبة خصم تصل الى{" "}
+                              {trans?.discount}%
+                            </div>
+                          )}
 
                           {/* total price-- */}
                           {/* <div className="total-price">
@@ -1012,6 +982,11 @@ const Page = () => {
                                 ادخل كافة البيانات المطلوبة
                               </div>
                             )}
+
+
+<WhatsappForm/>
+
+
                           </div>
                         </form>
                       </div>

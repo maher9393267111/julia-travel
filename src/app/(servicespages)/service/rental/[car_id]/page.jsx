@@ -34,6 +34,7 @@ import QuantityCounter from "@/uitils/QuantityCounter";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FaChampagneGlasses } from "react-icons/fa6";
+import WhatsappForm from "../../_components/WhatsappForm";
 // import SwiperCore, {
 //   Autoplay,
 //   EffectFade,
@@ -1039,6 +1040,9 @@ const Page = () => {
                                 ادخل كافة البيانات المطلوبة
                               </div>
                             )}
+
+
+                            <WhatsappForm/>
                           </div>
                         </form>
                       </div>
