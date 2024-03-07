@@ -30,7 +30,7 @@ const modules = {
 };
 
 const locations = ["istanbul", "bursa", "trabzon", "izmir", "izmit"];
-const roomTypes = ["single", "double"];
+const roomTypes = ["single", "double" ,"trible"];
 
 function HotelForm({
   showCategoryForm,

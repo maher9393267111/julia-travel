@@ -63,7 +63,7 @@ const tourTypes = [
 
 const visaTypes = ["medical", "work", "tourism", "umrah"];
 
-const roomTypes = ["single", "double"];
+const roomTypes = ["single", "double" ,"trible"];
 
 const personsNumberOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
 

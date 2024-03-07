@@ -975,6 +975,22 @@ const Page = () => {
                             </div>
                           </div>
 
+
+                          
+                              <h6 className="flex gap-2 ar !text-[#787878] py-2">
+                                <span> السعر الاسبوعي :</span>
+                                <span>{trans?.weekprice}$</span>
+                              </h6>
+                        
+
+                          
+                              <h6 className="flex gap-2 ar !text-[#787878]">
+                                <span> السعر الشهري:</span>
+                                <span>{trans?.monthprice}$</span>
+                              </h6>
+                            
+
+
                           {trans?.discount === 0 ? (
                             <div className="total-price">
                               {trans?.price * state.daysNum}
@@ -995,6 +1011,11 @@ const Page = () => {
                               {trans?.discount}%
                             </div>
                           )}
+
+
+
+
+
 
                           {/* total price-- */}
                           {/* <div className="total-price">

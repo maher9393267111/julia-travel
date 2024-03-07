@@ -1,8 +1,10 @@
 import * as nodemailer from "nodemailer";
 import { NextResponse, NextRequest } from "next/server";
 
-const passw = "bbvh hors bgbq pxjm";
-const emails = "noreply.springworthbooks@gmail.com";
+const passw = "fzdy cfwt phtv nedl"
+//"bbvh hors bgbq pxjm";
+const emails = "juliatoursagency@gmail.com"
+//"noreply.springworthbooks@gmail.com";
 
 export async function POST(req) {
   try {
