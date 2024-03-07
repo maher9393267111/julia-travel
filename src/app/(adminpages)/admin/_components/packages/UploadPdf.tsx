@@ -1,75 +1,68 @@
-'use client'
+"use client";
 
-import { useState, useEffect, useCallback } from 'react'
-import { useRouter } from 'next/navigation'
-import { Button, Input ,message  ,Spin  } from 'antd'
+import { useState, useEffect, useCallback } from "react";
+import { useRouter } from "next/navigation";
+import { Button, Input, message, Spin } from "antd";
 interface FileDetails extends Blob {
-  lastModified: number
-  lastModifiedDate: Date
-  name: string
-  size: number
-  type: string
-  webkitRelativePath: string
+  lastModified: number;
+  lastModifiedDate: Date;
+  name: string;
+  size: number;
+  type: string;
+  webkitRelativePath: string;
 }
 
-export default function UploadButton({file ,setFile}:any) {
-  const [selectedFile, setSelectedFile] = useState<FileDetails>()
-  const [loading, setLoading] = useState(false)
-  const router = useRouter()
+export default function UploadButton({ file, setFile }: any) {
+  const [selectedFile, setSelectedFile] = useState<FileDetails>();
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
   const options = {
-    cMapUrl: 'cmaps/',
-    standardFontDataUrl: 'standard_fonts/',
-  }
+    cMapUrl: "cmaps/",
+    standardFontDataUrl: "standard_fonts/",
+  };
   const handleFileSelect = (event: any) => {
-    const file = event.target.files[0]
-    setSelectedFile(file)
-    handleFileUpload(file)
-  }
+    const file = event.target.files[0];
+    setSelectedFile(file);
+    handleFileUpload(file);
+  };
 
   const handleFileUpload = useCallback(
     (file: FileDetails) => {
       if (!file) {
-        message.success("Please select file first")
-        return
+        message.success("Please select file first");
+        return;
       }
-      setLoading(true)
-      const data = new FormData()
-      data.append('file', file, file.name)
-      fetch('/api/admin/upload', {
-        method: 'POST',
+      setLoading(true);
+      const data = new FormData();
+      data.append("file", file, file.name);
+      fetch("/api/admin/upload", {
+        method: "POST",
         body: data,
       }).then((response) => {
         response.json().then((data) => {
-          console.log(data)
-          setFile(data)
-          message.success("Pdf folder uploaded Successfully")
-         // router.push(`/view/${data.id}`)
-        })
-        setLoading(false)
-      })
+          console.log(data);
+          setFile(data);
+          message.success("Pdf folder uploaded Successfully");
+          // router.push(`/view/${data.id}`)
+        });
+        setLoading(false);
+      });
     },
     [router]
-  )
+  );
 
-//   useEffect(() => {
-//     if (selectedFile) {
-//       handleFileUpload(selectedFile)
-//     }
-//   }, [handleFileUpload, selectedFile])
+  //   useEffect(() => {
+  //     if (selectedFile) {
+  //       handleFileUpload(selectedFile)
+  //     }
+  //   }, [handleFileUpload, selectedFile])
 
   return (
-    <div className='!border-2     rounded-md text-lg  text-white text-center !py-2 !px-4 !border'>
-
-
-{loading ?
-
-<Spin/>
-
-
-:
-
-
-<label className="w-24 h-24 cursor-pointer text-center flex flex-col items-center justify-center text-sm gap-1 text-primary rounded-sm bg-white shadow-sm border border-primary">
+    <div className="!border-2     rounded-md text-lg  text-white text-center !py-2 !px-4 !border">
+      {loading ? (
+        <Spin />
+      ) : (
+        <label className="w-24 h-24 cursor-pointer text-center flex flex-col items-center justify-center text-sm gap-1 text-primary rounded-sm bg-white shadow-sm border border-primary">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -87,12 +80,7 @@ export default function UploadButton({file ,setFile}:any) {
           <div>Add Pdf</div>
           <input type="file" onChange={handleFileSelect} className="!hidden" />
         </label>
-
-}
-
-
-
-
+      )}
     </div>
-  )
+  );
 }

@@ -491,9 +491,9 @@ function PackageForm({
         {/* -upload pdf */}
 
         {file?.id ? (
-          <div>pdf link 
+          <div className=" text-center text-2xl !text-green-400"> 
           
-          <a href={file?.url}  target="_blank">link</a>
+          <a className="!bg-green-600 hover:bg-green-500 text-white font-semibold py-2 px-4 rounded-lg" href={file?.url}  target="_blank">Pdf Link</a>
           </div>
         ) : (
           <div>
