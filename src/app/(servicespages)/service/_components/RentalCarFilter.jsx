@@ -1,7 +1,7 @@
 import React from "react";
 import { Checkbox } from "antd";
 
-const CarFilter = ({ onChange, checkboxes, setCheckboxes ,getHotels ,setTitle ,ResetSearch }) => {
+const CarFilter = ({ onChange, checkboxes, setCheckboxes ,getHotels ,setTitle ,ResetSearch ,title }) => {
   function onChangeType(e, type) {
     console.log(`checked = ${e.target.checked}`, type);
   }
@@ -26,6 +26,7 @@ const CarFilter = ({ onChange, checkboxes, setCheckboxes ,getHotels ,setTitle ,R
      {/* <form> */}
      <div className="search-box">
                         <input
+                        value={title}
                             onChange={(e) => setTitle(e.target.value)}
                           type="text"
                           placeholder="Search Here"

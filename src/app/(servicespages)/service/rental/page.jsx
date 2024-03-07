@@ -12,9 +12,10 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import RentalCard from "../_components/RentalCard";
 import { Swiper, SwiperSlide } from "swiper/react";
-
+import { useRouter } from "next/navigation";
 import { CountriesAr } from "@/uitils/locations";
 import CarFilter from "../_components/RentalCarFilter";
+
 
 const INIT_CHECKBOXES_VALUES = {
  
@@ -35,6 +36,9 @@ export default function HotelsServices() {
   
   const [checkboxes, setCheckboxes] = useState(INIT_CHECKBOXES_VALUES);
   const searchParams = useSearchParams();
+
+ 
+  const router = useRouter();
 
   const all = searchParams.get("all");
 
@@ -83,9 +87,18 @@ export default function HotelsServices() {
   };
 
 
-  const ResetSearch=()=>{
+  const ResetSearch=async()=>{
 
-    setCheckboxes(INIT_CHECKBOXES_VALUES)
+    // setCheckboxes(INIT_CHECKBOXES_VALUES)
+    // setTitle((prev) => "")
+    // if(title === ''){
+    //   console.log("reseted" ,title)
+    //   await getHotels()
+    // }
+    
+
+// Force refresh the page
+window.location.reload()
   }
 
 
@@ -110,6 +123,7 @@ export default function HotelsServices() {
             <CarFilter
              ResetSearch={ ResetSearch}
             setTitle={setTitle}
+            title={title}
             getHotels={getHotels}
               setCheckboxes={setCheckboxes}
               onChange={onChange}
