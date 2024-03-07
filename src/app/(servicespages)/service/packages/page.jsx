@@ -82,7 +82,7 @@ const page = () => {
       <LocationFilterCards link = {'packages'} searckey={'location'} />
 
 
-      {(to || from || type || person  || child   || location ) ?  
+      {(to || from || type || person  || child   || location  || all) ?  
       <div className="transport-page pt-120 mb-120">
         <div className="container">
           <div className="row g-lg-4 gy-5">

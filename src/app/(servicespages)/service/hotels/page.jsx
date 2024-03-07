@@ -8,7 +8,7 @@ import axios from "axios";
 
 import Breadcrumb from "@/components/myComponents/layout/BreadCrumb";
 
-import { useSearchParams } from "next/navigation";
+import { useSearchParams ,useRouter } from "next/navigation";
 import Link from "next/link";
 import HotelCard from "../_components/HotelCard";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -27,6 +27,7 @@ import LocationFilterCards from "../_components/LocationFilterCards";
 
 export default function HotelsServices() {
   const dispatch = useDispatch();
+  const router = useRouter()
   const [hotels, setHotels] = useState([]);
   const [checkedBrands, setCheckedBrands] = useState([]);
   const [searchtitle, setSearchTitle] = useState("");
@@ -85,7 +86,7 @@ export default function HotelsServices() {
       ? emiratesCities
       : location === "أذربيجان"
       ? azerbicanCities
-      : busnaCities;
+      : location ===   "البوسنة والهرسك" ? busnaCities : []
 
   const handleCheckedFilterBrand = (e) => {
     const { checked, value } = e.target;
@@ -103,6 +104,14 @@ export default function HotelsServices() {
 
     console.log("HOTELSSSS", hotelsbycities, checkedBrands);
   };
+
+
+  const ResetSearch=()=>{
+
+    router.push('/service/hotels')
+  }
+  
+
 
   return (
     <div>
@@ -134,8 +143,15 @@ export default function HotelsServices() {
               <div className=" col-xl-4 order-lg-1 order-1">
                 <div className="sidebar-area">
                   <div className="single-widget mb-30">
-                    <h5 className="widget-title ar">ابحث هنا</h5>
-                    {/* <form> */}
+                    
+                    
+<div className=" flex justify-between mb-3  gap-4">
+<h5 className=" ar cursor-pointer">ابحث هنا</h5>
+                      <h5 onClick={ ResetSearch} className=" ar "> اعادة تعيين</h5>
+</div>
+                   
+
+
                     <div className="search-box">
                       <input
                         onChange={(e) => setSearchTitle(e.target.value)}
@@ -149,9 +165,12 @@ export default function HotelsServices() {
 
 
 <div className="ar  my-4">
+{ currentCities?.length > 0 &&
 <p>المدن في {location}</p>
+
+}
   
-{currentCities?.map((city, index) => {
+{ currentCities?.length > 0 && currentCities?.map((city, index) => {
                       return (
                         <Checkbox
                           className="ar"

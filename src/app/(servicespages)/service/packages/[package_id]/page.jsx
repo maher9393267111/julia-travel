@@ -855,7 +855,7 @@ const Page = () => {
 
                           <div className="booking-form-item-type mb-45">
                             {/* days */}
-
+{/* 
                             <div className="number-input-item adults">
                               <label className="number-input-lable !text-sm  ar">
                                 عدد الايام:<span></span>
@@ -863,12 +863,21 @@ const Page = () => {
 
                               {trans?.days}
 
-                              {/* <Amount
+                              <Amount
                                 value={state.daysNum}
                                 min={1}
                                 onChange={handleUpdateBooking("daysNum")}
-                              /> */}
-                            </div>
+                              />
+                            </div> */}
+
+<h6 className="flex gap-2 ar !text-[#787878] py-2">
+                                <span>  عدد الايام:</span>
+                                <span>{trans?.days}</span>
+                              </h6>
+                        
+
+
+
 
                             <div className="number-input-item adults">
                               <label className="number-input-lable !text-sm  ar">

@@ -8,7 +8,8 @@ import { getCatchErrorMessage } from "@/helpers/ErrorMessgaes";
 import { Checkbox , message } from "antd";
 import axios from "axios";
 
-import { useSearchParams } from "next/navigation";
+import { useSearchParams ,useRouter } from "next/navigation";
+
 import Link from "next/link";
 import TourCard from "../_components/TourCard";
 
@@ -24,8 +25,10 @@ import {
 
 import DiscountSlider from "../_components/DiscountSliderTour";
 import LocationFilterCards from "../_components/LocationFilterCards";
+import { RouterContext } from "next/dist/shared/lib/router-context.shared-runtime";
 const page = () => {
   const dispatch = useDispatch();
+  const router = useRouter()
   const [tours, setTours] = useState([]);
   const [searchtitle, setSearchTitle] = useState("");
   const [checkedBrands, setCheckedBrands] = useState([]);
@@ -78,7 +81,7 @@ const page = () => {
       ? emiratesCities
       : country === "أذربيجان"
       ? azerbicanCities
-      : busnaCities;
+      : location ===   "البوسنة والهرسك" ? busnaCities : []
 
   const handleCheckedFilterBrand = (e) => {
     const { checked, value } = e.target;
@@ -92,6 +95,13 @@ const page = () => {
 
   
   };
+
+const ResetSearch=()=>{
+
+  router.push('/service/tours')
+}
+
+
 
   return (
     <>
@@ -122,7 +132,16 @@ const page = () => {
                 <div className=" col-xl-4 order-lg-1 order-1">
                   <div className="sidebar-area">
                     <div className="single-widget mb-30">
-                      <h5 className="widget-title ar">ابحث هنا</h5>
+
+<div className=" flex justify-between mb-3  gap-4">
+<h5 className=" ar cursor-pointer">ابحث هنا</h5>
+                      <h5 onClick={ ResetSearch} className=" ar "> اعادة تعيين</h5>
+</div>
+                      
+
+
+
+
                       {/* <form> */}
                       <div className="search-box">
                         <input
@@ -134,11 +153,13 @@ const page = () => {
                           <i className="bx bx-search" />
                         </button>
                       </div>
-
+       
                       <div className="ar  my-4">
+                      { currentCities?.length > 0 &&
                         <p>المدن في {country}</p>
+        }
 
-                        {currentCities?.map((city, index) => {
+                        {currentCities?.length > 0 && currentCities?.map((city, index) => {
                           return (
                             <Checkbox
                               className="ar"
