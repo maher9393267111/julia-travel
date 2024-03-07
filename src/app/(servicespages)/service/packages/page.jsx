@@ -41,75 +41,64 @@ const page = () => {
     try {
       dispatch(SetLoading(true));
 
-
-
       if (!all && !person && !child && !from && !type && !to && !location) {
         const response = await axios.get(`/api/admin/packages?discount=true`);
 
         setPackages(response.data.data);
-      console.log("REsponse-->", response.data.data);
+        console.log("REsponse-->", response.data.data);
+      } else {
+        // location=${location && location}&&title=${title && title}
+        const response = await axios.get(
+          `/api/admin/packages?${person && "adult"}=${person}&&${
+            location && "location"
+          }=${location}
+           &&${from && "from"}=${from}&&${to && "to"}=${to}&&${
+            child && "child"
+          }=${child}&&${type && "type"}=${type}`
+        );
+        setPackages(response.data.data);
+        console.log("REsponse-->", response.data.data);
       }
-
-
-      else {
-      // location=${location && location}&&title=${title && title}
-      const response = await axios.get(
-        `/api/admin/packages?${person && "adult"}=${person}&&${location && "location"}=${location}
-           &&${from && "from"}=${from}&&${to && "to"}=${to}&&${child && "child"}=${child}&&${type && "type"}=${type}`
-      );
-      setPackages(response.data.data);
-      console.log("REsponse-->", response.data.data);
-
-      }
-
-
-
     } catch (error) {
       message.error(getCatchErrorMessage(error));
     } finally {
       dispatch(SetLoading(false));
     }
   };
-  useEffect(() => {
+  useEf fect(() => {
     getPackages();
-  }, [all ,from , type ,person ,child ,location]);
+  }, [all, from, type, person, child, location]);
 
   return (
     <>
       <Breadcrumb pagename="العروض" pagetitle="العروض" />
 
-   
-      <LocationFilterCards link = {'packages'} searckey={'location'} />
+      <LocationFilterCards link={"packages"} searckey={"location"} />
 
-
-      {(to || from || type || person  || child   || location  || all) ?  
-      <div className="transport-page pt-120 mb-120">
-        <div className="container">
-          <div className="row g-lg-4 gy-5">
-            <div className="col-xl-10  mx-auto  order-lg-2 order-1">
-              <div className="row g-4 mb-70">
-                {packagess?.length > 0 &&
-                  packagess?.map((trans, index) => {
-                    return <PackageCard index={index} trans={trans} />;
-                  })}
+      {to || from || type || person || child || location || all ? (
+        <div className="transport-page pt-120 mb-120">
+          <div className="container">
+            <div className="row g-lg-4 gy-5">
+              <div className="col-xl-10  mx-auto  order-lg-2 order-1">
+                <div className="row g-4 mb-70">
+                  {packagess?.length > 0 &&
+                    packagess?.map((trans, index) => {
+                      return <PackageCard index={index} trans={trans} />;
+                    })}
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-
-
-:
-
-<div>
-
-<DiscountSlider title="العروض المميزة"  data={packagess} link={'packages'}/>
-</div>
-
-                }
-
-
-
+      ) : (
+        <div>
+          <DiscountSlider
+            title="العروض المميزة"
+            data={packagess}
+            link={"packages"}
+          />
+        </div>
+      )}
     </>
   );
 };
