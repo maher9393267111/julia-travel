@@ -65,7 +65,7 @@ const DiscountSliderPackage = ({ title, link, data }) => {
                 <div className="eg-section-tag two">
                   <span>{link}</span>
                 </div>
-                <h2 className="text-white ar">{title}</h2>
+                <h2 className="text-black ar">{title}</h2>
               </div>
             </div>
           </div>
@@ -124,41 +124,21 @@ const DiscountSliderPackage = ({ title, link, data }) => {
                                   {/* <h6  className="ar text-md text-[#63AB45] mb-2 -mt-2"> عرض {item?.offer}  + {item?.offerplus} مجانا</h6> */}
 
                                   <ul className="feature-list ar">
-                                    <li>
-                                      
-                                      {item?.days} ايام
-                                    </li>
-                                    <li>
-                                    
-                                      {item?.loction} 
-                                    </li>
+                                    <li>{item?.days} ايام</li>
+                                    <li>{item?.loction}</li>
 
                                     <li className="ar">{item.from} </li>
                                     <li className="ar">{item.to} </li>
-                                    
-                                    <li className="ar">
-             
-                                      {item.type} 
-                                    </li>
 
-                                   
+                                    <li className="ar">{item.type}</li>
                                   </ul>
-
 
                                   <ul className="feature-list ar  my-[11px]">
-                             
-                              
-
-                                    <li className="ar">{item.adult} شخص بالغ </li>
-                                    <li className="ar">{item.child}  طفل </li>
-                                    
-                                 
-
-                                   
+                                    <li className="ar">
+                                      {item.adult} شخص بالغ{" "}
+                                    </li>
+                                    <li className="ar">{item.child} طفل </li>
                                   </ul>
-
-
-
                                 </div>
                                 <div className="card-content-bottom  ar">
                                   <div className="price-area">

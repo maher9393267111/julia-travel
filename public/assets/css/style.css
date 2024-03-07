@@ -12283,7 +12283,7 @@ header.style-3.four .nav-right .icon-list li:first-child svg {
 }
 
 .tour-pack-section {
-  background-image: url(../img/home2/tour-pack-section-bg.png), linear-gradient(180deg, #1d231f 0%, #1d231f 100%);
+  /* background-image: url(../img/home2/tour-pack-section-bg.png), linear-gradient(180deg, #1d231f 0%, #1d231f 100%); */
   background-size: cover;
   background-repeat: no-repeat;
   padding: 100px 0;

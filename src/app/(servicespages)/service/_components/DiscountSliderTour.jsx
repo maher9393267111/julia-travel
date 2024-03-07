@@ -65,7 +65,7 @@ const DiscountSliderTour = ({ title, link, data }) => {
                 <div className="eg-section-tag two">
                   <span>{link}</span>
                 </div>
-                <h2 className="text-white ar">{title}</h2>
+                <h2 className="text-black ar">{title}</h2>
               </div>
             </div>
           </div>

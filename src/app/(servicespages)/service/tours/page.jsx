@@ -135,7 +135,7 @@ const ResetSearch=()=>{
 
 <div className=" flex justify-between mb-3  gap-4">
 <h5 className=" ar cursor-pointer">ابحث هنا</h5>
-                      <h5 onClick={ ResetSearch} className=" ar "> اعادة تعيين</h5>
+                      <h5 onClick={ ResetSearch} className=" ar cursor-pointer "> اعادة تعيين</h5>
 </div>
                       
 

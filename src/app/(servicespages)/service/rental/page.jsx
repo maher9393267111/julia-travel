@@ -16,24 +16,23 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { CountriesAr } from "@/uitils/locations";
 import CarFilter from "../_components/RentalCarFilter";
 
-
-
 const INIT_CHECKBOXES_VALUES = {
-  title:'',
+ 
   type: false,
   vites: false,
   fueltype: false,
-  typevalue:"",
-  vitesvalue:"",
-  fuelvalue:"",
-  capacity:0
+  typevalue: "",
+  vitesvalue: "",
+  fuelvalue: "",
+  capacity: 0,
   // size: false,
 };
-
 
 export default function HotelsServices() {
   const dispatch = useDispatch();
   const [rentals, setRentals] = useState([]);
+  const [title, setTitle] = useState("");
+  
   const [checkboxes, setCheckboxes] = useState(INIT_CHECKBOXES_VALUES);
   const searchParams = useSearchParams();
 
@@ -53,11 +52,13 @@ export default function HotelsServices() {
       // );
 
       const response = await axios.get(
-        `/api/admin/cars?${checkboxes.title && "title"}=${checkboxes.title}&&${
+        `/api/admin/cars?${title && "title"}=${title}&&${
           checkboxes.type && "type"
-        }=${checkboxes.typevalue}&&${checkboxes.fueltype && "fueltype"}=${checkboxes.fuelvalue}&&${
-          checkboxes.vites && "vitestype"
-        }=${checkboxes.vitesvalue}&&${checkboxes.capacity > 0  && "capacity"}=${checkboxes.capacity}`
+        }=${checkboxes.typevalue}&&${checkboxes.fueltype && "fueltype"}=${
+          checkboxes.fuelvalue
+        }&&${checkboxes.vites && "vitestype"}=${checkboxes.vitesvalue}&&${
+          checkboxes.capacity > 0 && "capacity"
+        }=${checkboxes.capacity}`
       );
 
       setRentals(response.data.data);
@@ -74,17 +75,18 @@ export default function HotelsServices() {
 
   const locations = ["istanbul", "bursa", "trabzon", "izmir", "izmit"];
 
-
-  
   const onChange = (e, fieldName) => {
-    console.log("etarget" ,e.target.checked ,checkboxes.type)
+    console.log("etarget", e.target.checked, checkboxes.type);
     const newCheckboxes = checkboxes;
-    newCheckboxes[fieldName] =  !fieldName;
+    newCheckboxes[fieldName] = !fieldName;
     setCheckboxes(newCheckboxes);
   };
 
 
+  const ResetSearch=()=>{
 
+    setCheckboxes(INIT_CHECKBOXES_VALUES)
+  }
 
 
   return (
@@ -95,34 +97,27 @@ export default function HotelsServices() {
         pagetitle="Hotels"
       />
 
-
-<div className="container my-6">
-          <div className="row g-lg-4 gy-5">
-         
-            <div className="col-xl-8 order-lg-2 order-2">
-
+      <div className="container my-6">
+        <div className="row g-lg-4 gy-5">
+          <div className="col-xl-8 order-lg-2 order-2">
             {rentals?.length > 0 &&
-                  rentals?.map((rental, index) => {
-                    return <RentalCard index={index} rental={rental} />;
-                  })}
+              rentals?.map((rental, index) => {
+                return <RentalCard index={index} rental={rental} />;
+              })}
+          </div>
 
-
-                </div>
-
-                <div className="col-xl-4 order-lg-1 order-1">
-              <CarFilter
+          <div className="col-xl-4 order-lg-1 order-1">
+            <CarFilter
+             ResetSearch={ ResetSearch}
+            setTitle={setTitle}
+            getHotels={getHotels}
               setCheckboxes={setCheckboxes}
-                     onChange={onChange}
-                     checkboxes={checkboxes}
-              
-              />
-            </div>
-
-                </div>
-
-</div>
-
-
+              onChange={onChange}
+              checkboxes={checkboxes}
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

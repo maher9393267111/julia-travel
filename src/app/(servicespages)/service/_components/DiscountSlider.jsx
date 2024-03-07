@@ -9,19 +9,11 @@ import SwiperCore, {
 } from "swiper";
 import Link from "next/link";
 import { hanldeScore } from "@/uitils/StarsHandle";
-import {calculteDiscount} from "@/uitils/CalculateDiscount"
+import { calculteDiscount } from "@/uitils/CalculateDiscount";
 
 SwiperCore.use([Autoplay, EffectFade, Navigation, Pagination]);
 
 const DiscountSlider = ({ title, link, data }) => {
-
-
-
-
-
- 
-
-
   console.log("data-->", data);
 
   const settings = useMemo(() => {
@@ -73,7 +65,7 @@ const DiscountSlider = ({ title, link, data }) => {
                 <div className="eg-section-tag two">
                   <span>{link}</span>
                 </div>
-                <h2 className="text-white ar">{title}</h2>
+                <h2 className="text-black ar">{title}</h2>
               </div>
             </div>
           </div>
@@ -104,23 +96,24 @@ const DiscountSlider = ({ title, link, data }) => {
                                   alt=""
                                 />
                                 <div className="batch">
-                                  <span>{item?.discount > 0 ? "Discount" : "Offer"}</span>
+                                  <span>
+                                    {item?.discount > 0 ? "Discount" : "Offer"}
+                                  </span>
                                 </div>
                               </Link>
                               <div className="package-card-content">
                                 <div className="card-content-top">
                                   <div className="rating-area">
-                                    <ul  dir="ltr" className="rating">
-
-                                    {hanldeScore(item?.stars)}
-
+                                    <ul dir="ltr" className="rating">
+                                      {hanldeScore(item?.stars)}
 
                                       {/* <li>
                                         <i className="bi bi-star-fill" />
                                       </li> */}
-                                   
                                     </ul>
-                                    <span  className=" text-lg  ar">{item?.stars} نجوم</span>
+                                    <span className=" text-lg  ar">
+                                      {item?.stars} نجوم
+                                    </span>
                                   </div>
                                   <h5>
                                     <Link href={`/service/${link}`}>
@@ -128,15 +121,13 @@ const DiscountSlider = ({ title, link, data }) => {
                                     </Link>
                                   </h5>
 
-
-
-{item?.offer > 0 &&
-
-<h6  className="ar text-md text-[#63AB45] mb-2 -mt-2"> عرض {item?.offer}  + {item?.offerplus} مجانا</h6>
-
-                      }
-
-
+                                  {item?.offer > 0 && (
+                                    <h6 className="ar text-md text-[#63AB45] mb-2 -mt-2">
+                                      {" "}
+                                      عرض {item?.offer} + {item?.offerplus}{" "}
+                                      مجانا
+                                    </h6>
+                                  )}
 
                                   <ul className="feature-list ar">
                                     <li>
@@ -211,26 +202,19 @@ const DiscountSlider = ({ title, link, data }) => {
                                       تبدأ الأسعار من:
                                     </span>
 
-{item?.discount > 0 ?
-                                    <h6>
-                                      <sub>$</sub>
-                                      {calculteDiscount(
-                                        item.price,
-                                        item.discount
-                                      )}
+                                    {item?.discount > 0 ? (
+                                      <h6>
+                                        <sub>$</sub>
+                                        {calculteDiscount(
+                                          item.price,
+                                          item.discount
+                                        )}
 
-                                      <del>${item?.price}</del>
-                                    </h6>
-
-
-:
-<h6>
-
-
-${item?.price}
-</h6>
-                      }
-
+                                        <del>${item?.price}</del>
+                                      </h6>
+                                    ) : (
+                                      <h6>${item?.price}</h6>
+                                    )}
 
                                     <span className="ar  mt-2">
                                       للغرفة الواحدة

@@ -62,7 +62,7 @@ export default function RentalCard({index ,rental}) {
           <div className="price-area ar">
             <span    className=" ar">تبدأ الاسعار من:</span>
             <h6>
-              <strong  className=" ar">$</strong>{rental?.price}<span className=" ar mx-4"></span>
+              <strong  className=" ar"></strong>{rental?.price}$<span className=" ar mx-4"></span>
             </h6>
           </div>
           <Link
