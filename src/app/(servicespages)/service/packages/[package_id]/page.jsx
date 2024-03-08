@@ -612,7 +612,7 @@ const Page = () => {
                       ></path>
                     </svg>
 
-                    <span className="mx-2 ar">{trans?.days} عدد الايام</span>
+                    <span className="mx-2 ar"> عدد الايام : {trans?.days}</span>
                   </li>
 
                   <li className=" ar">
@@ -630,7 +630,7 @@ const Page = () => {
                       ></path>
                     </svg>
 
-                    <span className="mx-2 ar"> التاريخ {trans?.date}: </span>
+                    <span className="mx-2 ar"> التاريخ : {trans?.date} </span>
                   </li>
 
                   <li className=" ar">
@@ -648,7 +648,7 @@ const Page = () => {
                       ></path>
                     </svg>
 
-                    <span className="mx-2 ar">{trans?.location} البلد</span>
+                    <span className="mx-2 ar"> البلد : {trans?.location}</span>
                   </li>
 
                   <li className=" ar">
