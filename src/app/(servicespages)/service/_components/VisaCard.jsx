@@ -1,6 +1,7 @@
 "use client"
 import React from 'react'
 import Link from "next/link";
+import { calculteDiscount } from "@/uitils/CalculateDiscount";
 
 export default function VisaCard({index ,visa}) {
   return (
@@ -61,7 +62,11 @@ export default function VisaCard({index ,visa}) {
           <div className="price-area ar">
             <span    className=" ar">تبدأ الاسعار من:</span>
             <h6>
-              <strong  className=" ar">$</strong>{visa?.price}<span className=" ar mx-4">للشخص الواحد</span>
+              <strong  className=" ar">
+                {visa?.discount > 0 &&
+                 <del className='mx-2'>${calculteDiscount(visa?.price ,visa?.discount)}</del>
+                }
+                   $</strong>{visa?.price}<span className=" ar mx-4">للشخص الواحد</span>
             </h6>
           </div>
           <Link
