@@ -5,10 +5,10 @@ import React, { useState, useEffect, useMemo } from "react";
 import { SetLoading } from "@/redux/LoadersSlice";
 import { useDispatch } from "react-redux";
 import { getCatchErrorMessage } from "@/helpers/ErrorMessgaes";
-import { Checkbox , message } from "antd";
+import { Checkbox, message } from "antd";
 import axios from "axios";
 
-import { useSearchParams ,useRouter } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 
 import Link from "next/link";
 import TourCard from "../_components/TourCard";
@@ -25,17 +25,17 @@ import {
 
 import DiscountSlider from "../_components/DiscountSliderTour";
 import LocationFilterCards from "../_components/LocationFilterCards";
-import { RouterContext } from "next/dist/shared/lib/router-context.shared-runtime";
+
 const page = () => {
   const dispatch = useDispatch();
-  const router = useRouter()
+  const router = useRouter();
   const [tours, setTours] = useState([]);
   const [searchtitle, setSearchTitle] = useState("");
   const [checkedBrands, setCheckedBrands] = useState([]);
 
   const searchParams = useSearchParams();
   const all = searchParams.get("all");
-   const city = searchParams.get("city");
+  const city = searchParams.get("city");
   const country = searchParams.get("country");
   const from = searchParams.get("from");
   const to = searchParams.get("to");
@@ -50,8 +50,6 @@ const page = () => {
         setTours(response.data.data);
         console.log("REsponse-->", response.data.data);
       } else {
-     
-
         const response = await axios.get(
           `/api/admin/tours?${country && "country"}=${country}&&${
             checkedBrands?.length > 0 && "cities"
@@ -70,7 +68,7 @@ const page = () => {
   };
   useEffect(() => {
     getTours();
-  }, [country, city, type, all ,checkedBrands]);
+  }, [country, city, type, all, checkedBrands]);
 
   const currentCities =
     country && country === "تركيا"
@@ -81,7 +79,9 @@ const page = () => {
       ? emiratesCities
       : country === "أذربيجان"
       ? azerbicanCities
-      : location ===   "البوسنة والهرسك" ? busnaCities : []
+      : location === "البوسنة والهرسك"
+      ? busnaCities
+      : [];
 
   const handleCheckedFilterBrand = (e) => {
     const { checked, value } = e.target;
@@ -92,16 +92,11 @@ const page = () => {
       checkedList.splice(checkedBrands.indexOf(value), 1);
     }
     setCheckedBrands(checkedList);
-
-  
   };
 
-const ResetSearch=()=>{
-
-  router.push('/service/tours')
-}
-
-
+  const ResetSearch = () => {
+    router.push("/service/tours");
+  };
 
   return (
     <>
@@ -132,15 +127,16 @@ const ResetSearch=()=>{
                 <div className=" col-xl-4 order-lg-1 order-1">
                   <div className="sidebar-area">
                     <div className="single-widget mb-30">
-
-<div className=" flex justify-between mb-3  gap-4">
-<h5 className=" ar cursor-pointer">ابحث هنا</h5>
-                      <h5 onClick={ ResetSearch} className=" ar cursor-pointer "> اعادة تعيين</h5>
-</div>
-                      
-
-
-
+                      <div className=" flex justify-between mb-3  gap-4">
+                        <h5 className=" ar cursor-pointer">ابحث هنا</h5>
+                        <h5
+                          onClick={ResetSearch}
+                          className=" ar cursor-pointer "
+                        >
+                          {" "}
+                          اعادة تعيين
+                        </h5>
+                      </div>
 
                       {/* <form> */}
                       <div className="search-box">
@@ -153,25 +149,24 @@ const ResetSearch=()=>{
                           <i className="bx bx-search" />
                         </button>
                       </div>
-       
-                      <div className="ar  my-4">
-                      { currentCities?.length > 0 &&
-                        <p>المدن في {country}</p>
-        }
 
-                        {currentCities?.length > 0 && currentCities?.map((city, index) => {
-                          return (
-                            <Checkbox
-                              className="ar"
-                              name="luxurycar"
-                              key={index}
-                              value={city}
-                              onChange={handleCheckedFilterBrand}
-                            >
-                              {city}
-                            </Checkbox>
-                          );
-                        })}
+                      <div className="ar  my-4">
+                        {currentCities?.length > 0 && <p>المدن في {country}</p>}
+
+                        {currentCities?.length > 0 &&
+                          currentCities?.map((city, index) => {
+                            return (
+                              <Checkbox
+                                className="ar"
+                                name="luxurycar"
+                                key={index}
+                                value={city}
+                                onChange={handleCheckedFilterBrand}
+                              >
+                                {city}
+                              </Checkbox>
+                            );
+                          })}
                       </div>
 
                       {/* </form> */}

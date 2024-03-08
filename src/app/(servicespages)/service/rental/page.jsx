@@ -16,9 +16,7 @@ import { useRouter } from "next/navigation";
 import { CountriesAr } from "@/uitils/locations";
 import CarFilter from "../_components/RentalCarFilter";
 
-
 const INIT_CHECKBOXES_VALUES = {
- 
   type: false,
   vites: false,
   fueltype: false,
@@ -33,11 +31,10 @@ export default function HotelsServices() {
   const dispatch = useDispatch();
   const [rentals, setRentals] = useState([]);
   const [title, setTitle] = useState("");
-  
+
   const [checkboxes, setCheckboxes] = useState(INIT_CHECKBOXES_VALUES);
   const searchParams = useSearchParams();
 
- 
   const router = useRouter();
 
   const all = searchParams.get("all");
@@ -86,21 +83,17 @@ export default function HotelsServices() {
     setCheckboxes(newCheckboxes);
   };
 
-
-  const ResetSearch=async()=>{
-
+  const ResetSearch = async () => {
     // setCheckboxes(INIT_CHECKBOXES_VALUES)
     // setTitle((prev) => "")
     // if(title === ''){
     //   console.log("reseted" ,title)
     //   await getHotels()
     // }
-    
 
-// Force refresh the page
-window.location.reload()
-  }
-
+    // Force refresh the page
+    window.location.reload();
+  };
 
   return (
     <div>
@@ -121,10 +114,10 @@ window.location.reload()
 
           <div className="col-xl-4 order-lg-1 order-1">
             <CarFilter
-             ResetSearch={ ResetSearch}
-            setTitle={setTitle}
-            title={title}
-            getHotels={getHotels}
+              ResetSearch={ResetSearch}
+              setTitle={setTitle}
+              title={title}
+              getHotels={getHotels}
               setCheckboxes={setCheckboxes}
               onChange={onChange}
               checkboxes={checkboxes}
