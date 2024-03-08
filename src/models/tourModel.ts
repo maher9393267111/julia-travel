@@ -52,7 +52,7 @@ const tourSchema = new mongoose.Schema(
 
     map: {
       type: String,
-      required: true,
+      required: false
     },
 
   

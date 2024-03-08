@@ -144,8 +144,8 @@ const Page = () => {
           offerType === "normal"
             ? hotel?.price * state.daysNum
             : offerType === "discount"
-              ? calculteDiscount(hotel?.price, hotel?.discount)
-              : calculateOffer(hotel, state.daysNum),
+            ? calculteDiscount(hotel?.price, hotel?.discount)
+            : calculateOffer(hotel, state.daysNum),
         offertype: offerType,
       };
 
@@ -340,21 +340,18 @@ const Page = () => {
                   <div className="location ar !mx-2">
                     <p>
                       <i className="bi bi-geo-alt ar" />
-
-                      {hotel?.location} , {hotel?.city}  , {hotel?.address}
-
-
+                      {hotel?.location} , {hotel?.city} , {hotel?.address}
                     </p>
 
-
-
                     <div>
-                      <a target='_blank' className=" mx-4  text-[#63AB45]" href={hotel?.map}>
+                      <a
+                        target="_blank"
+                        className=" mx-4  text-[#63AB45]"
+                        href={hotel?.map}
+                      >
                         مشاهدة على الخريطة
                       </a>
                     </div>
-
-
                   </div>
                   <div className="review-area">
                     <ul dir="ltr">
@@ -388,14 +385,17 @@ const Page = () => {
                 </h2>
                 <div className="price-area ar  ">
                   <h6 className=" ar mx-2 text-[#63AB45]">
-
                     ${hotel?.price}
-
-                    <span className=" font-bold !text-xl font-semibold mx-2 ar"> لليلة الواحدة</span>
+                    <span className=" font-bold !text-xl font-semibold mx-2 ar">
+                      {" "}
+                      لليلة الواحدة
+                    </span>
                   </h6>
 
                   {hotel?.discount > 0 ? (
-                    <h4 className="ar my-4 !text-[#63AB45]">خصم يصل الى {hotel?.discount}%</h4>
+                    <h4 className="ar my-4 !text-[#63AB45]">
+                      خصم يصل الى {hotel?.discount}%
+                    </h4>
                   ) : (
                     <h4 className="ar my-4 !text-[#63AB45]">
                       هذا السعر يشمل عرض {hotel?.offer} + {hotel?.offerplus}
@@ -403,8 +403,6 @@ const Page = () => {
                   )}
 
                   <ul className="tour-info-metalist ar mt-4 !text-lb">
-
-
                     <li className=" ar">
                       <svg
                         className=""
@@ -417,29 +415,7 @@ const Page = () => {
                       </svg>
                       شاملة الافطار مجانا
                     </li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                   </ul>
-
-
-
-
-
-
-
                 </div>
                 {hotel?.description && (
                   <p className=" ar">
@@ -763,8 +739,6 @@ const Page = () => {
                     </li>
                   )} */}
 
-
-
                   {/* 
                 <li>
                   <svg
@@ -942,9 +916,6 @@ const Page = () => {
                           </div>
                         </div>
 
-
-
-
                         <div className="   text-center">
                           <p className="flex gap-2 ar">
                             <span>السعر الكلي:</span>
@@ -964,7 +935,6 @@ const Page = () => {
                           </p>
                         </div>
 
-
                         {/* <div className="total-pric flex justify-center items-center gap-1">
                       
                           {hotel?.discount > 0 && (
@@ -982,8 +952,6 @@ const Page = () => {
 
                          
                         </div> */}
-
-
 
                         {hotel?.discount > 0 && (
                           <div className="ar my-4 text-sm font-semibold text-[#63AB45]">
