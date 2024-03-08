@@ -1,9 +1,9 @@
 import * as nodemailer from "nodemailer";
 import { NextResponse, NextRequest } from "next/server";
 
-const passw = "fzdy cfwt phtv nedl"
+const passw = "fzdy cfwt phtv nedl";
 //"bbvh hors bgbq pxjm";
-const emails = "juliatoursagency@gmail.com"
+const emails = "juliatoursagency@gmail.com";
 //"noreply.springworthbooks@gmail.com";
 
 export async function POST(req) {
@@ -11,19 +11,27 @@ export async function POST(req) {
     const reqBody = await req.json();
 
     const transporter = nodemailer.createTransport({
+      
+      
+
+      pass: passw,
       port: 465,
       host: "smtp.gmail.com",
-      // user: emails, // generated ethereal user
-      pass: passw, // generated ethereal password
 
-      port: 465,
-      host: "smtp.gmail.com",
-
-      secure: true, // use SSL
+      secure: true,
       auth: {
         user: emails,
         pass: passw,
       },
+
+
+      // host:"smtp.mailtrap.io",
+      // port:2525,
+      // auth:{
+      //     user:"c5ee5aac939502",
+      //     pass: "254ccd3148f88c"
+      // }
+
     });
 
     const {
@@ -247,8 +255,6 @@ export async function POST(req) {
 `;
     }
 
-
-
     if (service === "rental") {
       htmTemplate = `
 
@@ -282,8 +288,6 @@ export async function POST(req) {
 
 `;
     }
-
-
 
     const mailOptions = {
       from: email,

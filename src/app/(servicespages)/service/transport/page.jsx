@@ -12,7 +12,7 @@ import axios from "axios";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import TransportCard from "../_components/TransportCard";
-import DiscountSlider from "../_components/DiscountSlider";
+import DiscountSlider from "../_components/DiscountTransportSlider";
 
 // export const metadata = {
 //   title: "TripRex - Tour & Travel Agency  NextJs Template",
