@@ -20,6 +20,7 @@ import Lightbox from "yet-another-react-lightbox";
 import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import parse from "html-react-parser";
 import dayjs from "dayjs";
+import { calculteDiscount } from "@/uitils/CalculateDiscount";
 import countries from "world-countries";
 
 import { Button, message } from "antd";
@@ -299,10 +300,31 @@ const page = () => {
                         />
                       </div>
 
-                      {/* total price-- */}
-                      <div className="total-price">
-                        <span>Total Price:</span> ${visa?.price}
-                      </div>
+                
+       <div className="   text-center">
+                              <p className="flex gap-2 ar">
+                                <span>السعر الكلي:</span>
+
+
+
+                                <span>
+
+                           
+                         {visa?.discount > 0 ? calculteDiscount(visa?.price, visa?.discount)  : visa.price }$
+                                
+                                </span>
+
+
+
+                              </p>
+                            </div>
+
+                      {visa?.discount > 0 && (
+                          <div className="ar my-4 text-sm font-semibold text-[#63AB45]">
+                            ملاحظة: هذا السعر يشمل نسبة خصم تصل الى{" "}
+                            {visa?.discount}%
+                          </div>
+                        )}
 
                       <div className="form-inner">
                         <button
