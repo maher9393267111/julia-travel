@@ -1411,6 +1411,7 @@ const FilterHome = () => {
                           value={state.nationality}
                         >
                           <option default value={""}></option>
+                          <option value="all">ِِall nationalities </option>
                           {countries.map((country) => (
                             <option
                               value={country.name.common}

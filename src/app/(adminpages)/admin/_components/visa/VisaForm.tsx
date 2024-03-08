@@ -222,6 +222,7 @@ function VisaForm({
         >
           <select className="input_style w-full py-2" value={""}>
             <option value="">Select Country </option>
+           
             {countries.map((country: any, index: any) => (
               <option key={index} value={ country.name.common}>
                 {country.name.common}
@@ -243,6 +244,7 @@ function VisaForm({
         >
           <select className="input_style w-full py-2" value={""}>
             <option value="">Select Nationality</option>
+            <option value="all">ِِall nationalities </option>
             {countries.map((country: any, index: any) => (
               <option key={index} value={country.name.common}>
                 {country.name.common}
