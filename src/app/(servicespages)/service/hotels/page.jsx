@@ -163,6 +163,7 @@ export default function HotelsServices() {
                       {currentCities?.length > 0 &&
                         currentCities?.map((city, index) => {
                           return (
+                            <div>
                             <Checkbox
                               className="ar"
                               name="luxurycar"
@@ -172,6 +173,7 @@ export default function HotelsServices() {
                             >
                               {city}
                             </Checkbox>
+                            </div>
                           );
                         })}
                     </div>
@@ -181,7 +183,7 @@ export default function HotelsServices() {
                 </div>
               </div>
 
-              
+
             </div>
           ) : (
             <div>

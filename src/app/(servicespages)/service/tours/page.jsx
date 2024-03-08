@@ -156,6 +156,7 @@ const page = () => {
                         {currentCities?.length > 0 &&
                           currentCities?.map((city, index) => {
                             return (
+                              <div>
                               <Checkbox
                                 className="ar"
                                 name="luxurycar"
@@ -165,6 +166,7 @@ const page = () => {
                               >
                                 {city}
                               </Checkbox>
+                              </div>
                             );
                           })}
                       </div>
