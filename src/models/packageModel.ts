@@ -22,6 +22,13 @@ const packageSchema = new mongoose.Schema(
 
  
 
+    city: {
+      type: String,
+      required: true,
+    },
+
+ 
+
 
     date: {
       type: String,

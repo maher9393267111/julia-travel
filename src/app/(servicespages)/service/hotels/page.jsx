@@ -180,6 +180,8 @@ export default function HotelsServices() {
                   </div>
                 </div>
               </div>
+
+              
             </div>
           ) : (
             <div>

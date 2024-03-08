@@ -20,6 +20,8 @@ export async function GET(req: NextRequest) {
     const to = url.searchParams.get("to");
     const type = url.searchParams.get("type");
     const limit = url.searchParams.get("limit");
+    const cities = url.searchParams.get("cities");
+    const title = url.searchParams.get("title");
 
     // workaround typescript, da await Post.find(username && { username }) mit einer Warnung daherkommt
     let filter: FilterQuery<any> = {};
@@ -28,6 +30,21 @@ export async function GET(req: NextRequest) {
       const loc = location.replace(/\s/g, "");
       filter.location = loc;
     }
+
+
+    if (cities) {
+      console.log("cities" ,cities)
+            const citiesformat =  cities.split(',')
+            filter.city =  {$in: citiesformat} }
+      
+      
+      
+          if (title) {
+            filter.title = { $regex: title, $options: "i" };
+          }
+
+
+
 
     if (from) {
       filter.from = from;

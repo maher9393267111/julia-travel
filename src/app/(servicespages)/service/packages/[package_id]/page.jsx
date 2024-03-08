@@ -578,7 +578,7 @@ const Page = () => {
                     )}
                   </ul>
                 </div>
-                <h3 className=" ar">
+                <h3 className=" ar !my-4 !text-[#63AB45]">
                   {/* Travel to Sajek from Dhaka (4 ways to travel) */}
                   {trans?.title}
                 </h3>

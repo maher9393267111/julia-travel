@@ -1,3 +1,5 @@
+
+
 "use client";
 
 import Breadcrumb from "@/components/myComponents/layout/BreadCrumb";
@@ -14,6 +16,7 @@ import Link from "next/link";
 import TransportCard from "../_components/TransportCard";
 import DiscountSlider from "../_components/DiscountTransportSlider";
 
+
 // export const metadata = {
 //   title: "TripRex - Tour & Travel Agency  NextJs Template",
 //   description:
@@ -26,20 +29,21 @@ import DiscountSlider from "../_components/DiscountTransportSlider";
 const page = () => {
   const dispatch = useDispatch();
   const [transports, setTransports] = useState([]);
+ 
 
   const searchParams = useSearchParams();
 
   const person = searchParams.get("person");
   const from = searchParams.get("from");
   const to = searchParams.get("to");
-  const all= searchParams.get("all");
+  const all = searchParams.get("all");
   const getTransports = async () => {
     try {
       dispatch(SetLoading(true));
-      // location=${location && location}&&title=${title && title}
+      // location=${location && location}&&title=${title && title}   ${person && "person"}=${person}&&
+           
       const response = await axios.get(
-        `/api/admin/trans?${person && "person"}=${person}
-           &&${from && "from"}=${from}&&${to && "to"}=${to}`
+        `/api/admin/trans?${from && "from"}=${from}&&${to && "to"}=${to}`
       );
       setTransports(response.data.data);
       console.log("REsponse-->", response.data.data);
@@ -53,37 +57,34 @@ const page = () => {
     getTransports();
   }, []);
 
+
+ 
+
+
+
+
   return (
     <>
       <Breadcrumb pagename="النقليات" pagetitle="النقليات" />
 
-   
-
       <div className="transport-page pt-120 mb-120">
         <div className="container">
-
-        {person || to || from|| all ? (
-          <div className="row g-lg-4 gy-5">
-
-
-
-            <div className="col-xl-10  mx-auto  order-lg-2 order-1">
-              <div className="row g-4 mb-70">
-                {transports?.length > 0 &&
-                  transports?.map((trans, index) => {
-                    return <TransportCard index={index} trans={trans} />;
-                  })}
+          { to || from || all ? (
+            <div className="row g-lg-4 gy-5">
+              <div className="col-xl-8 mx-auto order-lg-2 order-1">
+                <div className="row g-4 mb-70">
+                  {transports?.length > 0 &&
+                    transports?.map((trans, index) => {
+                      return <TransportCard index={index} trans={trans} />;
+                    })}
+                </div>
               </div>
+
+
+        
+
             </div>
-
-
-
-
-          </div>
-
-           )
-           
-           : (
+          ) : (
             <div>
               <DiscountSlider
                 title="عروض النقل"
@@ -92,9 +93,6 @@ const page = () => {
               />
             </div>
           )}
-
-
-
         </div>
       </div>
     </>

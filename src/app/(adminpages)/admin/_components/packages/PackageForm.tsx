@@ -13,7 +13,7 @@ import "react-quill/dist/quill.snow.css";
 import dynamic from "next/dynamic";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 import UploadButton from "./UploadPdf";
-import { CountriesAr ,CitiesAr } from "@/uitils/locations";
+import { CountriesAr, CitiesAr } from "@/uitils/locations";
 
 const modules = {
   toolbar: [
@@ -60,7 +60,9 @@ function PackageForm({
   );
 
   const [value, setValue] = React.useState<any>("");
-  const [file, setFile] = React.useState<any>( selectedCategory?.pdf ||  {id:"" ,url:""});
+  const [file, setFile] = React.useState<any>(
+    selectedCategory?.pdf || { id: "", url: "" }
+  );
 
   const ReactQuill = useMemo(
     () => dynamic(() => import("react-quill"), { ssr: false }),
@@ -85,7 +87,7 @@ function PackageForm({
         await deleteImages(imagesToDelete);
         const newImagesUploaded = await uploadImages(files);
         values.images = [...values.images, ...newImagesUploaded];
-        values.pdf = file
+        values.pdf = file;
         response = await axios.put(
           `/api/admin/packages/${selectedCategory._id}`,
           values
@@ -93,8 +95,8 @@ function PackageForm({
       } else {
         values.images = await uploadImages(files);
 
-        values.pdf = file
-        console.log("VALUE" ,value ,file)
+        values.pdf = file;
+        console.log("VALUE", value, file);
         response = await axios.post("/api/admin/packages", values);
       }
       message.success("Package Added Successfully");
@@ -235,7 +237,6 @@ function PackageForm({
           <Input className="    input_style  " type="text" />
         </Form.Item>
 
-
         <Form.Item
           label="Country"
           name="location"
@@ -246,8 +247,7 @@ function PackageForm({
             },
           ]}
         >
-      
-      <select className="input_style w-full py-2" value={""}>
+          <select className="input_style w-full py-2" value={""}>
             <option value="">Select Country</option>
             {CountriesAr.map((location: any, index: any) => (
               <option key={index} value={location}>
@@ -255,14 +255,27 @@ function PackageForm({
               </option>
             ))}
           </select>
-
-
-
-
         </Form.Item>
 
-
-
+        <Form.Item
+          label="City"
+          name="city"
+          rules={[
+            {
+              required: true,
+              message: "Please input city name",
+            },
+          ]}
+        >
+          <select className="input_style w-full py-2" value={""}>
+            <option value="">Select City</option>
+            {CitiesAr.map((city: any, index: any) => (
+              <option key={index} value={city}>
+                {city}
+              </option>
+            ))}
+          </select>
+        </Form.Item>
 
         <Form.Item
           className="input_style"
@@ -277,7 +290,7 @@ function PackageForm({
         >
           <Input className="    input_style  " type="text" />
         </Form.Item>
-{/* 
+        {/* 
         <Form.Item
           className="input_style"
           label="Adult number"
@@ -306,9 +319,7 @@ function PackageForm({
           <Input className="    input_style  " type="text" />
         </Form.Item> */}
 
-
-
-<Form.Item
+        <Form.Item
           className="input_style"
           label="Date"
           name="date"
@@ -321,12 +332,6 @@ function PackageForm({
         >
           <Input className="    input_style  " type="text" />
         </Form.Item>
-
-
-
-    
-
-
 
         <Form.Item
           label="From"
@@ -491,9 +496,14 @@ function PackageForm({
         {/* -upload pdf */}
 
         {file?.id ? (
-          <div className=" text-center text-2xl !text-green-400"> 
-          
-          <a className="!bg-green-600 hover:bg-green-500 text-white font-semibold py-2 px-4 rounded-lg" href={file?.url}  target="_blank">Pdf Link</a>
+          <div className=" text-center text-2xl !text-green-400">
+            <a
+              className="!bg-green-600 hover:bg-green-500 text-white font-semibold py-2 px-4 rounded-lg"
+              href={file?.url}
+              target="_blank"
+            >
+              Pdf Link
+            </a>
           </div>
         ) : (
           <div>

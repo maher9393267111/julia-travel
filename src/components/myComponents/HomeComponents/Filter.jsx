@@ -142,8 +142,9 @@ const FilterHome = () => {
     }
 
     if (page === "transport") {
+      //person=${state.personsTrans}&&
       router.push(
-        `/service/transport?person=${state.personsTrans}&&from=${state.fromTransport}&&to=${state.toTransport}`
+        `/service/transport?from=${state.fromTransport}&&to=${state.toTransport}`
       );
     }
 
@@ -916,7 +917,7 @@ const FilterHome = () => {
 
                     {/* --- person number transport  */}
 
-                    <div className="w-full mb-10 md:mb-0">
+                    {/* <div className="w-full mb-10 md:mb-0">
                       <div className="relative inline-block w-full text-gray-700">
                         <label
                           className={`absolute -top-7 ${"text-black"} !font-kufi text-sm font-semibold mb-2`}
@@ -925,7 +926,7 @@ const FilterHome = () => {
                           عدد الاشخاص
                         </label>
                         <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                          {/* icon */}
+                         
 
                           <FaLocationDot />
                         </div>
@@ -954,7 +955,7 @@ const FilterHome = () => {
                           <i className="bi bi-chevron-down" />
                         </div>
                       </div>
-                    </div>
+                    </div> */}
 
                     {/* -------DATES- */}
 
