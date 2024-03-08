@@ -20,6 +20,12 @@ const packageSchema = new mongoose.Schema(
       required: true,
     },
 
+    map: {
+      type: String,
+      required: true,
+    },
+
+
     date: {
       type: String,
       required: true,

@@ -144,8 +144,8 @@ const Page = () => {
           offerType === "normal"
             ? hotel?.price * state.daysNum
             : offerType === "discount"
-            ? calculteDiscount(hotel?.price, hotel?.discount)
-            : calculateOffer(hotel, state.daysNum),
+              ? calculteDiscount(hotel?.price, hotel?.discount)
+              : calculateOffer(hotel, state.daysNum),
         offertype: offerType,
       };
 
@@ -340,14 +340,21 @@ const Page = () => {
                   <div className="location ar !mx-2">
                     <p>
                       <i className="bi bi-geo-alt ar" />
-                      {/* House 168/170, Road 02,
-                    Avenue 01, Mirpur DOHS, Dhaka, Bangladesh  */}
-                      {hotel?.location}
 
-                      <a className=" mx-4" href="#">
-                        See Map
-                      </a>
+                      {hotel?.location} , {hotel?.city}  , {hotel?.address}
+
+
                     </p>
+
+
+
+                    <div>
+                      <a target='_blank' className=" mx-4  text-[#63AB45]" href={hotel?.map}>
+                        مشاهدة على الخريطة
+                      </a>
+                    </div>
+
+
                   </div>
                   <div className="review-area">
                     <ul dir="ltr">
@@ -379,18 +386,60 @@ const Page = () => {
                   {/* Golden Tulip The Grandmark Dhaka */}
                   {hotel?.title}
                 </h2>
-                <div className="price-area">
-                  <h6 className=" ar">
-                    {hotel?.price}$/<span>الليلة</span>
+                <div className="price-area ar  ">
+                  <h6 className=" ar mx-2 text-[#63AB45]">
+
+                    ${hotel?.price}
+
+                    <span className=" font-bold !text-xl font-semibold mx-2 ar"> لليلة الواحدة</span>
                   </h6>
 
                   {hotel?.discount > 0 ? (
-                    <h4 className="ar my-2">خصم يصل الى {hotel?.discount}%</h4>
+                    <h4 className="ar my-4 !text-[#63AB45]">خصم يصل الى {hotel?.discount}%</h4>
                   ) : (
-                    <h4 className="ar my-2">
+                    <h4 className="ar my-4 !text-[#63AB45]">
                       هذا السعر يشمل عرض {hotel?.offer} + {hotel?.offerplus}
                     </h4>
                   )}
+
+                  <ul className="tour-info-metalist ar mt-4 !text-lb">
+
+
+                    <li className=" ar">
+                      <svg
+                        className=""
+                        width={14}
+                        height={14}
+                        viewBox="0 0 14 14"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M14 7C14 8.85652 13.2625 10.637 11.9497 11.9497C10.637 13.2625 8.85652 14 7 14C5.14348 14 3.36301 13.2625 2.05025 11.9497C0.737498 10.637 0 8.85652 0 7C0 5.14348 0.737498 3.36301 2.05025 2.05025C3.36301 0.737498 5.14348 0 7 0C8.85652 0 10.637 0.737498 11.9497 2.05025C13.2625 3.36301 14 5.14348 14 7ZM7 3.0625C7 2.94647 6.95391 2.83519 6.87186 2.75314C6.78981 2.67109 6.67853 2.625 6.5625 2.625C6.44647 2.625 6.33519 2.67109 6.25314 2.75314C6.17109 2.83519 6.125 2.94647 6.125 3.0625V7.875C6.12502 7.95212 6.14543 8.02785 6.18415 8.09454C6.22288 8.16123 6.27854 8.2165 6.3455 8.25475L9.408 10.0048C9.5085 10.0591 9.62626 10.0719 9.73611 10.0406C9.84596 10.0092 9.93919 9.93611 9.99587 9.83692C10.0525 9.73774 10.0682 9.62031 10.0394 9.50975C10.0107 9.39919 9.93982 9.30426 9.842 9.24525L7 7.62125V3.0625Z"></path>
+                      </svg>
+                      شاملة الافطار مجانا
+                    </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  </ul>
+
+
+
+
+
+
+
                 </div>
                 {hotel?.description && (
                   <p className=" ar">
@@ -700,7 +749,7 @@ const Page = () => {
                     </li>
                   )}
 
-                  {hotel?.breakfast && (
+                  {/* {hotel?.breakfast && (
                     <li>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -712,7 +761,9 @@ const Page = () => {
                       </svg>
                       فطور مجاني
                     </li>
-                  )}
+                  )} */}
+
+
 
                   {/* 
                 <li>
@@ -891,13 +942,31 @@ const Page = () => {
                           </div>
                         </div>
 
-                        {/* total price-- */}
-                        <div className="total-pric flex justify-center items-center gap-1">
-                          {/* <span>Total Price:</span>  */}
 
-                          {/* <span className="text-sm ar  "> $</span> */}
 
-                          {/* {hotel?.price * state.daysNum} */}
+
+                        <div className="   text-center">
+                          <p className="flex gap-2 ar">
+                            <span>السعر الكلي:</span>
+
+                            {hotel?.discount > 0 && (
+                              <h6 className="">
+                                $
+                                {calculteDiscount(hotel.price, hotel.discount) *
+                                  state.daysNum}
+                              </h6>
+                            )}
+
+                            <h6>
+                              {calculateOffer(hotel)}
+                              {calculateOffer(hotel) !== false && "$"}
+                            </h6>
+                          </p>
+                        </div>
+
+
+                        {/* <div className="total-pric flex justify-center items-center gap-1">
+                      
                           {hotel?.discount > 0 && (
                             <h6 className="">
                               $
@@ -911,9 +980,10 @@ const Page = () => {
                             {calculateOffer(hotel) !== false && "$"}
                           </h6>
 
-                          {/* {hotel?.price * state.daysNum * state.adultsNum +
-                            state.ChildrensNum * 15} */}
-                        </div>
+                         
+                        </div> */}
+
+
 
                         {hotel?.discount > 0 && (
                           <div className="ar my-4 text-sm font-semibold text-[#63AB45]">
@@ -947,7 +1017,7 @@ const Page = () => {
                             </div>
                           )}
 
-                          <WhatsappForm/>
+                          <WhatsappForm />
                         </div>
                       </form>
                     </div>

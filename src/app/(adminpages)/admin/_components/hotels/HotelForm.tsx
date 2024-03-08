@@ -223,12 +223,46 @@ function HotelForm({
           rules={[
             {
               required: true,
-              message: "Please input price",
+              message: "Please input stars number",
             },
           ]}
         >
           <Input className="    input_style  " type="text" />
         </Form.Item>
+
+        <Form.Item
+          className="input_style"
+          label="Address"
+          name="address"
+          rules={[
+            {
+              required: true,
+              message: "Please input address",
+            },
+          ]}
+        >
+          <Input className="    input_style  " type="text" />
+        </Form.Item>
+
+
+        <Form.Item
+          className="input_style"
+          label="Map Url"
+          name="map"
+          rules={[
+            {
+              required: true,
+              message: "Please input Map location",
+            },
+          ]}
+        >
+          <Input className=" input_style" type="text" />
+        </Form.Item>
+
+
+
+
+
 
         <Form.Item
           label="Location"

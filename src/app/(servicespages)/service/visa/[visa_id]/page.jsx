@@ -232,8 +232,8 @@ const page = () => {
                 <div className="visa-sidebar mb-30">
                   <div className="sidebar-top text-center">
                     <h4 className=" ar">ملخص التكلفة</h4>
-                    <h6>
-                      {visa?.price}$/ <span> للشخص الواحد</span>
+                    <h6 className="ar">
+                      {visa?.price}$/ <span className="ar"> للشخص الواحد</span>
                     </h6>
                     {/* <p>Arrange your trip in advance - book this room now!</p> */}
                   </div>

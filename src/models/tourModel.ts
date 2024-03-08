@@ -50,6 +50,11 @@ const tourSchema = new mongoose.Schema(
       default:0
     },
 
+    map: {
+      type: String,
+      required: true,
+    },
+
   
     images: {
         type: Array,

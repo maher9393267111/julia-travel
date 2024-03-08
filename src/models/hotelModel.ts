@@ -15,20 +15,27 @@ const hotelSchema = new mongoose.Schema(
       required: true,
     },
 
-    
+
+    map: {
+      type: String,
+      required: true,
+    },
+
+
     city: {
       type: String,
       required: true,
     },
 
-  
+    address: {
+      type: String,
+      required: true,
+    },
 
     images: {
       type: Array,
       required: true,
     },
-
- 
 
     price: {
       type: Number,
@@ -40,13 +47,10 @@ const hotelSchema = new mongoose.Schema(
       default: true,
     },
 
-
     roomtype: {
       type: String,
       required: false,
-
     },
-
 
     gym: {
       type: Boolean,
@@ -66,14 +70,11 @@ const hotelSchema = new mongoose.Schema(
       default: true,
     },
 
-
-
     safe: {
       type: Boolean,
       required: true,
       default: true,
     },
-
 
     laundary: {
       type: Boolean,
@@ -141,49 +142,41 @@ const hotelSchema = new mongoose.Schema(
       default: false,
     },
 
-
     childbeds: {
       type: Number,
       required: false,
-      default:1
-
+      default: 1,
     },
 
     adultbeds: {
       type: Number,
       required: false,
-      default:1
-
+      default: 1,
     },
-
 
     adults: {
       type: Number,
       required: false,
-      default:1
-
+      default: 1,
     },
 
     childrens: {
       type: Number,
       required: false,
-      default:1
-
+      default: 1,
     },
 
     resturant: {
-      type:Boolean,
+      type: Boolean,
       required: true,
-      default:true
+      default: true,
     },
 
-   locker: {
-      type:Boolean,
+    locker: {
+      type: Boolean,
       required: true,
-      default:true
+      default: true,
     },
-
-
 
     stars: {
       type: Number,
@@ -191,35 +184,23 @@ const hotelSchema = new mongoose.Schema(
       default: 5,
     },
 
-
-
     discount: {
       type: Number,
       required: false,
-      default:0
-
+      default: 0,
     },
-
-
 
     offer: {
       type: Number,
       required: false,
-      default:0
-
+      default: 0,
     },
-    
+
     offerplus: {
       type: Number,
       required: false,
-      default:0
-
+      default: 0,
     },
-
-
-
-
-
   },
   {
     timestamps: true,
