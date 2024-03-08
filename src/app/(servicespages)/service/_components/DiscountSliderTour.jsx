@@ -124,9 +124,10 @@ const DiscountSliderTour = ({ title, link, data }) => {
                                   {/* <h6  className="ar text-md text-[#63AB45] mb-2 -mt-2"> عرض {item?.offer}  + {item?.offerplus} مجانا</h6> */}
 
                                   <ul className="feature-list ar">
+                                    
                                     <li>
-                                      
-                                      {item?.days} ايام
+                                    {item?.duration} المدة  
+                                    
                                     </li>
                                     <li>
                                     

@@ -40,8 +40,16 @@ const tourSchema = new mongoose.Schema(
 
     days: {
       type: Number,
+      required: false,
+    }
+,
+
+    duration: {
+      type: String,
       required: true,
     }
+
+
 
     ,
     discount: {

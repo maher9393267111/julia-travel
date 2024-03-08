@@ -284,16 +284,15 @@ const Page = () => {
             <div className="row g-xl-4 gy-5">
               <div className="col-xl-8">
                 <div className="location-and-review">
-                  <div className="location  !mx-2">
+                  {/* <div className="location  !mx-2">
                     <p>
                       <i className="bi bi-geo-alt" />
-                      {/* House 168/170, Road 02,
-                    Avenue 01, Mirpur DOHS, Dhaka, Bangladesh  */}
+                  
                       {tour?.location}
 
-                      <a href="#">See Map</a>
+                      <a href={tour?.map}>المشاح</a>
                     </p>
-                  </div>
+                  </div> */}
 
                   <div className="tour-price  ar">
                     <span className=" ar">للشخص الواحد</span>
@@ -309,7 +308,8 @@ const Page = () => {
                       >
                         <path d="M14 7C14 8.85652 13.2625 10.637 11.9497 11.9497C10.637 13.2625 8.85652 14 7 14C5.14348 14 3.36301 13.2625 2.05025 11.9497C0.737498 10.637 0 8.85652 0 7C0 5.14348 0.737498 3.36301 2.05025 2.05025C3.36301 0.737498 5.14348 0 7 0C8.85652 0 10.637 0.737498 11.9497 2.05025C13.2625 3.36301 14 5.14348 14 7ZM7 3.0625C7 2.94647 6.95391 2.83519 6.87186 2.75314C6.78981 2.67109 6.67853 2.625 6.5625 2.625C6.44647 2.625 6.33519 2.67109 6.25314 2.75314C6.17109 2.83519 6.125 2.94647 6.125 3.0625V7.875C6.12502 7.95212 6.14543 8.02785 6.18415 8.09454C6.22288 8.16123 6.27854 8.2165 6.3455 8.25475L9.408 10.0048C9.5085 10.0591 9.62626 10.0719 9.73611 10.0406C9.84596 10.0092 9.93919 9.93611 9.99587 9.83692C10.0525 9.73774 10.0682 9.62031 10.0394 9.50975C10.0107 9.39919 9.93982 9.30426 9.842 9.24525L7 7.62125V3.0625Z"></path>
                       </svg>
-                      {tour?.days} ايام / {tour?.days + 1} ليالي
+                      {tour?.duration} مدة الرحلة
+                      {/* {tour?.days} ايام / {tour?.days + 1} ليالي */}
                     </li>
             
 
@@ -391,9 +391,9 @@ const Page = () => {
               </div>
               <div className="col-xl-4 ">
                 <div className="booking-form-wrap mb-30">
-                  <h4 className=" !font-kufi">احجز غرفتك</h4>
+                  <h4 className=" !font-kufi"> احجز رحلتك الان</h4>
                   <p className="!font-kufi mt-2">
-                    احجز غرفتك المثالية مبكرًا لتستمتع برحلة خالية من المتاعب؛
+                    احجز رحلتك مبكرًا لتستمتع برحلة خالية من المتاعب؛
                     راحة ورفاهية آمنة!
                   </p>
 
@@ -459,10 +459,11 @@ const Page = () => {
 
                           <div className="number-input-item adults">
                             <label className="number-input-lable !text-sm  ar">
-                              عدد الايام:<span></span>
+                             مدة الرحلة:<span></span>
                             </label>
 
-                            {tour?.days}
+                            {tour?.duration}
+                            {/* {tour?.days} */}
 
                             {/* <Amount
                               value={state.daysNum}

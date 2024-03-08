@@ -248,7 +248,7 @@ console.log("S?????"  , selectedCategory)
           <Input className="    input_style  " type="text" />
         </Form.Item>
 
-        <Form.Item
+        {/* <Form.Item
           className="input_style"
           label="days"
           name="days"
@@ -260,24 +260,25 @@ console.log("S?????"  , selectedCategory)
           ]}
         >
           <Input className="    input_style  " type="text" />
-        </Form.Item>
+        </Form.Item> */}
 
-        {/* <Form.Item
-          label="Title"
-          name="title"
+
+
+<Form.Item
+          className="input_style"
+          label="Duration"
+          name="duration"
           rules={[
             {
               required: true,
-              message: "Please input hotel title",
+              message: "Please input duration",
             },
           ]}
         >
-         
+          <Input className="input_style " type="text" />
+        </Form.Item>
 
-          <div className="form-inner mb-2  !outline-green-500  ">
-            <input type="text" placeholder="hotel name" />
-          </div>
-        </Form.Item> */}
+
 
         <Form.Item
           label="Description"
