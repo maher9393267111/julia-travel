@@ -1,5 +1,5 @@
 export const calculteDiscount = (price, discount) => {
-    let result = price / ((100 + discount) / 100);
+    let result = price - (price * (discount / 100));
 
     const resultafterfixed = result.toFixed();
 

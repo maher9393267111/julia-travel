@@ -64,9 +64,9 @@ export default function VisaCard({index ,visa}) {
             <h6>
               <strong  className=" ar">
                 {visa?.discount > 0 &&
-                 <del className='mx-2'>${calculteDiscount(visa?.price ,visa?.discount)}</del>
+                 <del className='mx-2'>${visa?.price}</del>
                 }
-                   $</strong>{visa?.price}<span className=" ar mx-4">للشخص الواحد</span>
+                   $</strong>{calculteDiscount(visa?.price ,visa?.discount)} <span className=" ar mx-4">للشخص الواحد</span>
             </h6>
           </div>
           <Link
