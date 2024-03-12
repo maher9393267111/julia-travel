@@ -1,0 +1,63 @@
+[
+    {
+        "id": "1",
+        "label": "الرئيسية",
+        "link": "/",
+        "icon": false
+     
+    },
+    {
+        "id": "2",
+        "label": "الفنادق",
+        "link": "/service/hotels",
+        "icon": false
+    },
+    {
+        "id": "3",
+        "label": "الجولات و الرحلات",
+        "link": "/service/tours",
+        "icon": false
+     
+    },
+    {
+        "id": "4",
+        "label": "الفيزا",
+        "link": "/service/visa",
+        "icon": false
+    },
+    {
+        "id": "5",
+        "label": "العروض",
+        "link": "/service/packages",
+        "icon": false
+      
+    },
+
+    {
+        "id": "6",
+        "label": "السيارات",
+        "link": "/service/rental",
+        "icon": false
+      
+    },
+
+
+  
+
+    {
+        "id": "8",
+        "label": "النقليات",
+        "link": "/service/transport",
+        "icon": false
+      
+    },
+ 
+
+
+    {
+        "id": "9",
+        "label": "التواصل",
+        "link": "/contact",
+        "icon": false
+    }
+]
