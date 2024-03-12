@@ -93,7 +93,11 @@ const Home1Testimonail = () => {
 
 
               setReviews(result);
+<<<<<<< HEAD
              // console.log("REsponse-->", response.data.data);
+=======
+              console.log("REsponse-->", response.data.data);
+>>>>>>> 289e36ffced48af35b6036d3b87998c7ee695d5c
             } catch (error) {
               message.error(getCatchErrorMessage(error));
             } finally {

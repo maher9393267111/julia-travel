@@ -41,7 +41,11 @@ export async function GET(req: NextRequest) {
 
 
     const visas = limit ?   await Visa.find(filter).sort({ createdAt: -1 }).limit(3)  : await Visa.find(filter).sort({ createdAt: -1 });
+<<<<<<< HEAD
    // console.log("visa All data---<>" , filter,  visas)
+=======
+    console.log("visa All data---<>" , filter,  visas)
+>>>>>>> 289e36ffced48af35b6036d3b87998c7ee695d5c
     return NextResponse.json({ data: visas });
   } catch (error : any) {
     return NextResponse.json({ message: error.message } , { status: 500 });
